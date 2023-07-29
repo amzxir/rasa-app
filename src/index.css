@@ -1,17 +1,41 @@
+@font-face {
+  font-family: "font-primary";
+  src: url(../public/fonts/IRANYekanX-Black.ttf);
+}
+
+@font-face {
+  font-family: "font-bold";
+  src: url(../public/fonts/IRANYekanX-Bold.ttf);
+}
+
+@font-face {
+  font-family: "font-light";
+  src: url(../public/fonts/IRANYekanX-Light.ttf);
+}
+
+@font-face {
+  font-family: "font-number";
+  src: url(../public/fonts/IRANYekanXFaNum-Bold.ttf);
+}
+
+h1 , h2 , h3 , h4 , h5 , h6 , p , span , div , button {
+    font-family: "font-primary" !important;
+}
+
+.font-light{
+  font-family: "font-light" !important;
+}
+
+.font-number{
+  font-family: "font-number" !important;
+}
+
+
 :root {
   position: relative;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
   -webkit-touch-callout: none;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
 }
 
 body {
@@ -26,14 +50,23 @@ body {
   scroll-snap-type: mandatory;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
-  -webkit-user-select: none;
+  /* -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none;
+  user-select: none; */
   overscroll-behavior-x: none !important;
   padding-bottom: env(safe-area-inset-bottom, 5px);
   scrollbar-width: none;
 
+}
+
+.scroll-auto{
+  overflow-y: auto;
+  height: 85vh;
+}
+
+.scroll-auto::-webkit-scrollbar{
+  display: none;
 }
 
 @media screen and (min-width: 321px){
@@ -43,6 +76,8 @@ body {
 }
 
 .super-app-container {
+  background-color: #f9f9f9;
+    direction: rtl;
     width: 100%;
     max-width: 440px;
     display: -ms-flexbox;
@@ -53,7 +88,8 @@ body {
     align-items: center;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    padding-bottom: 16px;
+    /* padding-bottom: 16px; */
+    padding-top: 16px;
     overflow-y: auto;
     margin: auto;
     -ms-overflow-style: none;
