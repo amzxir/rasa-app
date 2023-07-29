@@ -65,3 +65,10 @@
     }
 }
 
+
+@media screen and (max-width: 400px){
+    .menu_bar {
+        position: fixed;
+        bottom: 0;
+    }
+}

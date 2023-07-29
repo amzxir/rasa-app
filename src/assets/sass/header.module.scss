@@ -27,3 +27,17 @@
     }
 }
 
+.navbar_fixed {
+    background-color: #f9f9f9;
+}
+
+@media screen and (max-width: 400px){
+    .navbar_fixed {
+        position: fixed;
+        top: 0;
+        padding: 1rem 0rem;
+        background-color: #f9f9f9;
+    }
+}
+
+

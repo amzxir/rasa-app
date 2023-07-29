@@ -36,6 +36,10 @@ h1 , h2 , h3 , h4 , h5 , h6 , p , span , div , button {
   -ms-touch-action: manipulation;
   touch-action: manipulation;
   -webkit-touch-callout: none;
+  /* background-image: linear-gradient(180deg, #2af598 0%, #009efd 100%); */
+  /* background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%); */
+  /* background-image: linear-gradient(to top, #a3bded 0%, #6991c7 100%); */
+  background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
 }
 
 body {
@@ -72,6 +76,13 @@ body {
 @media screen and (min-width: 321px){
   .super-app-container {
       height: 100%;
+  }
+
+}
+
+@media screen and (max-width: 400px){
+  .scroll-auto{
+    height: 100%;
   }
 }
 

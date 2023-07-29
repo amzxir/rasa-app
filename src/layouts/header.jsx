@@ -11,7 +11,7 @@ import { Container } from "@mui/material";
 
 export default function Header() {
   return (
-    <Container maxWidth="sm">
+    <Container className={styles.navbar_fixed} maxWidth="sm">
       <Grid container spacing={2}>
         <Grid item xs={9}>
           <Stack direction="row">
