@@ -12,7 +12,7 @@ export default function Menu() {
   return (
     <div className={styles.menu_bar}>
       <Container className={styles.flex} sx={{ p: 2 }} maxWidth="sm">
-        <NavLink className={styles.pr_1}>
+        <NavLink to="/" className={styles.pr_1}>
           <HomeIcon />
         </NavLink>
         <NavLink className={styles.pl_3}>
