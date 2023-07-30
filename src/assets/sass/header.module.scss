@@ -7,7 +7,6 @@
     .text_welcome{
         margin: 0;
         font-size: 14px;
-        font-style: italic;
         font-weight: 700;
         line-height: 18px;
         letter-spacing: 0em;
@@ -29,6 +28,7 @@
 
 .navbar_fixed {
     background-color: #f9f9f9;
+    z-index: 1000000;
 }
 
 @media screen and (max-width: 400px){
