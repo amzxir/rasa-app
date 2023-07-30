@@ -3,18 +3,15 @@ import Apps from "../assets/svg/apps";
 import Sun from "../assets/svg/sun";
 import styles from "../assets/sass/header.module.scss";
 import { Container, Grid, Avatar, Stack, IconButton } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import Navigation from "../assets/svg/navigation";
 import { useLocation, useNavigate } from "react-router-dom";
 import ColorModeContext from "../context/color-mode-context";
-import { useTheme } from "@mui/material/styles";
-
-
-
 
 export default function Header() {
   const theme = useTheme();
-  const {colorMode} = useContext(ColorModeContext);
-  
+  const { colorMode } = useContext(ColorModeContext);
+
   let location = useLocation();
   let path = location.pathname;
   let navigate = useNavigate();
