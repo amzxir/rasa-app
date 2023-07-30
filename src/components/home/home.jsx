@@ -142,12 +142,20 @@ export default function Home() {
 
       <Grid sx={{ mt: 5 }} container spacing={3}>
         <Grid item xs={4} className={styles.p_0}>
-          <NavLink className={styles.btn_secondary}>
+          <NavLink
+            to={"/terms"}
+            state={"قوانین و مقررات"}
+            className={styles.btn_secondary}
+          >
             <span>قوانین و مقررات</span>
           </NavLink>
         </Grid>
         <Grid item xs={4} className={styles.p_0}>
-          <NavLink className={styles.btn_primary}>
+          <NavLink
+            to={"/about"}
+            state={"درباره رسادنت"}
+            className={styles.btn_primary}
+          >
             <span>درباره رسادنت</span>
           </NavLink>
         </Grid>

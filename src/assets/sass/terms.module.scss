@@ -1,0 +1,33 @@
+.img_content{
+    display: flex;
+    justify-content: center;
+
+    .img_fluid{
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.text_about{
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: justify;
+    font-family: "font-light" !important;
+}
+
+.title_h1_terms{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 900;
+    line-height: 24px;
+    letter-spacing: 0em;
+    color: #374957;
+
+    span{
+        margin-right: .5rem;
+    }
+    
+}
