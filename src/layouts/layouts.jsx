@@ -4,6 +4,8 @@ import { useTheme } from "@mui/material/styles";
 import { Box, Container } from "@mui/material";
 import Menu from "./menu";
 import ColorModeContext from "../context/color-mode-context";
+import Splash from "../components/splash/splash";
+
 
 export default function Layouts(props) {
   // start function darkmode
@@ -21,6 +23,8 @@ export default function Layouts(props) {
     >
       <Header />
       <Container maxWidth="sm">
+        <Splash />
+
         <div
           className={
             theme.palette.mode === "light"
