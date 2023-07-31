@@ -6,6 +6,7 @@ import About from "./components/about/about";
 import Terms from "./components/terms/terms";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import ColorModeContext from "./context/color-mode-context";
+import Faq from "./components/faq/faq";
 
 export default function App() {
 
@@ -45,6 +46,7 @@ export default function App() {
             <Route path="/" element={<Home />}></Route>
             <Route path="/about" element={<About />}></Route>
             <Route path="/terms" element={<Terms />}></Route>
+            <Route path="/faq" element={<Faq/>}></Route>
           </Routes>
         </Layouts>
       </ThemeProvider>

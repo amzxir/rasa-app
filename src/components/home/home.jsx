@@ -212,6 +212,8 @@ export default function Home() {
           }
         >
           <NavLink
+            to={"/faq"}
+            state={"حریم خصوصی"}
             className={
               theme.palette.mode === "light"
                 ? LightStyles.btn_secondary
