@@ -65,49 +65,92 @@ body {
 
 }
 
-.scroll-auto{
+.scroll-auto-light{
   overflow-y: auto;
   height: 85vh;
 }
 
-.scroll-auto::-webkit-scrollbar{
+.scroll-auto-light::-webkit-scrollbar{
   display: none;
 }
 
+.scroll-auto-dark{
+  overflow-y: auto;
+  height: 85vh;
+}
+
+.scroll-auto-dark::-webkit-scrollbar{
+  display: none;
+}
+
+.super-app-container-light {
+  background-color: #f9f9f9;
+  direction: rtl;
+  width: 100%;
+  max-width: 440px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /* padding-bottom: 16px; */
+  padding-top: 16px;
+  overflow-y: auto;
+  margin: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  -webkit-animation: fade-in .3s ease-in-out;
+  animation: fade-in .3s ease-in-out;
+}
+
+.super-app-container-dark {
+  background-color: #121212;
+  direction: rtl;
+  width: 100%;
+  max-width: 440px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /* padding-bottom: 16px; */
+  padding-top: 16px;
+  overflow-y: auto;
+  margin: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  -webkit-animation: fade-in .3s ease-in-out;
+  animation: fade-in .3s ease-in-out;
+}
+
 @media screen and (min-width: 321px){
-  .super-app-container {
+  .super-app-container-light {
       height: 100%;
   }
+
+  .super-app-container-dark {
+    height: 100%;
+}
 
 }
 
 @media screen and (max-width: 400px){
-  .scroll-auto{
+  .scroll-auto-light{
+    height: 100%;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+  }
+
+  .scroll-auto-dark{
     height: 100%;
     padding-top: 2rem;
     padding-bottom: 4rem;
   }
 }
 
-.super-app-container {
-    background-color: #f9f9f9;
-    direction: rtl;
-    width: 100%;
-    max-width: 440px;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    /* padding-bottom: 16px; */
-    padding-top: 16px;
-    overflow-y: auto;
-    margin: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    -webkit-animation: fade-in .3s ease-in-out;
-    animation: fade-in .3s ease-in-out;
-}

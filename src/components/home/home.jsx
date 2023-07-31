@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Splide, SplideTrack } from "@splidejs/react-splide";
 import { Box, Grid } from "@mui/material";
-import styles from "../../assets/sass/home.module.scss";
+import { useTheme } from "@mui/material/styles";
+import LightStyles from "../../assets/sass/light/home.module.scss";
+import DarkStyles from "../../assets/sass/dark/home.module.scss";
 import GraduationCapIcon from "../../assets/svg/graduation-cap";
-
 import Service from "./service/service";
 import Education from "./education/education";
+import ColorModeContext from "../../context/color-mode-context";
 
 export default function Home() {
+  // start function darkmode
+  const theme = useTheme();
+  const { colorMode } = useContext(ColorModeContext);
+  // end function darkmode
+
   // fetch data service
   const service = [
     {
@@ -90,11 +97,23 @@ export default function Home() {
 
   return (
     <Box sx={{ mt: 5, mb: 5 }}>
-      <div className={styles.box_title_platform}>
+      <div
+        className={
+          theme.palette.mode === "light"
+            ? LightStyles.box_title_platform
+            : DarkStyles.box_title_platform
+        }
+      >
         <h1>📍خدمات رسادنت</h1>
         <NavLink>+ خدمات بیشتر ...</NavLink>
       </div>
-      <div className={styles.box_platform}>
+      <div
+        className={
+          theme.palette.mode === "light"
+            ? LightStyles.box_platform
+            : DarkStyles.box_platform
+        }
+      >
         <Grid container spacing={2}>
           {dataService.map((i, index) => {
             return (
@@ -110,7 +129,13 @@ export default function Home() {
         </Grid>
       </div>
 
-      <div className={styles.box_title_study}>
+      <div
+        className={
+          theme.palette.mode === "light"
+            ? LightStyles.box_title_study
+            : DarkStyles.box_title_study
+        }
+      >
         <GraduationCapIcon />
         <h1>مرکـــز آموزش رسادنت 🥳</h1>
       </div>
@@ -141,26 +166,58 @@ export default function Home() {
       </Splide>
 
       <Grid sx={{ mt: 5 }} container spacing={3}>
-        <Grid item xs={4} className={styles.p_0}>
+        <Grid
+          item
+          xs={4}
+          className={
+            theme.palette.mode === "light" ? LightStyles.p_0 : DarkStyles.p_0
+          }
+        >
           <NavLink
             to={"/terms"}
             state={"قوانین و مقررات"}
-            className={styles.btn_secondary}
+            className={
+              theme.palette.mode === "light"
+                ? LightStyles.btn_secondary
+                : DarkStyles.btn_secondary
+            }
           >
             <span>قوانین و مقررات</span>
           </NavLink>
         </Grid>
-        <Grid item xs={4} className={styles.p_0}>
+        <Grid
+          item
+          xs={4}
+          className={
+            theme.palette.mode === "light" ? LightStyles.p_0 : DarkStyles.p_0
+          }
+        >
           <NavLink
             to={"/about"}
             state={"درباره رسادنت"}
-            className={styles.btn_primary}
+            className={
+              theme.palette.mode === "light"
+                ? LightStyles.btn_primary
+                : DarkStyles.btn_primary
+            }
           >
             <span>درباره رسادنت</span>
           </NavLink>
         </Grid>
-        <Grid item xs={4} className={styles.p_0}>
-          <NavLink className={styles.btn_secondary}>
+        <Grid
+          item
+          xs={4}
+          className={
+            theme.palette.mode === "light" ? LightStyles.p_0 : DarkStyles.p_0
+          }
+        >
+          <NavLink
+            className={
+              theme.palette.mode === "light"
+                ? LightStyles.btn_secondary
+                : DarkStyles.btn_secondary
+            }
+          >
             <span>حریم خصوصی</span>
           </NavLink>
         </Grid>

@@ -1,15 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
 import Header from "./header";
-import Container from "@mui/material/Container";
+import { useTheme } from "@mui/material/styles";
+import { Box, Container } from "@mui/material";
 import Menu from "./menu";
-import { Box } from "@mui/material";
+import ColorModeContext from "../context/color-mode-context";
 
 export default function Layouts(props) {
+  // start function darkmode
+  const theme = useTheme();
+  const { colorMode } = useContext(ColorModeContext);
+  // end function darkmode
+
   return (
-    <Box className="super-app-container">
+    <Box
+      className={
+        theme.palette.mode === "light"
+          ? "super-app-container-light"
+          : "super-app-container-dark"
+      }
+    >
       <Header />
       <Container maxWidth="sm">
-        <div className="scroll-auto">{props.children}</div>
+        <div
+          className={
+            theme.palette.mode === "light"
+              ? "scroll-auto-light"
+              : "scroll-auto-dark"
+          }
+        >
+          {props.children}
+        </div>
       </Container>
       <Menu />
     </Box>
