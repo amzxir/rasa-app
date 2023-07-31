@@ -9,7 +9,6 @@ import ColorModeContext from "./context/color-mode-context";
 import Faq from "./components/faq/faq";
 
 export default function App() {
-
   // start function darkmode
   const storage = typeof window !== "undifine" ? localStorage.theme : "light";
   const [storageTheme, setStorageTheme] = useState(storage);
@@ -46,7 +45,7 @@ export default function App() {
             <Route path="/" element={<Home />}></Route>
             <Route path="/about" element={<About />}></Route>
             <Route path="/terms" element={<Terms />}></Route>
-            <Route path="/faq" element={<Faq/>}></Route>
+            <Route path="/faq" element={<Faq />}></Route>
           </Routes>
         </Layouts>
       </ThemeProvider>

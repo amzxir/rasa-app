@@ -17,7 +17,7 @@ export default function Splash() {
   return (
     <animated.div style={splashScreen} className={styles.bg_splash}>
       <div className={styles.img_center}>
-        <img src="image/logo-rasadent-app-1.png" alt="" />
+        <img src="image/logo-rasadent-app-1.png" alt="Rasadent" loading="lazy"/>
       </div>
     </animated.div>
   );

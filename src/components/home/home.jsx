@@ -1,5 +1,5 @@
-import React, { useContext, useState , useEffect } from "react";
-import { NavLink , useNavigate } from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Splide, SplideTrack } from "@splidejs/react-splide";
 import { Box, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
@@ -94,7 +94,6 @@ export default function Home() {
     },
   ];
   const [dataEducation, setDataEducation] = useState(education);
-  
 
   return (
     <Box sx={{ mt: 5, mb: 5 }}>
@@ -115,7 +114,7 @@ export default function Home() {
             : DarkStyles.box_platform
         }
       >
-        <Grid sx={{ width:"100%" }} container spacing={2}>
+        <Grid sx={{ width: "100%" }} container spacing={2}>
           {dataService.map((i, index) => {
             return (
               <Service
@@ -166,7 +165,7 @@ export default function Home() {
         </SplideTrack>
       </Splide>
 
-      <Grid sx={{ mt: 5 , width:"100%" }} container spacing={3}>
+      <Grid sx={{ mt: 5, width: "100%" }} container spacing={3}>
         <Grid
           item
           xs={4}
@@ -213,8 +212,8 @@ export default function Home() {
           }
         >
           <NavLink
-          to={'/faq'}
-          state={"حریم خصوصی"}
+            to={"/faq"}
+            state={"حریم خصوصی"}
             className={
               theme.palette.mode === "light"
                 ? LightStyles.btn_secondary
