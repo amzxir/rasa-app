@@ -7,6 +7,7 @@ import Terms from "./components/terms/terms";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import ColorModeContext from "./context/color-mode-context";
 import Faq from "./components/faq/faq";
+import Splash from "./components/splash/splash";
 
 export default function App() {
 
@@ -47,6 +48,7 @@ export default function App() {
             <Route path="/about" element={<About />}></Route>
             <Route path="/terms" element={<Terms />}></Route>
             <Route path="/faq" element={<Faq/>}></Route>
+            <Route path="/splash" element={<Splash/>}></Route>
           </Routes>
         </Layouts>
       </ThemeProvider>

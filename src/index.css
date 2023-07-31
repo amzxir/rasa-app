@@ -32,7 +32,6 @@ h1 , h2 , h3 , h4 , h5 , h6 , p , span , div , button {
 
 
 :root {
-  position: relative;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
   -webkit-touch-callout: none;
@@ -104,6 +103,7 @@ body {
   scrollbar-width: none;
   -webkit-animation: fade-in .3s ease-in-out;
   animation: fade-in .3s ease-in-out;
+  overflow-x: hidden;
 }
 
 .super-app-container-dark {
@@ -127,6 +127,7 @@ body {
   scrollbar-width: none;
   -webkit-animation: fade-in .3s ease-in-out;
   animation: fade-in .3s ease-in-out;
+  overflow-x: hidden;
 }
 
 @media screen and (min-width: 321px){

@@ -27,12 +27,15 @@
 
     .card_platform{
         display: inline-block;
+        box-sizing: border-box;
         text-decoration: none !important;
         padding: 15px;
-        background-color: #fff;
-        width: 162px;
-        height: 128px;
+        background-color: #ffffff;
+        width: 100%;
+        height: 100%;
         border-radius: 16px;
+        
+
 
         .name_platform{
             font-size: 20px;
@@ -173,5 +176,10 @@
 }
 
 .p_0{
+    padding: 0 !important;
+}
+
+.item_100{
+    width: 100%;
     padding: 0 !important;
 }

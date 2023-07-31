@@ -14,7 +14,7 @@ export default function Service({ name, path, pathImg, slogan }) {
   // end function darkmode
 
   return (
-    <Grid item xs={6}>
+    <Grid sx={{ pl:"10px !important" , width:"100%" }} item xs={6}>
       <NavLink
         to={path}
         className={
