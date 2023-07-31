@@ -7,11 +7,11 @@ export default function Splash() {
     delay: 2500,
     from: {
       opacity: 1,
-      display:"block",
+      display: "block",
     },
     to: {
       opacity: 0,
-      display:"none",
+      display: "none",
     },
   });
   return (

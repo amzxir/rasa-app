@@ -47,7 +47,6 @@ export default function App() {
             <Route path="/about" element={<About />}></Route>
             <Route path="/terms" element={<Terms />}></Route>
             <Route path="/faq" element={<Faq/>}></Route>
-            {/* <Route path="/splash" element={<Splash/>}></Route> */}
           </Routes>
         </Layouts>
       </ThemeProvider>
