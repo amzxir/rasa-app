@@ -26,6 +26,7 @@
     margin-bottom: 2rem;
 
     .card_platform{
+        position: relative;
         display: inline-block;
         box-sizing: border-box;
         text-decoration: none !important;
@@ -180,4 +181,31 @@
 .item_100{
     width: 100%;
     padding: 0 !important;
+}
+
+.comming_soon{
+    border-radius: 16px;
+    background: #202020;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: grid;
+    justify-content: center;
+    align-items:center;
+    align-content: center;
+    opacity: .9;
+    text-align: center;
+    z-index: 100000000;
+
+    p{
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 21px;
+        letter-spacing: 0em;
+        color: #ffffff;
+        opacity: 1 !important;
+        margin-block:  .3rem;
+    }
 }

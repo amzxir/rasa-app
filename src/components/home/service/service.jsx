@@ -14,7 +14,7 @@ export default function Service({ name, path, pathImg, slogan }) {
   // end function darkmode
 
   return (
-    <Grid sx={{ pl:"10px !important" , width:"100%" }} item xs={6}>
+    <Grid sx={{ pl: "10px !important", width: "100%" }} item xs={6}>
       <NavLink
         to={path}
         className={
@@ -43,6 +43,20 @@ export default function Service({ name, path, pathImg, slogan }) {
           <span>{slogan}</span>
           <ArrowSmallLeftIcon />
         </div>
+        {path === null ? (
+          <div
+            className={
+              theme.palette.mode === "light"
+                ? LightStyles.comming_soon
+                : DarkStyles.comming_soon
+            }
+          >
+            <p>{name}</p>
+            <p>CommingSoon</p>
+          </div>
+        ) : (
+          ""
+        )}
       </NavLink>
     </Grid>
   );
