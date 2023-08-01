@@ -5,12 +5,16 @@ import { Box, Container } from "@mui/material";
 import Menu from "./menu";
 import ColorModeContext from "../context/color-mode-context";
 import Splash from "../components/splash/splash";
+import { useLocation } from "react-router-dom";
 
 export default function Layouts(props) {
   // start function darkmode
   const theme = useTheme();
   const { colorMode } = useContext(ColorModeContext);
   // end function darkmode
+
+  let location = useLocation();
+  let path = location.pathname;
 
   return (
     <Box
@@ -20,7 +24,7 @@ export default function Layouts(props) {
           : "super-app-container-dark"
       }
     >
-      <Header />
+      {path !== "/login" ? <Header /> : null}
       <Container maxWidth="sm">
         <Splash />
         <div
@@ -33,7 +37,7 @@ export default function Layouts(props) {
           {props.children}
         </div>
       </Container>
-      <Menu />
+      {path !== "/login" ? <Menu /> : null}
     </Box>
   );
 }

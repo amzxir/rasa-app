@@ -7,6 +7,7 @@ import Terms from "./components/terms/terms";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import ColorModeContext from "./context/color-mode-context";
 import Faq from "./components/faq/faq";
+import Auth from "./components/auth/auth";
 
 export default function App() {
   // start function darkmode
@@ -43,6 +44,7 @@ export default function App() {
         <Layouts>
           <Routes>
             <Route path="/" element={<Home />}></Route>
+            <Route path="/login" element={<Auth />}></Route>
             <Route path="/about" element={<About />}></Route>
             <Route path="/terms" element={<Terms />}></Route>
             <Route path="/faq" element={<Faq />}></Route>
