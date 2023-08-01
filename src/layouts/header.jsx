@@ -30,7 +30,7 @@ export default function Header() {
       }
       maxWidth="sm"
     >
-      {path !== "/" ? (
+      {path !== "/" && path !== "/shop" ? (
         <div
           className={
             theme.palette.mode === "light"

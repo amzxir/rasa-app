@@ -32,7 +32,7 @@ export default function Menu() {
         maxWidth="sm"
       >
         <NavLink
-          to="/"
+          to={"/"}
           className={
             theme.palette.mode === "light" ? LightStyles.pr_1 : DarkStyles.pr_1
           }
@@ -47,6 +47,7 @@ export default function Menu() {
           <ShoppingCartIcon />
         </NavLink>
         <NavLink
+          to={"/shop"}
           className={
             theme.palette.mode === "light"
               ? LightStyles.shop_box

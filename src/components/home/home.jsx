@@ -55,7 +55,7 @@ export default function Home() {
     },
     {
       id: 6,
-      path: null,
+      path: "/shop",
       name: "رسـا شــــاپ",
       path_img: "/image/shop.svg",
       slogan: "این یک متن تست است",

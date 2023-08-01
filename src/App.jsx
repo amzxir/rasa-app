@@ -8,6 +8,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import ColorModeContext from "./context/color-mode-context";
 import Faq from "./components/faq/faq";
 import Auth from "./components/auth/auth";
+import LandingShop from "./components/platform/market/landing/landing";
 
 export default function App() {
   // start function darkmode
@@ -48,6 +49,7 @@ export default function App() {
             <Route path="/about" element={<About />}></Route>
             <Route path="/terms" element={<Terms />}></Route>
             <Route path="/faq" element={<Faq />}></Route>
+            <Route path="/shop" element={<LandingShop />}></Route>
           </Routes>
         </Layouts>
       </ThemeProvider>
