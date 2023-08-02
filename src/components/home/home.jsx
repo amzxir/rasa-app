@@ -1,5 +1,5 @@
-import React, { useContext, useState, useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { Splide, SplideTrack } from "@splidejs/react-splide";
 import { Box, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
