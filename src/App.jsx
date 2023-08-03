@@ -9,6 +9,7 @@ import ColorModeContext from "./context/color-mode-context";
 import Faq from "./components/faq/faq";
 import Auth from "./components/auth/auth";
 import LandingShop from "./components/platform/market/landing/landing";
+import Notification from "./components/platform/market/notification/notification";
 
 export default function App() {
   // start function darkmode
@@ -50,6 +51,7 @@ export default function App() {
             <Route path="/terms" element={<Terms />}></Route>
             <Route path="/faq" element={<Faq />}></Route>
             <Route path="/shop" element={<LandingShop />}></Route>
+            <Route path="/notification" element={<Notification />}></Route>
           </Routes>
         </Layouts>
       </ThemeProvider>

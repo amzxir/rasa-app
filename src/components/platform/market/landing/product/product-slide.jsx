@@ -62,25 +62,34 @@ export default function ProductSlide({ productData }) {
                             : DarkStyles.card_product
                         }
                       >
-                        <NavLink
-                          to={i.path}
+                        <div
                           className={
                             theme.palette.mode === "light"
-                              ? LightStyles.img_center
-                              : DarkStyles.img_center
+                              ? LightStyles.card_img
+                              : DarkStyles.card_img
                           }
                         >
-                          <img src={i.path_img} alt={i.name} />
+                          <NavLink
+                            to={i.path}
+                            className={
+                              theme.palette.mode === "light"
+                                ? LightStyles.img_center
+                                : DarkStyles.img_center
+                            }
+                          >
+                            <img src={i.path_img} alt={i.name} />
+                          </NavLink>
                           <div
                             className={
                               theme.palette.mode === "light"
                                 ? LightStyles.icon_wishlist
                                 : DarkStyles.icon_wishlist
                             }
+                            onClick={() => console.log("first")}
                           >
                             <Heart />
                           </div>
-                        </NavLink>
+                        </div>
                         <div
                           className={
                             theme.palette.mode === "light"

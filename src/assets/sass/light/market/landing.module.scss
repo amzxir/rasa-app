@@ -92,34 +92,41 @@
     margin-left: 10px;
 
 
-    .img_center{
+    .card_img{
         position: relative;
+        z-index: 10 !important;
 
-        img{
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            background: #ebebeb;
 
+        .img_center{
+    
+            img{
+                width: 100%;
+                height: auto;
+                border-radius: 12px;
+                background: #ebebeb;
+    
+            }
+        }
+        .icon_wishlist{
+            cursor: pointer;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            bottom: -15px;
+            right: 15px;
+            width: 36px;
+            height: 36px;
+            background: #FFFFFF;
+            box-shadow: 0px 4px 4px 0px #0000000A;
+            border-radius: 50%;
+            z-index: 1000000 !important;
         }
     }
     
-    .icon_wishlist{
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        bottom: -15px;
-        right: 25px;
-        width: 36px;
-        height: 36px;
-        background: #FFFFFF;
-        box-shadow: 0px 4px 4px 0px #0000000A;
-        border-radius: 50%;
-    }
 
     .rating{
-        margin-top: 1rem;
+        margin-top: 1.5rem;
         display: flex;
         justify-content: center;
         align-items: center;
