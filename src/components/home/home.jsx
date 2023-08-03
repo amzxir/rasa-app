@@ -1,4 +1,4 @@
-import React, { useContext, useState, Suspense } from "react";
+import React, { useContext, useState, Suspense , lazy } from "react";
 import { NavLink } from "react-router-dom";
 import { Splide, SplideTrack } from "@splidejs/react-splide";
 import { Box, Grid } from "@mui/material";
@@ -8,8 +8,8 @@ import DarkStyles from "../../assets/sass/dark/home.module.scss";
 import GraduationCapIcon from "../../assets/svg/graduation-cap";
 import ColorModeContext from "../../context/color-mode-context";
 
-const Education = React.lazy(() => import("./education/education"));
-const Service = React.lazy(() => import("./service/service"));
+const Education = lazy(() => import("./education/education"));
+const Service = lazy(() => import("./service/service"));
 
 export default function Home() {
   // start function darkmode
