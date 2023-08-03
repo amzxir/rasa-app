@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { useTheme } from "@mui/material/styles";
-import ColorModeContext from "../../../../../context/color-mode-context";
-import LightStyles from "../../../../../assets/sass/light/market/landing.module.scss";
-import DarkStyles from "../../../../../assets/sass/dark/market/landing.module.scss";
-import SearchIcon from "../../../../../assets/svg/search";
+import ColorModeContext from "../../../../context/color-mode-context";
+import LightStyles from "../../../../assets/sass/light/market/landing.module.scss";
+import DarkStyles from "../../../../assets/sass/dark/market/landing.module.scss";
+import SearchIcon from "../../../../assets/svg/search";
 
 export default function Search() {
   // start function darkmode
