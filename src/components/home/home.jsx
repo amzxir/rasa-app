@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, Suspense } from "react";
 import { NavLink } from "react-router-dom";
 import { Splide, SplideTrack } from "@splidejs/react-splide";
 import { Box, Grid } from "@mui/material";
@@ -6,9 +6,10 @@ import { useTheme } from "@mui/material/styles";
 import LightStyles from "../../assets/sass/light/home.module.scss";
 import DarkStyles from "../../assets/sass/dark/home.module.scss";
 import GraduationCapIcon from "../../assets/svg/graduation-cap";
-import Service from "./service/service";
-import Education from "./education/education";
 import ColorModeContext from "../../context/color-mode-context";
+
+const Education = React.lazy(() => import("./education/education"));
+const Service = React.lazy(() => import("./service/service"));
 
 export default function Home() {
   // start function darkmode
@@ -117,13 +118,14 @@ export default function Home() {
         <Grid sx={{ width: "100%" }} container spacing={2}>
           {dataService.map((i, index) => {
             return (
-              <Service
-                key={index}
-                name={i.name}
-                path={i.path}
-                pathImg={i.path_img}
-                slogan={i.slogan}
-              />
+              <Suspense key={index} fallback={<div>Loading...</div>}>
+                <Service
+                  name={i.name}
+                  path={i.path}
+                  pathImg={i.path_img}
+                  slogan={i.slogan}
+                />
+              </Suspense>
             );
           })}
         </Grid>
@@ -151,15 +153,16 @@ export default function Home() {
         <SplideTrack>
           {dataEducation.map((i, index) => {
             return (
-              <Education
-                key={index}
-                title={i.title}
-                path={i.path}
-                pathImg={i.path_img}
-                rating={i.rating}
-                category={i.category}
-                date={i.date}
-              />
+              <Suspense key={index} fallback={<div>Loading...</div>}>
+                <Education
+                  title={i.title}
+                  path={i.path}
+                  pathImg={i.path_img}
+                  rating={i.rating}
+                  category={i.category}
+                  date={i.date}
+                />
+              </Suspense>
             );
           })}
         </SplideTrack>

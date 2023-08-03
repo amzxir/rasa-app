@@ -4,7 +4,7 @@ import { animated, useSpring } from "@react-spring/web";
 
 export default function Splash() {
   const splashScreen = useSpring({
-    delay: 2500,
+    delay: 1500,
     from: {
       opacity: 1,
       display: "block",
