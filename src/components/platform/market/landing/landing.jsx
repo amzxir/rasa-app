@@ -39,7 +39,7 @@ export default function LandingShop() {
           path_img: "image/product-1.png",
           shop_name: "فروشگاه مانگو طب",
           price: "12000",
-          rating: "3",
+          rating: 3,
           comment: "12",
         },
         {
@@ -49,7 +49,7 @@ export default function LandingShop() {
           path_img: "image/product-2.png",
           shop_name: "فروشگاه طب",
           price: "7000",
-          rating: "5",
+          rating: 5,
           comment: "10",
         },
         {
@@ -59,7 +59,7 @@ export default function LandingShop() {
           path_img: "image/product-2.png",
           shop_name: "فروشگاه مانگو",
           price: "3000",
-          rating: "3",
+          rating: 3,
           comment: "2",
         },
         {
@@ -69,7 +69,7 @@ export default function LandingShop() {
           path_img: "image/product-1.png",
           shop_name: "فروشگاه رسادنت",
           price: "34000",
-          rating: "2",
+          rating: 2,
           comment: "5",
         },
         {
@@ -79,7 +79,7 @@ export default function LandingShop() {
           path_img: "image/product-2.png",
           shop_name: "فروشگاه مانگو طب",
           price: "56000",
-          rating: "1",
+          rating: 1,
           comment: "6",
         },
         {
@@ -89,7 +89,7 @@ export default function LandingShop() {
           path_img: "image/product-2.png",
           shop_name: "فروشگاه مانگو",
           price: "12000",
-          rating: "5",
+          rating: 5,
           comment: "4",
         },
         {
@@ -99,7 +99,7 @@ export default function LandingShop() {
           path_img: "image/product-2.png",
           shop_name: "فروشگاه طب",
           price: "50000",
-          rating: "2",
+          rating: 2,
           comment: "5",
         },
         {
@@ -109,7 +109,7 @@ export default function LandingShop() {
           shop_name: "فروشگاه رسادنت",
           path_img: "image/product-1.png",
           price: "85000",
-          rating: "5",
+          rating: 5,
           comment: "54",
         },
         {
@@ -119,7 +119,7 @@ export default function LandingShop() {
           path_img: "image/product-2.png",
           shop_name: "فروشگاه مانگو طب",
           price: "34000",
-          rating: "5",
+          rating: 5,
           comment: "45",
         },
         {
@@ -129,7 +129,7 @@ export default function LandingShop() {
           path_img: "image/product-1.png",
           shop_name: "فروشگاه مانگو طب",
           price: "12300",
-          rating: "5",
+          rating: 5,
           comment: "4",
         },
       ],
@@ -146,7 +146,7 @@ export default function LandingShop() {
           path_img: "image/product-1.png",
           shop_name: "فروشگاه مانگو طب",
           price: "12000",
-          rating: "3",
+          rating: 3,
           comment: "12",
         },
         {
@@ -156,7 +156,7 @@ export default function LandingShop() {
           path_img: "image/product-2.png",
           shop_name: "فروشگاه طب",
           price: "7000",
-          rating: "5",
+          rating: 5,
           comment: "10",
         },
         {
@@ -166,7 +166,7 @@ export default function LandingShop() {
           path_img: "image/product-2.png",
           shop_name: "فروشگاه مانگو",
           price: "3000",
-          rating: "3",
+          rating: 3,
           comment: "2",
         },
         {
@@ -176,7 +176,7 @@ export default function LandingShop() {
           path_img: "image/product-1.png",
           shop_name: "فروشگاه رسادنت",
           price: "34000",
-          rating: "2",
+          rating: 2,
           comment: "5",
         },
         {
@@ -186,7 +186,7 @@ export default function LandingShop() {
           path_img: "image/product-2.png",
           shop_name: "فروشگاه مانگو طب",
           price: "56000",
-          rating: "1",
+          rating: 1,
           comment: "6",
         },
         {
@@ -196,7 +196,7 @@ export default function LandingShop() {
           path_img: "image/product-2.png",
           shop_name: "فروشگاه مانگو",
           price: "12000",
-          rating: "5",
+          rating: 5,
           comment: "4",
         },
       ],
@@ -213,7 +213,7 @@ export default function LandingShop() {
           path_img: "image/product-1.png",
           shop_name: "فروشگاه مانگو طب",
           price: "12000",
-          rating: "3",
+          rating: 3,
           comment: "12",
         },
         {
@@ -223,7 +223,7 @@ export default function LandingShop() {
           path_img: "image/product-2.png",
           shop_name: "فروشگاه طب",
           price: "7000",
-          rating: "5",
+          rating: 5,
           comment: "10",
         },
         {
@@ -233,7 +233,7 @@ export default function LandingShop() {
           path_img: "image/product-2.png",
           shop_name: "فروشگاه مانگو",
           price: "3000",
-          rating: "3",
+          rating: 3,
           comment: "2",
         },
       ],

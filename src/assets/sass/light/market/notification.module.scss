@@ -1,0 +1,53 @@
+.card_notif{
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+    border-radius: 24px;
+    gap: 20px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 60px 0px #04060F0D;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    .icon_notif{
+        width: 38px;
+        height: 38px;
+        padding: 20px;
+        border-radius: 100px;
+        background: #113D8D;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg{
+
+        }
+    }
+
+    .content{
+
+        .title{
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 22px;
+            letter-spacing: 0em;
+            color: #212121;
+
+        }
+
+        .des{
+            font-family: "font-light" !important;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 20px;
+            letter-spacing: 0.20000000298023224px;
+            color: #616161;
+            margin: 0;
+        }
+    }
+
+}
