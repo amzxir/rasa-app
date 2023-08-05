@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Apps from "../assets/svg/apps";
 import Sun from "../assets/svg/sun";
 import LightStyles from "../assets/sass/light/header.module.scss";
@@ -8,6 +8,7 @@ import { useTheme } from "@mui/material/styles";
 import Navigation from "../assets/svg/navigation";
 import { useLocation, useNavigate } from "react-router-dom";
 import ColorModeContext from "../context/color-mode-context";
+import Sidebar from "./sidebar";
 
 export default function Header() {
   // start function darkmode
@@ -20,6 +21,14 @@ export default function Header() {
   let path = location.pathname;
   let navigate = useNavigate();
   // end variable react router dom
+
+  // start function and state sidebar
+  const [isOpen, setIsopen] = useState(false);
+
+  const handelSidebar = () => {
+    setIsopen(!isOpen);
+  };
+  // end function and state sidebar
 
   return (
     <Container
@@ -98,11 +107,12 @@ export default function Header() {
               <IconButton onClick={colorMode.toggleColorMode}>
                 <Sun />
               </IconButton>
-              <IconButton>
+              <IconButton onClick={handelSidebar}>
                 <Apps />
               </IconButton>
             </Stack>
           </Grid>
+          <Sidebar isOpen={isOpen} handelSidebar={handelSidebar} />
         </Grid>
       )}
     </Container>
