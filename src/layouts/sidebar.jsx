@@ -76,7 +76,7 @@ export default function Sidebar({ isOpen, handelSidebar }) {
           <NavLink to={"/notification"} state={"اعلانات"}>
             <Notif /> <span>اعلانات</span>
           </NavLink>
-          <NavLink>
+          <NavLink to={"/wishlist"} state={"علاقه مندی ها"}>
             <Notif /> <span>علاقه مندی ها</span>
           </NavLink>
         </div>

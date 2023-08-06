@@ -10,6 +10,7 @@ import Faq from "./components/faq/faq";
 import Auth from "./components/auth/auth";
 import LandingShop from "./components/platform/market/landing/landing";
 import Notification from "./components/platform/market/notification/notification";
+import Wishlist from "./components/platform/market/wishlist/wishlist";
 
 export default function App() {
   // start function darkmode
@@ -52,6 +53,7 @@ export default function App() {
             <Route path="/faq" element={<Faq />}></Route>
             <Route path="/shop" element={<LandingShop />}></Route>
             <Route path="/notification" element={<Notification />}></Route>
+            <Route path="/wishlist" element={<Wishlist />}></Route>
           </Routes>
         </Layouts>
       </ThemeProvider>

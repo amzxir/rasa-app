@@ -85,33 +85,9 @@ export default function ProductSlide({ productData }) {
                                 ? LightStyles.icon_wishlist
                                 : DarkStyles.icon_wishlist
                             }
-                            onClick={() => console.log("first")}
                           >
                             <Heart />
                           </div>
-                        </div>
-                        <div
-                          className={
-                            theme.palette.mode === "light"
-                              ? LightStyles.rating
-                              : DarkStyles.rating
-                          }
-                        >
-                          <span
-                            className={
-                              theme.palette.mode === "light"
-                                ? LightStyles.text_rating
-                                : DarkStyles.text_rating
-                            }
-                          >
-                            ({i.comment})
-                          </span>
-                          <Rating
-                            name="read-only"
-                            value={i.rating}
-                            readOnly
-                            size="small"
-                          />
                         </div>
                         <div
                           className={
@@ -120,9 +96,7 @@ export default function ProductSlide({ productData }) {
                               : DarkStyles.shop
                           }
                         >
-                          <img src="image/Ellips.png" alt="" />
                           <span>{i.shop_name}</span>
-                          <VerifyIcon />
                         </div>
                         <div
                           className={
