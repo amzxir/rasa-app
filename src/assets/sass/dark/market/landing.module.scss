@@ -188,3 +188,143 @@
 .m_b_1{
     margin-bottom: 2rem;
 }
+
+.component_search{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 440px;
+    width:100%;
+    padding: 10px;
+    background: #121212;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: auto;
+    height: 100%;
+
+    .form_group{
+        position: relative;
+        width: 100%;
+        margin-top: 1rem;
+        direction: rtl;
+
+        input{
+            font-family: "font-light" !important;
+            background: #F5F5F5;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px 40px 12px 40px;
+            border-radius: 16px;
+            gap: 10px;
+            height: 56px;
+            border: 1px solid #F5F5F5;
+        }
+
+        input:focus{
+            background: #F5F5F5;
+            border: 1px solid #F5F5F5;
+            outline: none;
+        }
+
+        input::placeholder{
+            font-family: "font-light" !important;
+        }
+
+
+        .search_icon{
+            position: absolute;
+            z-index: 10;
+            left: 10px;
+            top: 17%;
+        }
+
+        .search_fillter{
+            position: absolute;
+            z-index: 10;
+            right: 10px;
+            top: 20%;
+        }
+        
+    }
+
+    .list_search{
+        border-top: 1px solid #EEEEEE;
+        width: 100%;
+        padding: 0;
+        overflow: auto;
+
+        li{
+            text-align: right;
+            list-style: none;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            
+
+            span{
+                font-family: "font-light" !important;
+                font-size: 18px;
+                font-weight: 500;
+                line-height: 25px;
+                letter-spacing: 0.20000000298023224px;
+                text-align: right;
+                color: #ffffff;
+            }
+
+            svg{
+
+            }
+        }
+        
+    }
+
+    .list_search::-webkit-scrollbar{
+        display: none ;
+    }
+}
+
+.page_404{
+    margin-top: 2rem;
+
+    .img_center{
+        display: flex;
+        justify-content: center;
+
+        img{
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    .content{
+        text-align: center;
+
+        .title{
+            font-size: 24px;
+            font-weight: 900;
+            line-height: 34px;
+            letter-spacing: 0.20000000298023224px;
+            color: #ffffff;
+        }
+
+        .text{
+            font-family: "font-light" !important;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 22px;
+            letter-spacing: 0.20000000298023224px;
+            padding: 0rem 2rem;
+            color: #ffffff;
+            
+        }
+    }
+}
