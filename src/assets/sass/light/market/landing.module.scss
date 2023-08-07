@@ -6,7 +6,8 @@
         direction: ltr;
         direction: rtl;
 
-        input{
+        .input{
+            font-family: "font-light" !important;
             border: 1px solid #F5F5F5;
             background: #F5F5F5;
             width: 100%;
@@ -15,29 +16,14 @@
             border-radius: 100px;
             gap: 10px;
             height: 44px;
-            font-family: "font-primary" !important;
-            
+            text-align: right;
+            cursor: pointer;
         }
 
-        ::placeholder{
-            font-family: "font-light" !important;
-            font-size: 10px;
-            font-weight: 400;
-            line-height: 15px;
-            letter-spacing: 0em;
-
-        }
-        
-        input:focus{
-            border: 1px solid #F5F5F5;
-            color: #212529;
-            background: #F5F5F5;
-            outline: 0;
-        }
 
         svg{
             position: absolute;
-            z-index: 10000;
+            z-index: 10;
             left: 10px;
             top: 25%;
         }
