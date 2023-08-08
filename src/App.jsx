@@ -8,7 +8,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import ColorModeContext from "./context/color-mode-context";
 import Faq from "./components/faq/faq";
 import Auth from "./components/auth/auth";
-import LandingShop from "./components/platform/market/landing/landing";
+import HomeShop from "./components/platform/market/landing/home";
 import Notification from "./components/platform/market/notification/notification";
 import Wishlist from "./components/platform/market/wishlist/wishlist";
 
@@ -51,7 +51,7 @@ export default function App() {
             <Route path="/about" element={<About />}></Route>
             <Route path="/terms" element={<Terms />}></Route>
             <Route path="/faq" element={<Faq />}></Route>
-            <Route path="/shop" element={<LandingShop />}></Route>
+            <Route path="/shop" element={<HomeShop />}></Route>
             <Route path="/notification" element={<Notification />}></Route>
             <Route path="/wishlist" element={<Wishlist />}></Route>
           </Routes>
