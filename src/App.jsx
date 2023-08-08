@@ -11,6 +11,10 @@ import Auth from "./components/auth/auth";
 import HomeShop from "./components/platform/market/landing/home";
 import Notification from "./components/platform/market/notification/notification";
 import Wishlist from "./components/platform/market/wishlist/wishlist";
+import HomeJet from "./components/platform/jet/home";
+import JetText from "./components/platform/jet/jet-text";
+import JetImage from "./components/platform/jet/jet-image";
+import JetVoice from "./components/platform/jet/jet-voice";
 
 export default function App() {
   // start function darkmode
@@ -46,14 +50,18 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <Layouts>
           <Routes>
-            <Route path="/" element={<Home />}></Route>
+            <Route exact path="/" element={<Home />}></Route>
             <Route path="/login" element={<Auth />}></Route>
             <Route path="/about" element={<About />}></Route>
             <Route path="/terms" element={<Terms />}></Route>
             <Route path="/faq" element={<Faq />}></Route>
-            <Route path="/shop" element={<HomeShop />}></Route>
-            <Route path="/notification" element={<Notification />}></Route>
-            <Route path="/wishlist" element={<Wishlist />}></Route>
+            <Route exact path="/shop" element={<HomeShop />}></Route>
+            <Route path="/shop/notification" element={<Notification />}></Route>
+            <Route path="/shop/wishlist" element={<Wishlist />}></Route>
+            <Route exact path="/jet" element={<HomeJet />}></Route>
+            <Route path="/jet/jet-text" element={<JetText />}></Route>
+            <Route path="/jet/jet-image" element={<JetImage />}></Route>
+            <Route path="/jet/jet-voice" element={<JetVoice />}></Route>
           </Routes>
         </Layouts>
       </ThemeProvider>

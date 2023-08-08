@@ -73,10 +73,10 @@ export default function Sidebar({ isOpen, handelSidebar }) {
             theme.palette.mode === "light" ? LightStyles.item : DarkStyles.item
           }
         >
-          <NavLink to={"/notification"} state={"اعلانات"}>
+          <NavLink to={"/shop/notification"} state={"اعلانات"}>
             <Notif /> <span>اعلانات</span>
           </NavLink>
-          <NavLink to={"/wishlist"} state={"علاقه مندی ها"}>
+          <NavLink to={"/shop/wishlist"} state={"علاقه مندی ها"}>
             <Notif /> <span>علاقه مندی ها</span>
           </NavLink>
         </div>

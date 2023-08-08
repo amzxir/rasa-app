@@ -21,7 +21,7 @@ export default function Home() {
   const service = [
     {
       id: 1,
-      path: null,
+      path: "/jet",
       name: "رسـاجت",
       path_img: "/image/rocket.svg",
       slogan: "این یک متن تست است",
