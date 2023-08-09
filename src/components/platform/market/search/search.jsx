@@ -211,7 +211,7 @@ export default function Search() {
                     }
                   >
                     <NavLink
-                      to={"/single-product"}
+                      to={"/shop/single-product"}
                       className={
                         theme.palette.mode === "light"
                           ? LightStyles.img_center
@@ -247,7 +247,7 @@ export default function Search() {
                     }
                   >
                     <NavLink
-                      to={"/single-product"}
+                      to={"/shop/single-product"}
                       className={
                         theme.palette.mode === "light"
                           ? LightStyles.name_product

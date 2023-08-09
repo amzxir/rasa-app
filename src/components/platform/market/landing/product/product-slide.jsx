@@ -70,6 +70,7 @@ export default function ProductSlide({ productData }) {
                           }
                         >
                           <NavLink
+                            state={i.name}
                             to={i.path}
                             className={
                               theme.palette.mode === "light"
@@ -106,6 +107,7 @@ export default function ProductSlide({ productData }) {
                           }
                         >
                           <NavLink
+                            state={i.name}
                             to={i.path}
                             className={
                               theme.palette.mode === "light"

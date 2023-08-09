@@ -15,6 +15,7 @@ import HomeJet from "./components/platform/jet/home";
 import JetText from "./components/platform/jet/jet-text";
 import JetImage from "./components/platform/jet/jet-image";
 import JetVoice from "./components/platform/jet/jet-voice";
+import SingleShop from "./components/platform/market/single/single";
 
 export default function App() {
   // start function darkmode
@@ -58,6 +59,7 @@ export default function App() {
             <Route exact path="/shop" element={<HomeShop />}></Route>
             <Route path="/shop/notification" element={<Notification />}></Route>
             <Route path="/shop/wishlist" element={<Wishlist />}></Route>
+            <Route path="/shop/single-product" element={<SingleShop />}></Route>
             <Route exact path="/jet" element={<HomeJet />}></Route>
             <Route path="/jet/jet-text" element={<JetText />}></Route>
             <Route path="/jet/jet-image" element={<JetImage />}></Route>

@@ -1,4 +1,4 @@
-import React, { useContext , useState } from "react";
+import React, { useContext, useState } from "react";
 import { Box, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import LightStyles from "../../../../assets/sass/light/market/wishlist.module.scss";
@@ -18,7 +18,7 @@ export default function Wishlist() {
     {
       id: 1,
       name: "کامپوزیت سارمکو",
-      path: "/single-product",
+      path: "/shop/single-product",
       path_img: "/image/product-1.png",
       shop_name: "فروشگاه مانگو طب",
       price: "12000",
@@ -28,7 +28,7 @@ export default function Wishlist() {
     {
       id: 2,
       name: "باندینگ نسل 8 اف جی ام",
-      path: "/single-product",
+      path: "/shop/single-product",
       path_img: "/image/product-2.png",
       shop_name: "فروشگاه طب",
       price: "7000",
@@ -38,7 +38,7 @@ export default function Wishlist() {
     {
       id: 3,
       name: "آلژینات بایر  کولزر",
-      path: "/single-product",
+      path: "/shop/single-product",
       path_img: "/image/product-2.png",
       shop_name: "فروشگاه مانگو",
       price: "3000",
@@ -48,7 +48,7 @@ export default function Wishlist() {
     {
       id: 4,
       name: "آلژینات زرماخ",
-      path: "/single-product",
+      path: "/shop/single-product",
       path_img: "/image/product-1.png",
       shop_name: "فروشگاه رسادنت",
       price: "34000",
@@ -58,7 +58,7 @@ export default function Wishlist() {
     {
       id: 5,
       name: "کامپوزیت سارمکو",
-      path: "/single-product",
+      path: "/shop/single-product",
       path_img: "/image/product-2.png",
       shop_name: "فروشگاه مانگو طب",
       price: "56000",
@@ -71,82 +71,84 @@ export default function Wishlist() {
   return (
     <Box sx={{ mt: 5, mb: 5 }}>
       <Grid container spacing={2}>
-        {wishlistData.map((i)=> {
-          return(
-          <Grid key={i.id} item xs={6}>
-            <div
-              className={
-                theme.palette.mode === "light"
-                  ? LightStyles.card_product
-                  : DarkStyles.card_product
-              }
-            >
+        {wishlistData.map((i) => {
+          return (
+            <Grid key={i.id} item xs={6}>
               <div
                 className={
                   theme.palette.mode === "light"
-                    ? LightStyles.card_img
-                    : DarkStyles.card_img
+                    ? LightStyles.card_product
+                    : DarkStyles.card_product
                 }
               >
-                <NavLink
-                  to={i.path}
-                  className={
-                    theme.palette.mode === "light"
-                      ? LightStyles.img_center
-                      : DarkStyles.img_center
-                  }
-                >
-                  <img src={i.path_img} alt={i.name} />
-                </NavLink>
                 <div
                   className={
                     theme.palette.mode === "light"
-                      ? LightStyles.icon_wishlist
-                      : DarkStyles.icon_wishlist
+                      ? LightStyles.card_img
+                      : DarkStyles.card_img
                   }
                 >
-                  <Heart />
+                  <NavLink
+                    state={i.name}
+                    to={i.path}
+                    className={
+                      theme.palette.mode === "light"
+                        ? LightStyles.img_center
+                        : DarkStyles.img_center
+                    }
+                  >
+                    <img src={i.path_img} alt={i.name} />
+                  </NavLink>
+                  <div
+                    className={
+                      theme.palette.mode === "light"
+                        ? LightStyles.icon_wishlist
+                        : DarkStyles.icon_wishlist
+                    }
+                  >
+                    <Heart />
+                  </div>
+                </div>
+                <div
+                  className={
+                    theme.palette.mode === "light"
+                      ? LightStyles.shop
+                      : DarkStyles.shop
+                  }
+                >
+                  <span>{i.shop_name}</span>
+                </div>
+                <div
+                  className={
+                    theme.palette.mode === "light"
+                      ? LightStyles.product_details
+                      : DarkStyles.product_details
+                  }
+                >
+                  <NavLink
+                    state={i.name}
+                    to={i.path}
+                    className={
+                      theme.palette.mode === "light"
+                        ? LightStyles.name_product
+                        : DarkStyles.name_product
+                    }
+                  >
+                    {i.name}
+                  </NavLink>
+                  <p
+                    className={
+                      theme.palette.mode === "light"
+                        ? LightStyles.price_product
+                        : DarkStyles.price_product
+                    }
+                  >
+                    {i.price} تومان
+                  </p>
                 </div>
               </div>
-              <div
-                className={
-                  theme.palette.mode === "light"
-                    ? LightStyles.shop
-                    : DarkStyles.shop
-                }
-              >
-                <span>{i.shop_name}</span>
-              </div>
-              <div
-                className={
-                  theme.palette.mode === "light"
-                    ? LightStyles.product_details
-                    : DarkStyles.product_details
-                }
-              >
-                <NavLink
-                  to={i.path}
-                  className={
-                    theme.palette.mode === "light"
-                      ? LightStyles.name_product
-                      : DarkStyles.name_product
-                  }
-                >
-                  {i.name}
-                </NavLink>
-                <p
-                  className={
-                    theme.palette.mode === "light"
-                      ? LightStyles.price_product
-                      : DarkStyles.price_product
-                  }
-                >
-                  {i.price} تومان
-                </p>
-              </div>
-            </div>
-          </Grid>
-          )
+            </Grid>
+          );
         })}
       </Grid>
     </Box>

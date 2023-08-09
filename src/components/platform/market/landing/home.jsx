@@ -35,7 +35,7 @@ export default function LandingShop() {
         {
           id: 1,
           name: "کامپوزیت سارمکو",
-          path:"/single-product",
+          path:"/shop/single-product",
           path_img: "image/product-1.png",
           shop_name: "فروشگاه مانگو طب",
           price: "12000",
@@ -45,7 +45,7 @@ export default function LandingShop() {
         {
           id: 2,
           name: "باندینگ نسل 8 اف جی ام",
-          path:"/single-product",
+          path:"/shop/single-product",
           path_img: "image/product-2.png",
           shop_name: "فروشگاه طب",
           price: "7000",
@@ -55,7 +55,7 @@ export default function LandingShop() {
         {
           id: 3,
           name: "آلژینات بایر  کولزر",
-          path:"/single-product",
+          path:"/shop/single-product",
           path_img: "image/product-2.png",
           shop_name: "فروشگاه مانگو",
           price: "3000",
@@ -65,7 +65,7 @@ export default function LandingShop() {
         {
           id: 4,
           name: "آلژینات زرماخ",
-          path:"/single-product",
+          path:"/shop/single-product",
           path_img: "image/product-1.png",
           shop_name: "فروشگاه رسادنت",
           price: "34000",
@@ -75,7 +75,7 @@ export default function LandingShop() {
         {
           id: 5,
           name: "کامپوزیت سارمکو",
-          path:"/single-product",
+          path:"/shop/single-product",
           path_img: "image/product-2.png",
           shop_name: "فروشگاه مانگو طب",
           price: "56000",
@@ -85,7 +85,7 @@ export default function LandingShop() {
         {
           id: 6,
           name: "باندینگ نسل 8 اف جی ام",
-          path:"/single-product",
+          path:"/shop/single-product",
           path_img: "image/product-2.png",
           shop_name: "فروشگاه مانگو",
           price: "12000",
@@ -95,7 +95,7 @@ export default function LandingShop() {
         {
           id: 7,
           name: "آلژینات بایر  کولزر",
-          path:"/single-product",
+          path:"/shop/single-product",
           path_img: "image/product-2.png",
           shop_name: "فروشگاه طب",
           price: "50000",
@@ -105,7 +105,7 @@ export default function LandingShop() {
         {
           id: 8,
           name: "آلژینات زرماخ",
-          path:"/single-product",
+          path:"/shop/single-product",
           shop_name: "فروشگاه رسادنت",
           path_img: "image/product-1.png",
           price: "85000",
@@ -115,7 +115,7 @@ export default function LandingShop() {
         {
           id: 9,
           name: "آلژینات زرماخ",
-          path:"/single-product",
+          path:"/shop/single-product",
           path_img: "image/product-2.png",
           shop_name: "فروشگاه مانگو طب",
           price: "34000",
@@ -125,7 +125,7 @@ export default function LandingShop() {
         {
           id: 10,
           name: "کامپوزیت سارمکو",
-          path:"/single-product",
+          path:"/shop/single-product",
           path_img: "image/product-1.png",
           shop_name: "فروشگاه مانگو طب",
           price: "12300",
@@ -142,7 +142,7 @@ export default function LandingShop() {
         {
           id: 1,
           name: "کامپوزیت سارمکو",
-          path:"/single-product",
+          path:"/shop/single-product",
           path_img: "image/product-1.png",
           shop_name: "فروشگاه مانگو طب",
           price: "12000",
@@ -152,7 +152,7 @@ export default function LandingShop() {
         {
           id: 2,
           name: "باندینگ نسل 8 اف جی ام",
-          path:"/single-product",
+          path:"/shop/single-product",
           path_img: "image/product-2.png",
           shop_name: "فروشگاه طب",
           price: "7000",
@@ -162,7 +162,7 @@ export default function LandingShop() {
         {
           id: 3,
           name: "آلژینات بایر  کولزر",
-          path:"/single-product",
+          path:"/shop/single-product",
           path_img: "image/product-2.png",
           shop_name: "فروشگاه مانگو",
           price: "3000",
@@ -172,7 +172,7 @@ export default function LandingShop() {
         {
           id: 4,
           name: "آلژینات زرماخ",
-          path:"/single-product",
+          path:"/shop/single-product",
           path_img: "image/product-1.png",
           shop_name: "فروشگاه رسادنت",
           price: "34000",
@@ -182,7 +182,7 @@ export default function LandingShop() {
         {
           id: 5,
           name: "کامپوزیت سارمکو",
-          path:"/single-product",
+          path:"/shop/single-product",
           path_img: "image/product-2.png",
           shop_name: "فروشگاه مانگو طب",
           price: "56000",
@@ -192,7 +192,7 @@ export default function LandingShop() {
         {
           id: 6,
           name: "باندینگ نسل 8 اف جی ام",
-          path:"/single-product",
+          path:"/shop/single-product",
           path_img: "image/product-2.png",
           shop_name: "فروشگاه مانگو",
           price: "12000",
@@ -209,7 +209,7 @@ export default function LandingShop() {
         {
           id: 1,
           name: "کامپوزیت سارمکو",
-          path:"/single-product",
+          path:"/shop/single-product",
           path_img: "image/product-1.png",
           shop_name: "فروشگاه مانگو طب",
           price: "12000",
@@ -219,7 +219,7 @@ export default function LandingShop() {
         {
           id: 2,
           name: "باندینگ نسل 8 اف جی ام",
-          path:"/single-product",
+          path:"/shop/single-product",
           path_img: "image/product-2.png",
           shop_name: "فروشگاه طب",
           price: "7000",
@@ -229,7 +229,7 @@ export default function LandingShop() {
         {
           id: 3,
           name: "آلژینات بایر  کولزر",
-          path:"/single-product",
+          path:"/shop/single-product",
           path_img: "image/product-2.png",
           shop_name: "فروشگاه مانگو",
           price: "3000",
