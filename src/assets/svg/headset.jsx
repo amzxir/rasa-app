@@ -3,7 +3,7 @@ import { useTheme } from "@mui/material/styles";
 import ColorModeContext from "../../context/color-mode-context";
 
 export default function Headset() {
-      // start function darkmode
+  // start function darkmode
   const theme = useTheme();
   const { colorMode } = useContext(ColorModeContext);
   // end function darkmodeˇ
