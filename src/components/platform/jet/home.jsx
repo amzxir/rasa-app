@@ -17,9 +17,27 @@ export default function Home() {
 
   //  start fetch data rasajet
   const rasajet = [
-    { id: 1, name: "آنلاین عکس بگیرید", img_path: ModeLandscapeIcon, path: "/jet/jet-image" },
-    { id: 2, name: "آنلاین صدا بگیرید", img_path: HeadsetIcon, path: "/jet/jet-voice" },
-    { id: 3, name: "ارسال متن", img_path: ClipIcon, path: "/jet/jet-text" },
+    {
+      id: 1,
+      name: "آنلاین عکس بگیرید",
+      img_path: ModeLandscapeIcon,
+      path: "/jet/jet-image",
+      navigate: "ارسال تصویر برای ثبت سفارش رساجت",
+    },
+    {
+      id: 2,
+      name: "آنلاین صدا بگیرید",
+      img_path: HeadsetIcon,
+      path: "/jet/jet-voice",
+      navigate: "ارسال صدا برای ثبت سفارش رساجت",
+    },
+    {
+      id: 3,
+      name: "ارسال متن",
+      img_path: ClipIcon,
+      path: "/jet/jet-text",
+      navigate: "ارسال متن برای ثبت سفارش رساجت",
+    },
   ];
   const [dataJet, setDataJet] = useState(rasajet);
   //  end fetch data rasajet
@@ -54,7 +72,7 @@ export default function Home() {
           <NavLink
             key={i.id}
             to={i.path}
-            state={i.name}
+            state={i.navigate}
             className={
               theme.palette.mode === "light"
                 ? LightStyles.card_jet

@@ -83,6 +83,7 @@ body {
 }
 
 .super-app-container-light {
+  position: relative;
   background-color: #f9f9f9;
   direction: rtl;
   width: 100%;
@@ -107,6 +108,7 @@ body {
 }
 
 .super-app-container-dark {
+  position: relative;
   background-color: #121212;
   direction: rtl;
   width: 100%;
@@ -158,3 +160,7 @@ body {
 /* .splide__pagination__page.is-active{
   background: #113D8D !important;
 } */
+
+.d-none{
+  display: none;
+}

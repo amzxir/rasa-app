@@ -1,0 +1,130 @@
+.jet_text{
+}
+
+.send{
+    background: #ffffff;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    right: 0;
+    left: 0;
+    height: 60px;
+    padding: 10px 12px 10px 12px;
+    gap: 12px;
+    z-index: 101;
+
+
+    .form_group{
+        position: relative;
+
+        input{
+            font-family: "font-light" !important;
+            width: 100%;
+            height: 39px;
+            padding: 12px 40px 12px 45px;
+            border-radius: 7px;
+            background: #F7F7FC;
+            border: 1px solid #0000000D;
+            box-sizing: border-box;
+        }
+
+        input:focus{
+            background: #F7F7FC;
+            border: 1px solid #0000000D;
+            outline: none;
+        }
+
+        input::placeholder{
+            font-family: "font-light" !important;
+        }
+    }
+
+    .btn_send{
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        
+    }
+
+    .btn_item{
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+
+    }
+}
+
+.chat_right{
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 16px 16px 0px 16px;
+    gap: 4px;
+    background: #113D8D;
+    margin-bottom: 2rem;
+
+    p{
+        font-family: "font-light" !important;
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0em;
+        text-align: justify;
+        color: #ffffff;
+
+    }
+
+    .date{
+        font-family: "font-number" !important;
+        font-size: 8px;
+        font-weight: 400;
+        line-height: 12px;
+        letter-spacing: 0px;
+        color: #ffffff;
+    }
+}
+
+.chat_left{
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 16px 16px 16px 0px;
+    gap: 4px;
+    background: #ffffff;
+    margin-bottom: 2rem;
+
+    p{
+        font-family: "font-light" !important;
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0em;
+        text-align: justify;
+        color: #000;
+
+    }
+
+    .date{
+        font-family: "font-number" !important;
+        font-size: 8px;
+        font-weight: 400;
+        line-height: 12px;
+        letter-spacing: 0px;
+        color: #000;
+    }
+}
+
+.item_menu{
+    font-family: "font-light" !important;
+    direction: rtl;
+    font-size: 11px !important;
+
+    a{
+        text-decoration: none !important;
+        color: #000;
+    }
+    
+}

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { Container } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import LightStyles from "../assets/sass/light/menu.module.scss";
@@ -15,8 +15,15 @@ export default function Menu() {
   // start function darkmode
   const theme = useTheme();
   const { colorMode } = useContext(ColorModeContext);
-  // end function darkmode
-  return (
+  // end function
+
+  // start search location
+  let location = useLocation();
+  let path = location.pathname;
+  // end search location
+  return path === "/jet/jet-text" ||
+    path === "/jet/jet-image" ||
+    path === "/jet/jet-voice" ? null : (
     <div
       className={
         theme.palette.mode === "light"
