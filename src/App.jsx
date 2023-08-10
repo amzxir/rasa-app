@@ -19,7 +19,7 @@ import SingleShop from "./components/platform/market/single/single";
 
 export default function App() {
   // start function darkmode
-  const storage = typeof window !== "undifine" ? localStorage.theme : "light";
+  const storage = localStorage.theme !== "undefined" ? localStorage.theme : "light";
   const [storageTheme, setStorageTheme] = useState(storage);
   const [mode, setMode] = useState(storage);
   const colorMode = useMemo(
