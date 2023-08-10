@@ -24,7 +24,7 @@ export default function Single() {
     if(count === Math.abs(count) * -1 ){
       setCount(1)
     } else {
-      setCount(count + 1)
+      setCount((prevCount) => prevCount + 1)
     }
   }
 
@@ -32,7 +32,7 @@ export default function Single() {
     if(count === Math.abs(count) * -1 ){
       setCount(1)
     } else {
-      setCount(count - 1)
+      setCount((prevCount) => prevCount - 1)
     }
   }
   // end function input number
