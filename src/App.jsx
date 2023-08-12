@@ -16,6 +16,8 @@ import JetText from "./components/platform/jet/jet-text";
 import JetImage from "./components/platform/jet/jet-image";
 import JetVoice from "./components/platform/jet/jet-voice";
 import SingleShop from "./components/platform/market/single/single";
+import Blog from "./components/platform/blog/blog";
+import Club from "./components/platform/club/club";
 
 export default function App() {
   // start function darkmode
@@ -64,6 +66,8 @@ export default function App() {
             <Route path="/jet/jet-text" element={<JetText />}></Route>
             <Route path="/jet/jet-image" element={<JetImage />}></Route>
             <Route path="/jet/jet-voice" element={<JetVoice />}></Route>
+            <Route path="/blog" element={<Blog />}></Route>
+            <Route path="/club" element={<Club />}></Route>
           </Routes>
         </Layouts>
       </ThemeProvider>

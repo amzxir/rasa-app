@@ -42,14 +42,14 @@ export default function Home() {
     },
     {
       id: 4,
-      path: null,
+      path: "/club",
       name: "رسـا کلاب",
       path_img: "/image/club.svg",
       slogan: "این یک متن تست است",
     },
     {
       id: 5,
-      path: null,
+      path: "/blog",
       name: "رسـا مگ",
       path_img: "/image/mag.svg",
       slogan: "این یک متن تست است",
