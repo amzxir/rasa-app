@@ -98,13 +98,13 @@ export default function Single() {
         </div>
         <div className={theme.palette.mode === "light" ? LightStyles.price_shop : DarkStyles.price_shop}>
           <div className={theme.palette.mode === "light" ? LightStyles.input_number : DarkStyles.input_number}>
-            <IconButton onClick={handelTotal}>
+            <IconButton data-testid="handelTotal" onClick={handelTotal}>
               <PlussIcon/>
             </IconButton>
-            <span>
+            <span data-testid="counter">
               {count}
             </span>
-            <IconButton onClick={handelSubtraction}>
+            <IconButton data-testid="handelSubtraction" onClick={handelSubtraction}>
               <NegativeIcon/>
             </IconButton>
           </div>

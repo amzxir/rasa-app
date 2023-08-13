@@ -1,3 +1,3 @@
-test("that jest is working", () => {
-  expect(true).toBe(true);
+test("should first", () => {
+  expect(true).toBeTruthy();
 });
