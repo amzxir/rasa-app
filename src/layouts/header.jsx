@@ -17,7 +17,7 @@ export default function Header() {
   // end function darkmode
 
   // start variable react router dom
-  let location = useLocation();
+  const location = useLocation();
   let path = location.pathname;
   let navigate = useNavigate();
   // end variable react router dom
