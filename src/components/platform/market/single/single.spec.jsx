@@ -1,21 +1,25 @@
-import { shallow } from 'enzyme';
+import { fireEvent, render, screen } from "@testing-library/react";
 import Single from "./single";
 
-// Testing
-describe('MyComponent', () => {
-  it('should re-render component when state is updated', () => {
-    const wrapper = shallow(<Single />);
-    expect(wrapper.find('p').text()).toBe('0');
-    wrapper.setState({ count: 1 });
-    expect(wrapper.find('p').text()).toBe('1');
-  });
+test("count product total in single product", () => {
+  // render compoent 
+  render(<Single />);
+
+  // find data test id 
+  const counter = screen.getByTestId("counter");
+  const incrementBtn = screen.getByTestId("handelTotal");
+
+  fireEvent.click(incrementBtn);
+  expect(counter).toHaveTextContent("2");
 });
-// test("should first", () => {
-//   render(<Single />);
 
-//   const counter = screen.getByTestId("counter");
-//   const incrementBtn = screen.getByTestId("handelTotal");
+test("count product decrease in single product", () => {
+  render(<Single />);
 
-//   fireEvent.click(incrementBtn);
-//   expect(counter).toHaveTextContent("1");
-// });
+  const counter = screen.getByTestId("counter");
+  const decreaseBtn = screen.getByTestId("handelSubtraction")
+
+  fireEvent.click(decreaseBtn)
+  expect(counter).toHaveTextContent("0")
+  
+});
