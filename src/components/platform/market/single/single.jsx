@@ -1,4 +1,4 @@
-import React, { useContext, useState} from "react";
+import React, { useContext, useEffect, useState} from "react";
 import { Box, IconButton   } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide";
@@ -18,6 +18,12 @@ export default function Single() {
   const { colorMode } = useContext(ColorModeContext);
   // end function darkmode
 
+  // start render compoent scroll top
+  useEffect(() => {
+    window.scrollTo(0 , 0)
+  }, [])
+  // end render compoent scroll top
+
   // start function input number
   let [count , setCount] = React.useState(1)
   const handelTotal = () => {
@@ -36,6 +42,7 @@ export default function Single() {
     }
   }
   // end function input number
+
 
   return (
     <Box data-test="component-single" sx={{ mt: 5, mb: 5 }}>
@@ -102,7 +109,7 @@ export default function Single() {
               <PlussIcon/>
             </IconButton>
             <span data-test="count-product">
-              {count}
+              {count === 0 ? 1 : count}
             </span>
             <IconButton onClick={handelSubtraction}>
               <NegativeIcon/>

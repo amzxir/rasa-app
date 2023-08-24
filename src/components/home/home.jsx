@@ -96,6 +96,10 @@ export default function Home() {
   ];
   const [dataEducation, setDataEducation] = useState(education);
 
+  // start unit test state
+
+  // end unit test state 
+
   return (
     <Box sx={{ mt: 5, mb: 5 }}>
       <div
@@ -105,7 +109,7 @@ export default function Home() {
             : DarkStyles.box_title_platform
         }
       >
-        <h1>📍خدمات رسادنت</h1>
+        <h1 data-test="type-of-text">📍خدمات رسادنت</h1>
         <NavLink>+ خدمات بیشتر ...</NavLink>
       </div>
       <div
