@@ -19,7 +19,7 @@ export default function Single() {
   // end function darkmode
 
   // start function input number
-  let [count , setCount] = useState(1)
+  let [count , setCount] = React.useState(1)
   const handelTotal = () => {
     if(count === Math.abs(count) * -1 ){
       setCount(1)
@@ -38,7 +38,7 @@ export default function Single() {
   // end function input number
 
   return (
-    <Box sx={{ mt: 5, mb: 5 }}>
+    <Box data-test="component-single" sx={{ mt: 5, mb: 5 }}>
       <div className={theme.palette.mode === "light" ? LightStyles.slider_product : DarkStyles.slider_product}>
         <Splide
           hasTrack={false}
@@ -98,13 +98,13 @@ export default function Single() {
         </div>
         <div className={theme.palette.mode === "light" ? LightStyles.price_shop : DarkStyles.price_shop}>
           <div className={theme.palette.mode === "light" ? LightStyles.input_number : DarkStyles.input_number}>
-            <IconButton data-testid="handelTotal" onClick={handelTotal}>
+            <IconButton data-test="button-increment" onClick={handelTotal}>
               <PlussIcon/>
             </IconButton>
-            <span data-testid="counter">
+            <span data-test="count-product">
               {count}
             </span>
-            <IconButton data-testid="handelSubtraction" onClick={handelSubtraction}>
+            <IconButton onClick={handelSubtraction}>
               <NegativeIcon/>
             </IconButton>
           </div>
