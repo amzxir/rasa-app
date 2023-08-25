@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { Box, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
 import LightStyles from "../../../assets/sass/light/auth.module.scss";
 import DarkStyles from "../../../assets/sass/dark/auth.module.scss";
 import ArrowSmallLeftLight from "../../../assets/svg/arrow-small-left-light";
 import ColorModeContext from "../../../context/color-mode-context";
-import { useNavigate } from "react-router-dom";
+import fa from "../../../lang/fa.json"
 
 export default function AuthenticationCode(props) {
   let navigate = useNavigate();
@@ -29,7 +30,7 @@ export default function AuthenticationCode(props) {
           : DarkStyles.form_code
       }
     >
-      <h1>تایید کد هویت</h1>
+      <h1>{fa["Verification of identity code"]}</h1>
 
       <div
         className={
@@ -46,7 +47,7 @@ export default function AuthenticationCode(props) {
             : DarkStyles.text_mobile
         }
       >
-        کد برای شماره <span>09199954356</span> ارسال گردید
+        {fa["Code for the number"]} <span>09199954356</span> {fa["has been sent"]}
       </p>
 
       <div
@@ -99,7 +100,7 @@ export default function AuthenticationCode(props) {
           </Grid>
         </Grid>
         <button onClick={handelFinalSubmit}>
-          <span>ورود</span>
+          <span>{fa["login"]}</span>
           <ArrowSmallLeftLight />
         </button>
       </div>
@@ -117,7 +118,7 @@ export default function AuthenticationCode(props) {
               : DarkStyles.text_two
           }
         >
-          کد دریافت نکردم
+          {fa["I did not receive the code"]}
           <span
             className={
               theme.palette.mode === "light"
@@ -125,7 +126,7 @@ export default function AuthenticationCode(props) {
                 : DarkStyles.text_one
             }
           >
-            ارسال مجدد
+            {fa["Send agian"]}
           </span>
         </p>
         <p
@@ -136,7 +137,7 @@ export default function AuthenticationCode(props) {
               : DarkStyles.text_there
           }
         >
-          تغییر شماره
+          {fa["Change number"]}
         </p>
       </div>
     </Box>

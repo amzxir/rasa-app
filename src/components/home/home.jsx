@@ -1,8 +1,9 @@
-import React, { useContext, useState, Suspense , lazy } from "react";
+import React, { useContext, useState, Suspense, lazy } from "react";
 import { NavLink } from "react-router-dom";
 import { Splide, SplideTrack } from "@splidejs/react-splide";
 import { Box, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import fa from "../../lang/fa.json";
 import LightStyles from "../../assets/sass/light/home.module.scss";
 import DarkStyles from "../../assets/sass/dark/home.module.scss";
 import GraduationCapIcon from "../../assets/svg/graduation-cap";
@@ -96,10 +97,6 @@ export default function Home() {
   ];
   const [dataEducation, setDataEducation] = useState(education);
 
-  // start unit test state
-
-  // end unit test state 
-
   return (
     <Box sx={{ mt: 5, mb: 5 }}>
       <div
@@ -109,8 +106,8 @@ export default function Home() {
             : DarkStyles.box_title_platform
         }
       >
-        <h1 data-test="type-of-text">📍خدمات رسادنت</h1>
-        <NavLink>+ خدمات بیشتر ...</NavLink>
+        <h1 data-test="type-of-text">{fa["Service Rasadent"]}</h1>
+        <NavLink>{fa["More Service"]}</NavLink>
       </div>
       <div
         className={
@@ -143,7 +140,7 @@ export default function Home() {
         }
       >
         <GraduationCapIcon />
-        <h1>مرکـــز آموزش رسادنت 🥳</h1>
+        <h1>{fa["Rasadent Training Center"]}</h1>
       </div>
       <Splide
         hasTrack={false}
@@ -182,14 +179,14 @@ export default function Home() {
         >
           <NavLink
             to={"/terms"}
-            state={"قوانین و مقررات"}
+            state={fa["Terms and Conditions"]}
             className={
               theme.palette.mode === "light"
                 ? LightStyles.btn_secondary
                 : DarkStyles.btn_secondary
             }
           >
-            <span>قوانین و مقررات</span>
+            <span>{fa["Terms and Conditions"]}</span>
           </NavLink>
         </Grid>
         <Grid
@@ -201,14 +198,14 @@ export default function Home() {
         >
           <NavLink
             to={"/about"}
-            state={"درباره رسادنت"}
+            state={fa["About Rasadent"]}
             className={
               theme.palette.mode === "light"
                 ? LightStyles.btn_primary
                 : DarkStyles.btn_primary
             }
           >
-            <span>درباره رسادنت</span>
+            <span>{fa["About Rasadent"]}</span>
           </NavLink>
         </Grid>
         <Grid
@@ -220,14 +217,14 @@ export default function Home() {
         >
           <NavLink
             to={"/faq"}
-            state={"حریم خصوصی"}
+            state={fa["faq"]}
             className={
               theme.palette.mode === "light"
                 ? LightStyles.btn_secondary
                 : DarkStyles.btn_secondary
             }
           >
-            <span>حریم خصوصی</span>
+            <span>{fa["faq"]}</span>
           </NavLink>
         </Grid>
       </Grid>

@@ -5,6 +5,7 @@ import LightStyles from "../../../assets/sass/light/auth.module.scss";
 import DarkStyles from "../../../assets/sass/dark/auth.module.scss";
 import Fingerprint from "../../../assets/svg/fingerprint";
 import ColorModeContext from "../../../context/color-mode-context";
+import fa from "../../../lang/fa.json"
 
 export default function Login(props) {
   // start function darkmode
@@ -26,7 +27,7 @@ export default function Login(props) {
         }
       >
         <img src="image/identification.svg" alt="" />
-        <h1>ورود و ثبت نام</h1>
+        <h1>{fa["Login and Register"]}</h1>
         <p
           className={
             theme.palette.mode === "light"
@@ -34,7 +35,7 @@ export default function Login(props) {
               : DarkStyles.title_login_form
           }
         >
-          شماره همراه خود را وارد کنید
+          {fa["Enter your mobile"]}
         </p>
         <p
           className={
@@ -43,7 +44,7 @@ export default function Login(props) {
               : DarkStyles.title_login_form
           }
         >
-          کد فعالسازی به این شماره ارسال خواهد شد
+          {fa["The activation code will be sent to this number"]}
         </p>
       </div>
       <div
@@ -63,7 +64,7 @@ export default function Login(props) {
           <input type="number" placeholder="+98" />
           <Fingerprint />
         </div>
-        <button onClick={handleSubmit}>دریافت کد</button>
+        <button onClick={handleSubmit}>{fa["Get code"]}</button>
       </div>
     </Box>
   );
