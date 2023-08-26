@@ -1,9 +1,8 @@
 import React from "react";
 import Adapter from "@cfaester/enzyme-adapter-react-18";
-import { render, screen , fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import Enzyme, { shallow } from "enzyme";
 import Single from "./single";
-
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -14,8 +13,6 @@ const setup = () => {
 const findByTestAttr = (wrapper, val) => {
   return wrapper.find(`[data-test="${val}"]`);
 };
-
-
 
 test("render component single product market", () => {
   const wrapper = setup();
@@ -36,16 +33,13 @@ test("render count product in single market", () => {
   // const counterDisplay = wrapper.find("[data-test='count-product']");
   const counterDisplay = findByTestAttr(wrapper, "count-product");
   expect(counterDisplay.length).toBe(1);
-
 });
 
-test('should first', () => { 
+test("should first", () => {
   const setState = jest.fn();
-    jest
-    .spyOn(React, 'useState')
-    .mockImplementationOnce(initState => [initState, setState]);
-    const wrapper = setup();
- })
-
-
+  jest
+    .spyOn(React, "useState")
+    .mockImplementationOnce((initState) => [initState, setState]);
+  const wrapper = setup();
+});
 

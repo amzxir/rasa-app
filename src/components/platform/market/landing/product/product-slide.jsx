@@ -20,6 +20,7 @@ export default function ProductSlide({ productData }) {
         return (
           <div
             key={index}
+            data-test="data-product"
             className={
               theme.palette.mode === "light"
                 ? LightStyles.m_b_1
