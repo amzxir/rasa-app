@@ -11,6 +11,7 @@ import StarOneIcon from "../../../../assets/svg/star-one";
 import CartIcon from "../../../../assets/svg/cart";
 import NegativeIcon from "../../../../assets/svg/negative";
 import PlussIcon from "../../../../assets/svg/pluss";
+import fa from "../../../../lang/fa.json"
 
 export default function Single() {
   // start function darkmode
@@ -89,8 +90,8 @@ export default function Single() {
         </div>
       </div>
       <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
-        <h1><AppsBarsIcon/> فروشندگان این کالا در رسادنت </h1>
-        <p>از بین فروشندگان این محصول می توانید انتخاب کنید ، سپس سفارش محصول را بزنید</p>
+        <h1><AppsBarsIcon/> {fa["Sellers of this product in Rasadnet"]} </h1>
+        <p>{fa["You can choose from the sellers of this product, then order the product"]}</p>
       </div>
       <div className={theme.palette.mode === "light" ? LightStyles.card_shop : DarkStyles.card_shop}>
         <div className={theme.palette.mode === "light" ? LightStyles.content_product_shop : DarkStyles.content_product_shop}>
@@ -115,14 +116,14 @@ export default function Single() {
               <NegativeIcon/>
             </IconButton>
           </div>
-          <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>125/000 <small>تومان</small></p>
+          <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>125/000 <small>{fa["Toman"]}</small></p>
         </div>
         <div className={theme.palette.mode === "light" ? LightStyles.add_card : DarkStyles.add_card}>
-          <button className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>افزودن به سبد خرید</span></button>
+          <button className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Add to card"]}</span></button>
         </div>
       </div>
       <div className={theme.palette.mode === "light" ? LightStyles.comment : DarkStyles.comment}>
-        <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>توضیحات</p>
+        <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["Description"]}</p>
         <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
       </div>
     </Box>

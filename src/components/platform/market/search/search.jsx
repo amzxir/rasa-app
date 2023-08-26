@@ -10,6 +10,7 @@ import FilltersIcon from "../../../../assets/svg/fillters";
 import BexitIcon from "../../../../assets/svg/bexit";
 import { NavLink } from "react-router-dom";
 import HeartIcon from "../../../../assets/svg/heart";
+import fa from "../../../../lang/fa.json"
 
 export default function Search() {
   // start function darkmode
@@ -78,7 +79,7 @@ export default function Search() {
                 : DarkStyles.input
             }
           >
-            جستجو کالای مورد نظر ...
+            {fa["Search for desired product..."]}
           </button>
           <SearchIcon />
         </div>
@@ -114,7 +115,7 @@ export default function Search() {
             </IconButton>
             <input
               type="text"
-              placeholder="محصول خود را جستجو کنید ..."
+              placeholder={fa["Search for your product..."]}
               value={filter}
               onChange={onChange}
             />
@@ -168,7 +169,7 @@ export default function Search() {
                         : DarkStyles.title
                     }
                   >
-                    یافت نشد 🙄
+                    {fa["Not found"]}
                   </p>
                   <p
                     className={
@@ -177,8 +178,7 @@ export default function Search() {
                         : DarkStyles.text
                     }
                   >
-                    با عرض پوزش، کلمه کلیدی که وارد کردید یافت نشد، لطفاً دوباره
-                    بررسی کنید یا با کلمه کلیدی دیگری جستجو کنید.
+                    {fa["Sorry, the keyword you entered was not found, please try again Check or search with another keyword."]}
                   </p>
                 </div>
               </div>
@@ -263,7 +263,7 @@ export default function Search() {
                           : DarkStyles.price_product
                       }
                     >
-                      {productSearch.price} تومان
+                      {productSearch.price} {fa["Toman"]}
                     </p>
                   </div>
                 </div>

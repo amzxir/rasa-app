@@ -7,6 +7,8 @@ import DarkStyles from "../../../assets/sass/dark/jet/text.module.scss";
 import ColorModeContext from "../../../context/color-mode-context";
 import SendIcon from "../../../assets/svg/send";
 import PlusIcon from "../../../assets/svg/plus";
+import fa from "../../../lang/fa.json";
+
 
 export default function JetText() {
   // start function darkmode
@@ -92,9 +94,9 @@ export default function JetText() {
             >
               <NavLink
                 to={"/jet/jet-image"}
-                state={"ارسال تصویر برای ثبت سفارش رساجت"}
+                state={fa["Send a picture to place an order"]}
               >
-                آنلاین عکس بگیرید
+                {fa["Image online"]}
               </NavLink>
             </MenuItem>
             <MenuItem
@@ -106,13 +108,13 @@ export default function JetText() {
             >
               <NavLink
                 to={"/jet/jet-voice"}
-                state={"ارسال صدا برای ثبت سفارش رساجت"}
+                state={fa["Send voice to register the order"]}
               >
-                آنلاین صدا بگیرید
+                {fa["Voice online"]}
               </NavLink>
             </MenuItem>
           </Menu>
-          <input type="text" placeholder="متن خود را یاداشت کنید" />
+          <input type="text" placeholder={fa["Note your text"]} />
           <IconButton
             className={
               theme.palette.mode === "light"

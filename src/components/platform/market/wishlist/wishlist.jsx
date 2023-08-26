@@ -6,6 +6,7 @@ import DarkStyles from "../../../../assets/sass/dark/market/wishlist.module.scss
 import ColorModeContext from "../../../../context/color-mode-context";
 import { NavLink } from "react-router-dom";
 import Heart from "../../../../assets/svg/heart";
+import fa from '../../../../lang/fa.json';
 
 export default function Wishlist() {
   // start function darkmode
@@ -143,7 +144,7 @@ export default function Wishlist() {
                         : DarkStyles.price_product
                     }
                   >
-                    {i.price} تومان
+                    {i.price} {fa["Toman"]}
                   </p>
                 </div>
               </div>

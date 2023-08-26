@@ -8,6 +8,7 @@ import DarkStyles from "../../../../../assets/sass/dark/market/landing.module.sc
 import ColorModeContext from "../../../../../context/color-mode-context";
 import Heart from "../../../../../assets/svg/heart";
 import VerifyIcon from "../../../../../assets/svg/verify";
+import fa from "../../../../../lang/fa.json";
 
 export default function ProductSlide({ productData }) {
   // start function darkmode
@@ -34,7 +35,7 @@ export default function ProductSlide({ productData }) {
               }
             >
               <h1>📍 {i.title}</h1>
-              <NavLink to={i.path}>مشاهده همه</NavLink>
+              <NavLink to={i.path}>{fa["view all"]}</NavLink>
             </div>
             <Splide
               className={
@@ -124,7 +125,7 @@ export default function ProductSlide({ productData }) {
                                 : DarkStyles.price_product
                             }
                           >
-                            {i.price} تومان
+                            {i.price} {fa["Toman"]}
                           </p>
                         </div>
                       </div>

@@ -7,6 +7,7 @@ import DarkStyles from "../../../assets/sass/dark/jet/image.module.scss";
 import ColorModeContext from "../../../context/color-mode-context";
 import SendIcon from "../../../assets/svg/send";
 import PlusIcon from "../../../assets/svg/plus";
+import fa from "../../../lang/fa.json";
 
 export default function JetImage() {
   // start function darkmode
@@ -104,9 +105,9 @@ export default function JetImage() {
             >
               <NavLink
                 to={"/jet/jet-text"}
-                state={"ارسال متن برای ثبت سفارش رساجت"}
+                state={fa["Send text to register the order"]}
               >
-                ارسال متن
+                {fa["Send text"]}
               </NavLink>
             </MenuItem>
             <MenuItem
@@ -118,9 +119,9 @@ export default function JetImage() {
             >
               <NavLink
                 to={"/jet/jet-voice"}
-                state={"ارسال صدا برای ثبت سفارش رساجت"}
+                state={fa["Send voice to register the order"]}
               >
-                آنلاین صدا بگیرید
+                {fa["Voice online"]}
               </NavLink>
             </MenuItem>
           </Menu>
@@ -132,13 +133,13 @@ export default function JetImage() {
                 : DarkStyles.input_upload
             }
           >
-            عکس خود را بارگذاری کنید
+            {fa["Upload your photo"]}
           </label>
           <input
             type="file"
             id="upload"
             className="d-none"
-            placeholder="متن خود را یاداشت کنید"
+            placeholder={fa["Note your text"]}
           />
           <IconButton
             className={

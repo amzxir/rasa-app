@@ -8,6 +8,7 @@ import { NavLink } from "react-router-dom";
 import ModeLandscapeIcon from "../../../assets/svg/mode-landscape";
 import HeadsetIcon from "../../../assets/svg/headset";
 import ClipIcon from "../../../assets/svg/clip";
+import fa from "../../../lang/fa.json";
 
 export default function Home() {
   // start function darkmode
@@ -59,7 +60,7 @@ export default function Home() {
         >
           <img src="image/jet.svg" alt="" />
         </div>
-        <h1>ثبت سفارش در رساجت</h1>
+        <h1>{fa["Place an order in Rasajt"]}</h1>
         <p>
           لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
           از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و

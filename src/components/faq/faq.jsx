@@ -5,6 +5,7 @@ import LightStyles from "../../assets/sass/light/terms.module.scss";
 import DarkStyles from "../../assets/sass/dark/terms.module.scss";
 import TouchIcon from "../../assets/svg/touch";
 import ColorModeContext from "../../context/color-mode-context";
+import fa from "../../lang/fa.json";
 
 export default function Faq() {
   // start function darkmode
@@ -56,7 +57,7 @@ export default function Faq() {
             : DarkStyles.title_h1_terms
         }
       >
-        <TouchIcon /> <span>بند دوم رعایت حقوق مشتریان</span>
+        <TouchIcon /> <span>{fa["The second paragraph is to respect the rights of customers"]}</span>
       </h1>
       <p
         className={
