@@ -7,10 +7,11 @@ Enzyme.configure({ adapter: new Adapter() });
 
 test("render text title service", () => {
   const wrapper = shallow(<Home />);
+  expect(wrapper.length).toBe(1);
 });
 
 test("render text type of in home component", () => {
   const wrapper = shallow(<Home />);
   const textTypeOf = wrapper.find("[data-test='type-of-text']");
-  expect(textTypeOf.type()).toEqual('h1')
+  expect(textTypeOf.type()).toEqual("h1");
 });

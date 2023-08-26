@@ -7,4 +7,5 @@ Enzyme.configure({ adapter: new Adapter() });
 
 test("render component auth", () => {
   const wrapper = shallow(<Auth />);
+  expect(wrapper.length).toBe(1);
 });

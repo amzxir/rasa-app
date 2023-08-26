@@ -7,4 +7,5 @@ Enzyme.configure({ adapter: new Adapter() });
 
 test("render component platform jet text", () => {
   const wrapper = shallow(<JetText />);
+  expect(wrapper.length).toBe(1);
 });

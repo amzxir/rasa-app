@@ -7,4 +7,5 @@ Enzyme.configure({ adapter: new Adapter() });
 
 test("render component platform blog", () => {
   const wrapper = shallow(<Blog />);
+  expect(wrapper.length).toBe(1);
 });

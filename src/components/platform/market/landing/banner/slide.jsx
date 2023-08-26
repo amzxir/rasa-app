@@ -28,7 +28,7 @@ export default function Slide({ bannerData }) {
             : DarkStyles.slider_banner
         }
       >
-        {bannerData.map((i, index) => {
+        {bannerData && bannerData.map((i, index) => {
           return (
             <SplideSlide key={index}>
               <img

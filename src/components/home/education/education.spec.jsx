@@ -7,4 +7,5 @@ Enzyme.configure({ adapter: new Adapter() });
 
 test("render component education", () => {
   const wrapper = shallow(<Education />);
+  expect(wrapper.length).toBe(1);
 });

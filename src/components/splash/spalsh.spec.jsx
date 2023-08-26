@@ -7,4 +7,5 @@ Enzyme.configure({ adapter: new Adapter() });
 
 test("render component platform spalsh", () => {
   const wrapper = shallow(<Spalash />);
+  expect(wrapper.length).toBe(1);
 });

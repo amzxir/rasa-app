@@ -7,4 +7,5 @@ Enzyme.configure({ adapter: new Adapter() });
 
 test("render component platform jet image", () => {
   const wrapper = shallow(<JetImage />);
+  expect(wrapper.length).toBe(1);
 });

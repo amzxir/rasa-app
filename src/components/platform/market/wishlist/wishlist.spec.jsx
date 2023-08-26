@@ -7,4 +7,5 @@ Enzyme.configure({ adapter: new Adapter() });
 
 test("render component platform market wishlist", () => {
   const wrapper = shallow(<Wishlist />);
+  expect(wrapper.length).toBe(1);
 });

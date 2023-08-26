@@ -7,4 +7,5 @@ Enzyme.configure({ adapter: new Adapter() });
 
 test("render component platform club", () => {
   const wrapper = shallow(<Club />);
+  expect(wrapper.length).toBe(1);
 });

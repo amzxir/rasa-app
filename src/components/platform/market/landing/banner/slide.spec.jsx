@@ -7,4 +7,5 @@ Enzyme.configure({ adapter: new Adapter() });
 
 test("render component platform market slide", () => {
   const wrapper = shallow(<Slide />);
+  expect(wrapper.length).toBe(1);
 });

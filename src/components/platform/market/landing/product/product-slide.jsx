@@ -7,7 +7,6 @@ import LightStyles from "../../../../../assets/sass/light/market/landing.module.
 import DarkStyles from "../../../../../assets/sass/dark/market/landing.module.scss";
 import ColorModeContext from "../../../../../context/color-mode-context";
 import Heart from "../../../../../assets/svg/heart";
-import VerifyIcon from "../../../../../assets/svg/verify";
 import fa from "../../../../../lang/fa.json";
 
 export default function ProductSlide({ productData }) {
@@ -17,7 +16,7 @@ export default function ProductSlide({ productData }) {
   // end function darkmode
   return (
     <Box>
-      {productData.map((i, index) => {
+      {productData && productData.map((i, index) => {
         return (
           <div
             key={index}

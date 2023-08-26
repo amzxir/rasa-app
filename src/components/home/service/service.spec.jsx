@@ -7,4 +7,5 @@ Enzyme.configure({ adapter: new Adapter() });
 
 test("render compoent service", () => {
   const wrapper = shallow(<Service />);
+  expect(wrapper.length).toBe(1);
 });
