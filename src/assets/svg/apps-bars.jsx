@@ -6,7 +6,7 @@ export default function AppsBars() {
   // start function darkmode
   const theme = useTheme();
   const { colorMode } = useContext(ColorModeContext);
-  // end function darkmodeˇ
+  // end function darkmode
   return (
     <svg
       width="18"

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState} from "react";
 import { Box, IconButton   } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide";
+import { NavLink} from "react-router-dom";
 import LightStyles from "../../../../assets/sass/light/market/single.module.scss";
 import DarkStyles from "../../../../assets/sass/dark/market/single.module.scss";
 import ColorModeContext from "../../../../context/color-mode-context";
@@ -43,6 +44,9 @@ export default function Single() {
     }
   }
   // end function input number
+
+  // start function add to card product
+
 
 
   return (
@@ -119,7 +123,7 @@ export default function Single() {
           <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>125/000 <small>{fa["Toman"]}</small></p>
         </div>
         <div className={theme.palette.mode === "light" ? LightStyles.add_card : DarkStyles.add_card}>
-          <button className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Add to card"]}</span></button>
+          <NavLink to={"/shop/card"} state={fa["card"]} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Add to card"]}</span></NavLink>
         </div>
       </div>
       <div className={theme.palette.mode === "light" ? LightStyles.comment : DarkStyles.comment}>

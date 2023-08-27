@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { NavLink } from "react-router-dom";
 import ColorModeContext from "../../../context/color-mode-context";
 import LightStyles from "../../../assets/sass/light/jet/home.module.scss";
 import DarkStyles from "../../../assets/sass/dark/jet/home.module.scss";
-import { NavLink } from "react-router-dom";
 import ModeLandscapeIcon from "../../../assets/svg/mode-landscape";
 import HeadsetIcon from "../../../assets/svg/headset";
 import ClipIcon from "../../../assets/svg/clip";

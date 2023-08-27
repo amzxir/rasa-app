@@ -18,7 +18,7 @@ import JetVoice from "./components/platform/jet/jet-voice";
 import SingleShop from "./components/platform/market/single/single";
 import Blog from "./components/platform/blog/blog";
 import Club from "./components/platform/club/club";
-import CardShop from "./components/platform/market/card/card/card";
+import CardShop from "./components/platform/market/card/cards/card";
 import ShoppingShop from "./components/platform/market/card/shopping/shopping";
 import AddAddressShop from "./components/platform/market/card/address/add";
 import NewAddressShop from "./components/platform/market/card/address/new";
