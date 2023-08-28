@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Box , Card , IconButton , FormGroup , FormControlLabel , Checkbox } from "@mui/material";
+import { Box , Card , IconButton } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
 import ColorModeContext from "../../../../../context/color-mode-context";
@@ -48,26 +48,26 @@ export default function Shopping() {
         </Card>
       </div>
       <Card sx={{ boxShadow:0 , borderRadius:'15px' , p:2 }}>
-        <div className={theme.palette.mode === "light" ? LightStyles.invoice : Darkstyles.invoice}>
-            <div className={theme.palette.mode === "light" ? LightStyles.total : Darkstyles.total}>
-              <p className={theme.palette.mode === "light" ? LightStyles.title : Darkstyles.title}>{fa["price products"]}</p>
-              <p className={theme.palette.mode === "light" ? LightStyles.price : Darkstyles.price}>150/000 {fa["Toman"]}</p>
+        <div className={theme.palette.mode === "light" ? LightStyles.invoice : DarkStyles.invoice}>
+            <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
+              <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["price products"]}</p>
+              <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>150/000 {fa["Toman"]}</p>
             </div>
-            <div className={theme.palette.mode === "light" ? LightStyles.total : Darkstyles.total}>
-              <p className={theme.palette.mode === "light" ? LightStyles.title : Darkstyles.title}>{fa["Your profit from the purchase"]}</p>
-              <p className={theme.palette.mode === "light" ? LightStyles.price_red : Darkstyles.price_red}>150/000 {fa["Toman"]}</p>
+            <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
+              <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["Your profit from the purchase"]}</p>
+              <p className={theme.palette.mode === "light" ? LightStyles.price_red : DarkStyles.price_red}>150/000 {fa["Toman"]}</p>
             </div>
-            <div className={theme.palette.mode === "light" ? LightStyles.total : Darkstyles.total}>
-              <p className={theme.palette.mode === "light" ? LightStyles.title : Darkstyles.title}>{fa["price products"]}</p>
-              <p className={theme.palette.mode === "light" ? LightStyles.price_success : Darkstyles.price_success}>150/000 {fa["Toman"]}</p>
+            <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
+              <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["price products"]}</p>
+              <p className={theme.palette.mode === "light" ? LightStyles.price_success : DarkStyles.price_success}>150/000 {fa["Toman"]}</p>
             </div>
             <hr style={{ borderWidth:'.1px' , borderColor:'#ffffff4d' }} />
-            <div className={theme.palette.mode === "light" ? LightStyles.total : Darkstyles.total}>
-              <p className={theme.palette.mode === "light" ? LightStyles.title : Darkstyles.title}>{fa["pay"]}</p>
-              <p className={theme.palette.mode === "light" ? LightStyles.price : Darkstyles.price}>150/000 {fa["Toman"]}</p>
+            <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
+              <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["pay"]}</p>
+              <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>150/000 {fa["Toman"]}</p>
             </div>
         </div>
-        <NavLink to={"/shop/pay"} state={fa["Time and method of sending"]} className={theme.palette.mode === "light" ? LightStyles.btn_card : Darkstyles.btn_card}><span>{fa["Order"]}</span></NavLink>
+        <NavLink to={"/shop/pay"} state={fa["Time and method of sending"]} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Order"]}</span></NavLink>
       </Card>
     </Box>
   );
