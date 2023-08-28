@@ -1,0 +1,200 @@
+
+.title_address{
+    margin-bottom: 2rem;
+
+    p{
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 17px;
+        letter-spacing: 0em;
+        color: #212121;
+
+    }
+
+    .content_address{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+
+        .content{
+
+            h1{
+                font-size: 18px;
+                font-weight: 500;
+                line-height: 22px;
+                letter-spacing: 0em;
+                color: #212121;
+                
+            }
+
+            p{
+                font-size: 10px;
+                font-weight: 500;
+                line-height: 14px;
+                letter-spacing: 0.20000000298023224px;
+                color: #616161;
+            }
+
+            .price{
+                font-family: "font-number" !important;
+                font-size: 10px;
+                font-weight: 500;
+                line-height: 14px;
+                letter-spacing: 0.20000000298023224px;
+                color: #01B763;
+            }
+        }
+
+        input[type="radio"] {
+            /* Add if not using autoprefixer */
+            -webkit-appearance: none;
+            appearance: none;
+            /* For iOS < 15 to remove gradient background */
+            background-color: #fff;
+            /* Not removed via appearance */
+            margin: 0;
+        }
+
+        input[type="radio"] {
+            appearance: none;
+            background-color: #fff;
+            margin: 0;
+            font: inherit;
+            width: 1.15em;
+            height: 1.15em;
+            border: 0.15em solid #113D8D;
+            border-radius: 50%;
+            transform: translateY(-0.075em);
+        }
+
+
+        input[type="radio"]::before {
+            content: "";
+            width: 0.65em;
+            height: 0.65em;
+            border-radius: 50%;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em rebeccapurple;
+        }
+
+        input[type="radio"]:checked::before {
+            transform: scale(1);
+          }
+
+        input[type="radio"]:focus {
+            outline: max(2px, 0.15em) solid #113D8D;
+            outline-offset: max(2px, 0.15em);
+            background: #113D8D;
+        }
+    }
+}
+
+.invoice{
+    margin-bottom: 1rem;
+
+    .total{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .title{
+            font-family: "font-light" !important;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            letter-spacing: 0em;
+            color: #A5A5A5;
+
+        }
+
+        .price{
+
+
+            font-family: "font-number" !important;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            letter-spacing: 0em;
+            color: #000000;
+
+
+            small{
+                font-family: "font-light" !important;
+                font-size: 10px;
+                font-weight: 400;
+                line-height: 15px;
+                letter-spacing: 0em;
+            }
+
+        }
+
+        .price_red{
+
+
+            font-family: "font-number" !important;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            letter-spacing: 0em;
+            color: #D80000;
+
+
+            small{
+                font-family: "font-light" !important;
+                font-size: 10px;
+                font-weight: 400;
+                line-height: 15px;
+                letter-spacing: 0em;
+            }
+
+        }
+
+        .price_success{
+
+            font-family: "font-number" !important;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            letter-spacing: 0em;
+            color: #1FC069;
+
+
+            small{
+                font-family: "font-light" !important;
+                font-size: 10px;
+                font-weight: 400;
+                line-height: 15px;
+                letter-spacing: 0em;
+            }
+
+        }
+    }
+}
+
+.btn_card{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 16px 10px 16px;
+    border-radius: 100px;
+    gap: 10px;
+    background: #113D8D;
+    border: 1px solid #113D8D;
+    box-shadow: 4px 8px 24px 0px #00000040;
+
+    span{
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 17px;
+        letter-spacing: 0.20000000298023224px;
+        text-align: center;
+        color: #FFFFFF;
+
+    }
+
+}
