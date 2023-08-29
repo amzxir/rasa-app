@@ -26,7 +26,7 @@ export default function Shopping() {
               <h1>منزل</h1>
               <p>حصارک بالا، خیابان آقا رضایی، خیابان هداوند ...</p>
             </div>
-            <NavLink to={"/shop/new-address"} state={fa["Select address"]}>
+            <NavLink to={"/shop/add-address"} state={fa["Select address"]}>
               <IconButton>
                 <UnionIcon/>
               </IconButton>
@@ -43,7 +43,7 @@ export default function Shopping() {
               <h1 style={{ marginLeft:'5rem' }}>ارسال توسط باربری</h1>
               <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>120/000 <small>{fa["Toman"]}</small></p>
             </label>
-            <input checked type="radio" />
+            <input type="radio" />
           </div>
         </Card>
       </div>

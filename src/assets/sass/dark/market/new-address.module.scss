@@ -1,0 +1,76 @@
+.form_group{
+
+    .form_control{
+        width: 100%;
+        height: 56px;
+        box-sizing: border-box;
+        padding: 1rem;
+        border-radius: 16px;
+        gap: 12px;
+        background: #ffffff;
+        border: 1px solid #e1e1e1;
+    }
+
+    .form_control::placeholder{
+        font-family: "font-light" !important;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 49px;
+        letter-spacing: 0.20000000298023224px;
+        color: #898989;
+        
+    }
+
+    .form_control:focus{
+        outline: none;
+        background: #ffffff;
+        border: 1px solid #e1e1e1;
+    }
+
+    .select_control{
+        font-family: "font-light" !important;
+        width: 100%;
+        height: 56px;
+        box-sizing: border-box;
+        padding: 1rem;
+        border-radius: 16px;
+        gap: 12px;
+        background: #ffffff;
+        border: 1px solid #e1e1e1;
+
+    }
+
+    .select_control:focus{
+        outline: none;
+        background: #ffffff;
+        border: 1px solid #e1e1e1;
+    }
+
+
+}
+
+.btn_address{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 17px 16px 17px 16px;
+    border-radius: 100px;
+    gap: 10px;
+    background: #113D8D;
+    border: 1px solid #113D8D;
+
+    span{
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 22px;
+        letter-spacing: 0.20000000298023224px;
+        text-align: center;
+        color: #FFFFFF;
+        
+
+    }
+
+}
