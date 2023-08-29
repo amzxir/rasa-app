@@ -43,7 +43,7 @@ export default function Shopping() {
               <h1 style={{ marginLeft:'5rem' }}>ارسال توسط باربری</h1>
               <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>120/000 <small>{fa["Toman"]}</small></p>
             </label>
-            <input id="sendProduct" type="radio" />
+            <input checked type="radio" />
           </div>
         </Card>
       </div>
