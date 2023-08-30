@@ -10,6 +10,7 @@ import CommentsIcon from "../assets/svg/comments";
 import ShoppingCartIcon from "../assets/svg/shopping-cart";
 import ShopIcon from "../assets/svg/shop";
 import ColorModeContext from "../context/color-mode-context";
+import fa from "../lang/fa.json";
 
 export default function Menu() {
   // start function darkmode
@@ -47,6 +48,8 @@ export default function Menu() {
           <HomeIcon />
         </NavLink>
         <NavLink
+          to={"/shop/card"}
+          state={fa["card"]}
           className={
             theme.palette.mode === "light" ? LightStyles.pl_3 : DarkStyles.pl_3
           }

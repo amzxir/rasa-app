@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
+import { Container, Grid, Avatar, Stack, IconButton } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { useLocation, useNavigate } from "react-router-dom";
 import Apps from "../assets/svg/apps";
 import Sun from "../assets/svg/sun";
 import LightStyles from "../assets/sass/light/header.module.scss";
 import DarkStyles from "../assets/sass/dark/header.module.scss";
-import { Container, Grid, Avatar, Stack, IconButton } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import Navigation from "../assets/svg/navigation";
-import { useLocation, useNavigate } from "react-router-dom";
 import ColorModeContext from "../context/color-mode-context";
 import Sidebar from "./sidebar";
 
