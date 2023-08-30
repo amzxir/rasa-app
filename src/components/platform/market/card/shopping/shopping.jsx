@@ -67,7 +67,7 @@ export default function Shopping() {
               <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>150/000 {fa["Toman"]}</p>
             </div>
         </div>
-        <NavLink to={"/shop/pay"} state={fa["Time and method of sending"]} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Order"]}</span></NavLink>
+        <NavLink to={"/shop/pay"} state={fa["pay"]} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Order"]}</span></NavLink>
       </Card>
     </Box>
   );

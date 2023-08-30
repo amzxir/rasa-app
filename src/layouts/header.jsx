@@ -30,7 +30,7 @@ export default function Header() {
   };
   // end function and state sidebar
 
-  return (
+  return path !== "/shop/pay/sucess" ? (
     <Container
       className={
         theme.palette.mode === "light"
@@ -120,5 +120,5 @@ export default function Header() {
         </Grid>
       )}
     </Container>
-  );
+  ) : null;
 }
