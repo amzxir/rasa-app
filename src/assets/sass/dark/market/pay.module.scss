@@ -1,0 +1,168 @@
+
+.title_address{
+    margin-bottom: 2rem;
+
+    p{
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 17px;
+        letter-spacing: 0em;
+        color: #FFFFFF;
+
+    }
+
+    .content_address{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+
+        .content{
+
+            h1{
+                font-size: 18px;
+                font-weight: 500;
+                line-height: 22px;
+                letter-spacing: 0em;
+                color: #FFFFFF;
+                
+            }
+
+            p{
+                font-size: 10px;
+                font-weight: 500;
+                line-height: 14px;
+                letter-spacing: 0.20000000298023224px;
+                color: #FFFFFF;
+            }
+
+            .price{
+                font-family: "font-number" !important;
+                font-size: 10px;
+                font-weight: 500;
+                line-height: 14px;
+                letter-spacing: 0.20000000298023224px;
+                color: #01B763;
+            }
+        }
+
+        input[type="radio"] {
+            -ms-transform: scale(1.5); /* IE */
+            -moz-transform: scale(1.5); /* FF */
+            -webkit-transform: scale(1.5); /* Safari and Chrome */
+            -o-transform: scale(1.5); /* Opera */
+            transform: scale(1.5);
+            accent-color:#3282F9;
+        }
+
+     
+    }
+}
+
+.invoice{
+    margin-bottom: 1rem;
+
+    .total{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .title{
+            font-family: "font-light" !important;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            letter-spacing: 0em;
+            color: #FFFFFF;
+
+        }
+
+        .price{
+
+
+            font-family: "font-number" !important;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            letter-spacing: 0em;
+            color: #FFFFFF;
+
+
+            small{
+                font-family: "font-light" !important;
+                font-size: 10px;
+                font-weight: 400;
+                line-height: 15px;
+                letter-spacing: 0em;
+            }
+
+        }
+
+        .price_red{
+
+
+            font-family: "font-number" !important;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            letter-spacing: 0em;
+            color: #D80000;
+
+
+            small{
+                font-family: "font-light" !important;
+                font-size: 10px;
+                font-weight: 400;
+                line-height: 15px;
+                letter-spacing: 0em;
+            }
+
+        }
+
+        .price_success{
+
+            font-family: "font-number" !important;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            letter-spacing: 0em;
+            color: #1FC069;
+
+
+            small{
+                font-family: "font-light" !important;
+                font-size: 10px;
+                font-weight: 400;
+                line-height: 15px;
+                letter-spacing: 0em;
+            }
+
+        }
+    }
+}
+
+.btn_card{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 16px 10px 16px;
+    border-radius: 100px;
+    gap: 10px;
+    background: #3282F9;
+    border: 1px solid #3282F9;
+    box-shadow: 4px 8px 24px 0px #00000040;
+
+    span{
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 17px;
+        letter-spacing: 0.20000000298023224px;
+        text-align: center;
+        color: #FFFFFF;
+
+    }
+
+}
