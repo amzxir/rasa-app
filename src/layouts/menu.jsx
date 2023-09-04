@@ -85,6 +85,7 @@ export default function Menu() {
           <CommentsIcon />
         </NavLink>
         <NavLink
+          to={"/profile"}
           className={
             theme.palette.mode === "light" ? LightStyles.pl_1 : DarkStyles.pl_1
           }

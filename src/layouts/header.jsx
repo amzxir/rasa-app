@@ -30,7 +30,7 @@ export default function Header() {
   };
   // end function and state sidebar
 
-  return path !== "/shop/pay/sucess" ? (
+  return path !== "/shop/pay/sucess" && path !== "/profile" ? (
     <Container
       className={
         theme.palette.mode === "light"
