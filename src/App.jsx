@@ -26,6 +26,7 @@ import PayShop from "./components/platform/market/card/pay/pay";
 import SuccessPayShop from "./components/platform/market/card/alert/success";
 import ErrorPayShop from "./components/platform/market/card/alert/error";
 import Profile from "./components/profile/profile";
+import ProfileEdit from "./components/profile/profile-edit";
 
 
 
@@ -92,7 +93,8 @@ export default function App() {
             {/* routeing component club */}
             <Route path="/club" element={<Club />}></Route>
             {/* routing compoent profile */}
-            <Route path="/profile" element={<Profile/>}></Route>
+            <Route exact path="/profile" element={<Profile/>}></Route>
+            <Route path="/profile/edit" element={<ProfileEdit/>}></Route>
           </Routes>
         </Layouts>
       </ThemeProvider>

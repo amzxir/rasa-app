@@ -19,9 +19,6 @@ import InfoIcon from "../../assets/svg/info";
 import ExitProfileIcon from "../../assets/svg/exit-profile";
 import fa from "../../lang/fa.json";
 
-const label = { inputProps: { 'aria-label': 'Switch demo' } };
-
-
 export default function Profile() {
   // start function darkmode
   const theme = useTheme();
@@ -43,11 +40,11 @@ export default function Profile() {
       </div>
       <hr />
       <div className={theme.palette.mode === "light" ? LightStyles.routing_profile : DarkStyles.routing_profile}>
-        <NavLink className={theme.palette.mode === "light" ? LightStyles.routing : DarkStyles.routing}>
+        <NavLink to={"/profile/edit"} state={fa["profile edit"]} className={theme.palette.mode === "light" ? LightStyles.routing : DarkStyles.routing}>
           <div><ProfileIcon/><span>{fa["profile edit"]}</span></div>
           <ArrowRight/>
         </NavLink>
-        <NavLink className={theme.palette.mode === "light" ? LightStyles.routing : DarkStyles.routing}>
+        <NavLink to={"/shop/add-address"} state={fa["Select address"]} className={theme.palette.mode === "light" ? LightStyles.routing : DarkStyles.routing}>
           <div><PinsIcon/><span>{fa["address"]}</span></div>
           <ArrowRight/>
         </NavLink>
