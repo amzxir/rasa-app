@@ -195,3 +195,10 @@ body {
   right: 1.75rem !important;
   transform-origin: right !important;
 }
+
+.span_bottom{
+  position: absolute;
+  bottom: -10px;
+  display: block;
+  width: 100%;
+}

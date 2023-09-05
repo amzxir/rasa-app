@@ -17,17 +17,17 @@ export default function ProfileEdit() {
   return (
     <Box sx={{ mt: 5, mb: 5 }}>
       <Grid container>
-        <Grid xs={12}>
+        <Grid item xs={12}>
           <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
             <input placeholder={fa["Firstname and Lastname"]} type="text" />
           </div>
         </Grid>
-        <Grid xs={12}>
+        <Grid item xs={12}>
           <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
             <input placeholder={fa["Code Melli"]} type="text" />
           </div>
         </Grid>
-        <Grid xs={12}>
+        <Grid item xs={12}>
           <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
             <input placeholder={fa["birthday date"]} type="text" />
             <IconButton className={theme.palette.mode === "light" ? LightStyles.position_svg : DarkStyles.position_svg}>
@@ -35,7 +35,7 @@ export default function ProfileEdit() {
             </IconButton>
           </div>
         </Grid>
-        <Grid xs={12}>
+        <Grid item xs={12}>
           <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
             <input placeholder={fa["your emial"]} type="text" />
             <IconButton className={theme.palette.mode === "light" ? LightStyles.position_svg : DarkStyles.position_svg}>
@@ -43,12 +43,12 @@ export default function ProfileEdit() {
             </IconButton>
           </div>
         </Grid>
-        <Grid xs={12}>
+        <Grid item xs={12}>
           <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
             <input placeholder={fa["mobile"]} type="text" />
           </div>
         </Grid>
-        <Grid xs={12}>
+        <Grid item xs={12}>
           <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
             <select>
                 <option>{fa["gender"]}</option>

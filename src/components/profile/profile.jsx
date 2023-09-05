@@ -48,7 +48,7 @@ export default function Profile() {
           <div><PinsIcon/><span>{fa["address"]}</span></div>
           <ArrowRight/>
         </NavLink>
-        <NavLink className={theme.palette.mode === "light" ? LightStyles.routing : DarkStyles.routing}>
+        <NavLink to={"/profile/order"} state={fa["Your orders"]} className={theme.palette.mode === "light" ? LightStyles.routing : DarkStyles.routing}>
           <div><OrderIcon/><span>{fa["orders"]}</span></div>
           <ArrowRight/>
         </NavLink>

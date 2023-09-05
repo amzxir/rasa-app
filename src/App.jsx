@@ -27,6 +27,8 @@ import SuccessPayShop from "./components/platform/market/card/alert/success";
 import ErrorPayShop from "./components/platform/market/card/alert/error";
 import Profile from "./components/profile/profile";
 import ProfileEdit from "./components/profile/profile-edit";
+import Order from "./components/profile/order/order";
+import OrderDetails from "./components/profile/order/details/details";
 
 
 
@@ -95,6 +97,8 @@ export default function App() {
             {/* routing compoent profile */}
             <Route exact path="/profile" element={<Profile/>}></Route>
             <Route path="/profile/edit" element={<ProfileEdit/>}></Route>
+            <Route path="/profile/order" element={<Order/>}></Route>
+            <Route path="/profile/order/details" element={<OrderDetails/>}></Route>
           </Routes>
         </Layouts>
       </ThemeProvider>
