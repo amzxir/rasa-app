@@ -244,3 +244,15 @@ body {
   border-color: #113D8D;
   z-index: 0;
 }
+
+.active-tabs{
+  border-radius: 12px;
+  position: absolute;
+  background: #fff;
+  right: -60px;
+  left: -60px;
+  padding: 10px;
+  top: -4px;
+  bottom: -4px;
+  z-index: 1;
+}

@@ -29,6 +29,8 @@ import Profile from "./components/profile/profile";
 import ProfileEdit from "./components/profile/profile-edit";
 import Order from "./components/profile/order/order";
 import OrderDetails from "./components/profile/order/details/details";
+import ManageShop from "./components/profile/shop/manage";
+import CreateProduct from "./components/profile/shop/product/create/create";
 
 
 
@@ -99,6 +101,8 @@ export default function App() {
             <Route path="/profile/edit" element={<ProfileEdit/>}></Route>
             <Route path="/profile/order" element={<Order/>}></Route>
             <Route path="/profile/order/details" element={<OrderDetails/>}></Route>
+            <Route path="/profile/shop/manage" element={<ManageShop/>}></Route>
+            <Route path="/profile/shop/manage/create-product" element={<CreateProduct/>}></Route>
           </Routes>
         </Layouts>
       </ThemeProvider>
