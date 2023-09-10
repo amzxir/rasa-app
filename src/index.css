@@ -202,3 +202,45 @@ body {
   display: block;
   width: 100%;
 }
+
+.progressbar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding: 0;
+}
+.progressbar li {
+  list-style: none;
+  display: inline-block;
+  width: 25%;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+}
+.progressbar li:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  border-bottom:2.5px solid #9E9E9E;
+  top: 45px;
+  right: -50%;
+  z-index : 1;
+  
+}
+.progressbar li:first-child:after {
+  content: none;
+  z-index: 1;
+}
+.progressbar li.active {
+  color: #113D8D;
+  z-index: 1;
+}
+.progressbar li.active:before {
+  border-color: #113D8D;
+  z-index: 1;
+} 
+.progressbar li.active + li:after {
+  border-color: #113D8D;
+  z-index: 0;
+}
