@@ -256,3 +256,9 @@ body {
   bottom: -4px;
   z-index: 1;
 }
+
+.error{
+  font-size: 10px;
+  color: #FF4747;
+  text-align: right;
+}
