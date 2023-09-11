@@ -1,14 +1,13 @@
-import React, { useContext, useState } from "react";
-import { Container, Grid, Avatar, Stack, IconButton } from "@mui/material";
+import React, { useContext } from "react";
+import { Container, Grid, Avatar, Stack, IconButton , Badge } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { useLocation, useNavigate } from "react-router-dom";
-import Apps from "../assets/svg/apps";
-import Sun from "../assets/svg/sun";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import SunIcon from "../assets/svg/sun";
 import LightStyles from "../assets/sass/light/header.module.scss";
 import DarkStyles from "../assets/sass/dark/header.module.scss";
 import Navigation from "../assets/svg/navigation";
 import ColorModeContext from "../context/color-mode-context";
-import Sidebar from "./sidebar";
+import NotifIcon from "../assets/svg/notif";
 
 export default function Header() {
   // start function darkmode
@@ -21,14 +20,6 @@ export default function Header() {
   let path = location.pathname;
   let navigate = useNavigate();
   // end variable react router dom
-
-  // start function and state sidebar
-  const [isOpen, setIsopen] = useState(false);
-
-  const handelSidebar = () => {
-    setIsopen(!isOpen);
-  };
-  // end function and state sidebar
 
   return path !== "/shop/pay/sucess" && path !== "/profile" ? (
     <Container
@@ -109,14 +100,17 @@ export default function Header() {
           <Grid item xs={3}>
             <Stack spacing={1} direction="row">
               <IconButton onClick={colorMode.toggleColorMode}>
-                <Sun />
+                <SunIcon />
               </IconButton>
-              <IconButton onClick={handelSidebar}>
-                <Apps />
-              </IconButton>
+              <NavLink to={"/shop/notification"} state={"اعلانات"}>
+                <IconButton>
+                  <Badge color="error" overlap="circular" badgeContent=" " variant="dot">
+                    <NotifIcon />
+                  </Badge>
+                </IconButton>
+              </NavLink>
             </Stack>
           </Grid>
-          <Sidebar isOpen={isOpen} handelSidebar={handelSidebar} />
         </Grid>
       )}
     </Container>
