@@ -107,7 +107,6 @@ export default function Home() {
         }
       >
         <h1 data-test="type-of-text">{fa["Service Rasadent"]}</h1>
-        <NavLink>{fa["More Service"]}</NavLink>
       </div>
       <div
         className={

@@ -185,91 +185,16 @@ export default function Search() {
             ) : (
               items.map((i) => {
                 return (
-                  <li key={i.id} onClick={() => cardSearch(i)}>
-                    <BexitIcon /> <span>{i.name}</span>
+                  <li key={i.id}>
+                    <NavLink to={"/shop/single-product"} state={"کامپوزیت سارمکو"}>
+                      <BexitIcon /> <span>{i.name}</span>
+                    </NavLink>
                   </li>
                 );
               })
             )}
           </ul>
 
-          <Grid container spacing={2}>
-            {productSearch.length === 0 || filter.length === 0 ? null : (
-              <Grid item xs={6}>
-                <div
-                  className={
-                    theme.palette.mode === "light"
-                      ? LightStyles.card_product
-                      : DarkStyles.card_product
-                  }
-                >
-                  <div
-                    className={
-                      theme.palette.mode === "light"
-                        ? LightStyles.card_img
-                        : DarkStyles.card_img
-                    }
-                  >
-                    <NavLink
-                      to={"/shop/single-product"}
-                      className={
-                        theme.palette.mode === "light"
-                          ? LightStyles.img_center
-                          : DarkStyles.img_center
-                      }
-                    >
-                      <img src="image/product-1.png" alt="" />
-                    </NavLink>
-                    <div
-                      className={
-                        theme.palette.mode === "light"
-                          ? LightStyles.icon_wishlist
-                          : DarkStyles.icon_wishlist
-                      }
-                    >
-                      <HeartIcon />
-                    </div>
-                  </div>
-                  <div
-                    className={
-                      theme.palette.mode === "light"
-                        ? LightStyles.shop
-                        : DarkStyles.shop
-                    }
-                  >
-                    <span>{productSearch.category}</span>
-                  </div>
-                  <div
-                    className={
-                      theme.palette.mode === "light"
-                        ? LightStyles.product_details
-                        : DarkStyles.product_details
-                    }
-                  >
-                    <NavLink
-                      to={"/shop/single-product"}
-                      className={
-                        theme.palette.mode === "light"
-                          ? LightStyles.name_product
-                          : DarkStyles.name_product
-                      }
-                    >
-                      {productSearch.name}
-                    </NavLink>
-                    <p
-                      className={
-                        theme.palette.mode === "light"
-                          ? LightStyles.price_product
-                          : DarkStyles.price_product
-                      }
-                    >
-                      {productSearch.price} {fa["Toman"]}
-                    </p>
-                  </div>
-                </div>
-              </Grid>
-            )}
-          </Grid>
         </div>
       </Modal>
     </>

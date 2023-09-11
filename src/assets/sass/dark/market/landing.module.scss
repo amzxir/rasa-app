@@ -264,24 +264,26 @@
             text-align: right;
             list-style: none;
             padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             cursor: pointer;
             
+            a{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-decoration: none;
+                color: #fff;
 
-            span{
-                font-family: "font-light" !important;
-                font-size: 18px;
-                font-weight: 500;
-                line-height: 25px;
-                letter-spacing: 0.20000000298023224px;
-                text-align: right;
-                color: #ffffff;
-            }
-
-            svg{
-
+                span{
+                    font-family: "font-light" !important;
+                    font-size: 18px;
+                    font-weight: 500;
+                    line-height: 25px;
+                    letter-spacing: 0.20000000298023224px;
+                    text-align: right;
+                }
+                svg{
+    
+                }
             }
         }
         
