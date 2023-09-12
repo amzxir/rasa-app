@@ -1,0 +1,109 @@
+.card_product{
+    position: relative;
+    margin: 0 auto;
+    padding: 10px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    margin-left: 10px;
+
+
+    .card_img{
+        position: relative;
+        z-index: 10 !important;
+
+
+        .img_center{
+    
+            img{
+                width: 100%;
+                height: auto;
+                border-radius: 12px;
+                background: #ebebeb;
+    
+            }
+        }
+        .icon_wishlist{
+            cursor: pointer;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            bottom: -15px;
+            right: 15px;
+            width: 36px;
+            height: 36px;
+            background: #FFFFFF;
+            box-shadow: 0px 4px 4px 0px #0000000A;
+            border-radius: 50%;
+            z-index: 1000000 !important;
+        }
+    }
+    
+
+    .rating{
+        margin-top: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: .5rem;
+
+        .text_rating{
+            font-family: "font-number" !important;
+            font-size: 10px;
+            font-weight: 400;
+            line-height: 8px;
+            letter-spacing: 0px;
+            color: #9B9B9B;
+        }
+    }
+
+    .shop{
+        text-align: right;
+        margin-bottom: .5rem;
+        margin-top: 1.5rem;
+
+        span{
+            font-family: "font-light" !important;
+            font-size: 10px;
+            font-weight: 400;
+            line-height: 15px;
+            letter-spacing: 0em;
+            text-align: right;
+            color: #9B9B9B;
+
+            
+        }
+
+
+    }
+
+    .product_details{
+        text-align: right;
+
+        .name_product{
+            color: #242424;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 21px;
+            letter-spacing: 0em;
+            text-align: right;            
+            text-decoration: none;
+
+        }
+
+        .price_product{
+            font-family: "font-number" !important;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 20px;
+            letter-spacing: 0em;
+            text-align: right;
+            color: #242424;
+            margin-block-start: .3rem !important;
+            margin-block-end: 0 !important;
+
+
+        }
+
+    }
+}

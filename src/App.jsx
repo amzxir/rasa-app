@@ -31,11 +31,14 @@ import Order from "./components/profile/order/order";
 import OrderDetails from "./components/profile/order/details/details";
 import ManageShop from "./components/profile/shop/manage";
 import CreateProduct from "./components/profile/shop/product/create/create";
+import ProductCategory from "./components/platform/market/category/product-category";
 
 
 
 
 export default function App() {
+
+
   // start function darkmode
   const storage = localStorage.theme !== "undefined" ? localStorage.theme : "light";
   const [storageTheme, setStorageTheme] = useState(storage);
@@ -64,6 +67,16 @@ export default function App() {
   }, [theme, storageTheme, mode]);
   // end function darkmode
 
+  // start fetch product data 
+  const [fetchProduct , setFetchProduct] = useState()
+
+  const handelSendProduct = (i) => {
+    setFetchProduct(i)
+  }
+  // end fetch product data 
+
+  
+
   return (
     <ColorModeContext.Provider value={{ colorMode }}>
       <ThemeProvider theme={theme}>
@@ -76,7 +89,8 @@ export default function App() {
             <Route path="/terms" element={<Terms />}></Route>
             <Route path="/faq" element={<Faq />}></Route>
             {/* routeing component shop */}
-            <Route exact path="/shop" element={<HomeShop />}></Route>
+            <Route exact path="/shop" element={<HomeShop sendProduct={handelSendProduct} />}></Route>
+            <Route path="/shop/category-product/:productName" element={<ProductCategory fetchProduct={fetchProduct} />}></Route>
             <Route path="/shop/notification" element={<Notification />}></Route>
             <Route path="/shop/wishlist" element={<Wishlist />}></Route>
             <Route path="/shop/single-product" element={<SingleShop />}></Route>

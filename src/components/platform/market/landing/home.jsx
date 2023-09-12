@@ -8,7 +8,7 @@ const Banner = lazy(() => import("./banner/banner"));
 const Slide = lazy(() => import("./banner/slide"));
 const ProductSlide = lazy(() => import("./product/product-slide"));
 
-export default function LandingShop() {
+export default function LandingShop({sendProduct}) {
   // start function darkmode
   const theme = useTheme();
   const { colorMode } = useContext(ColorModeContext);
@@ -16,11 +16,11 @@ export default function LandingShop() {
 
   // start fetch data bennr slide
   const bannerSlide = [
-    { id: 1, name: "رسادنت", path_img: "image/slider1.png" },
-    { id: 2, name: "رسادنت", path_img: "image/slider1.png" },
-    { id: 3, name: "رسادنت", path_img: "image/slider1.png" },
-    { id: 4, name: "رسادنت", path_img: "image/slider1.png" },
-    { id: 5, name: "رسادنت", path_img: "image/slider1.png" },
+    { id: 1, name: "رسادنت", path_img: "/image/slider1.png" },
+    { id: 2, name: "رسادنت", path_img: "/image/slider1.png" },
+    { id: 3, name: "رسادنت", path_img: "/image/slider1.png" },
+    { id: 4, name: "رسادنت", path_img: "/image/slider1.png" },
+    { id: 5, name: "رسادنت", path_img: "/image/slider1.png" },
   ];
   const [bannerData, setBannerData] = useState(bannerSlide);
   // end fetch data bennr slide
@@ -30,13 +30,13 @@ export default function LandingShop() {
     {
       id: 1,
       title: "پیشنهاد شگقت انگیز",
-      path: null,
+      path: "/shop/category-product/پیشنهاد شگقت انگیز",
       product: [
         {
           id: 1,
           name: "کامپوزیت سارمکو",
           path:"/shop/single-product",
-          path_img: "image/product-1.png",
+          path_img: "/image/product-1.png",
           shop_name: "فروشگاه مانگو طب",
           price: "12000",
           rating: 3,
@@ -46,7 +46,7 @@ export default function LandingShop() {
           id: 2,
           name: "باندینگ نسل 8 اف جی ام",
           path:"/shop/single-product",
-          path_img: "image/product-2.png",
+          path_img: "/image/product-2.png",
           shop_name: "فروشگاه طب",
           price: "7000",
           rating: 5,
@@ -56,7 +56,7 @@ export default function LandingShop() {
           id: 3,
           name: "آلژینات بایر  کولزر",
           path:"/shop/single-product",
-          path_img: "image/product-2.png",
+          path_img: "/image/product-2.png",
           shop_name: "فروشگاه مانگو",
           price: "3000",
           rating: 3,
@@ -66,7 +66,7 @@ export default function LandingShop() {
           id: 4,
           name: "آلژینات زرماخ",
           path:"/shop/single-product",
-          path_img: "image/product-1.png",
+          path_img: "/image/product-1.png",
           shop_name: "فروشگاه رسادنت",
           price: "34000",
           rating: 2,
@@ -76,7 +76,7 @@ export default function LandingShop() {
           id: 5,
           name: "کامپوزیت سارمکو",
           path:"/shop/single-product",
-          path_img: "image/product-2.png",
+          path_img: "/image/product-2.png",
           shop_name: "فروشگاه مانگو طب",
           price: "56000",
           rating: 1,
@@ -86,7 +86,7 @@ export default function LandingShop() {
           id: 6,
           name: "باندینگ نسل 8 اف جی ام",
           path:"/shop/single-product",
-          path_img: "image/product-2.png",
+          path_img: "/image/product-2.png",
           shop_name: "فروشگاه مانگو",
           price: "12000",
           rating: 5,
@@ -96,7 +96,7 @@ export default function LandingShop() {
           id: 7,
           name: "آلژینات بایر  کولزر",
           path:"/shop/single-product",
-          path_img: "image/product-2.png",
+          path_img: "/image/product-2.png",
           shop_name: "فروشگاه طب",
           price: "50000",
           rating: 2,
@@ -107,7 +107,7 @@ export default function LandingShop() {
           name: "آلژینات زرماخ",
           path:"/shop/single-product",
           shop_name: "فروشگاه رسادنت",
-          path_img: "image/product-1.png",
+          path_img: "/image/product-1.png",
           price: "85000",
           rating: 5,
           comment: "54",
@@ -116,7 +116,7 @@ export default function LandingShop() {
           id: 9,
           name: "آلژینات زرماخ",
           path:"/shop/single-product",
-          path_img: "image/product-2.png",
+          path_img: "/image/product-2.png",
           shop_name: "فروشگاه مانگو طب",
           price: "34000",
           rating: 5,
@@ -126,7 +126,7 @@ export default function LandingShop() {
           id: 10,
           name: "کامپوزیت سارمکو",
           path:"/shop/single-product",
-          path_img: "image/product-1.png",
+          path_img: "/image/product-1.png",
           shop_name: "فروشگاه مانگو طب",
           price: "12300",
           rating: 5,
@@ -137,13 +137,13 @@ export default function LandingShop() {
     {
       id: 2,
       title: "پرفروش ترین محصولات",
-      path: null,
+      path: "/shop/category-product/پرفروش ترین محصولات",
       product: [
         {
           id: 1,
           name: "کامپوزیت سارمکو",
           path:"/shop/single-product",
-          path_img: "image/product-1.png",
+          path_img: "/image/product-1.png",
           shop_name: "فروشگاه مانگو طب",
           price: "12000",
           rating: 3,
@@ -153,7 +153,7 @@ export default function LandingShop() {
           id: 2,
           name: "باندینگ نسل 8 اف جی ام",
           path:"/shop/single-product",
-          path_img: "image/product-2.png",
+          path_img: "/image/product-2.png",
           shop_name: "فروشگاه طب",
           price: "7000",
           rating: 5,
@@ -163,7 +163,7 @@ export default function LandingShop() {
           id: 3,
           name: "آلژینات بایر  کولزر",
           path:"/shop/single-product",
-          path_img: "image/product-2.png",
+          path_img: "/image/product-2.png",
           shop_name: "فروشگاه مانگو",
           price: "3000",
           rating: 3,
@@ -173,7 +173,7 @@ export default function LandingShop() {
           id: 4,
           name: "آلژینات زرماخ",
           path:"/shop/single-product",
-          path_img: "image/product-1.png",
+          path_img: "/image/product-1.png",
           shop_name: "فروشگاه رسادنت",
           price: "34000",
           rating: 2,
@@ -183,7 +183,7 @@ export default function LandingShop() {
           id: 5,
           name: "کامپوزیت سارمکو",
           path:"/shop/single-product",
-          path_img: "image/product-2.png",
+          path_img: "/image/product-2.png",
           shop_name: "فروشگاه مانگو طب",
           price: "56000",
           rating: 1,
@@ -193,7 +193,7 @@ export default function LandingShop() {
           id: 6,
           name: "باندینگ نسل 8 اف جی ام",
           path:"/shop/single-product",
-          path_img: "image/product-2.png",
+          path_img: "/image/product-2.png",
           shop_name: "فروشگاه مانگو",
           price: "12000",
           rating: 5,
@@ -204,13 +204,13 @@ export default function LandingShop() {
     {
       id: 3,
       title: "جدیدترین محصولات",
-      path: null,
+      path: "/shop/category-product/جدیدترین محصولات",
       product: [
         {
           id: 1,
           name: "کامپوزیت سارمکو",
           path:"/shop/single-product",
-          path_img: "image/product-1.png",
+          path_img: "/image/product-1.png",
           shop_name: "فروشگاه مانگو طب",
           price: "12000",
           rating: 3,
@@ -220,7 +220,7 @@ export default function LandingShop() {
           id: 2,
           name: "باندینگ نسل 8 اف جی ام",
           path:"/shop/single-product",
-          path_img: "image/product-2.png",
+          path_img: "/image/product-2.png",
           shop_name: "فروشگاه طب",
           price: "7000",
           rating: 5,
@@ -230,7 +230,7 @@ export default function LandingShop() {
           id: 3,
           name: "آلژینات بایر  کولزر",
           path:"/shop/single-product",
-          path_img: "image/product-2.png",
+          path_img: "/image/product-2.png",
           shop_name: "فروشگاه مانگو",
           price: "3000",
           rating: 3,
@@ -250,7 +250,7 @@ export default function LandingShop() {
       </Suspense>
 
       <Suspense fallback={<div>Loading...</div>}>
-        <ProductSlide productData={productData} />
+        <ProductSlide productData={productData} sendProduct={sendProduct} />
       </Suspense>
 
       <Suspense fallback={<div>Loading...</div>}>

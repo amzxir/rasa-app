@@ -9,7 +9,7 @@ import ColorModeContext from "../../../../../context/color-mode-context";
 import Heart from "../../../../../assets/svg/heart";
 import fa from "../../../../../lang/fa.json";
 
-export default function ProductSlide({ productData }) {
+export default function ProductSlide({ productData , sendProduct }) {
   // start function darkmode
   const theme = useTheme();
   const { colorMode } = useContext(ColorModeContext);
@@ -35,7 +35,7 @@ export default function ProductSlide({ productData }) {
               }
             >
               <h1>📍 {i.title}</h1>
-              <NavLink to={i.path}>{fa["view all"]}</NavLink>
+              <NavLink onClick={()=> sendProduct(i)} to={i.path} state={i.title}>{fa["view all"]}</NavLink>
             </div>
             <Splide
               className={

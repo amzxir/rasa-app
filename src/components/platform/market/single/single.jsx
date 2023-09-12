@@ -27,12 +27,13 @@ export default function Single() {
   // end render compoent scroll top
 
   // start function input number
+  const stock = 10;
   let [count , setCount] = React.useState(1)
   const handelTotal = () => {
     if(count === Math.abs(count) * -1 ){
       setCount(1)
     } else {
-      setCount((prevCount) => prevCount + 1)
+      setCount(count === stock ? stock : (prevCount) => prevCount + 1)
     }
   }
 
