@@ -3,7 +3,7 @@ import { Box, Card, Grid , IconButton } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
 import LightStyles from "../../../../../assets/sass/light/market/card.module.scss";
-import Darkstyles from "../../../../../assets/sass/dark/market/card.module.scss";
+import DarkStyles from "../../../../../assets/sass/dark/market/card.module.scss";
 import ColorModeContext from "../../../../../context/color-mode-context";
 import DeleteIcone from "../../../../../assets/svg/delete";
 import AddIcon from "../../../../../assets/svg/add";
@@ -30,14 +30,14 @@ export default function Cards() {
   // end state product card
 
   // start finction count product
-
+  const stock = 10;
   let [count , setCount] = useState(1);
 
   const handelTotal = () => {
     if(count === Math.abs(count) * -1 ){
       setCount(1)
     } else {
-      setCount((prevCount) => prevCount + 1)
+      setCount(count === stock ? stock : (prevCount) => prevCount + 1)
     }
   }
 
@@ -48,8 +48,12 @@ export default function Cards() {
       setCount((prevCount) => prevCount - 1)
     }
   }
-
   // end finction count product
+
+  // start fetch data and function delete
+  const [isOpen , setIsOpen] = useState(false)
+  
+  // end fetch data and function delete 
 
   return (
     <Box sx={{ mt: 5, mb: 5 }}>
@@ -58,50 +62,73 @@ export default function Cards() {
           return(
             <Grid key={i.id} item xs={12}>
               <Card sx={{ boxShadow:0 , borderRadius:"15px" }}>
-                <div className={theme.palette.mode === "light" ? LightStyles.flexItem : Darkstyles.flexItem}>
+                <div className={theme.palette.mode === "light" ? LightStyles.flexItem : DarkStyles.flexItem}>
                   <figure>
                     <img src={i.img} alt={i.name} />
                   </figure>
-                  <div className={theme.palette.mode === "light" ? LightStyles.content : Darkstyles.content}>
-                    <h1 className={theme.palette.mode === "light" ? LightStyles.name_product : Darkstyles.name_product}>{i.name}</h1>
-                    <div className={theme.palette.mode === "light" ? LightStyles.count_product : Darkstyles.count_product}>
+                  <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
+                    <h1 className={theme.palette.mode === "light" ? LightStyles.name_product : DarkStyles.name_product}>{i.name}</h1>
+                    <div className={theme.palette.mode === "light" ? LightStyles.count_product : DarkStyles.count_product}>
                       <IconButton onClick={handelTotal}><AddIcon/></IconButton>
-                      <span>{i.count}</span>
+                      <span>{count}</span>
                       <IconButton onClick={handelSubtraction}><MinusIcon/></IconButton>
                     </div>
-                    <div className={theme.palette.mode === "light" ? LightStyles.details_product : Darkstyles.details_product}>
-                      <p className={theme.palette.mode === "light" ? LightStyles.price_product : Darkstyles.price_product}>{i.price}</p>
-                      <IconButton><DeleteIcone/></IconButton>
+                    <div className={theme.palette.mode === "light" ? LightStyles.details_product : DarkStyles.details_product}>
+                      <p className={theme.palette.mode === "light" ? LightStyles.price_product : DarkStyles.price_product}>{i.price}</p>
+                      <IconButton onClick={() => setIsOpen(index)}><DeleteIcone/></IconButton>
                     </div>
                   </div>
                 </div>
               </Card>
+              <div onClick={()=> setIsOpen(false)} className={isOpen === index ? theme.palette.mode === "light" ? LightStyles.fade_open : DarkStyles.fade_open : theme.palette.mode === "light" ? LightStyles.fade_close : DarkStyles.fade_close}>
+              </div>
+                <div className={isOpen === index ? theme.palette.mode === "light" ? LightStyles.card_delete_open : DarkStyles.card_delete_open : theme.palette.mode === "light" ? LightStyles.card_delete_close : DarkStyles.card_delete_close}>
+                  <h1 className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["Product removed from cart?"]}</h1>
+                  <hr />
+                  <Card className={theme.palette.mode === "light" ? LightStyles.card_pro : DarkStyles.card_pro}>
+                    <div className={theme.palette.mode === "light" ? LightStyles.d_flex : DarkStyles.d_flex}>
+                      <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
+                        <img src={i.img} alt={i.name} />
+                      </div>
+                      <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
+                        <h2>{i.name}</h2>
+                        <p>{i.price} <span>{fa["Toman"]}</span></p>
+                      </div>
+                    </div>
+                  </Card>
+                  <div className={theme.palette.mode === "light" ? LightStyles.d_flex_btn : DarkStyles.d_flex_btn}>
+                    <button className={theme.palette.mode === "light" ? LightStyles.confirm : DarkStyles.confirm}>{fa["yes"]}</button>
+                    <button onClick={()=> setIsOpen(false)} className={theme.palette.mode === "light" ? LightStyles.cancell : DarkStyles.cancell}>{fa["no"]}</button>
+                  </div>
+                </div>
             </Grid>
           )
         })}
       </Grid>
 
       <Card sx={{ boxShadow:0 , borderRadius:'15px' , p:2 }}>
-        <div className={theme.palette.mode === "light" ? LightStyles.formDiscount : Darkstyles.formDiscount}>
+        <div className={theme.palette.mode === "light" ? LightStyles.formDiscount : DarkStyles.formDiscount}>
           <input type="text" placeholder={fa["enter discount code"]} />
           <button><span>{fa["submit"]}</span></button>
         </div>
-        <div className={theme.palette.mode === "light" ? LightStyles.invoice : Darkstyles.invoice}>
-          <div className={theme.palette.mode === "light" ? LightStyles.total : Darkstyles.total}>
-            <p className={theme.palette.mode === "light" ? LightStyles.title : Darkstyles.title}>{fa["price products"]}</p>
-            <p className={theme.palette.mode === "light" ? LightStyles.price : Darkstyles.price}>150/000 {fa["Toman"]}</p>
+        <div className={theme.palette.mode === "light" ? LightStyles.invoice : DarkStyles.invoice}>
+          <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
+            <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["price products"]}</p>
+            <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>150/000 {fa["Toman"]}</p>
           </div>
-          <div className={theme.palette.mode === "light" ? LightStyles.total : Darkstyles.total}>
-            <p className={theme.palette.mode === "light" ? LightStyles.title : Darkstyles.title}>{fa["Your profit from the purchase"]}</p>
-            <p className={theme.palette.mode === "light" ? LightStyles.price_red : Darkstyles.price_red}>150/000 {fa["Toman"]}</p>
-          </div>
-          <div className={theme.palette.mode === "light" ? LightStyles.total : Darkstyles.total}>
-            <p className={theme.palette.mode === "light" ? LightStyles.title : Darkstyles.title}>{fa["price products"]}</p>
-            <p className={theme.palette.mode === "light" ? LightStyles.price_success : Darkstyles.price_success}>150/000 {fa["Toman"]}</p>
+          {/* <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
+            <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["Your profit from the purchase"]}</p>
+            <p className={theme.palette.mode === "light" ? LightStyles.price_red : DarkStyles.price_red}>150/000 {fa["Toman"]}</p>
+          </div> */}
+          <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
+            <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["total card"]}</p>
+            <p className={theme.palette.mode === "light" ? LightStyles.price_success : DarkStyles.price_success}>150/000 {fa["Toman"]}</p>
           </div>
         </div>
-        <NavLink to={"/shop/shopping"} state={fa["Time and method of sending"]} className={theme.palette.mode === "light" ? LightStyles.btn_card : Darkstyles.btn_card}><span>{fa["Order"]}</span></NavLink>
+        <NavLink to={"/shop/shopping"} state={fa["Time and method of sending"]} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Order"]}</span></NavLink>
       </Card>
+
+
     </Box>
   );
 }

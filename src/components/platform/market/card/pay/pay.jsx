@@ -1,4 +1,4 @@
-import React , { useContext } from 'react'
+import React , { useContext , useState } from 'react'
 import { Box , Card , IconButton } from '@mui/material'
 import { useTheme } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
@@ -18,6 +18,12 @@ export default function Pay() {
   const theme = useTheme();
   const { colorMode } = useContext(ColorModeContext);
   // end function darkmode
+
+  // start state checked input
+  const [checked, setChecked] = useState(true);
+  // end state checked input
+
+
   return (
     <Box sx={{ mt:5 , mb:5 }}>
       <div className={theme.palette.mode === "light" ? LightStyles.title_address : DarkStyles.title_address}>
@@ -29,7 +35,7 @@ export default function Pay() {
               <h1 style={{ marginLeft:'5rem' }}>پرداخت اینترنتی</h1>
               <p>پرداخت آنلاین با تمامی کارت‌های بانکی</p>
             </label>
-            <input type="radio" />
+            <input id="sendProduct" type="radio" defaultChecked={checked} />
           </div>
         </Card>
       </div>
@@ -39,12 +45,12 @@ export default function Pay() {
               <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["price products"]}</p>
               <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>150/000 {fa["Toman"]}</p>
             </div>
-            <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
+            {/* <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
               <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["Your profit from the purchase"]}</p>
               <p className={theme.palette.mode === "light" ? LightStyles.price_red : DarkStyles.price_red}>150/000 {fa["Toman"]}</p>
-            </div>
+            </div> */}
             <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
-              <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["price products"]}</p>
+              <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["total card"]}</p>
               <p className={theme.palette.mode === "light" ? LightStyles.price_success : DarkStyles.price_success}>150/000 {fa["Toman"]}</p>
             </div>
             <hr style={{ borderWidth:'.1px' , borderColor:'#ffffff4d' }} />

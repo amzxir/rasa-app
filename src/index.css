@@ -70,6 +70,7 @@ body {
   height: 82vh;
 }
 
+
 .scroll-auto-light::-webkit-scrollbar{
   display: none;
 }
