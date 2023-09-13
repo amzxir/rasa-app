@@ -32,6 +32,7 @@ import OrderDetails from "./components/profile/order/details/details";
 import ManageShop from "./components/profile/shop/manage";
 import CreateProduct from "./components/profile/shop/product/create/create";
 import ProductCategory from "./components/platform/market/category/product-category";
+import CategoryList from "./components/platform/market/category/category-list";
 
 
 
@@ -90,6 +91,7 @@ export default function App() {
             <Route path="/faq" element={<Faq />}></Route>
             {/* routeing component shop */}
             <Route exact path="/shop" element={<HomeShop sendProduct={handelSendProduct} />}></Route>
+            <Route exact path="/shop/category-list" element={<CategoryList />}></Route>
             <Route path="/shop/category-product/:productName" element={<ProductCategory fetchProduct={fetchProduct} />}></Route>
             <Route path="/shop/notification" element={<Notification />}></Route>
             <Route path="/shop/wishlist" element={<Wishlist />}></Route>

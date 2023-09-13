@@ -1,9 +1,13 @@
 .search{
     margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: auto !important;
+    margin-left: 0 !important;
     
     .form_group{
         position: relative;
-        direction: ltr;
         direction: rtl;
 
         .input{

@@ -1,0 +1,33 @@
+.category_list{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    margin-bottom: 1rem;
+
+    .img_center{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f7e8e7;
+        padding: 10px;
+        border-radius: 10px;
+
+        img{
+            width: 43px;
+            height: 43px;
+
+        }
+    }
+
+    h1{
+        font-family: "font-light" !important;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 23px;
+        letter-spacing: 0em;
+        text-align: center;
+        color: #323142;
+
+    }
+}
