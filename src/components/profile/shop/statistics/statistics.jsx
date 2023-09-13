@@ -8,6 +8,7 @@ import ColorModeContext from "../../../../context/color-mode-context";
 import FiRrShopIcon from "../../../../assets/svg/fi-rr-shop";
 import ShoppingCardIcon from "../../../../assets/svg/fi-rr-shopping-cart-check";
 import SignInIcon from "../../../../assets/svg/fi-rr-sign-in-alt";
+import LineChart from "../../../chart/line";
 
 
 export default function Statistics() {
@@ -29,6 +30,7 @@ export default function Statistics() {
       <div className={theme.palette.mode === "light" ? LightStyles.card_chart : DarkStyles.card_chart}>
         <h1>درآمد شما در سال 1402</h1>
         <p>12,000</p>
+        <LineChart/>
       </div>
       <Grid container spacing={2}>
         {details.map((i , index)=> {
