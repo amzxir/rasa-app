@@ -15,7 +15,7 @@ export default function FiRrShoppingCartCheck() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_387_4601)">
+      <g clipPath="url(#clip0_387_4601)">
         <path
           d="M6.99992 24.001C8.10449 24.001 8.99992 23.1055 8.99992 22.001C8.99992 20.8964 8.10449 20.001 6.99992 20.001C5.89535 20.001 4.99992 20.8964 4.99992 22.001C4.99992 23.1055 5.89535 24.001 6.99992 24.001Z"
           fill={theme.palette.mode === "light" ? "#374957" : "#ffffff"}
