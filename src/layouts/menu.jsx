@@ -22,9 +22,7 @@ export default function Menu() {
   let location = useLocation();
   let path = location.pathname;
   // end search location
-  return path === "/jet/jet-text" ||
-    path === "/jet/jet-image" ||
-    path === "/jet/jet-voice" ? null : (
+  return path === "/jet/send" ? null : (
     <div
       className={
         theme.palette.mode === "light"

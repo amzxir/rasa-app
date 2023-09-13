@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { Box, IconButton, Menu, MenuItem } from "@mui/material";
-import { NavLink } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import LightStyles from "../../../assets/sass/light/jet/text.module.scss";
 import DarkStyles from "../../../assets/sass/dark/jet/text.module.scss";
@@ -92,12 +91,9 @@ export default function JetText() {
                   : DarkStyles.item_menu
               }
             >
-              <NavLink
-                to={"/jet/jet-image"}
-                state={fa["Send a picture to place an order"]}
-              >
+              <p>
                 {fa["Image online"]}
-              </NavLink>
+              </p>
             </MenuItem>
             <MenuItem
               className={
@@ -106,12 +102,9 @@ export default function JetText() {
                   : DarkStyles.item_menu
               }
             >
-              <NavLink
-                to={"/jet/jet-voice"}
-                state={fa["Send voice to register the order"]}
-              >
+              <p>
                 {fa["Voice online"]}
-              </NavLink>
+              </p>
             </MenuItem>
           </Menu>
           <input type="text" placeholder={fa["Note your text"]} />

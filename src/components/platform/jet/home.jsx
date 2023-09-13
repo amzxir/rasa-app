@@ -16,48 +16,10 @@ export default function Home() {
   const { colorMode } = useContext(ColorModeContext);
   // end function darkmode
 
-  //  start fetch data rasajet
-  const rasajet = [
-    {
-      id: 1,
-      name: "آنلاین عکس بگیرید",
-      img_path: ModeLandscapeIcon,
-      path: "/jet/jet-image",
-      navigate: "ارسال تصویر برای ثبت سفارش رساجت",
-    },
-    {
-      id: 2,
-      name: "آنلاین صدا بگیرید",
-      img_path: HeadsetIcon,
-      path: "/jet/jet-voice",
-      navigate: "ارسال صدا برای ثبت سفارش رساجت",
-    },
-    {
-      id: 3,
-      name: "ارسال متن",
-      img_path: ClipIcon,
-      path: "/jet/jet-text",
-      navigate: "ارسال متن برای ثبت سفارش رساجت",
-    },
-  ];
-  const [dataJet, setDataJet] = useState(rasajet);
-  //  end fetch data rasajet
   return (
     <Box sx={{ mt: 5, mb: 5 }}>
-      <div
-        className={
-          theme.palette.mode === "light"
-            ? LightStyles.content
-            : DarkStyles.content
-        }
-      >
-        <div
-          className={
-            theme.palette.mode === "light"
-              ? LightStyles.img_center
-              : DarkStyles.img_center
-          }
-        >
+      <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
+        <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
           <img src="image/jet.svg" alt="" />
         </div>
         <h1>{fa["Place an order in Rasajt"]}</h1>
@@ -68,39 +30,7 @@ export default function Home() {
           متنوع با هدف بهبود ابزارهای کاربردی می باشد.
         </p>
       </div>
-      {dataJet.map((i) => {
-        return (
-          <NavLink
-            key={i.id}
-            to={i.path}
-            state={i.navigate}
-            className={
-              theme.palette.mode === "light"
-                ? LightStyles.card_jet
-                : DarkStyles.card_jet
-            }
-          >
-            <span
-              className={
-                theme.palette.mode === "light"
-                  ? LightStyles.jet_svg
-                  : DarkStyles.jet_svg
-              }
-            >
-              <i.img_path />
-            </span>
-            <span
-              className={
-                theme.palette.mode === "light"
-                  ? LightStyles.jet_name
-                  : DarkStyles.jet_name
-              }
-            >
-              {i.name}
-            </span>
-          </NavLink>
-        );
-      })}
+      <NavLink to={"/jet/send"} state={fa["rasajet"]} className={theme.palette.mode === "light" ? LightStyles.btn_next : DarkStyles.btn_next}><span>{fa["start"]}</span></NavLink>
     </Box>
   );
 }
