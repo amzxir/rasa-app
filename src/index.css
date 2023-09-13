@@ -263,3 +263,7 @@ body {
   color: #FF4747;
   text-align: right;
 }
+
+.rmdp-container{
+  width: 100% !important;
+}

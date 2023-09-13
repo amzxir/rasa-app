@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState , useRef } from "react";
 import { Box, Grid, IconButton } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import LightStyles from "../../assets/sass/light/profile-edit.module.scss";
@@ -8,12 +8,23 @@ import DateIcon from "../../assets/svg/date";
 import GmailIcon from "../../assets/svg/gmail";
 import DownIcon from "../../assets/svg/down";
 import fa from "../../lang/fa.json";
+import DatePicker from "react-multi-date-picker"
+import persian from "react-date-object/calendars/persian"
+import persian_fa from "react-date-object/locales/persian_fa"
+import { Calendar } from "react-multi-date-picker"
+
+
 
 export default function ProfileEdit() {
   // start function darkmode
   const theme = useTheme();
   const { colorMode } = useContext(ColorModeContext);
   // end function
+
+  // start state calender
+  const datePickerRef = useRef()
+
+  // end state calender
   return (
     <Box sx={{ mt: 5, mb: 5 }}>
       <Grid container>
@@ -29,8 +40,16 @@ export default function ProfileEdit() {
         </Grid>
         <Grid item xs={12}>
           <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
-            <input placeholder={fa["birthday date"]} type="text" />
-            <IconButton className={theme.palette.mode === "light" ? LightStyles.position_svg : DarkStyles.position_svg}>
+
+            <DatePicker             
+              className={theme.palette.mode === "light" ? LightStyles.date : DarkStyles.date}
+              ref={datePickerRef} 
+              calendar={persian}
+              locale={persian_fa}
+              calendarPosition="bottom-center"
+            />
+
+            <IconButton onClick={() => datePickerRef.current.openCalendar()} className={theme.palette.mode === "light" ? LightStyles.position_svg : DarkStyles.position_svg}>
                 <DateIcon/>
             </IconButton>
           </div>

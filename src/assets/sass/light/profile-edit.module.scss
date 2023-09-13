@@ -10,9 +10,12 @@
         padding: 20px 20px 20px 20px;
         border-radius: 16px;
         gap: 12px;
+        height: auto !important;
         background: #ffffff;
         border: 1px solid #ffffff;
     }
+
+
 
     select{
         font-family: "font-light" !important;
@@ -28,6 +31,16 @@
 
 
     ::placeholder{
+        font-family: "font-light" !important;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 17px;
+        letter-spacing: 0.20000000298023224px;
+        color: #ACACAC;
+
+    }
+
+    .date::placeholder{
         font-family: "font-light" !important;
         font-size: 12px;
         font-weight: 600;
