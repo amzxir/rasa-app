@@ -8,7 +8,6 @@ import ColorModeContext from "../../../context/color-mode-context";
 import SendIcon from "../../../assets/svg/send";
 import PlusIcon from "../../../assets/svg/plus";
 import fa from "../../../lang/fa.json";
-import { URL } from "url";
 
 
 
@@ -66,7 +65,7 @@ export default function JetText() {
   const [urlImage , setUrlImage] = useState([]);
 
   const handelImage = (e) => {
-    // setImage([...e.target.files])
+    setImage([...e.target.files])
   }
 
 
@@ -96,14 +95,14 @@ export default function JetText() {
       })}
 
       
-      {/* {image.map((i) => {
+      {image?.map((i) => {
         return(
-
-      <div className={theme.palette.mode === "light" ? LightStyles.chat_img : DarkStyles.chat_img}>
-        <img src="/image/me.JPG" alt="" />
-      </div>
+          <div className={theme.palette.mode === "light" ? LightStyles.chat_img : DarkStyles.chat_img}>
+            {console.log(URL.createObjectURL(i))}
+            <img src={URL.createObjectURL(i)} alt="" />
+          </div>
         )
-      })} */}
+      })}
 
 
 
