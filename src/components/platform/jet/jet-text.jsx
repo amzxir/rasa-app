@@ -95,10 +95,9 @@ export default function JetText() {
       })}
 
       
-      {image?.map((i) => {
+      {image?.map((i , index) => {
         return(
-          <div className={theme.palette.mode === "light" ? LightStyles.chat_img : DarkStyles.chat_img}>
-            {console.log(URL.createObjectURL(i))}
+          <div key={index} className={theme.palette.mode === "light" ? LightStyles.chat_img : DarkStyles.chat_img}>
             <img src={URL.createObjectURL(i)} alt="" />
           </div>
         )
@@ -125,7 +124,7 @@ export default function JetText() {
               <label htmlFor="image">
                 {fa["Image online"]}
               </label>
-              <input style={{ display:'none' }} id="image" type="file" accept="image/*" capture="environment" onChange={handelImage} multiple/>
+              <input style={{ display:'none' }} id="image" type="file" accept="image" onChange={handelImage} multiple/>
             </MenuItem>
             <MenuItem className={theme.palette.mode === "light" ? LightStyles.item_menu : DarkStyles.item_menu}>
               <p>
