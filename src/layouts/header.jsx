@@ -104,7 +104,7 @@ export default function Header() {
               <IconButton onClick={colorMode.toggleColorMode}>
                 <SunIcon />
               </IconButton>
-              <NavLink to={"/shop/notification"} state={"اعلانات"}>
+              <NavLink className="ml-0" to={"/shop/notification"} state={"اعلانات"}>
                 <IconButton>
                   <Badge color="error" overlap="circular" badgeContent=" " variant="dot">
                     <NotifIcon />
@@ -112,7 +112,7 @@ export default function Header() {
                 </IconButton>
               </NavLink>
               {path === '/shop' ? 
-                <NavLink style={{ margin:'0 !important' }} to={"/shop/category-list"} state={fa["category product"]}>
+                <NavLink className="ml-0" to={"/shop/category-list"} state={fa["category product"]}>
                   <IconButton>
                     <CategoryIcon />
                   </IconButton>

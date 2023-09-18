@@ -10,6 +10,7 @@ import PlusIcon from "../../../assets/svg/plus";
 import fa from "../../../lang/fa.json";
 
 
+
 export default function JetText() {
   // start function darkmode
   const theme = useTheme();
