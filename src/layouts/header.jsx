@@ -8,6 +8,8 @@ import DarkStyles from "../assets/sass/dark/header.module.scss";
 import Navigation from "../assets/svg/navigation";
 import ColorModeContext from "../context/color-mode-context";
 import NotifIcon from "../assets/svg/notif";
+import CategoryIcon from "../assets/svg/Category";
+import fa from "../lang/fa.json"
 
 export default function Header() {
   // start function darkmode
@@ -64,7 +66,7 @@ export default function Header() {
         </div>
       ) : (
         <Grid container spacing={2}>
-          <Grid item xs={9}>
+          <Grid item xs={path === "/shop" ? 8 : 9}>
             <Stack direction="row">
               <div>
                 <Avatar alt="Remy Sharp" src="/image/avatar.png" />
@@ -97,7 +99,7 @@ export default function Header() {
               </div>
             </Stack>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={path === "/shop" ? 4 : 3}>
             <Stack spacing={1} direction="row">
               <IconButton onClick={colorMode.toggleColorMode}>
                 <SunIcon />
@@ -109,6 +111,16 @@ export default function Header() {
                   </Badge>
                 </IconButton>
               </NavLink>
+              {path === '/shop' ? 
+                <NavLink style={{ margin:'0 !important' }} to={"/shop/category-list"} state={fa["category product"]}>
+                  <IconButton>
+                    <CategoryIcon />
+                  </IconButton>
+                </NavLink>
+                :
+                null
+                }
+
             </Stack>
           </Grid>
         </Grid>
