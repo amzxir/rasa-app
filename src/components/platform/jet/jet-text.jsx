@@ -8,6 +8,7 @@ import ColorModeContext from "../../../context/color-mode-context";
 import SendIcon from "../../../assets/svg/send";
 import PlusIcon from "../../../assets/svg/plus";
 import fa from "../../../lang/fa.json";
+import { URL } from "url";
 
 
 
@@ -60,6 +61,18 @@ export default function JetText() {
   }, [message]);
   // end function and state scroll bottom in message
 
+  // start and fetch data image
+  const [image , setImage] = useState();
+  const [urlImage , setUrlImage] = useState([]);
+
+  const handelImage = (e) => {
+    // setImage([...e.target.files])
+  }
+
+
+
+  // end and fetch data image
+
 
   return (
     <Box sx={{ mt: 5, mb: 5 }} className={theme.palette.mode === "light" ? LightStyles.jet_text : DarkStyles.jet_text}>
@@ -82,6 +95,18 @@ export default function JetText() {
           );
       })}
 
+      
+      {/* {image.map((i) => {
+        return(
+
+      <div className={theme.palette.mode === "light" ? LightStyles.chat_img : DarkStyles.chat_img}>
+        <img src="/image/me.JPG" alt="" />
+      </div>
+        )
+      })} */}
+
+
+
       <div className={theme.palette.mode === "light" ? LightStyles.send : DarkStyles.send}>
         <form onSubmit={handelSubmit} className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
           <IconButton onClick={handleClick} className={theme.palette.mode === "light" ? LightStyles.btn_item : DarkStyles.btn_item}>
@@ -98,9 +123,10 @@ export default function JetText() {
             }}
           >
             <MenuItem className={theme.palette.mode === "light" ? LightStyles.item_menu : DarkStyles.item_menu}>
-              <p>
+              <label htmlFor="image">
                 {fa["Image online"]}
-              </p>
+              </label>
+              <input style={{ display:'none' }} id="image" type="file" accept="image/*" capture="environment" onChange={handelImage} multiple/>
             </MenuItem>
             <MenuItem className={theme.palette.mode === "light" ? LightStyles.item_menu : DarkStyles.item_menu}>
               <p>
