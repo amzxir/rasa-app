@@ -31,6 +31,7 @@ import ManageShop from "./components/profile/shop/manage";
 import CreateProduct from "./components/profile/shop/product/create/create";
 import ProductCategory from "./components/platform/market/category/product-category";
 import CategoryList from "./components/platform/market/category/category-list";
+import NetworkStatus from "./components/network/network";
 
 
 
@@ -80,42 +81,44 @@ export default function App() {
     <ColorModeContext.Provider value={{ colorMode }}>
       <ThemeProvider theme={theme}>
         <Layouts>
-          <Routes>
-            {/* routeing component layout */}
-            <Route exact path="/" element={<Home />}></Route>
-            <Route path="/login" element={<Auth />}></Route>
-            <Route path="/about" element={<About />}></Route>
-            <Route path="/terms" element={<Terms />}></Route>
-            <Route path="/faq" element={<Faq />}></Route>
-            {/* routeing component shop */}
-            <Route exact path="/shop" element={<HomeShop sendProduct={handelSendProduct} />}></Route>
-            <Route exact path="/shop/category-list" element={<CategoryList />}></Route>
-            <Route path="/shop/category-product/:productName" element={<ProductCategory fetchProduct={fetchProduct} />}></Route>
-            <Route path="/shop/notification" element={<Notification />}></Route>
-            <Route path="/shop/wishlist" element={<Wishlist />}></Route>
-            <Route path="/shop/single-product" element={<SingleShop />}></Route>
-            <Route path="/shop/card" element={<CardShop/>}></Route>
-            <Route path="/shop/shopping" element={<ShoppingShop/>}></Route>
-            <Route path="/shop/add-address" element={<AddAddressShop/>}></Route>
-            <Route path="/shop/new-address" element={<NewAddressShop/>}></Route>
-            <Route path="/shop/pay" element={<PayShop/>}></Route>
-            <Route path="/shop/pay/sucess" element={<SuccessPayShop/>}></Route>
-            <Route path="/shop/pay/error" element={<ErrorPayShop/>}></Route>
-            {/* routeing component jet */}
-            <Route exact path="/jet" element={<HomeJet />}></Route>
-            <Route path="/jet/send" element={<JetText />}></Route>
-            {/* routeing component blog */}
-            <Route path="/blog" element={<Blog />}></Route>
-            {/* routeing component club */}
-            <Route path="/club" element={<Club />}></Route>
-            {/* routing compoent profile */}
-            <Route exact path="/profile" element={<Profile/>}></Route>
-            <Route path="/profile/edit" element={<ProfileEdit/>}></Route>
-            <Route path="/profile/order" element={<Order/>}></Route>
-            <Route path="/profile/order/details" element={<OrderDetails/>}></Route>
-            <Route path="/profile/shop/manage" element={<ManageShop/>}></Route>
-            <Route path="/profile/shop/manage/create-product" element={<CreateProduct/>}></Route>
-          </Routes>
+          <NetworkStatus>
+            <Routes>
+              {/* routeing component layout */}
+              <Route exact path="/" element={<Home />}></Route>
+              <Route path="/login" element={<Auth />}></Route>
+              <Route path="/about" element={<About />}></Route>
+              <Route path="/terms" element={<Terms />}></Route>
+              <Route path="/faq" element={<Faq />}></Route>
+              {/* routeing component shop */}
+              <Route exact path="/shop" element={<HomeShop sendProduct={handelSendProduct} />}></Route>
+              <Route exact path="/shop/category-list" element={<CategoryList />}></Route>
+              <Route path="/shop/category-product/:productName" element={<ProductCategory fetchProduct={fetchProduct} />}></Route>
+              <Route path="/shop/notification" element={<Notification />}></Route>
+              <Route path="/shop/wishlist" element={<Wishlist />}></Route>
+              <Route path="/shop/single-product" element={<SingleShop />}></Route>
+              <Route path="/shop/card" element={<CardShop/>}></Route>
+              <Route path="/shop/shopping" element={<ShoppingShop/>}></Route>
+              <Route path="/shop/add-address" element={<AddAddressShop/>}></Route>
+              <Route path="/shop/new-address" element={<NewAddressShop/>}></Route>
+              <Route path="/shop/pay" element={<PayShop/>}></Route>
+              <Route path="/shop/pay/sucess" element={<SuccessPayShop/>}></Route>
+              <Route path="/shop/pay/error" element={<ErrorPayShop/>}></Route>
+              {/* routeing component jet */}
+              <Route exact path="/jet" element={<HomeJet />}></Route>
+              <Route path="/jet/send" element={<JetText />}></Route>
+              {/* routeing component blog */}
+              <Route path="/blog" element={<Blog />}></Route>
+              {/* routeing component club */}
+              <Route path="/club" element={<Club />}></Route>
+              {/* routing compoent profile */}
+              <Route exact path="/profile" element={<Profile/>}></Route>
+              <Route path="/profile/edit" element={<ProfileEdit/>}></Route>
+              <Route path="/profile/order" element={<Order/>}></Route>
+              <Route path="/profile/order/details" element={<OrderDetails/>}></Route>
+              <Route path="/profile/shop/manage" element={<ManageShop/>}></Route>
+              <Route path="/profile/shop/manage/create-product" element={<CreateProduct/>}></Route>
+            </Routes>
+          </NetworkStatus>
         </Layouts>
       </ThemeProvider>
     </ColorModeContext.Provider>
