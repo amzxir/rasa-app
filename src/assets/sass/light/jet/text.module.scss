@@ -59,6 +59,8 @@
 
 .chat_right{
     width: fit-content;
+    max-width: 100%;
+    box-sizing: border-box;
     height: fit-content;
     padding: 10px;
     border-radius: 16px 16px 0px 16px;
@@ -68,6 +70,7 @@
 
     p{
         font-family: "font-light" !important;
+        word-wrap: break-word;
         font-size: 11px;
         font-weight: 500;
         line-height: 24px;
@@ -89,6 +92,7 @@
 
 .chat_left{
     width: fit-content;
+    max-width: 100%;
     height: fit-content;
     padding: 10px;
     border-radius: 16px 16px 16px 0px;
@@ -99,6 +103,8 @@
     p{
         font-family: "font-light" !important;
         font-size: 11px;
+        word-wrap: break-word;
+        box-sizing: border-box;
         font-weight: 500;
         line-height: 24px;
         letter-spacing: 0em;

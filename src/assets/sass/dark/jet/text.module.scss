@@ -60,7 +60,9 @@
 }
 
 .chat_right{
+    box-sizing: border-box;
     width: fit-content;
+    max-width: 100%;
     height: fit-content;
     padding: 10px;
     border-radius: 16px 16px 0px 16px;
@@ -69,6 +71,7 @@
     margin-bottom: 2rem;
 
     p{
+        word-wrap: break-word;
         font-family: "font-light" !important;
         font-size: 11px;
         font-weight: 500;
@@ -90,8 +93,10 @@
 }
 
 .chat_left{
+    box-sizing: border-box;
     width: fit-content;
     height: fit-content;
+    max-width: 100%;
     padding: 10px;
     border-radius: 16px 16px 16px 0px;
     gap: 4px;
@@ -99,6 +104,7 @@
     margin-bottom: 2rem;
 
     p{
+        word-wrap: break-word;
         font-family: "font-light" !important;
         font-size: 11px;
         font-weight: 500;
