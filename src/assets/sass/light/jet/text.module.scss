@@ -124,13 +124,26 @@
 }
 
 .item_menu{
-    font-family: "font-light" !important;
     direction: rtl;
     font-size: 11px !important;
+
+    label{
+        font-family: "font-primary" !important;
+        color: #000;
+    }
 
     p{
         text-decoration: none !important;
         color: #000;
     }
     
+}
+
+.chat_img{
+
+    img{
+        width: 200px;
+        height: 200px;
+        border-radius: 10px;
+    }
 }
