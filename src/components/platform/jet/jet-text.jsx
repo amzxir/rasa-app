@@ -179,7 +179,10 @@ export default function JetText() {
       {audioMp3.map((i , index) => {
         return(
           <div key={index}>
-            <audio src={i.voice} controls></audio>
+            <audio controls>
+              <source src={i.voice} type="audio/ogg"/>
+              <source src={i.voice} type="audio/mpeg"/>
+            </audio>
           </div>
         )
       })}
