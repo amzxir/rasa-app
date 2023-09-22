@@ -30,7 +30,7 @@ export default function ProductCategory({ fetchProduct }) {
                     <Grid key={i.id} item xs={6}>
                         <div className={ theme.palette.mode === "light" ? LightStyles.card_product : DarkStyles.card_product}>
                             <div className={ theme.palette.mode === "light" ? LightStyles.card_img : DarkStyles.card_img}>
-                                <NavLink className={ theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
+                                <NavLink to={i.path} state={i.name} className={ theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
                                     <img src={i.path_img} alt={i.name} />
                                 </NavLink>
                                 <div className={ theme.palette.mode === "light" ? LightStyles.icon_wishlist : DarkStyles.icon_wishlist }>
@@ -41,7 +41,7 @@ export default function ProductCategory({ fetchProduct }) {
                                 <span>{i.shop_name}</span>
                             </div>
                             <div className={ theme.palette.mode === "light" ? LightStyles.product_details : DarkStyles.product_details}>
-                                <NavLink className={ theme.palette.mode === "light" ? LightStyles.name_product : DarkStyles.name_product }>
+                                <NavLink to={i.path} state={i.name} className={ theme.palette.mode === "light" ? LightStyles.name_product : DarkStyles.name_product }>
                                     {i.name}
                                 </NavLink>
                                 <p className={ theme.palette.mode === "light" ? LightStyles.price_product : DarkStyles.price_product } >

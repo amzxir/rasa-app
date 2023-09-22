@@ -110,7 +110,7 @@
 }
 
 .card_shop{
-    position: relative;
+    // position: relative;
     width: 100%;
     box-sizing: border-box;
     margin: 1.5rem 0rem;
@@ -131,7 +131,9 @@
         }
 
         .name_product{
-
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             font-size: 13px;
             font-weight: 500;
             line-height: 22px;
@@ -143,10 +145,22 @@
             .rating_position{
                 display: flex;
                 // align-items: center;
-                position: absolute;
-                left: 10px;
-                top: 18px;
+                // position: absolute;
+                // left: 10px;
+                // top: 18px;
             }
+        }
+
+        .details_shop{
+            font-family: "font-light" !important;
+            margin-right: 1rem;
+            font-size: 9px;
+            font-weight: 400;
+            line-height: 16px;
+            letter-spacing: 0.20000000298023224px;
+            text-align: justify;
+            color: #B9B8B1;
+
         }
 
         .status_product{
@@ -166,27 +180,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-
-        .input_number{
-            width:  132px;
-            height:  48px;
-            box-sizing: border-box;
-            padding: 12px 20px 12px 20px;
-            border-radius: 100px;
-            background: #F8F8F8;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            span{
-                font-family: "font-number" !important;
-                font-size: 18px;
-                font-weight: 700;
-                line-height: 22px;
-                letter-spacing: 0em;
-                color: #113D8D;
-            }
-        }
 
         .price{
             font-family: "font-number" !important;
@@ -262,4 +255,219 @@
         color: #7E7E7E;
 
     }
+}
+
+.fade_open{
+    background: #09101DBF;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    height:  100%;
+    max-height: 100%;
+    transition: max-height 10s ease-out;
+}
+.fade_close{
+
+}
+
+.card_product_open{
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height:  421px;
+    max-height: 421px;
+    padding: 8px 24px 48px 24px;
+    border-radius: 40px 40px 0px 0px;
+    border: 1px;
+    gap: 24px;
+    background: #ffffff;
+    border: 1px solid #F5F5F5;
+    z-index: 10000;
+    transition: max-height .4s ease-out;
+
+    h1{
+        font-family: "font-light" !important;
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 17px;
+        letter-spacing: 0em;
+        color: #212121;
+        text-align: center;
+
+        span{
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 17px;
+            letter-spacing: 0em;
+            color: #110DD8;
+        }
+        
+
+    }
+
+    .card_pro{
+        padding: 0rem 2rem;
+
+        .d_flex{
+            display: grid;
+            align-items: center;
+
+            .input_number{
+                width:  100%;
+                height:  48px;
+                box-sizing: border-box;
+                padding: 12px 20px 12px 20px;
+                border-radius: 100px;
+                background: #F8F8F8;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+    
+                span{
+                    font-family: "font-number" !important;
+                    font-size: 18px;
+                    font-weight: 700;
+                    line-height: 22px;
+                    letter-spacing: 0em;
+                    color: #113D8D;
+                }
+            }
+
+            .option_product{
+                margin-bottom: 1rem;
+
+                .title{
+                    margin-block: .5rem;
+                    font-size: 14px;
+                    font-weight: 900;
+                    line-height: 20px;
+                    letter-spacing: 0.20000000298023224px;
+                    color: #000000;
+
+                }
+
+                .row{
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+
+                    .check_box{
+                        position: relative;
+    
+                        .check{
+                            width: 100%;
+                            height: 42px;
+                            background: #fff;
+                            border: 1px solid #2424241A;
+                            border-radius: 10px;
+                            margin-top: 0.25em;
+                            vertical-align: top;
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            background-size: contain;
+                            -webkit-appearance: none;
+                            -moz-appearance: none;
+                            appearance: none;
+                            -webkit-print-color-adjust: exact;
+                            color-adjust: exact;
+                            print-color-adjust: exact;
+    
+                        }
+    
+                        .check:checked {
+                            background: #fff;
+                            border: 2px solid #1FC069;
+    
+                        }
+                        
+    
+                        .label_check{
+                            position: absolute;
+                            right: 2px;
+                            left: 12px;
+                            text-align: center;
+                            top: 30px;
+    
+                            span{
+                                font-size: 14px;
+                                font-weight: 400;
+                                line-height: 17px;
+                                letter-spacing: 0em;
+                                color: #0000004D;
+    
+                            }
+    
+                        }
+                    }
+                }
+
+            }
+
+        }
+    }
+
+    .d_flex_btn{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1.5rem;
+
+        .cancell{
+            border: 1px solid #113D8D2B;
+            width: 100%;
+            padding: 18px 16px 18px 16px;
+            border-radius: 100px;
+            gap: 10px;
+            background: #113D8D2B;
+            color: #113D8D;
+            margin-right:.5rem;
+            cursor: pointer;
+        }
+
+        .confirm{
+            text-decoration: none;
+            border: 1px solid #113D8D;
+            width: 100%;
+            padding: 18px 16px 18px 16px;
+            border-radius: 100px;
+            gap: 10px;
+            background: #113D8D;
+            box-shadow: 4px 8px 24px 0px #113D8D40;
+            color: #fff;
+            margin-left: .5em;
+            cursor: pointer;
+            text-align: center;
+            
+            span{
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 22px;
+                letter-spacing: 0.20000000298023224px;
+                color: #FFFFFF;
+
+            }
+        }
+    }
+
+}
+
+.card_product_close{
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+    height: 0;
+    max-height: 0;
+    transition: max-height 0.15s ease-out;
+
+}
+
+::-webkit-scrollbar{
+    display: none;
 }

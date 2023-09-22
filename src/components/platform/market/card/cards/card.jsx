@@ -80,8 +80,8 @@ export default function Cards() {
                   </div>
                 </div>
               </Card>
-              <div onClick={()=> setIsOpen(false)} className={isOpen === index ? theme.palette.mode === "light" ? LightStyles.fade_open : DarkStyles.fade_open : theme.palette.mode === "light" ? LightStyles.fade_close : DarkStyles.fade_close}>
-              </div>
+                <div onClick={()=> setIsOpen(false)} className={isOpen === index ? theme.palette.mode === "light" ? LightStyles.fade_open : DarkStyles.fade_open : theme.palette.mode === "light" ? LightStyles.fade_close : DarkStyles.fade_close}>
+                </div>
                 <div className={isOpen === index ? theme.palette.mode === "light" ? LightStyles.card_delete_open : DarkStyles.card_delete_open : theme.palette.mode === "light" ? LightStyles.card_delete_close : DarkStyles.card_delete_close}>
                   <h1 className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["Product removed from cart?"]}</h1>
                   <hr />

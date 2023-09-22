@@ -1,18 +1,18 @@
 import React, { useContext, useEffect, useState} from "react";
-import { Box, IconButton   } from "@mui/material";
+import { Box, IconButton , Card, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide";
 import { NavLink} from "react-router-dom";
 import LightStyles from "../../../../assets/sass/light/market/single.module.scss";
 import DarkStyles from "../../../../assets/sass/dark/market/single.module.scss";
 import ColorModeContext from "../../../../context/color-mode-context";
-import HeartSingleIcon from "../../../../assets/svg/heart-single";
 import AppsBarsIcon from "../../../../assets/svg/apps-bars";
 import StarOneIcon from "../../../../assets/svg/star-one";
-import CartIcon from "../../../../assets/svg/cart";
+import fa from "../../../../lang/fa.json"
+import CompareIcon from "../../../../assets/svg/compare";
+import BookmarkIcon from "../../../../assets/svg/Bookmark";
 import NegativeIcon from "../../../../assets/svg/negative";
 import PlussIcon from "../../../../assets/svg/pluss";
-import fa from "../../../../lang/fa.json"
 
 export default function Single() {
   // start function darkmode
@@ -46,7 +46,10 @@ export default function Single() {
   }
   // end function input number
 
-  // start function add to card product
+  // start fetch data and function option product
+  const [isOpen , setIsOpen] = useState(false)
+  
+  // end fetch data and function option product 
 
 
 
@@ -73,9 +76,15 @@ export default function Single() {
       <div className={theme.palette.mode === "light" ? LightStyles.content_name_product : DarkStyles.content_name_product}>
         <div className={theme.palette.mode === "light" ? LightStyles.name_content : DarkStyles.name_content}>
           <h1>کامپوزیت سارمکو</h1>
+          <div>
           <IconButton>
-            <HeartSingleIcon/>
+            <CompareIcon/>
           </IconButton>
+          <IconButton>
+            <BookmarkIcon/>
+          </IconButton>
+          </div>
+          
         </div>
         <p>SAREMCO</p>
         <div className={theme.palette.mode === "light" ? LightStyles.shop_content : DarkStyles.shop_content}>
@@ -106,10 +115,11 @@ export default function Single() {
               <span>سهند تجهیز</span>
               <span className={theme.palette.mode === "light" ? LightStyles.rating_position : DarkStyles.rating_position}><StarOneIcon/> 4.8</span>
             </p>
-            <p className={theme.palette.mode === "light" ? LightStyles.status_product : DarkStyles.status_product}><CartIcon/>موجود 10 عدد</p>
+            <p className={theme.palette.mode === "light" ? LightStyles.details_shop : DarkStyles.details_shop}>فروشگاه سهند تجهیز با بهترین قیمت و خدمات میتواند بهترین محصولات را طبق نیاز شما ارائه کنید</p>
+            {/* <p className={theme.palette.mode === "light" ? LightStyles.status_product : DarkStyles.status_product}><CartIcon/>موجود 10 عدد</p> */}
           </div>
         </div>
-        <div className={theme.palette.mode === "light" ? LightStyles.price_shop : DarkStyles.price_shop}>
+        {/* <div className={theme.palette.mode === "light" ? LightStyles.price_shop : DarkStyles.price_shop}>
           <div className={theme.palette.mode === "light" ? LightStyles.input_number : DarkStyles.input_number}>
             <IconButton data-test="button-increment" onClick={handelTotal}>
               <PlussIcon/>
@@ -122,11 +132,83 @@ export default function Single() {
             </IconButton>
           </div>
           <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>125/000 <small>{fa["Toman"]}</small></p>
-        </div>
+        </div> */}
         <div className={theme.palette.mode === "light" ? LightStyles.add_card : DarkStyles.add_card}>
-          <NavLink to={"/shop/card"} state={fa["card"]} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Add to card"]}</span></NavLink>
+          <button onClick={() => setIsOpen(!isOpen)} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Select the requirement and add to cart"]}</span></button>
+        </div>
+        <div onClick={()=> setIsOpen(false)} className={isOpen === true ? theme.palette.mode === "light" ? LightStyles.fade_open : DarkStyles.fade_open : theme.palette.mode === "light" ? LightStyles.fade_close : DarkStyles.fade_close}>
+        </div>
+        <div className={isOpen === true ? theme.palette.mode === "light" ? LightStyles.card_product_open : DarkStyles.card_product_open : theme.palette.mode === "light" ? LightStyles.card_product_close : DarkStyles.card_product_close}>
+          <h1>تنوع محصول خود را از فروشگاه <span>معین دنت</span> انتخاب کنید</h1>
+          <hr />
+          <div className={theme.palette.mode === "light" ? LightStyles.card_pro : DarkStyles.card_pro}>
+            <div className={theme.palette.mode === "light" ? LightStyles.d_flex : DarkStyles.d_flex}>
+              <div className={theme.palette.mode === "light" ? LightStyles.option_product : DarkStyles.option_product}>
+                <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>سایز</p>
+                <Grid className={theme.palette.mode === "light" ? LightStyles.row : DarkStyles.row} container spacing={2}>
+                  <Grid item xs={2} className={theme.palette.mode === "light" ? LightStyles.check_box : DarkStyles.check_box}>
+                    <input type="checkbox" id="s" className={theme.palette.mode === "light" ? LightStyles.check : DarkStyles.check} />
+                    <label htmlFor="s" className={theme.palette.mode === "light" ? LightStyles.label_check : DarkStyles.label_check}><span>S</span></label>
+                  </Grid>
+                  <Grid item xs={2} className={theme.palette.mode === "light" ? LightStyles.check_box : DarkStyles.check_box}>
+                    <input type="checkbox" id="m" className={theme.palette.mode === "light" ? LightStyles.check : DarkStyles.check} />
+                    <label htmlFor="m" className={theme.palette.mode === "light" ? LightStyles.label_check : DarkStyles.label_check}><span>M</span></label>
+                  </Grid>
+                  <Grid item xs={2} className={theme.palette.mode === "light" ? LightStyles.check_box : DarkStyles.check_box}>
+                    <input type="checkbox" id="l" className={theme.palette.mode === "light" ? LightStyles.check : DarkStyles.check} />
+                    <label htmlFor="l" className={theme.palette.mode === "light" ? LightStyles.label_check : DarkStyles.label_check}><span>L</span></label>
+                  </Grid>
+                  <Grid item xs={2} className={theme.palette.mode === "light" ? LightStyles.check_box : DarkStyles.check_box}>
+                    <input type="checkbox" id="xl" className={theme.palette.mode === "light" ? LightStyles.check : DarkStyles.check} />
+                    <label htmlFor="xl" className={theme.palette.mode === "light" ? LightStyles.label_check : DarkStyles.label_check}><span>Xl</span></label>
+                  </Grid>
+                  <Grid item xs={2} className={theme.palette.mode === "light" ? LightStyles.check_box : DarkStyles.check_box}>
+                    <input type="checkbox" id="xxl" className={theme.palette.mode === "light" ? LightStyles.check : DarkStyles.check} />
+                    <label htmlFor="xxl" className={theme.palette.mode === "light" ? LightStyles.label_check : DarkStyles.label_check}><span>XXl</span></label>
+                  </Grid>
+                </Grid>
+              </div>
+              <div className={theme.palette.mode === "light" ? LightStyles.option_product : DarkStyles.option_product}>
+                <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>رنگ</p>
+                <Grid className={theme.palette.mode === "light" ? LightStyles.row : DarkStyles.row} container spacing={2}>
+                  <Grid item xs={2} className={theme.palette.mode === "light" ? LightStyles.check_box : DarkStyles.check_box}>
+                    <input style={{ background:"red" }} type="checkbox" id="color1" className={theme.palette.mode === "light" ? LightStyles.check : DarkStyles.check} />
+                  </Grid>
+                  <Grid item xs={2} className={theme.palette.mode === "light" ? LightStyles.check_box : DarkStyles.check_box}>
+                    <input style={{ background:"blue" }} type="checkbox" id="color2" className={theme.palette.mode === "light" ? LightStyles.check : DarkStyles.check} />
+                  </Grid>
+                  <Grid item xs={2} className={theme.palette.mode === "light" ? LightStyles.check_box : DarkStyles.check_box}>
+                    <input style={{ background:"black" }} type="checkbox" id="color3" className={theme.palette.mode === "light" ? LightStyles.check : DarkStyles.check} />
+                  </Grid>
+                  <Grid item xs={2} className={theme.palette.mode === "light" ? LightStyles.check_box : DarkStyles.check_box}>
+                    <input style={{ background:"white" }} type="checkbox" id="color4" className={theme.palette.mode === "light" ? LightStyles.check : DarkStyles.check} />
+                  </Grid>
+                  <Grid item xs={2} className={theme.palette.mode === "light" ? LightStyles.check_box : DarkStyles.check_box}>
+                    <input style={{ background:"yellow" }} type="checkbox" id="color5" className={theme.palette.mode === "light" ? LightStyles.check : DarkStyles.check} />
+                  </Grid>
+                </Grid>
+              </div>
+              <div className={theme.palette.mode === "light" ? LightStyles.input_number : DarkStyles.input_number}>
+                <IconButton data-test="button-increment" onClick={handelTotal}>
+                  <PlussIcon/>
+                </IconButton>
+                <span data-test="count-product">
+                  {count === 0 ? 1 : count}
+                </span>
+                <IconButton onClick={handelSubtraction}>
+                  <NegativeIcon/>
+                </IconButton>
+              </div>
+            </div>
+          </div>
+          <div className={theme.palette.mode === "light" ? LightStyles.d_flex_btn : DarkStyles.d_flex_btn}>
+            <NavLink to={"/shop/card"} state={fa["card"]} className={theme.palette.mode === "light" ? LightStyles.confirm : DarkStyles.confirm}><span>{fa["Add to card"]}</span></NavLink>
+            {/* <button onClick={(s)=> setIsOpen(false)} className={theme.palette.mode === "light" ? LightStyles.cancell : DarkStyles.cancell}>{fa["no"]}</button> */}
+          </div>
         </div>
       </div>
+
+
       <div className={theme.palette.mode === "light" ? LightStyles.comment : DarkStyles.comment}>
         <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["Description"]}</p>
         <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
