@@ -9,6 +9,7 @@ import SendIcon from "../../../assets/svg/send";
 import PlusIcon from "../../../assets/svg/plus";
 import fa from "../../../lang/fa.json";
 
+const mimeType = "audio/webm";
 
 
 export default function JetText() {
@@ -67,10 +68,75 @@ export default function JetText() {
   const handelImage = (e) => {
     setImage([...e.target.files])
   }
-
-
-
   // end and fetch data image
+
+  // start function and fetch data in record voice
+  const [permission, setPermission] = useState(false);
+  const mediaRecorder = useRef(null);
+  const [recordingStatus, setRecordingStatus] = useState("inactive");
+  const [stream, setStream] = useState(null);
+  const [audioChunks, setAudioChunks] = useState([]);
+  const [audio, setAudio] = useState(null);
+  const [audioMp3 , setAudioMp3] = useState([]);
+
+  const getMicrophonePermission = async () => {
+      if ("MediaRecorder" in window) {
+          try {
+              const streamData = await navigator.mediaDevices.getUserMedia({
+                  audio: true,
+                  video: false,
+              });
+              setPermission(true);
+              setStream(streamData);
+          } catch (err) {
+              alert(err.message);
+          }
+      } else {
+          alert("The MediaRecorder API is not supported in your browser.");
+      }
+  };
+
+  const startRecording = async () => {
+    setRecordingStatus("recording");
+    //create new Media recorder instance using the stream
+    const media = new MediaRecorder(stream, { type: mimeType });
+    //set the MediaRecorder instance to the mediaRecorder ref
+    mediaRecorder.current = media;
+    //invokes the start method to start the recording process
+    mediaRecorder.current.start();
+    let localAudioChunks = [];
+    mediaRecorder.current.ondataavailable = (event) => {
+       if (typeof event.data === "undefined") return;
+       if (event.data.size === 0) return;
+       localAudioChunks.push(event.data);
+    };
+    setAudioChunks(localAudioChunks);
+  };
+
+  const stopRecording = () => {
+    setRecordingStatus("inactive");
+    //stops the recording instance
+    mediaRecorder.current.stop();
+    mediaRecorder.current.onstop = () => {
+      //creates a blob file from the audiochunks data
+       const audioBlob = new Blob(audioChunks, { type: mimeType });
+      //creates a playable URL from the blob file.
+       const audioUrl = URL.createObjectURL(audioBlob);
+       setAudio(audioUrl);
+       setAudioChunks([]);
+
+       setAudioMp3((prev) => [
+         ...prev,
+         {
+           voice: audioUrl,
+           complete: false,
+         },
+       ]);
+    };
+
+  };
+
+  // end function and fetch data in record voice
 
 
   return (
@@ -85,13 +151,20 @@ export default function JetText() {
        <span className={theme.palette.mode === "light" ? LightStyles.date : DarkStyles.date}>1402/2/4</span>
       </div>
 
-      {message.map((m) => {
+
+      {message.map((m , index) => {
+        if (m.message === undefined) {
+          return null
+        }if (m.message === '') {
+          return null
+        } else {   
           return (
-          <div className={theme.palette.mode === "light" ? LightStyles.chat_right : DarkStyles.chat_right}>
-            <p>{m.message}</p>
-            <span className={theme.palette.mode === "light" ? LightStyles.date : DarkStyles.date}>1402/2/4</span>
-          </div>
+            <div key={index} className={theme.palette.mode === "light" ? LightStyles.chat_right : DarkStyles.chat_right}>
+              <p>{m.message}</p>
+              <span className={theme.palette.mode === "light" ? LightStyles.date : DarkStyles.date}>1402/2/4</span>
+            </div>
           );
+        }
       })}
 
       
@@ -102,6 +175,15 @@ export default function JetText() {
           </div>
         )
       })}
+
+      {audioMp3.map((i , index) => {
+        return(
+          <div key={index}>
+            <audio src={i.voice} controls></audio>
+          </div>
+        )
+      })}
+
 
 
 
@@ -127,9 +209,21 @@ export default function JetText() {
               <input style={{ display:'none' }} id="image" type="file" accept="image" onChange={handelImage} multiple/>
             </MenuItem>
             <MenuItem className={theme.palette.mode === "light" ? LightStyles.item_menu : DarkStyles.item_menu}>
-              <p>
-                {fa["Voice online"]}
-              </p>
+            {!permission ? (
+                <p onClick={getMicrophonePermission}>
+                  {fa["Get Microphone"]}
+                </p>
+              ) : null}
+              {permission && recordingStatus === "inactive" ? (
+                <p onClick={startRecording}>
+                  {fa["Voice online"]}
+                </p>
+              ) : null}
+              {recordingStatus === "recording" ? (
+                <p onClick={stopRecording}>
+                  {fa["Stop Recording"]}
+                </p>
+              ) : null}
             </MenuItem>
           </Menu>
           <input type="text" placeholder={fa["Note your text"]} value={input} onChange={handelChange} />
