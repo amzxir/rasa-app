@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState , Suspense , lazy} from "react";
 import { Box, IconButton , Card, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide";
@@ -13,6 +13,12 @@ import CompareIcon from "../../../../assets/svg/compare";
 import BookmarkIcon from "../../../../assets/svg/Bookmark";
 import NegativeIcon from "../../../../assets/svg/negative";
 import PlussIcon from "../../../../assets/svg/pluss";
+
+const Description = lazy(() => import("./product/description"));
+const Specifications = lazy(() => import("./product/specifications"));
+const Comment = lazy(() => import("./comment/comment"));
+const Create = lazy(() => import("./comment/create"));
+
 
 export default function Single() {
   // start function darkmode
@@ -50,6 +56,32 @@ export default function Single() {
   const [isOpen , setIsOpen] = useState(false)
   
   // end fetch data and function option product 
+
+  // start function and state tabs 
+  const [tab , setTab] = useState(<Suspense fallback={<div>Loading...</div>}><Description/></Suspense>);
+  const [active , setActive] = useState(1);
+
+  const handelTabOne = () => {
+    setTab(<Suspense fallback={<div>Loading...</div>}><Description/></Suspense>);
+    setActive(1);
+  }
+
+  const handelTabTwo = () => {
+    setTab(<Suspense fallback={<div>Loading...</div>}><Specifications/></Suspense>);
+    setActive(2);
+  }
+
+  const handelTabThree = () => {
+    setTab(<Suspense fallback={<div>Loading...</div>}><Comment/></Suspense>);
+    setActive(3);
+  }
+
+  const handelTabFour = () => {
+    setTab(<Suspense fallback={<div>Loading...</div>}><Create/></Suspense>)
+    setActive(4);
+  }
+
+  // end function and state tabs 
 
 
 
@@ -116,23 +148,8 @@ export default function Single() {
               <span className={theme.palette.mode === "light" ? LightStyles.rating_position : DarkStyles.rating_position}><StarOneIcon/> 4.8</span>
             </p>
             <p className={theme.palette.mode === "light" ? LightStyles.details_shop : DarkStyles.details_shop}>فروشگاه سهند تجهیز با بهترین قیمت و خدمات میتواند بهترین محصولات را طبق نیاز شما ارائه کنید</p>
-            {/* <p className={theme.palette.mode === "light" ? LightStyles.status_product : DarkStyles.status_product}><CartIcon/>موجود 10 عدد</p> */}
           </div>
         </div>
-        {/* <div className={theme.palette.mode === "light" ? LightStyles.price_shop : DarkStyles.price_shop}>
-          <div className={theme.palette.mode === "light" ? LightStyles.input_number : DarkStyles.input_number}>
-            <IconButton data-test="button-increment" onClick={handelTotal}>
-              <PlussIcon/>
-            </IconButton>
-            <span data-test="count-product">
-              {count === 0 ? 1 : count}
-            </span>
-            <IconButton onClick={handelSubtraction}>
-              <NegativeIcon/>
-            </IconButton>
-          </div>
-          <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>125/000 <small>{fa["Toman"]}</small></p>
-        </div> */}
         <div className={theme.palette.mode === "light" ? LightStyles.add_card : DarkStyles.add_card}>
           <button onClick={() => setIsOpen(!isOpen)} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Select the requirement and add to cart"]}</span></button>
         </div>
@@ -208,11 +225,17 @@ export default function Single() {
         </div>
       </div>
 
+      
 
-      <div className={theme.palette.mode === "light" ? LightStyles.comment : DarkStyles.comment}>
-        <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["Description"]}</p>
-        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
+      <div className={theme.palette.mode === "light" ? LightStyles.tabs : DarkStyles.tabs}>
+        <a className={active === 1 ? "active-tab-single" : ""} onClick={handelTabOne}>{fa["product description"]}</a>
+        <a className={active === 2 ? "active-tab-single" : ""} onClick={handelTabTwo}>{fa["Specifications"]}</a>
+        <a className={active === 3 ? "active-tab-single" : ""} onClick={handelTabThree}>{fa["User comments"]}</a>
+        <a className={active === 4 ? "active-tab-single" : ""} onClick={handelTabFour}>{fa["Register a comment"]}</a>
       </div>
+
+      {tab}
+
     </Box>
   );
 }

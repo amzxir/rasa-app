@@ -235,6 +235,7 @@
 .comment{
 
     .title{
+        margin-block: 0;
         font-size: 18px;
         font-weight: 700;
         line-height: 22px;
@@ -470,4 +471,27 @@
 
 ::-webkit-scrollbar{
     display: none;
+}
+
+.tabs{
+    padding: .5rem;
+    background: #ECECEC;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px;
+
+
+    a{
+        cursor: pointer;
+        font-family: "font-light" !important;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0.20000000298023224px;
+        color: #949494;
+
+    }
 }
