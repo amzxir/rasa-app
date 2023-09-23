@@ -13,9 +13,21 @@ export default function Create() {
   // end function darkmode
   return (
     <Box sx={{ mt:3 }}>
-        <div>
-            create
-        </div>
+        <form>
+            <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
+              <select>
+                  <option>{fa["Do you recommend buying this product?"]}</option>
+                  <option value="1">{fa["yes"]}</option>
+                  <option value="2">{fa["no"]}</option>
+              </select>
+            </div>
+            <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
+              <textarea placeholder={fa["Enter your text..."]} type="text" ></textarea>
+            </div>
+            <button className={theme.palette.mode === "light" ? LightStyles.btn_send : DarkStyles.btn_send}>
+              <span>{fa["submit comment"]}</span>
+            </button>
+        </form>
     </Box>
   );
 }

@@ -228,9 +228,12 @@ export default function Single() {
       
 
       <div className={theme.palette.mode === "light" ? LightStyles.tabs : DarkStyles.tabs}>
-        <a className={active === 1 ? "active-tab-single" : ""} onClick={handelTabOne}>{fa["product description"]}</a>
+        <a className={active === 1 ? "active-tab-single" : ""} onClick={handelTabOne}>{fa["Description"]}</a>
+        <span className={theme.palette.mode === "light" ? LightStyles.border_tab : DarkStyles.border_tab}></span>
         <a className={active === 2 ? "active-tab-single" : ""} onClick={handelTabTwo}>{fa["Specifications"]}</a>
+        <span className={theme.palette.mode === "light" ? LightStyles.border_tab : DarkStyles.border_tab}></span>
         <a className={active === 3 ? "active-tab-single" : ""} onClick={handelTabThree}>{fa["User comments"]}</a>
+        <span className={theme.palette.mode === "light" ? LightStyles.border_tab : DarkStyles.border_tab}></span>
         <a className={active === 4 ? "active-tab-single" : ""} onClick={handelTabFour}>{fa["Register a comment"]}</a>
       </div>
 

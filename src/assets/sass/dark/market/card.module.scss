@@ -372,6 +372,12 @@
 
 }
 
+@media only screen and (max-width: 440px) {
+    .card_delete_open{
+        position: fixed;
+    }
+}
+
 .card_delete_close{
     visibility: hidden;
     opacity: 0;
