@@ -141,10 +141,29 @@ body {
   }
 
   .super-app-container-dark {
-    min-height: 100vh;
-}
+      min-height: 100vh;
+  }
 
 }
+
+/* @media screen and (max-width: 768px) and (min-height: 1024px) {
+  .super-app-container-light {
+      max-width: 100%;
+  }
+  .super-app-container-dark {
+      max-width: 100%;
+  }
+} */
+
+
+
+/* @media only screen and (min-width: 768px) and (max-width: 1281px) { 
+  :root {
+    background-image: none !important;
+    background: #F9F9F9 ;
+  }
+} */
+
 
 @media screen and (max-width: 400px){
   .scroll-auto-light{
