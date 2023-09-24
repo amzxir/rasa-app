@@ -3,6 +3,7 @@ import { Box, IconButton , Card, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide";
 import { NavLink} from "react-router-dom";
+import { FadeTransform } from "react-animation-components";
 import LightStyles from "../../../../assets/sass/light/market/single.module.scss";
 import DarkStyles from "../../../../assets/sass/dark/market/single.module.scss";
 import ColorModeContext from "../../../../context/color-mode-context";

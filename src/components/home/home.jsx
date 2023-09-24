@@ -3,11 +3,14 @@ import { NavLink } from "react-router-dom";
 import { Splide, SplideTrack } from "@splidejs/react-splide";
 import { Box, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { FadeTransform } from "react-animation-components";
 import fa from "../../lang/fa.json";
 import LightStyles from "../../assets/sass/light/home.module.scss";
 import DarkStyles from "../../assets/sass/dark/home.module.scss";
 import GraduationCapIcon from "../../assets/svg/graduation-cap";
 import ColorModeContext from "../../context/color-mode-context";
+
+
 
 const Education = lazy(() => import("./education/education"));
 const Service = lazy(() => import("./service/service"));
@@ -98,135 +101,136 @@ export default function Home() {
   const [dataEducation, setDataEducation] = useState(education);
 
   return (
-    <Box sx={{ mt: 5, mb: 5 }}>
-      <div
-        className={
-          theme.palette.mode === "light"
-            ? LightStyles.box_title_platform
-            : DarkStyles.box_title_platform
-        }
-      >
-        <h1 data-test="type-of-text">{fa["Service Rasadent"]}</h1>
-      </div>
-      <div
-        className={
-          theme.palette.mode === "light"
-            ? LightStyles.box_platform
-            : DarkStyles.box_platform
-        }
-      >
-        <Grid sx={{ width: "100%" }} container spacing={2}>
-          {dataService.map((i, index) => {
-            return (
-              <Suspense key={index} fallback={<div>Loading...</div>}>
-                <Service
-                  name={i.name}
-                  path={i.path}
-                  pathImg={i.path_img}
-                  slogan={i.slogan}
-                />
-              </Suspense>
-            );
-          })}
-        </Grid>
-      </div>
+    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} fadeProps={{enterOpacity: 0.85,}}>
+      <Box sx={{ mt: 5, mb: 5 }}>
+        <div
+          className={
+            theme.palette.mode === "light"
+              ? LightStyles.box_title_platform
+              : DarkStyles.box_title_platform
+          }
+        >
+          <h1 data-test="type-of-text">{fa["Service Rasadent"]}</h1>
+        </div>
+        <div
+          className={
+            theme.palette.mode === "light"
+              ? LightStyles.box_platform
+              : DarkStyles.box_platform
+          }
+        >
+          <Grid sx={{ width: "100%" }} container spacing={2}>
+            {dataService.map((i, index) => {
+              return (
+                <Suspense key={index} fallback={<div>Loading...</div>}>
+                  <Service
+                    name={i.name}
+                    path={i.path}
+                    pathImg={i.path_img}
+                    slogan={i.slogan}
+                  />
+                </Suspense>
+              );
+            })}
+          </Grid>
+        </div>
+        <div
+          className={
+            theme.palette.mode === "light"
+              ? LightStyles.box_title_study
+              : DarkStyles.box_title_study
+          }
+        >
+          <GraduationCapIcon />
+          <h1>{fa["Rasadent Training Center"]}</h1>
+        </div>
+        <Splide
+          hasTrack={false}
+          options={{
+            direction: "rtl",
+            pagination: false,
+            arrows: false,
+            padding: { left: 40, right: 0 },
+          }}
+        >
+          <SplideTrack>
+            {dataEducation.map((i, index) => {
+              return (
+                <Suspense key={index} fallback={<div>Loading...</div>}>
+                  <Education
+                    title={i.title}
+                    path={i.path}
+                    pathImg={i.path_img}
+                    rating={i.rating}
+                    category={i.category}
+                    date={i.date}
+                  />
+                </Suspense>
+              );
+            })}
+          </SplideTrack>
+        </Splide>
 
-      <div
-        className={
-          theme.palette.mode === "light"
-            ? LightStyles.box_title_study
-            : DarkStyles.box_title_study
-        }
-      >
-        <GraduationCapIcon />
-        <h1>{fa["Rasadent Training Center"]}</h1>
-      </div>
-      <Splide
-        hasTrack={false}
-        options={{
-          direction: "rtl",
-          pagination: false,
-          arrows: false,
-          padding: { left: 40, right: 0 },
-        }}
-      >
-        <SplideTrack>
-          {dataEducation.map((i, index) => {
-            return (
-              <Suspense key={index} fallback={<div>Loading...</div>}>
-                <Education
-                  title={i.title}
-                  path={i.path}
-                  pathImg={i.path_img}
-                  rating={i.rating}
-                  category={i.category}
-                  date={i.date}
-                />
-              </Suspense>
-            );
-          })}
-        </SplideTrack>
-      </Splide>
-
-      <Grid sx={{ mt: 5, width: "100%" }} container spacing={3}>
-        <Grid
-          item
-          xs={4}
-          className={
-            theme.palette.mode === "light" ? LightStyles.p_0 : DarkStyles.p_0
-          }
-        >
-          <NavLink
-            to={"/terms"}
-            state={fa["Terms and Conditions"]}
+        <Grid sx={{ mt: 5, width: "100%" }} container spacing={3}>
+          <Grid
+            item
+            xs={4}
             className={
-              theme.palette.mode === "light"
-                ? LightStyles.btn_secondary
-                : DarkStyles.btn_secondary
+              theme.palette.mode === "light" ? LightStyles.p_0 : DarkStyles.p_0
             }
           >
-            <span>{fa["Terms and Conditions"]}</span>
-          </NavLink>
-        </Grid>
-        <Grid
-          item
-          xs={4}
-          className={
-            theme.palette.mode === "light" ? LightStyles.p_0 : DarkStyles.p_0
-          }
-        >
-          <NavLink
-            to={"/about"}
-            state={fa["About Rasadent"]}
+            <NavLink
+              to={"/terms"}
+              state={fa["Terms and Conditions"]}
+              className={
+                theme.palette.mode === "light"
+                  ? LightStyles.btn_secondary
+                  : DarkStyles.btn_secondary
+              }
+            >
+              <span>{fa["Terms and Conditions"]}</span>
+            </NavLink>
+          </Grid>
+          <Grid
+            item
+            xs={4}
             className={
-              theme.palette.mode === "light"
-                ? LightStyles.btn_primary
-                : DarkStyles.btn_primary
+              theme.palette.mode === "light" ? LightStyles.p_0 : DarkStyles.p_0
             }
           >
-            <span>{fa["About Rasadent"]}</span>
-          </NavLink>
-        </Grid>
-        <Grid
-          item
-          xs={4}
-          className={
-            theme.palette.mode === "light" ? LightStyles.p_0 : DarkStyles.p_0
-          }
-        >
-          <NavLink
-            to={"/faq"}
-            state={fa["faq"]}
+            <NavLink
+              to={"/about"}
+              state={fa["About Rasadent"]}
+              className={
+                theme.palette.mode === "light"
+                  ? LightStyles.btn_primary
+                  : DarkStyles.btn_primary
+              }
+            >
+              <span>{fa["About Rasadent"]}</span>
+            </NavLink>
+          </Grid>
+          <Grid
+            item
+            xs={4}
             className={
-              theme.palette.mode === "light"
-                ? LightStyles.btn_secondary
-                : DarkStyles.btn_secondary
+              theme.palette.mode === "light" ? LightStyles.p_0 : DarkStyles.p_0
             }
           >
-            <span>{fa["faq"]}</span>
-          </NavLink>
+            <NavLink
+              to={"/faq"}
+              state={fa["faq"]}
+              className={
+                theme.palette.mode === "light"
+                  ? LightStyles.btn_secondary
+                  : DarkStyles.btn_secondary
+              }
+            >
+              <span>{fa["faq"]}</span>
+            </NavLink>
+          </Grid>
         </Grid>
-      </Grid>
-    </Box>
+      </Box>
+    </FadeTransform>
   );
 }

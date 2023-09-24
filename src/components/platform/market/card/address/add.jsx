@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Box, Card } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
+import { FadeTransform } from "react-animation-components";
 import ColorModeContext from "../../../../../context/color-mode-context";
 import LightStyles from "../../../../../assets/sass/light/market/add-address.module.scss";
 import DarkStyles from "../../../../../assets/sass/dark/market/add-address.module.scss";
@@ -24,23 +25,25 @@ export default function Add() {
   // end fetch state address
 
   return (
-    <Box sx={{ mt:5 , mb:5 }}>
-      {add.map((i , index)=> {
-        return(
-          <Card key={i.id} sx={{ boxShadow:0 , borderRadius:'15px' , p:2 , mb:4 }}>
-            <div className={theme.palette.mode === "light" ? LightStyles.content_address : DarkStyles.content_address}>
-              <PinIcon/>
-              <label htmlFor={`add_address${i.id}`} className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
-                <h1 style={{ marginLeft:'5rem' }}>{i.name}</h1>
-                <p>{i.location.slice(1,45)} ...</p>
-              </label>
-              <input name="add_address" id={`add_address${i.id}`} type="radio" />
-            </div>
-          </Card>
-        )
-      })}
-      <NavLink to={"/shop/new-address"} state={fa["new address"]} className={theme.palette.mode === "light" ? LightStyles.btn_address : DarkStyles.btn_address}><span>{fa["add new address"]}</span></NavLink>
-    </Box>
+    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} fadeProps={{enterOpacity: 0.85,}}>
+      <Box sx={{ mt:5 , mb:5 }}>
+        {add.map((i , index)=> {
+          return(
+            <Card key={i.id} sx={{ boxShadow:0 , borderRadius:'15px' , p:2 , mb:4 }}>
+              <div className={theme.palette.mode === "light" ? LightStyles.content_address : DarkStyles.content_address}>
+                <PinIcon/>
+                <label htmlFor={`add_address${i.id}`} className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
+                  <h1 style={{ marginLeft:'5rem' }}>{i.name}</h1>
+                  <p>{i.location.slice(1,45)} ...</p>
+                </label>
+                <input name="add_address" id={`add_address${i.id}`} type="radio" />
+              </div>
+            </Card>
+          )
+        })}
+        <NavLink to={"/shop/new-address"} state={fa["new address"]} className={theme.palette.mode === "light" ? LightStyles.btn_address : DarkStyles.btn_address}><span>{fa["add new address"]}</span></NavLink>
+      </Box>
+    </FadeTransform>
   )
 }
 

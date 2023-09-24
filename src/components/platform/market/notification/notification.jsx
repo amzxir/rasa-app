@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
 import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { NavLink } from "react-router-dom";
+import { FadeTransform } from "react-animation-components";
 import ColorModeContext from "../../../../context/color-mode-context";
 import LightStyles from "../../../../assets/sass/light/market/notification.module.scss";
 import DarkStyles from "../../../../assets/sass/dark/market/notification.module.scss";
 import Exclude from "../../../../assets/svg/exclude";
-import { NavLink } from "react-router-dom";
 
 export default function Notification() {
   // start function darkmode
@@ -56,55 +57,57 @@ export default function Notification() {
   const [notifData, setNotifData] = useState(notification);
   // end fetch data notification
   return (
-    <Box sx={{ mt: 5, mb: 5 }}>
-      {notifData.map((i) => {
-        return (
-          <NavLink
-          key={i.id}
-            className={
-              theme.palette.mode === "light"
-                ? LightStyles.card_notif
-                : DarkStyles.card_notif
-            }
-          >
-            <div
+    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} fadeProps={{enterOpacity: 0.85,}}>
+      <Box sx={{ mt: 5, mb: 5 }}>
+        {notifData.map((i) => {
+          return (
+            <NavLink
+            key={i.id}
               className={
                 theme.palette.mode === "light"
-                  ? LightStyles.icon_notif
-                  : DarkStyles.icon_notif
+                  ? LightStyles.card_notif
+                  : DarkStyles.card_notif
               }
             >
-              <Exclude />
-            </div>
-            <div
-              className={
-                theme.palette.mode === "light"
-                  ? LightStyles.content
-                  : DarkStyles.content
-              }
-            >
-              <p
+              <div
                 className={
                   theme.palette.mode === "light"
-                    ? LightStyles.title
-                    : DarkStyles.title
+                    ? LightStyles.icon_notif
+                    : DarkStyles.icon_notif
                 }
               >
-                {i.title}
-              </p>
-              <p
+                <Exclude />
+              </div>
+              <div
                 className={
                   theme.palette.mode === "light"
-                    ? LightStyles.des
-                    : DarkStyles.des
+                    ? LightStyles.content
+                    : DarkStyles.content
                 }
               >
-                {i.description.slice(0 , 45)}...
-              </p>
-            </div>
-          </NavLink>
-        );
-      })}
-    </Box>
+                <p
+                  className={
+                    theme.palette.mode === "light"
+                      ? LightStyles.title
+                      : DarkStyles.title
+                  }
+                >
+                  {i.title}
+                </p>
+                <p
+                  className={
+                    theme.palette.mode === "light"
+                      ? LightStyles.des
+                      : DarkStyles.des
+                  }
+                >
+                  {i.description.slice(0 , 45)}...
+                </p>
+              </div>
+            </NavLink>
+          );
+        })}
+      </Box>
+    </FadeTransform>
   );
 }

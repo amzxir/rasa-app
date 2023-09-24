@@ -1,6 +1,7 @@
 import React, { useContext, Suspense, lazy, useState } from "react";
 import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { FadeTransform } from "react-animation-components";
 import ColorModeContext from "../../../../context/color-mode-context";
 import Search from "../search/search";
 
@@ -242,20 +243,22 @@ export default function LandingShop({sendProduct}) {
   const [productData, setProductData] = useState(product);
   // end fetch data title and product
   return (
-    <Box sx={{ mt: 5, mb: 5 }}>
-      <Search />
+    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} fadeProps={{enterOpacity: 0.85,}}>
+      <Box sx={{ mt: 5, mb: 5 }}>
+        <Search />
 
-      <Suspense fallback={<div>Loading...</div>}>
-        <Slide bannerData={bannerData} />
-      </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Slide bannerData={bannerData} />
+        </Suspense>
 
-      <Suspense fallback={<div>Loading...</div>}>
-        <ProductSlide productData={productData} sendProduct={sendProduct} />
-      </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ProductSlide productData={productData} sendProduct={sendProduct} />
+        </Suspense>
 
-      <Suspense fallback={<div>Loading...</div>}>
-        <Banner />
-      </Suspense>
-    </Box>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Banner />
+        </Suspense>
+      </Box>
+    </FadeTransform>
   );
 }

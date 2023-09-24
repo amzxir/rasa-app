@@ -1,7 +1,7 @@
 import React, { useContext, useState , useRef, useEffect } from "react";
 import { Box, IconButton, Menu, MenuItem } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { set, useForm } from "react-hook-form";
+import { FadeTransform } from "react-animation-components";
 import LightStyles from "../../../assets/sass/light/jet/text.module.scss";
 import DarkStyles from "../../../assets/sass/dark/jet/text.module.scss";
 import ColorModeContext from "../../../context/color-mode-context";
@@ -140,102 +140,102 @@ export default function JetText() {
 
 
   return (
-    <Box sx={{ mt: 5, mb: 5 }} className={theme.palette.mode === "light" ? LightStyles.jet_text : DarkStyles.jet_text}>
+      <Box sx={{ mt: 5, mb: 5 }} className={theme.palette.mode === "light" ? LightStyles.jet_text : DarkStyles.jet_text}>
 
-      <div className={theme.palette.mode === "light" ? LightStyles.chat_left : DarkStyles.chat_left}>
-        <p>
-        سلام ، پویا رستمی هستم
-        <br />
-        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
-        </p>
-       <span className={theme.palette.mode === "light" ? LightStyles.date : DarkStyles.date}>1402/2/4</span>
-      </div>
+        <div className={theme.palette.mode === "light" ? LightStyles.chat_left : DarkStyles.chat_left}>
+          <p>
+          سلام ، پویا رستمی هستم
+          <br />
+          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
+          </p>
+        <span className={theme.palette.mode === "light" ? LightStyles.date : DarkStyles.date}>1402/2/4</span>
+        </div>
 
 
-      {message.map((m , index) => {
-        if (m.message === undefined) {
-          return null
-        }if (m.message === '') {
-          return null
-        } else {   
-          return (
-            <div key={index} className={theme.palette.mode === "light" ? LightStyles.chat_right : DarkStyles.chat_right}>
-              <p>{m.message}</p>
-              <span className={theme.palette.mode === "light" ? LightStyles.date : DarkStyles.date}>1402/2/4</span>
+        {message.map((m , index) => {
+          if (m.message === undefined) {
+            return null
+          }if (m.message === '') {
+            return null
+          } else {   
+            return (
+              <div key={index} className={theme.palette.mode === "light" ? LightStyles.chat_right : DarkStyles.chat_right}>
+                <p>{m.message}</p>
+                <span className={theme.palette.mode === "light" ? LightStyles.date : DarkStyles.date}>1402/2/4</span>
+              </div>
+            );
+          }
+        })}
+
+        
+        {image?.map((i , index) => {
+          return(
+            <div key={index} className={theme.palette.mode === "light" ? LightStyles.chat_img : DarkStyles.chat_img}>
+              <img src={URL.createObjectURL(i)} alt="" />
             </div>
-          );
-        }
-      })}
+          )
+        })}
 
-      
-      {image?.map((i , index) => {
-        return(
-          <div key={index} className={theme.palette.mode === "light" ? LightStyles.chat_img : DarkStyles.chat_img}>
-            <img src={URL.createObjectURL(i)} alt="" />
-          </div>
-        )
-      })}
-
-      {audioMp3.map((i , index) => {
-        return(
-          <div key={index}>
-            <audio controls>
-              <source src={i.voice} type="audio/ogg"/>
-              <source src={i.voice} type="audio/mpeg"/>
-            </audio>
-          </div>
-        )
-      })}
+        {audioMp3.map((i , index) => {
+          return(
+            <div key={index}>
+              <audio controls>
+                <source src={i.voice} type="audio/ogg"/>
+                <source src={i.voice} type="audio/mpeg"/>
+              </audio>
+            </div>
+          )
+        })}
 
 
 
 
-      <div className={theme.palette.mode === "light" ? LightStyles.send : DarkStyles.send}>
-        <form onSubmit={handelSubmit} className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
-          <IconButton onClick={handleClick} className={theme.palette.mode === "light" ? LightStyles.btn_item : DarkStyles.btn_item}>
-            <PlusIcon />
-          </IconButton>
-          <Menu anchorEl={anchorEl} open={open} onClose={handleClose}
-            anchorOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-          >
-            <MenuItem className={theme.palette.mode === "light" ? LightStyles.item_menu : DarkStyles.item_menu}>
-              <label htmlFor="image">
-                {fa["Image online"]}
-              </label>
-              <input style={{ display:'none' }} id="image" type="file" accept="image" onChange={handelImage} multiple/>
-            </MenuItem>
-            <MenuItem className={theme.palette.mode === "light" ? LightStyles.item_menu : DarkStyles.item_menu}>
-            {!permission ? (
-                <p onClick={getMicrophonePermission}>
-                  {fa["Get Microphone"]}
-                </p>
-              ) : null}
-              {permission && recordingStatus === "inactive" ? (
-                <p onClick={startRecording}>
-                  {fa["Voice online"]}
-                </p>
-              ) : null}
-              {recordingStatus === "recording" ? (
-                <p onClick={stopRecording}>
-                  {fa["Stop Recording"]}
-                </p>
-              ) : null}
-            </MenuItem>
-          </Menu>
-          <input type="text" placeholder={fa["Note your text"]} value={input} onChange={handelChange} />
-          <IconButton onClick={handelSubmit} className={theme.palette.mode === "light" ? LightStyles.btn_send : DarkStyles.btn_send}>
-            <SendIcon />
-          </IconButton>
-        </form>
-      </div>
-      <div ref={bottomRef} />
-    </Box>
+        <div className={theme.palette.mode === "light" ? LightStyles.send : DarkStyles.send}>
+          <form onSubmit={handelSubmit} className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
+            <IconButton onClick={handleClick} className={theme.palette.mode === "light" ? LightStyles.btn_item : DarkStyles.btn_item}>
+              <PlusIcon />
+            </IconButton>
+            <Menu anchorEl={anchorEl} open={open} onClose={handleClose}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+            >
+              <MenuItem className={theme.palette.mode === "light" ? LightStyles.item_menu : DarkStyles.item_menu}>
+                <label htmlFor="image">
+                  {fa["Image online"]}
+                </label>
+                <input style={{ display:'none' }} id="image" type="file" accept="image" onChange={handelImage} multiple/>
+              </MenuItem>
+              <MenuItem className={theme.palette.mode === "light" ? LightStyles.item_menu : DarkStyles.item_menu}>
+              {!permission ? (
+                  <p onClick={getMicrophonePermission}>
+                    {fa["Get Microphone"]}
+                  </p>
+                ) : null}
+                {permission && recordingStatus === "inactive" ? (
+                  <p onClick={startRecording}>
+                    {fa["Voice online"]}
+                  </p>
+                ) : null}
+                {recordingStatus === "recording" ? (
+                  <p onClick={stopRecording}>
+                    {fa["Stop Recording"]}
+                  </p>
+                ) : null}
+              </MenuItem>
+            </Menu>
+            <input type="text" placeholder={fa["Note your text"]} value={input} onChange={handelChange} />
+            <IconButton onClick={handelSubmit} className={theme.palette.mode === "light" ? LightStyles.btn_send : DarkStyles.btn_send}>
+              <SendIcon />
+            </IconButton>
+          </form>
+        </div>
+        <div ref={bottomRef} />
+      </Box>
   );
 }
