@@ -48,7 +48,7 @@ export default function Shopping() {
             <div className={theme.palette.mode === "light" ? LightStyles.content_address : DarkStyles.content_address}>
               <SendProIcon/>
               <label htmlFor="sendProduct" className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
-                <h1 style={{ marginLeft:'5rem' }}>ارسال توسط باربری</h1>
+                <h1 style={{ marginLeft:'5rem' }}>ارسال توسط رسادنت</h1>
                 <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>120/000 <small>{fa["Toman"]}</small></p>
               </label>
               <input id="sendProduct" type="radio" defaultChecked={checked} />

@@ -53,8 +53,26 @@ export default function Cards() {
 
   // start fetch data and function delete
   const [isOpen , setIsOpen] = useState(false)
-  
   // end fetch data and function delete 
+
+  // start function and state discount
+  const [input, setInput] = useState("");
+  const [color, setColor] = useState("");
+
+  let inputLength;
+  const handleChange = (e) => {
+    setInput(e.target.value);
+    if (e.target.value.length === 10) {
+      setColor(theme.palette.mode === "light" ? "#113D8D" : "#3282F9");
+    }
+    else if (e.target.value.length < 10) {
+      setColor(theme.palette.mode === "light" ? "#D8D8D8" : "#222222");
+    }
+    else if (e.target.value.length > 10) {
+      setColor(theme.palette.mode === "light" ? "#D8D8D8" : "#222222");
+    }
+  };
+  // end function and state discount 
 
   return (
       <Box sx={{ mt: 5, mb: 5 }}>
@@ -109,8 +127,8 @@ export default function Cards() {
 
         <Card sx={{ boxShadow:0 , borderRadius:'15px' , p:2 }}>
           <div className={theme.palette.mode === "light" ? LightStyles.formDiscount : DarkStyles.formDiscount}>
-            <input type="text" placeholder={fa["enter discount code"]} />
-            <button><span>{fa["submit"]}</span></button>
+            <input value={input} onChange={handleChange} type="text" placeholder={fa["enter discount code"]} />
+            <button  style={{ background: color ? color : "" }} disabled={input.length === 10}><span>{fa["submit"]}</span></button>
           </div>
           <div className={theme.palette.mode === "light" ? LightStyles.invoice : DarkStyles.invoice}>
             <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>

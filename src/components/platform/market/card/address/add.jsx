@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Box, Card } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FadeTransform } from "react-animation-components";
 import ColorModeContext from "../../../../../context/color-mode-context";
 import LightStyles from "../../../../../assets/sass/light/market/add-address.module.scss";
@@ -15,6 +15,10 @@ export default function Add() {
   const theme = useTheme();
   const { colorMode } = useContext(ColorModeContext);
   // end function darkmode
+
+  // start fetch use navigate
+  const navigate = useNavigate();
+  // end fetch use navigate
 
   // start fetch state address
   const address = [
@@ -32,11 +36,11 @@ export default function Add() {
             <Card key={i.id} sx={{ boxShadow:0 , borderRadius:'15px' , p:2 , mb:4 }}>
               <div className={theme.palette.mode === "light" ? LightStyles.content_address : DarkStyles.content_address}>
                 <PinIcon/>
-                <label htmlFor={`add_address${i.id}`} className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
+                <label onClick={()=> navigate("/shop/shopping")} htmlFor={`add_address${i.id}`} className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
                   <h1 style={{ marginLeft:'5rem' }}>{i.name}</h1>
                   <p>{i.location.slice(1,45)} ...</p>
                 </label>
-                <input name="add_address" id={`add_address${i.id}`} type="radio" />
+                <input onClick={()=> navigate("/shop/shopping")} name="add_address" id={`add_address${i.id}`} type="radio" />
               </div>
             </Card>
           )

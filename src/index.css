@@ -61,13 +61,14 @@ body {
   overscroll-behavior-x: none !important;
   padding-bottom: env(safe-area-inset-bottom, 5px);
   scrollbar-width: none;
-
 }
 
 .scroll-auto-light{
-  /* overflow-y: auto; */
+  overflow-y: auto;
+  overflow-x: hidden;
   /* 85vh */
   height: 82vh;
+  scrollbar-width: none;
 }
 
 
@@ -76,9 +77,12 @@ body {
 }
 
 .scroll-auto-dark{
-  /* overflow-y: auto; */
+  overflow-y: auto;
+  overflow-x: hidden;
   /* 85vh */
   height: 82vh;
+  scrollbar-width: none;
+  
 }
 
 .scroll-auto-dark::-webkit-scrollbar{
