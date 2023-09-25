@@ -29,10 +29,10 @@ export default function CategoryList() {
 
   return (
     <Box sx={{ mt: 5, mb: 5 }}>
-      <Grid container spacing={2}>
+      <Grid sx={{display:'flex' , justifyContent:'center' , alignItems:'center'}} container spacing={2}>
         {category.map((i , index) => {
             return(
-                <Grid item key={i.id} xs={4}>
+                <Grid item key={i.id} xs={3}>
                     <NavLink className={theme.palette.mode === "light" ? LightStyles.category_list : DarkStyles.category_list}>
                         <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
                             <img src={i.img} alt="" />

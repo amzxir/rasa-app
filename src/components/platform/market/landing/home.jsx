@@ -8,6 +8,7 @@ import Search from "../search/search";
 const Banner = lazy(() => import("./banner/banner"));
 const Slide = lazy(() => import("./banner/slide"));
 const ProductSlide = lazy(() => import("./product/product-slide"));
+const CategoryList = lazy(() => import("../category/category-list"));
 
 export default function LandingShop({sendProduct}) {
   // start function darkmode
@@ -249,6 +250,10 @@ export default function LandingShop({sendProduct}) {
 
         <Suspense fallback={<div>Loading...</div>}>
           <Slide bannerData={bannerData} />
+        </Suspense>
+
+        <Suspense fallback={<div>Loading...</div>}>
+          <CategoryList/>
         </Suspense>
 
         <Suspense fallback={<div>Loading...</div>}>

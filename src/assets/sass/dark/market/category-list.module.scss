@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    margin-bottom: 1rem;
+    margin-bottom: .2rem;
 
     .img_center{
         display: flex;
@@ -28,6 +28,7 @@
         letter-spacing: 0em;
         text-align: center;
         color: #fff;
+        margin-block: 0;
 
     }
 }

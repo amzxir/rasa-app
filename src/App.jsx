@@ -91,7 +91,6 @@ export default function App() {
               <Route path="/faq" element={<Faq />}></Route>
               {/* routeing component shop */}
               <Route exact path="/shop" element={<HomeShop sendProduct={handelSendProduct} />}></Route>
-              <Route exact path="/shop/category-list" element={<CategoryList />}></Route>
               <Route path="/shop/category-product/:productName" element={<ProductCategory fetchProduct={fetchProduct} />}></Route>
               <Route path="/shop/notification" element={<Notification />}></Route>
               <Route path="/shop/wishlist" element={<Wishlist />}></Route>

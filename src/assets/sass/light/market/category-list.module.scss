@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    margin-bottom: 1rem;
+    margin-bottom: .2rem;
 
     .img_center{
         display: flex;
@@ -14,20 +14,21 @@
         border-radius: 10px;
 
         img{
-            width: 43px;
-            height: 43px;
+            width: 30px;
+            height: 30px;
 
         }
     }
 
     h1{
         font-family: "font-light" !important;
-        font-size: 15px;
+        font-size: 13px;
         font-weight: 500;
         line-height: 23px;
         letter-spacing: 0em;
         text-align: center;
         color: #323142;
+        margin-block: 0;
 
     }
 }
