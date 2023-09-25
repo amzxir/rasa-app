@@ -9,7 +9,7 @@
 
     .flex{
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
     }
 
@@ -52,13 +52,13 @@
 
     }
 
-    .pr_1{
-        padding-right: .75rem;
-    }
+    // .pr_1{
+    //     padding-right: .75rem;
+    // }
 
-    .pl_1{
-        padding-left: .75rem;
-    }
+    // .pl_1{
+    //     padding-left: .75rem;
+    // }
 
     .pl_3{
         padding-left: 3rem;
