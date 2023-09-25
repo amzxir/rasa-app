@@ -32,3 +32,23 @@
 
     }
 }
+
+.category_all{
+    text-align: left;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 14px;
+    letter-spacing: 0.200000003px;
+    color: #113D8D;
+    cursor: pointer;
+}
+
+.collaps_open{
+    display: block;
+
+}
+
+.collaps_close{
+    display: none;
+
+}

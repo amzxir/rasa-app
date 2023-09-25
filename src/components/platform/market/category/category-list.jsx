@@ -22,10 +22,15 @@ export default function CategoryList() {
     {id:6 , name:'نام دسته' , img:'/image/cycling.png'},
     {id:7 , name:'نام دسته' , img:'/image/cycling.png'},
     {id:8 , name:'نام دسته' , img:'/image/cycling.png'},
-    {id:9 , name:'نام دسته' , img:'/image/cycling.png'},
   ]
   const [category , setCategory] = useState(categories);
   // end fetch data category list 
+
+  // start function collaps
+  const [collaps , setCollaps] = useState(false)
+  const handleCollapsOpen = () => setCollaps(!collaps);
+  const handleCollapsClose = () => setCollaps(false);
+  // end function collaps
 
   return (
     <Box sx={{ mt: 5, mb: 5 }}>
@@ -43,6 +48,11 @@ export default function CategoryList() {
             )
         })}
       </Grid>
+      <div className={collaps === true ? theme.palette.mode === "light" ? LightStyles.collaps_open : DarkStyles.collaps_open : theme.palette.mode === "light" ? LightStyles.collaps_close : DarkStyles.collaps_close}>
+        <p>all category</p>
+      </div>
+      <p onClick={handleCollapsOpen} className={theme.palette.mode === "light" ? LightStyles.category_all : DarkStyles.category_all}>همه دسته بندی ها</p>
+
     </Box>
   );
 }
