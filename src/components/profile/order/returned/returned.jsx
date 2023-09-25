@@ -9,7 +9,7 @@ import fa from "../../../../lang/fa.json";
 import ColorModeContext from "../../../../context/color-mode-context";
 
 
-export default function Cancelled() {
+export default function Returned() {
   // start function darkmode
   const theme = useTheme();
   const { colorMode } = useContext(ColorModeContext);
@@ -23,7 +23,6 @@ export default function Cancelled() {
     }))
     const [productOrder , setProductOrder] = useState(orderProduct)
   // start fetch state in product order
-
   return (
     <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} fadeProps={{enterOpacity: 0.85,}}>
         <Box sx={{ mt: 5, mb: 5 }}>
@@ -53,7 +52,7 @@ export default function Cancelled() {
                     <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
                         <img src="/image/not.svg" alt="" />
                     </div>
-                    <h1>{fa["Order not returned"]}</h1>
+                    <h1>{fa["Order not cancelled"]}</h1>
                 </div>
             }
         </Box>

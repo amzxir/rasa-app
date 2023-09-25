@@ -257,15 +257,15 @@ body {
   z-index: 1;
 }
 .progressbar li.active {
-  color: #113D8D;
+  color: red;
   z-index: 1;
 }
 .progressbar li.active:before {
-  border-color: #113D8D;
+  border-color: red;
   z-index: 1;
 } 
 .progressbar li.active + li:after {
-  border-color: #113D8D;
+  border-color: red;
   z-index: 0;
 }
 
