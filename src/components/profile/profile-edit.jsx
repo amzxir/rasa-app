@@ -66,7 +66,7 @@ export default function ProfileEdit() {
           </Grid>
           <Grid item xs={12}>
             <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
-              <input placeholder={fa["mobile"]} type="text" />
+              <input placeholder={fa["mobile"]} type="text" disabled />
             </div>
           </Grid>
           <Grid item xs={12}>

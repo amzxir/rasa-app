@@ -44,7 +44,7 @@ export default function New() {
           </Grid>
           <Grid sx={{ mb:2 , pr:1 }} xs={6}>
             <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
-              <input className={theme.palette.mode === "light" ? LightStyles.form_control : DarkStyles.form_control} type="text" placeholder={fa["The unit"]} />
+              <input className={theme.palette.mode === "light" ? LightStyles.form_control : DarkStyles.form_control} type="text" placeholder={fa["the unit"]} />
             </div>
           </Grid>
           <Grid sx={{ mb:2  }} xs={12}>
