@@ -16,7 +16,7 @@ export default function Cancelled() {
   // start fetch state in product order
   const orderProduct = new Array(1).fill(null).map((p , i)=> ({
       id:i,
-      name:`محصول شماره ${i}`,
+      name:`کامپوزیت سارمکو ${i}`,
       trakingCode:`3424${i}`,
       url_img:'/image/order.png',
     }))

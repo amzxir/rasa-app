@@ -15,7 +15,7 @@ export default function Delivery() {
   // start fetch state in product order
   const orderProduct = new Array(2).fill(null).map((p , i)=> ({
     id:i,
-    name:`محصول شماره ${i}`,
+    name:`کامپوزیت سارمکو ${i}`,
     trakingCode:`3424${i}`,
     url_img:'/image/order.png',
   }))

@@ -16,9 +16,9 @@ export default function product() {
   // end function darkmode
   // start fetch data your product
   const YourProduct = [
-    {id:1 , img:'/image/order.png' , name:'تست محصول شماره 1' , count:45 , status:'درانتظار تایید' , price:'120/000' , path_edit:'#' , path_see:'#'},
-    {id:2 , img:'/image/order.png' , name:'تست محصول شماره 2' , count:45 , status:'درانتظار تایید' , price:'140/000' , path_edit:'#' , path_see:'#'},
-    {id:3 , img:'/image/order.png' , name:'تست محصول شماره 3' , count:45 , status:'درانتظار تایید' , price:'150/000' , path_edit:'#' , path_see:'#'},
+    {id:1 , img:'/image/order.png' , name:'کامپوزیت سارمکو 1' , count:45 , status:'درانتظار تایید' , price:'120/000' , path_edit:'#' , path_see:'#'},
+    {id:2 , img:'/image/order.png' , name:'کامپوزیت سارمکو 2' , count:45 , status:'درانتظار تایید' , price:'140/000' , path_edit:'#' , path_see:'#'},
+    {id:3 , img:'/image/order.png' , name:'کامپوزیت سارمکو 3' , count:45 , status:'درانتظار تایید' , price:'150/000' , path_edit:'#' , path_see:'#'},
   ]
   const [product , setProduct] = useState(YourProduct);
   // end fetch data your product

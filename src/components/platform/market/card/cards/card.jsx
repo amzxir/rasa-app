@@ -20,7 +20,7 @@ export default function Cards() {
   // start state product card
   const productCard = new Array(2).fill(null).map((p , i)=> ({
     id:i,
-    name:`محصول شماره ${i}`,
+    name:`کامپوزیت سارمکو ${i}`,
     count:2,
     price:'120/000/000',
     img:'/image/card1.png',

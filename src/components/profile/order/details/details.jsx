@@ -21,7 +21,7 @@ export default function Details() {
   // start fetch array product details
   const ProductDetails = new Array(1).fill(null).map((i ,  p) => ({
     id:`${p}`,
-    name:`محصول شماره ${p}`,
+    name:`کامپوزیت سارمکو ${p}`,
     price:`1${p}100`,
     url_img:'/image/order.png',
   }))
