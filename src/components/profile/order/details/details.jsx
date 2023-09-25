@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Box , Grid , Card } from "@mui/material";
+import { Box , Grid , Card , Modal , Table , TableBody , TableCell ,TableContainer , TableHead , TableRow , Paper } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { FadeTransform } from "react-animation-components";
 import LightStyles from "../../../../assets/sass/light/order.module.scss";
@@ -28,6 +28,18 @@ export default function Details() {
   }))
   const [product , setProduct] = useState(ProductDetails);
   // end fetch array product details 
+
+  // start function and state modal
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  // end function and state modal
+
+  // start function collaps
+  const [collaps , setCollaps] = useState(false)
+  const handleCollapsOpen = () => setCollaps(!collaps);
+  const handleCollapsClose = () => setCollaps(false);
+  // end function collaps
   return (
     <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} fadeProps={{enterOpacity: 0.85,}}>
       <Box sx={{ mt: 5, mb: 5 }}>
@@ -40,7 +52,7 @@ export default function Details() {
                             <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
                                 <h1>{i.name}</h1>
                                 <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}><span>{fa["tracking code"]}</span><span>{i.code}</span></p>
-                                <button className={theme.palette.mode === "light" ? LightStyles.btn_order : DarkStyles.btn_order}><span>{fa["Cancel the order"]}</span></button>
+                                <button onClick={handleOpen} className={theme.palette.mode === "light" ? LightStyles.btn_order : DarkStyles.btn_order}><span>{fa["Cancel the order"]}</span></button>
                             </div>
                             <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
                                 <img width="120" height="120" src={i.url_img} alt="" />
@@ -51,6 +63,25 @@ export default function Details() {
               )
             })}
           </Grid>
+
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <div className={theme.palette.mode === "light" ? LightStyles.component_faq : DarkStyles.component_faq}>
+              <div>
+                <p className={theme.palette.mode === "light" ? LightStyles.text : DarkStyles.text}>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
+                <p className={theme.palette.mode === "light" ? LightStyles.text : DarkStyles.text}>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
+              </div>
+
+              <div className={theme.palette.mode === "light" ? LightStyles.flex : DarkStyles.flex}>
+                <button className={theme.palette.mode === "light" ? LightStyles.btn_confirm : DarkStyles.btn_confirm}><span>{fa["submit"]}</span></button>
+                <button onClick={handleClose} className={theme.palette.mode === "light" ? LightStyles.btn_cancell : DarkStyles.btn_cancell}><span>{fa["cancell"]}</span></button>
+              </div>
+            </div> 
+          </Modal>
 
           <ul className="progressbar">
             <li className="active">
@@ -101,6 +132,34 @@ export default function Details() {
             </li>
             
           </ul>
+
+          <div className={theme.palette.mode === "light" ? LightStyles.detail_invoice : DarkStyles.detail_invoice}>
+            <button onClick={handleCollapsOpen} className={theme.palette.mode === "light" ? LightStyles.btn_collaps : DarkStyles.btn_collaps}><span>{fa["details invoice"]}</span></button>
+          </div>
+          <div className={collaps === true ? theme.palette.mode === "light" ? LightStyles.collaps_open : DarkStyles.collaps_open : theme.palette.mode === "light" ? LightStyles.collaps_close : DarkStyles.collaps_close}>
+            <TableContainer component={Paper}>
+                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell align="center">Dessert (100g serving)</TableCell>
+                      <TableCell align="center">Calories</TableCell>
+                      <TableCell align="center">Fat&nbsp;(g)</TableCell>
+                      <TableCell align="center">Carbs&nbsp;(g)</TableCell>
+                      <TableCell align="center">Protein&nbsp;(g)</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                      <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                        <TableCell align="center">kasdj</TableCell>
+                        <TableCell align="center">kasdj</TableCell>
+                        <TableCell align="center">kasdj</TableCell>
+                        <TableCell align="center">kasdj</TableCell>
+                        <TableCell align="center">kasdj</TableCell>
+                      </TableRow>
+                  </TableBody>
+                </Table>
+            </TableContainer>
+          </div>
   
       </Box>
     </FadeTransform>

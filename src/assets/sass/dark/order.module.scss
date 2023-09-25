@@ -228,3 +228,128 @@
         
     }
 }
+
+.component_faq{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 440px;
+    width:100%;
+    padding: 10px;
+    background: #000;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-align: center;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: auto;
+    height: 100%;
+    direction: rtl;
+
+    .text{
+        font-family: "font-light" !important;
+        font-size: 11px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0.20000000298023224px;
+        color: #FFFFFF;
+        text-align: justify;
+    }
+
+    .flex{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 2rem;
+
+        .btn_cancell{
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            border-radius: 8px;
+            gap: 10px;
+            background: #6c757d;
+            border: 1px solid #6c757d;
+            margin-right: 1rem;
+            min-width: 150px;
+        
+            span{
+                font-size: 12px;
+                font-weight: 700;
+                line-height: 17px;
+                letter-spacing: 0.20000000298023224px;
+                text-align: center;
+                color: #FFFFFF;
+        
+            }
+    
+        }
+    
+        .btn_confirm{
+                text-align: center;
+                cursor: pointer;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 10px;
+                border-radius: 8px;
+                gap: 10px;
+                background: #3282F9;
+                border: 1px solid #3282F9;
+                min-width: 150px;
+            
+                span{
+                    font-size: 12px;
+                    font-weight: 700;
+                    line-height: 17px;
+                    letter-spacing: 0.20000000298023224px;
+                    text-align: center;
+                    color: #FFFFFF;
+            
+                }
+        }
+    }
+
+}
+
+.detail_invoice{
+    margin: 1.5rem 0rem;
+
+    .btn_collaps{
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        border-radius: 8px;
+        gap: 10px;
+        background: #3282F9;
+        border: 1px solid #3282F9;
+    
+        span{
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 17px;
+            letter-spacing: 0.20000000298023224px;
+            text-align: center;
+            color: #FFFFFF;
+    
+        }
+    }
+}
+
+.collaps_open{
+    display: block;
+
+}
+
+.collaps_close{
+    display: none;
+
+}

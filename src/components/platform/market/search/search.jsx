@@ -66,105 +66,34 @@ export default function Search() {
           <SearchIcon />
         </Grid>
       </Grid>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <div
-          className={
-            theme.palette.mode === "light"
-              ? LightStyles.component_search
-              : DarkStyles.component_search
-          }
-        >
-          <div
-            className={
-              theme.palette.mode === "light"
-                ? LightStyles.form_group
-                : DarkStyles.form_group
-            }
-          >
-            <IconButton
-              className={
-                theme.palette.mode === "light"
-                  ? LightStyles.search_fillter
-                  : DarkStyles.search_fillter
-              }
-            >
+      <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+        <div className={theme.palette.mode === "light" ? LightStyles.component_search : DarkStyles.component_search}>
+          <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
+            {/* <IconButton className={theme.palette.mode === "light" ? LightStyles.search_fillter : DarkStyles.search_fillter}>
               <FilltersIcon />
-            </IconButton>
-            <input
-              type="text"
-              placeholder={fa["Search for your product..."]}
-              value={filter}
-              onChange={onChange}
-            />
-            <IconButton
-              className={
-                theme.palette.mode === "light"
-                  ? LightStyles.search_icon
-                  : DarkStyles.search_icon
-              }
-            >
+            </IconButton> */}
+            <input type="text" placeholder={fa["Search for your product..."]} value={filter} onChange={onChange}/>
+            <IconButton className={theme.palette.mode === "light" ? LightStyles.search_icon : DarkStyles.search_icon}>
               <SearchsIcon />
             </IconButton>
           </div>
-          <ul
-            className={
-              theme.palette.mode === "light"
-                ? LightStyles.list_search
-                : DarkStyles.list_search
-            }
-          >
-            {items.length === 0 &&
-            filter !== "" &&
+          <ul className={theme.palette.mode === "light" ? LightStyles.list_search : DarkStyles.list_search}>
+            {items.length === 0 && filter !== "" &&
             productSearch.length === 0 ? (
-              <div
-                className={
-                  theme.palette.mode === "light"
-                    ? LightStyles.page_404
-                    : DarkStyles.page_404
-                }
-              >
-                <div
-                  className={
-                    theme.palette.mode === "light"
-                      ? LightStyles.img_center
-                      : DarkStyles.img_center
-                  }
-                >
+              <div className={theme.palette.mode === "light" ? LightStyles.page_404 : DarkStyles.page_404}>
+                <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
                   <img src="image/404.png" alt="" />
                 </div>
-                <div
-                  className={
-                    theme.palette.mode === "light"
-                      ? LightStyles.content
-                      : DarkStyles.content
-                  }
-                >
-                  <p
-                    className={
-                      theme.palette.mode === "light"
-                        ? LightStyles.title
-                        : DarkStyles.title
-                    }
-                  >
+                <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
+                  <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>
                     {fa["Not found"]}
                   </p>
-                  <p
-                    className={
-                      theme.palette.mode === "light"
-                        ? LightStyles.text
-                        : DarkStyles.text
-                    }
-                  >
+                  <p className={theme.palette.mode === "light" ? LightStyles.text : DarkStyles.text}>
                     {fa["Sorry, the keyword you entered was not found, please try again Check or search with another keyword."]}
                   </p>
                 </div>
               </div>
-            ) : (
+              ) : (
               items.map((i) => {
                 return (
                   <li key={i.id}>

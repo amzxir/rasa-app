@@ -67,7 +67,7 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   /* 82vh */
-  height: 85vh;
+  height: 82vh;
   scrollbar-width: none;
 }
 
@@ -80,7 +80,7 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   /* 82vh */
-  height: 85vh;
+  height: 82vh;
   scrollbar-width: none;
   
 }
@@ -257,15 +257,15 @@ body {
   z-index: 1;
 }
 .progressbar li.active {
-  color: red;
+  color: #26C179;
   z-index: 1;
 }
 .progressbar li.active:before {
-  border-color: red;
+  border-color: #26C179;
   z-index: 1;
 } 
 .progressbar li.active + li:after {
-  border-color: red;
+  border-color: #26C179;
   z-index: 0;
 }
 
