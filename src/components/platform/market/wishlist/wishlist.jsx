@@ -76,7 +76,7 @@ export default function Wishlist() {
         <Grid container spacing={2}>
           {wishlistData.map((i) => {
             return (
-              <Grid key={i.id} item xs={6}>
+              <Grid item key={i.id} xs={6}>
                 <div
                   className={
                     theme.palette.mode === "light"

@@ -59,7 +59,7 @@ export default function Search() {
   return (
     <>
       <Grid container spacing={2} className={theme.palette.mode === "light" ? LightStyles.search : DarkStyles.search}>
-        <Grid xs={12} className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
+        <Grid item xs={12} className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
           <button onClick={handleOpen} className={theme.palette.mode === "light" ? LightStyles.input : DarkStyles.input}>
             {fa["Search for desired product..."]}
           </button>

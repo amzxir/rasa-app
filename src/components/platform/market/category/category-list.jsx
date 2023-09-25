@@ -32,7 +32,7 @@ export default function CategoryList() {
       <Grid container spacing={2}>
         {category.map((i , index) => {
             return(
-                <Grid key={i.id} xs={4}>
+                <Grid item key={i.id} xs={4}>
                     <NavLink className={theme.palette.mode === "light" ? LightStyles.category_list : DarkStyles.category_list}>
                         <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
                             <img src={i.img} alt="" />

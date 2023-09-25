@@ -27,7 +27,7 @@ export default function Delivery() {
             <Grid container>
                 {productOrder.map((i , index)=> {
                     return(
-                        <Grid key={i.id} style={{ marginBottom:'1rem' }} item xs={12}>
+                        <Grid item key={i.id} style={{ marginBottom:'1rem' }} xs={12}>
                             <Card sx={{ boxShadow:'none' , borderRadius:'15px' , p:2 }}>
                                 <div className={theme.palette.mode === "light" ? LightStyles.delive : DarkStyles.delive}>
                                     <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>

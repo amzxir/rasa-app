@@ -65,7 +65,7 @@ body {
 }
 
 .scroll-auto-light{
-  overflow-y: auto;
+  /* overflow-y: auto; */
   /* 85vh */
   height: 82vh;
 }
@@ -76,7 +76,7 @@ body {
 }
 
 .scroll-auto-dark{
-  overflow-y: auto;
+  /* overflow-y: auto; */
   /* 85vh */
   height: 82vh;
 }

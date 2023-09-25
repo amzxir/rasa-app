@@ -25,7 +25,7 @@ export default function product() {
   return (
     <Box>
         <Grid sx={{ mb:4 }} container>
-            <Grid xs={6}>
+            <Grid item xs={6}>
                 <NavLink to={"/profile/shop/manage/create-product"} state={fa["Create Product"]} className={theme.palette.mode === "light" ? LightStyles.btn_create_product : DarkStyles.btn_create_product}><span>{fa["Create New Product"]}</span></NavLink>
             </Grid>
         </Grid>

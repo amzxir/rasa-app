@@ -47,12 +47,20 @@ export default function Pay() {
                 <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["price products"]}</p>
                 <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>150/000 {fa["Toman"]}</p>
               </div>
-              {/* <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
-                <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["Your profit from the purchase"]}</p>
-                <p className={theme.palette.mode === "light" ? LightStyles.price_red : DarkStyles.price_red}>150/000 {fa["Toman"]}</p>
-              </div> */}
               <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
-                <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["total card"]}</p>
+                <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["tax"]}</p>
+                <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>150/00 {fa["Toman"]}</p>
+              </div>
+              <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
+                <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["shipping cost"]}</p>
+                <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>100/00 {fa["Toman"]}</p>
+              </div>
+              <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
+                <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["discount"]}</p>
+                <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>500 {fa["Toman"]}</p>
+              </div>
+              <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
+                <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["Total amount"]}</p>
                 <p className={theme.palette.mode === "light" ? LightStyles.price_success : DarkStyles.price_success}>150/000 {fa["Toman"]}</p>
               </div>
               <hr style={{ borderWidth:'.1px' , borderColor:'#ffffff4d' }} />

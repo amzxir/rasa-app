@@ -35,7 +35,7 @@ export default function Statistics() {
       <Grid container spacing={2}>
         {details.map((i , index)=> {
             return(
-                <Grid key={i.id} item xs={4}>
+                <Grid item key={i.id} xs={4}>
                     <div className={theme.palette.mode === "light" ? LightStyles.card_charts : DarkStyles.card_charts}>
                         <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
                             {i.icon}

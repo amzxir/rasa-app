@@ -29,7 +29,7 @@ export default function ProductCategory({ fetchProduct }) {
             <Grid container spacing={2}>
                 {products.map((i, index)=> {
                     return(
-                        <Grid key={i.id} item xs={6}>
+                        <Grid item key={i.id} xs={6}>
                             <div className={ theme.palette.mode === "light" ? LightStyles.card_product : DarkStyles.card_product}>
                                 <div className={ theme.palette.mode === "light" ? LightStyles.card_img : DarkStyles.card_img}>
                                     <NavLink to={i.path} state={i.name} className={ theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>

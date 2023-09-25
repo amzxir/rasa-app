@@ -16,12 +16,12 @@ export default function Comment() {
     <Box sx={{ mt:3 }}>
         <div className={theme.palette.mode === "light" ? LightStyles.comment : DarkStyles.comment}>
             <Grid container spacing={2}>
-              <Grid className={theme.palette.mode === "light" ? LightStyles.comment_img : DarkStyles.comment_img} item xs={2}>
+              <Grid item className={theme.palette.mode === "light" ? LightStyles.comment_img : DarkStyles.comment_img} item xs={2}>
                 <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
                   <img src="/image/comment.png" alt="" />
                 </div>
               </Grid>
-              <Grid className={theme.palette.mode === "light" ? LightStyles.comment_content : DarkStyles.comment_content} item xs={10}>
+              <Grid item className={theme.palette.mode === "light" ? LightStyles.comment_content : DarkStyles.comment_content} item xs={10}>
                 <div className={theme.palette.mode === "light" ? LightStyles.contents : DarkStyles.contents}>
                   <div className={theme.palette.mode === "light" ? LightStyles.name : DarkStyles.name}>
                     <p className={theme.palette.mode === "light" ? LightStyles.names : DarkStyles.names}>پویا رستمی</p>

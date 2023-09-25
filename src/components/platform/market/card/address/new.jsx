@@ -18,36 +18,36 @@ export default function New() {
     <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} fadeProps={{enterOpacity: 0.85,}}>
       <Box sx={{ mt: 5, mb: 5 }}>
         <Grid container>
-          <Grid sx={{ mb:2 }} xs={12}>
+          <Grid sx={{ mb:2 }} item xs={12}>
             <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
               <input className={theme.palette.mode === "light" ? LightStyles.form_control : DarkStyles.form_control} type="text" placeholder={fa["Postal address"]} />
             </div>
           </Grid>
-          <Grid sx={{ mb:2 }} xs={12}>
+          <Grid sx={{ mb:2 }} item xs={12}>
             <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
               <select className={theme.palette.mode === "light" ? LightStyles.select_control : DarkStyles.select_control}>
                 <option selected>{fa["state"]}</option>
               </select>
             </div>
           </Grid>
-          <Grid sx={{ mb:2 }} xs={12}>
+          <Grid sx={{ mb:2 }} item xs={12}>
             <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
               <select className={theme.palette.mode === "light" ? LightStyles.select_control : DarkStyles.select_control}>
                 <option selected>{fa["city"]}</option>
               </select>
             </div>
           </Grid>
-          <Grid sx={{ mb:2 , pl:1 }} xs={6}>
+          <Grid sx={{ mb:2 , pl:1 }} item xs={6}>
             <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
               <input className={theme.palette.mode === "light" ? LightStyles.form_control : DarkStyles.form_control} type="text" placeholder={fa["Plaque"]} />
             </div>
           </Grid>
-          <Grid sx={{ mb:2 , pr:1 }} xs={6}>
+          <Grid sx={{ mb:2 , pr:1 }} item xs={6}>
             <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
               <input className={theme.palette.mode === "light" ? LightStyles.form_control : DarkStyles.form_control} type="text" placeholder={fa["the unit"]} />
             </div>
           </Grid>
-          <Grid sx={{ mb:2  }} xs={12}>
+          <Grid sx={{ mb:2 }} item xs={12}>
             <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
               <input className={theme.palette.mode === "light" ? LightStyles.form_control : DarkStyles.form_control} type="text" placeholder={fa["Posti Code"]} />
             </div>
