@@ -13,28 +13,38 @@ const DeliveryOrder = lazy(() => import("./delivery/delivery"));
 const CancelledOrder = lazy(() => import("./cancelled/cancelled"));
 
 
-export default function Order() {
+export default function Order({ sendInvoice }) {
   // start function darkmode
   const theme = useTheme();
   const { colorMode } = useContext(ColorModeContext);
   // end function
 
+  // start fetch state in product order
+  const orderProduct = [
+    {id:1 , name:'شماره فاکتور 1' , trakingCode:'12378' , url_img:'/image/invoice.svg' , cancelled:true , delivery:false , returne:false},
+    {id:2 , name:'شماره فاکتور 2' , trakingCode:'34324' , url_img:'/image/invoice.svg' , cancelled:false , delivery:true , returne:true},
+    {id:3 , name:'شماره فاکتور 3' , trakingCode:'23456' , url_img:'/image/invoice.svg' , cancelled:false , delivery:true , returne:true},
+    {id:4 , name:'شماره فاکتور 3' , trakingCode:'12335' , url_img:'/image/invoice.svg' , cancelled:false , delivery:true , returne:true},
+  ]
+  const [productOrder , setProductOrder] = useState(orderProduct)
+  // start fetch state in product order
+
   // start and function state nav
-  const [nav , setNav] = useState(<Suspense fallback={<div>loading ...</div>}><DeliveryOrder/></Suspense>);
+  const [nav , setNav] = useState(<Suspense fallback={<div>loading ...</div>}><DeliveryOrder productOrder={productOrder} sendInvoice={sendInvoice}/></Suspense>);
   const [navItem , setNavItem] = useState(1);
 
   const handelCompoentFirst = () => {
-    setNav(<Suspense fallback={<div>loading ...</div>}><DeliveryOrder/></Suspense>)
+    setNav(<Suspense fallback={<div>loading ...</div>}><DeliveryOrder productOrder={productOrder} sendInvoice={sendInvoice}/></Suspense>)
     setNavItem(1)
   }
 
   const handelCompoentSecend = () => {
-    setNav(<Suspense fallback={<div>Loading</div>}><CancelledOrder/></Suspense>)
+    setNav(<Suspense fallback={<div>Loading</div>}><CancelledOrder productOrder={productOrder} sendInvoice={sendInvoice}/></Suspense>)
     setNavItem(2)
   }
 
   const handelCompoentThird = () => {
-    setNav(<Suspense fallback={<div>Loading</div>}><Returned/></Suspense>)
+    setNav(<Suspense fallback={<div>Loading</div>}><Returned productOrder={productOrder} sendInvoice={sendInvoice}/></Suspense>)
     setNavItem(3)
   }
 

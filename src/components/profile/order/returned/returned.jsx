@@ -9,20 +9,11 @@ import fa from "../../../../lang/fa.json";
 import ColorModeContext from "../../../../context/color-mode-context";
 
 
-export default function Returned() {
+export default function Returned({ productOrder , sendInvoice }) {
   // start function darkmode
   const theme = useTheme();
   const { colorMode } = useContext(ColorModeContext);
   // end function
-  // start fetch state in product order
-  const orderProduct = new Array(1).fill(null).map((p , i)=> ({
-      id:i,
-      name:`فاکتور شماره ${i+1}`,
-      trakingCode:`3424${i}`,
-      url_img:'/image/invoice.svg',
-    }))
-    const [productOrder , setProductOrder] = useState(orderProduct)
-  // start fetch state in product order
   return (
     <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} fadeProps={{enterOpacity: 0.85,}}>
         <Box sx={{ mt: 5, mb: 5 }}>
@@ -36,7 +27,7 @@ export default function Returned() {
                                         <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
                                             <h1>{i.name}</h1>
                                             <p className={theme.palette.mode === "light" ? LightStyles.traking_code : DarkStyles.traking_code}><span>{fa["tracking code"]}</span><span>{i.trakingCode}</span></p>
-                                            <NavLink to={"/profile/order/details"} state={fa["details order"]} className={theme.palette.mode === "light" ? LightStyles.btn_order : DarkStyles.btn_order}><span>{fa["details order"]}</span></NavLink>
+                                            <NavLink onClick={() => sendInvoice(i)} to={`/profile/order/details/${i.name}`} state={fa["details order"]} className={theme.palette.mode === "light" ? LightStyles.btn_order : DarkStyles.btn_order}><span>{fa["details order"]}</span></NavLink>
                                         </div>
                                         <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
                                             <img width="120" height="120" src={i.url_img} alt="" />

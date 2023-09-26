@@ -112,8 +112,8 @@ export default function App() {
               {/* routing compoent profile */}
               <Route exact path="/profile" element={<Profile/>}></Route>
               <Route path="/profile/edit" element={<ProfileEdit/>}></Route>
-              <Route path="/profile/order" element={<Order/>}></Route>
-              <Route path="/profile/order/details" element={<OrderDetails/>}></Route>
+              <Route path="/profile/order" element={<Order sendInvoice={handelSendProduct}/>}></Route>
+              <Route path="/profile/order/details/:invoice" element={<OrderDetails fetchProduct={fetchProduct}/>}></Route>
               <Route path="/profile/shop/manage" element={<ManageShop/>}></Route>
               <Route path="/profile/shop/manage/create-product" element={<CreateProduct/>}></Route>
             </Routes>
