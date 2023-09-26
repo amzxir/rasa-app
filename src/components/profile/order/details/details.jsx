@@ -141,20 +141,27 @@ export default function Details() {
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                   <TableHead>
                     <TableRow>
-                      <TableCell align="center">Dessert (100g serving)</TableCell>
-                      <TableCell align="center">Calories</TableCell>
-                      <TableCell align="center">Fat&nbsp;(g)</TableCell>
-                      <TableCell align="center">Carbs&nbsp;(g)</TableCell>
-                      <TableCell align="center">Protein&nbsp;(g)</TableCell>
+                      <TableCell align="center"></TableCell>
+                      <TableCell className={theme.palette.mode === "light" ? LightStyles.th_font : DarkStyles.th_font} align="center">{fa["Name Product"]}</TableCell>
+                      <TableCell className={theme.palette.mode === "light" ? LightStyles.th_font : DarkStyles.th_font} align="center">{fa["count"]}</TableCell>
+                      <TableCell className={theme.palette.mode === "light" ? LightStyles.th_font : DarkStyles.th_font} align="center">{fa["Unit price"]}</TableCell>
+                      <TableCell className={theme.palette.mode === "light" ? LightStyles.th_font : DarkStyles.th_font} align="center">{fa["Total price"]}</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
                       <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                        <TableCell align="center">kasdj</TableCell>
-                        <TableCell align="center">kasdj</TableCell>
-                        <TableCell align="center">kasdj</TableCell>
-                        <TableCell align="center">kasdj</TableCell>
-                        <TableCell align="center">kasdj</TableCell>
+                        <TableCell className={theme.palette.mode === "light" ? LightStyles.td_count : DarkStyles.td_count} align="center">1</TableCell>
+                        <TableCell className={theme.palette.mode === "light" ? LightStyles.th_font : DarkStyles.th_font} align="center">توربین پوش باتن پروتکشن</TableCell>
+                        <TableCell className={theme.palette.mode === "light" ? LightStyles.td_count : DarkStyles.td_count} align="center">2</TableCell>
+                        <TableCell className={theme.palette.mode === "light" ? LightStyles.td_count : DarkStyles.td_count} align="center">120/000 {fa["Toman"]}</TableCell>
+                        <TableCell className={theme.palette.mode === "light" ? LightStyles.td_count : DarkStyles.td_count} align="center">320/000 {fa["Toman"]}</TableCell>
+                      </TableRow>
+                      <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                        <TableCell className={theme.palette.mode === "light" ? LightStyles.td_count : DarkStyles.td_count} align="center">2</TableCell>
+                        <TableCell className={theme.palette.mode === "light" ? LightStyles.th_font : DarkStyles.th_font} align="center">آلژینات زرماخ</TableCell>
+                        <TableCell className={theme.palette.mode === "light" ? LightStyles.td_count : DarkStyles.td_count} align="center">4</TableCell>
+                        <TableCell className={theme.palette.mode === "light" ? LightStyles.td_count : DarkStyles.td_count} align="center">100/000 {fa["Toman"]}</TableCell>
+                        <TableCell className={theme.palette.mode === "light" ? LightStyles.td_count : DarkStyles.td_count} align="center">400/000 {fa["Toman"]}</TableCell>
                       </TableRow>
                   </TableBody>
                 </Table>

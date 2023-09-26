@@ -14,15 +14,15 @@
         border-radius: 10px;
 
         img{
-            width: 43px;
-            height: 43px;
+            width: 30px;
+            height: 30px;
 
         }
     }
 
     h1{
         font-family: "font-light" !important;
-        font-size: 15px;
+        font-size: 12px;
         font-weight: 500;
         line-height: 23px;
         letter-spacing: 0em;
@@ -39,16 +39,27 @@
     font-weight: 700;
     line-height: 14px;
     letter-spacing: 0.200000003px;
-    color: #113D8D;
+    color: #3282F9;
     cursor: pointer;
 }
 
 .collaps_open{
     display: block;
-
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+    margin-top: .5rem;
 }
 
 .collaps_close{
     display: none;
+}
 
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
