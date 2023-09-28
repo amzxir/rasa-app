@@ -84,7 +84,6 @@ export default function JetText() {
           try {
               const streamData = await navigator.mediaDevices.getUserMedia({
                   audio: true,
-                  video: false,
               });
               setPermission(true);
               setStream(streamData);
