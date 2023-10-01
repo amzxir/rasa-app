@@ -31,7 +31,7 @@ export default function Profile() {
       <Box sx={{ mt: 5, mb: 5 }}>
         <div className={ theme.palette.mode === "light" ? LightStyles.content_user : DarkStyles.content_user}>
           <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
-            <img src="/image/me.JPG" alt="" />
+            <img src="/image/me.png" alt="" />
             <NavLink className={theme.palette.mode === "light" ? LightStyles.btn_chnage_img : DarkStyles.btn_chnage_img}>
               <IconButton>
                   <ChangeIcon/>
@@ -63,19 +63,19 @@ export default function Profile() {
             <div><NotifIcon/><span>{fa["wishlist"]}</span></div>
             <ArrowRight/>
           </NavLink>
-          <NavLink className={theme.palette.mode === "light" ? LightStyles.routing : DarkStyles.routing}>
+          {/* <NavLink className={theme.palette.mode === "light" ? LightStyles.routing : DarkStyles.routing}>
             <div><SettingIcon/><span>{fa["setting privecy"]}</span></div>
             <ArrowRight/>
-          </NavLink>
+          </NavLink> */}
           <div className={theme.palette.mode === "light" ? LightStyles.routing : DarkStyles.routing}>
             <div><EyesIcon/><span>{fa["dark mode"]}</span></div>
             <Switch onClick={colorMode.toggleColorMode} checked={theme.palette.mode === "light" ? false : true}/>
           </div>
-          <NavLink className={theme.palette.mode === "light" ? LightStyles.routing : DarkStyles.routing}>
+          {/* <NavLink className={theme.palette.mode === "light" ? LightStyles.routing : DarkStyles.routing}>
             <div><FaqsIcon/><span>{fa["faq"]}</span></div>
             <ArrowRight/>
-          </NavLink>
-          <NavLink className={theme.palette.mode === "light" ? LightStyles.routing : DarkStyles.routing}>
+          </NavLink> */}
+          <NavLink to={"/profile/support"} state={fa["Support center"]} className={theme.palette.mode === "light" ? LightStyles.routing : DarkStyles.routing}>
             <div><SupportIcon/><span>{fa["Support center"]}</span></div>
             <ArrowRight/>
           </NavLink>

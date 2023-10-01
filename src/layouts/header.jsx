@@ -24,76 +24,30 @@ export default function Header() {
   // end variable react router dom
 
   return path !== "/shop/pay/sucess" && path !== "/profile" ? (
-    <Container
-      className={
-        theme.palette.mode === "light"
-          ? LightStyles.navbar_fixed
-          : DarkStyles.navbar_fixed
-      }
-      maxWidth="sm"
-    >
-      {path !== "/" &&
-      path !== "/shop" &&
-      path !== "/jet" &&
-      path !== "/club" &&
-      path !== "/blog" ? (
-        <div
-          className={
-            theme.palette.mode === "light"
-              ? LightStyles.header_back
-              : DarkStyles.header_back
-          }
-        >
-          <div
-            className={
-              theme.palette.mode === "light"
-                ? LightStyles.title_navigate
-                : DarkStyles.title_navigate
-            }
-          >
+    <Container className={theme.palette.mode === "light" ? LightStyles.navbar_fixed : DarkStyles.navbar_fixed} maxWidth="sm">
+      {path !== "/" && path !== "/shop" &&
+        path !== "/jet" && path !== "/club" &&
+        path !== "/blog" ? (
+        <div className={theme.palette.mode === "light" ? LightStyles.header_back : DarkStyles.header_back}>
+          <div className={theme.palette.mode === "light" ? LightStyles.title_navigate : DarkStyles.title_navigate}>
             {location.state}
           </div>
-          <IconButton
-            onClick={() => navigate(-1)}
-            className={
-              theme.palette.mode === "light"
-                ? LightStyles.back
-                : DarkStyles.back
-            }
-          >
+          <IconButton onClick={() => navigate(-1)} className={theme.palette.mode === "light" ? LightStyles.back : DarkStyles.back}>
             <Navigation />
           </IconButton>
         </div>
-      ) : (
+        ) : (
         <Grid container spacing={2}>
           <Grid item xs={9}>
             <Stack direction="row">
               <div>
                 <Avatar alt="Remy Sharp" src="/image/avatar.png" />
               </div>
-              <div
-                className={
-                  theme.palette.mode === "light"
-                    ? LightStyles.header_right
-                    : DarkStyles.header_right
-                }
-              >
-                <p
-                  className={
-                    theme.palette.mode === "light"
-                      ? LightStyles.text_welcome
-                      : DarkStyles.text_welcome
-                  }
-                >
+              <div className={theme.palette.mode === "light" ? LightStyles.header_right : DarkStyles.header_right}>
+                <p className={theme.palette.mode === "light" ? LightStyles.text_welcome : DarkStyles.text_welcome}>
                   👋 خوش آمدید
                 </p>
-                <p
-                  className={
-                    theme.palette.mode === "light"
-                      ? LightStyles.text_name
-                      : DarkStyles.text_name
-                  }
-                >
+                <p className={theme.palette.mode === "light" ? LightStyles.text_name : DarkStyles.text_name}>
                   پویا رستمی
                 </p>
               </div>
@@ -111,7 +65,6 @@ export default function Header() {
                   </Badge>
                 </IconButton>
               </NavLink>
-
             </Stack>
           </Grid>
         </Grid>

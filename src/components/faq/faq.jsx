@@ -16,30 +16,10 @@ export default function Faq() {
   return (
     <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} fadeProps={{enterOpacity: 0.85,}}>
       <Box sx={{ mt: 5, mb: 5 }}>
-        <div
-          className={
-            theme.palette.mode === "light"
-              ? LightStyles.img_content
-              : DarkStyles.img_content
-          }
-        >
-          <img
-            className={
-              theme.palette.mode === "light"
-                ? LightStyles.img_fluid
-                : DarkStyles.img_fluid
-            }
-            src="/image/terms.svg"
-            alt="terms"
-          />
+        <div className={theme.palette.mode === "light" ? LightStyles.img_content : DarkStyles.img_content}>
+          <img className={theme.palette.mode === "light" ? LightStyles.img_fluid : DarkStyles.img_fluid} src="/image/terms.svg" alt="terms"/>
         </div>
-        <p
-          className={
-            theme.palette.mode === "light"
-              ? LightStyles.text_about
-              : DarkStyles.text_about
-          }
-        >
+        <p className={theme.palette.mode === "light" ? LightStyles.text_about : DarkStyles.text_about}>
           لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
           از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و
           سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
@@ -52,22 +32,10 @@ export default function Faq() {
           پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
         </p>
 
-        <h1
-          className={
-            theme.palette.mode === "light"
-              ? LightStyles.title_h1_terms
-              : DarkStyles.title_h1_terms
-          }
-        >
+        <h1 className={theme.palette.mode === "light" ? LightStyles.title_h1_terms : DarkStyles.title_h1_terms}>
           <TouchIcon /> <span>{fa["The second paragraph is to respect the rights of customers"]}</span>
         </h1>
-        <p
-          className={
-            theme.palette.mode === "light"
-              ? LightStyles.text_about
-              : DarkStyles.text_about
-          }
-        >
+        <p className={theme.palette.mode === "light" ? LightStyles.text_about : DarkStyles.text_about}>
           لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
           از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و
           سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای

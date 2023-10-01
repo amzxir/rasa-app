@@ -6,9 +6,6 @@ import { FadeTransform } from "react-animation-components";
 import ColorModeContext from "../../../context/color-mode-context";
 import LightStyles from "../../../assets/sass/light/jet/home.module.scss";
 import DarkStyles from "../../../assets/sass/dark/jet/home.module.scss";
-import ModeLandscapeIcon from "../../../assets/svg/mode-landscape";
-import HeadsetIcon from "../../../assets/svg/headset";
-import ClipIcon from "../../../assets/svg/clip";
 import fa from "../../../lang/fa.json";
 
 export default function Home() {

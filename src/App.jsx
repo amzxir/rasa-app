@@ -32,6 +32,7 @@ import CreateProduct from "./components/profile/shop/product/create/create";
 import ProductCategory from "./components/platform/market/category/product-category";
 import CategoryList from "./components/platform/market/category/category-list";
 import NetworkStatus from "./components/network/network";
+import Support from "./components/profile/support/support";
 
 
 
@@ -112,6 +113,7 @@ export default function App() {
               {/* routing compoent profile */}
               <Route exact path="/profile" element={<Profile/>}></Route>
               <Route path="/profile/edit" element={<ProfileEdit/>}></Route>
+              <Route path="/profile/support" element={<Support/>}></Route>
               <Route path="/profile/order" element={<Order sendInvoice={handelSendProduct}/>}></Route>
               <Route path="/profile/order/details/:invoice" element={<OrderDetails fetchProduct={fetchProduct}/>}></Route>
               <Route path="/profile/shop/manage" element={<ManageShop/>}></Route>
