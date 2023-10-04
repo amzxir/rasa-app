@@ -10,6 +10,7 @@ import Faq from "./components/faq/faq";
 import Auth from "./components/auth/auth";
 import HomeShop from "./components/platform/market/landing/home";
 import Notification from "./components/platform/market/notification/notification";
+import NotificationSingle from "./components/platform/market/notification/single";
 import Wishlist from "./components/platform/market/wishlist/wishlist";
 import HomeJet from "./components/platform/jet/home";
 import JetText from "./components/platform/jet/jet-text";
@@ -94,7 +95,8 @@ export default function App() {
               <Route exact path="/shop" element={<HomeShop sendProduct={handelSendProduct} />}></Route>
               <Route path="/shop/category-list" element={<CategoryList />}></Route>
               <Route path="/shop/category-product/:productName" element={<ProductCategory fetchProduct={fetchProduct} />}></Route>
-              <Route path="/shop/notification" element={<Notification />}></Route>
+              <Route path="/shop/notification" element={<Notification sendNotif={handelSendProduct} />}></Route>
+              <Route path="/shop/notification-single/:notifId" element={<NotificationSingle fetchNotif={fetchProduct} />}></Route>
               <Route path="/shop/wishlist" element={<Wishlist />}></Route>
               <Route path="/shop/single-product" element={<SingleShop />}></Route>
               <Route path="/shop/card" element={<CardShop/>}></Route>
