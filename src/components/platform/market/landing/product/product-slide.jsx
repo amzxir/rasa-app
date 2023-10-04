@@ -21,7 +21,7 @@ export default function ProductSlide({ productData , sendProduct }) {
           <div key={index} data-test="data-product" className={theme.palette.mode === "light" ? LightStyles.m_b_1 : DarkStyles.m_b_1}>
             <div className={theme.palette.mode === "light" ? LightStyles.title_content_product : DarkStyles.title_content_product}>
               <h1>📍 {i.title}</h1>
-              <NavLink onClick={()=> sendProduct(i)} to={i.path} state={i.title}>{fa["view all"]}</NavLink>
+              <NavLink onClick={()=> sendProduct(i)} to={`/shop/products/${i.title}`} state={i.title}>{fa["view all"]}</NavLink>
             </div>
             <Splide className={theme.palette.mode === "light" ? LightStyles.slider_product : DarkStyles.slider_product}
               hasTrack={false}

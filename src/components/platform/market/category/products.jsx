@@ -9,7 +9,7 @@ import fa from "../../../../lang/fa.json";
 import ColorModeContext from "../../../../context/color-mode-context";
 import HeartIcon from "../../../../assets/svg/heart";
 
-export default function ProductCategory({ fetchProduct }) {
+export default function Products({ fetchProduct }) {
   // start function darkmode
   const theme = useTheme();
   const { colorMode } = useContext(ColorModeContext);

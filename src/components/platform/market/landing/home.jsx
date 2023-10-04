@@ -32,7 +32,6 @@ export default function LandingShop({sendProduct}) {
     {
       id: 1,
       title: "پیشنهاد شگقت انگیز",
-      path: "/shop/category-product/پیشنهاد شگقت انگیز",
       product: [
         {
           id: 1,
@@ -139,7 +138,6 @@ export default function LandingShop({sendProduct}) {
     {
       id: 2,
       title: "پرفروش ترین محصولات",
-      path: "/shop/category-product/پرفروش ترین محصولات",
       product: [
         {
           id: 1,
@@ -206,7 +204,6 @@ export default function LandingShop({sendProduct}) {
     {
       id: 3,
       title: "جدیدترین محصولات",
-      path: "/shop/category-product/جدیدترین محصولات",
       product: [
         {
           id: 1,

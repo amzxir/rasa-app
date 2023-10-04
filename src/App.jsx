@@ -30,7 +30,7 @@ import Order from "./components/profile/order/order";
 import OrderDetails from "./components/profile/order/details/details";
 import ManageShop from "./components/profile/shop/manage";
 import CreateProduct from "./components/profile/shop/product/create/create";
-import ProductCategory from "./components/platform/market/category/product-category";
+import ProductSpecial from "./components/platform/market/category/products";
 import CategoryList from "./components/platform/market/category/category-list";
 import NetworkStatus from "./components/network/network";
 import Support from "./components/profile/support/support";
@@ -94,7 +94,7 @@ export default function App() {
               {/* routeing component shop */}
               <Route exact path="/shop" element={<HomeShop sendProduct={handelSendProduct} />}></Route>
               <Route path="/shop/category-list" element={<CategoryList />}></Route>
-              <Route path="/shop/category-product/:productName" element={<ProductCategory fetchProduct={fetchProduct} />}></Route>
+              <Route path="/shop/products/:productName" element={<ProductSpecial fetchProduct={fetchProduct} />}></Route>
               <Route path="/shop/notification" element={<Notification sendNotif={handelSendProduct} />}></Route>
               <Route path="/shop/notification-single/:notifId" element={<NotificationSingle fetchNotif={fetchProduct} />}></Route>
               <Route path="/shop/wishlist" element={<Wishlist />}></Route>
