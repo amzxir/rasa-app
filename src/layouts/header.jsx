@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Container, Grid, Avatar, Stack, IconButton , Badge } from "@mui/material";
+import { Container, Grid, Avatar, Stack, IconButton, Badge } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import SunIcon from "../assets/svg/sun";
@@ -23,11 +23,17 @@ export default function Header() {
   let navigate = useNavigate();
   // end variable react router dom
 
+
+  // start find query link 
+  let paths = window.location.pathname.split("/");
+  let query = paths[3];
+  // end find query link 
+
   return path !== "/shop/pay/sucess" && path !== "/profile" ? (
     <Container className={theme.palette.mode === "light" ? LightStyles.navbar_fixed : DarkStyles.navbar_fixed} maxWidth="sm">
       {path !== "/" && path !== "/shop" &&
         path !== "/jet" && path !== "/club" &&
-        path !== "/blog" ? (
+        path !== "/blog" && path !== `/shop/product-category/${query}` ? (
         <div className={theme.palette.mode === "light" ? LightStyles.header_back : DarkStyles.header_back}>
           <div className={theme.palette.mode === "light" ? LightStyles.title_navigate : DarkStyles.title_navigate}>
             {location.state}
@@ -36,7 +42,7 @@ export default function Header() {
             <Navigation />
           </IconButton>
         </div>
-        ) : (
+      ) : (
         <Grid container spacing={2}>
           <Grid item xs={9}>
             <Stack direction="row">

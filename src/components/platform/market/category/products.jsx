@@ -7,7 +7,7 @@ import LightStyles from "../../../../assets/sass/light/market/category.module.sc
 import DarkStyles from "../../../../assets/sass/dark/market/category.module.scss";
 import fa from "../../../../lang/fa.json";
 import ColorModeContext from "../../../../context/color-mode-context";
-import HeartIcon from "../../../../assets/svg/heart";
+import BookmarkIcon from "../../../../assets/svg/Bookmark";
 
 export default function Products({ fetchProduct }) {
   // start function darkmode
@@ -36,7 +36,7 @@ export default function Products({ fetchProduct }) {
                                         <img src={i.path_img} alt={i.name} />
                                     </NavLink>
                                     <div className={ theme.palette.mode === "light" ? LightStyles.icon_wishlist : DarkStyles.icon_wishlist }>
-                                        <HeartIcon />
+                                        <BookmarkIcon />
                                     </div>
                                 </div>
                                 <div className= {theme.palette.mode === "light" ? LightStyles.shop : DarkStyles.shop }>

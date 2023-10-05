@@ -6,14 +6,14 @@ import LightStyles from "../../../../assets/sass/light/market/landing.module.scs
 import DarkStyles from "../../../../assets/sass/dark/market/landing.module.scss";
 import SearchIcon from "../../../../assets/svg/search";
 import SearchsIcon from "../../../../assets/svg/searchs";
-import FilltersIcon from "../../../../assets/svg/fillters";
 import BexitIcon from "../../../../assets/svg/bexit";
 import { NavLink } from "react-router-dom";
 import HeartIcon from "../../../../assets/svg/heart";
 import fa from "../../../../lang/fa.json"
 import CategoryIcon from "../../../../assets/svg/Category";
+import FilterIcon from "../../../../assets/svg/filter";
 
-export default function Search() {
+export default function Search({ setIsOpen }) {
   // start function darkmode
   const theme = useTheme();
   const { colorMode } = useContext(ColorModeContext);
@@ -56,15 +56,30 @@ export default function Search() {
     setItems([]);
   };
   // end fetch data card search
+
+  // start find url and equal path
+  const url = window.location.pathname;
+  let paths = window.location.pathname.split("/");
+  let query = paths[3];
+  // end find url and equal path
   return (
     <>
       <Grid container spacing={2} className={theme.palette.mode === "light" ? LightStyles.search : DarkStyles.search}>
-        <Grid xs={12} className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
+        <Grid xs={url === `/shop/product-category/${query}` ? 10 : 12} className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
           <button onClick={handleOpen} className={theme.palette.mode === "light" ? LightStyles.input : DarkStyles.input}>
             {fa["Search for desired product..."]}
           </button>
           <SearchIcon />
         </Grid>
+        {url === `/shop/product-category/${query}` ?
+          <Grid sx={{ pr: 1 }} xs={2}>
+            <button onClick={()=> setIsOpen(true)} className={theme.palette.mode === "light" ? LightStyles.btn_fillter : DarkStyles.btn_fillter}>
+              <FilterIcon />
+            </button>
+          </Grid>
+          :
+          null
+        }
       </Grid>
       <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
         <div className={theme.palette.mode === "light" ? LightStyles.component_search : DarkStyles.component_search}>
@@ -72,14 +87,14 @@ export default function Search() {
             {/* <IconButton className={theme.palette.mode === "light" ? LightStyles.search_fillter : DarkStyles.search_fillter}>
               <FilltersIcon />
             </IconButton> */}
-            <input type="text" placeholder={fa["Search for your product..."]} value={filter} onChange={onChange}/>
+            <input type="text" placeholder={fa["Search for your product..."]} value={filter} onChange={onChange} />
             <IconButton className={theme.palette.mode === "light" ? LightStyles.search_icon : DarkStyles.search_icon}>
               <SearchsIcon />
             </IconButton>
           </div>
           <ul className={theme.palette.mode === "light" ? LightStyles.list_search : DarkStyles.list_search}>
             {items.length === 0 && filter !== "" &&
-            productSearch.length === 0 ? (
+              productSearch.length === 0 ? (
               <div className={theme.palette.mode === "light" ? LightStyles.page_404 : DarkStyles.page_404}>
                 <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
                   <img src="image/404.png" alt="" />
@@ -93,7 +108,7 @@ export default function Search() {
                   </p>
                 </div>
               </div>
-              ) : (
+            ) : (
               items.map((i) => {
                 return (
                   <li key={i.id}>

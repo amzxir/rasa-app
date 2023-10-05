@@ -34,6 +34,7 @@ import ProductSpecial from "./components/platform/market/category/products";
 import CategoryList from "./components/platform/market/category/category-list";
 import NetworkStatus from "./components/network/network";
 import Support from "./components/profile/support/support";
+import ProductCategory from "./components/platform/market/category/product-category";
 
 
 
@@ -97,6 +98,7 @@ export default function App() {
               <Route path="/shop/products/:productName" element={<ProductSpecial fetchProduct={fetchProduct} />}></Route>
               <Route path="/shop/notification" element={<Notification sendNotif={handelSendProduct} />}></Route>
               <Route path="/shop/notification-single/:notifId" element={<NotificationSingle fetchNotif={fetchProduct} />}></Route>
+              <Route path="/shop/product-category/:productName" element={<ProductCategory />}></Route>
               <Route path="/shop/wishlist" element={<Wishlist />}></Route>
               <Route path="/shop/single-product" element={<SingleShop />}></Route>
               <Route path="/shop/card" element={<CardShop/>}></Route>

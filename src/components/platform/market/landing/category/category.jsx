@@ -31,7 +31,7 @@ export default function Category() {
                 {category.map((i, index) => {
                     return (
                         <Grid item key={i.id} xs={3}>
-                            <NavLink className={theme.palette.mode === "light" ? LightStyles.category_list : DarkStyles.category_list}>
+                            <NavLink to={`/shop/product-category/${i.name}`} className={theme.palette.mode === "light" ? LightStyles.category_list : DarkStyles.category_list}>
                                 <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
                                     <img src={i.img} alt="" />
                                 </div>

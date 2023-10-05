@@ -35,6 +35,21 @@
     }
 }
 
+.btn_fillter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "font-light" !important;
+    border: 1px solid #EEEEEE;
+    background: #EEEEEE;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 100px;
+    height: 44px;
+    text-align: right;
+    cursor: pointer;
+}
+
 .slider_banner{
     margin-bottom: 2rem;
 
