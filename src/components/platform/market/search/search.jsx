@@ -6,11 +6,10 @@ import LightStyles from "../../../../assets/sass/light/market/landing.module.scs
 import DarkStyles from "../../../../assets/sass/dark/market/landing.module.scss";
 import SearchIcon from "../../../../assets/svg/search";
 import SearchsIcon from "../../../../assets/svg/searchs";
+import ExitIcon from "../../../../assets/svg/exit";
 import BexitIcon from "../../../../assets/svg/bexit";
 import { NavLink } from "react-router-dom";
-import HeartIcon from "../../../../assets/svg/heart";
 import fa from "../../../../lang/fa.json"
-import CategoryIcon from "../../../../assets/svg/Category";
 import FilterIcon from "../../../../assets/svg/filter";
 
 export default function Search({ setIsOpen }) {
@@ -84,9 +83,9 @@ export default function Search({ setIsOpen }) {
       <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
         <div className={theme.palette.mode === "light" ? LightStyles.component_search : DarkStyles.component_search}>
           <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
-            {/* <IconButton className={theme.palette.mode === "light" ? LightStyles.search_fillter : DarkStyles.search_fillter}>
-              <FilltersIcon />
-            </IconButton> */}
+            <IconButton onClick={handleClose} className={theme.palette.mode === "light" ? LightStyles.search_fillter : DarkStyles.search_fillter}>
+              <ExitIcon />
+            </IconButton>
             <input type="text" placeholder={fa["Search for your product..."]} value={filter} onChange={onChange} />
             <IconButton className={theme.palette.mode === "light" ? LightStyles.search_icon : DarkStyles.search_icon}>
               <SearchsIcon />
