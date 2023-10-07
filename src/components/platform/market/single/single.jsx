@@ -14,6 +14,7 @@ import CompareIcon from "../../../../assets/svg/compare";
 import BookmarkIcon from "../../../../assets/svg/Bookmark";
 import NegativeIcon from "../../../../assets/svg/negative";
 import PlussIcon from "../../../../assets/svg/pluss";
+import TicketIcon from "../../../../assets/svg/ticket";
 
 const Description = lazy(() => import("./product/description"));
 const Specifications = lazy(() => import("./product/specifications"));
@@ -140,19 +141,30 @@ export default function Single() {
         <h1><AppsBarsIcon/> {fa["Sellers of this product in Rasadnet"]} </h1>
         <p>{fa["You can choose from the sellers of this product, then order the product"]}</p>
       </div>
+
       <div className={theme.palette.mode === "light" ? LightStyles.card_shop : DarkStyles.card_shop}>
         <div className={theme.palette.mode === "light" ? LightStyles.content_product_shop : DarkStyles.content_product_shop}>
           <img className={theme.palette.mode === "light" ? LightStyles.img_product : DarkStyles.img_product} src="/image/profile-shop.png" alt="" />
           <div>
             <p className={theme.palette.mode === "light" ? LightStyles.name_product : DarkStyles.name_product}>
               <span>سهند تجهیز</span>
-              <span className={theme.palette.mode === "light" ? LightStyles.rating_position : DarkStyles.rating_position}><StarOneIcon/> 4.8</span>
+              {/* <span className={theme.palette.mode === "light" ? LightStyles.rating_position : DarkStyles.rating_position}><StarOneIcon/> 4.8</span> */}
             </p>
-            <p className={theme.palette.mode === "light" ? LightStyles.details_shop : DarkStyles.details_shop}>فروشگاه سهند تجهیز با بهترین قیمت و خدمات میتواند بهترین محصولات را طبق نیاز شما ارائه کنید</p>
+            <div className={theme.palette.mode === "light" ? LightStyles.content_shops : DarkStyles.content_shops}>
+              <div className={theme.palette.mode === "light" ? LightStyles.stock : DarkStyles.stock}>
+                <span>
+                  <TicketIcon/>
+                </span>
+                <span>
+                  <p>{fa["Available in stock"]}</p>
+                </span>
+              </div>
+            </div>
+            {/* <p className={theme.palette.mode === "light" ? LightStyles.details_shop : DarkStyles.details_shop}>فروشگاه سهند تجهیز با بهترین قیمت و خدمات میتواند بهترین محصولات را طبق نیاز شما ارائه کنید</p> */}
           </div>
         </div>
         <div className={theme.palette.mode === "light" ? LightStyles.add_card : DarkStyles.add_card}>
-          <button onClick={() => setIsOpen(!isOpen)} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Select the requirement and add to cart"]}</span></button>
+          <button onClick={() => setIsOpen(!isOpen)} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Select a feature and add to cart"]}</span></button>
         </div>
         <div onClick={()=> setIsOpen(false)} className={isOpen === true ? theme.palette.mode === "light" ? LightStyles.fade_open : DarkStyles.fade_open : theme.palette.mode === "light" ? LightStyles.fade_close : DarkStyles.fade_close}>
         </div>
@@ -225,8 +237,6 @@ export default function Single() {
           </div>
         </div>
       </div>
-
-      
 
       <div className={theme.palette.mode === "light" ? LightStyles.tabs : DarkStyles.tabs}>
         <a className={active === 1 ? "active-tab-single" : ""} onClick={handelTabOne}>{fa["Description"]}</a>

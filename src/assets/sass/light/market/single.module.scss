@@ -151,6 +151,25 @@
             }
         }
 
+        .content_shops{
+            margin: .5rem 1rem 0rem 0rem;
+
+            span:nth-child(odd){
+            }
+
+            span:nth-child(even){
+
+                p:nth-child(odd){
+
+                }
+
+                p:nth-child(even){
+
+                }
+
+            }
+        }
+
         .details_shop{
             font-family: "font-light" !important;
             margin-right: 1rem;
