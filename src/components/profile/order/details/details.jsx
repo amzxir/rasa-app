@@ -15,7 +15,7 @@ import OpenBoxIcon from "../../../../assets/svg/open-box";
 import CarBigIcon from "../../../../assets/svg/car-big";
 import ArrowBtnIcon from "../../../../assets/svg/arrow-btn";
 
-export default function Details({ fetchProduct }) {
+export default function Details({ fetchProduct , sendInvoice }) {
   // start function darkmode
   const theme = useTheme();
   const { colorMode } = useContext(ColorModeContext);
@@ -134,7 +134,7 @@ export default function Details({ fetchProduct }) {
           </ul>
 
           <div className={theme.palette.mode === "light" ? LightStyles.detail_invoice : DarkStyles.detail_invoice}>
-            <NavLink className={theme.palette.mode === "light" ? LightStyles.btn_collaps : DarkStyles.btn_collaps}><span>{fa["details invoice"]}</span></NavLink>
+            <NavLink onClick={() => sendInvoice(fetchInvoice)} to={`/profile/order/invoice/${fetchInvoice.name}`} state={fa["details invoice"]} className={theme.palette.mode === "light" ? LightStyles.btn_collaps : DarkStyles.btn_collaps}><span>{fa["details invoice"]}</span></NavLink>
           </div>
 
   

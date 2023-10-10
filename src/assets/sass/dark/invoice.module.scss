@@ -1,0 +1,125 @@
+.img_qr{
+    display: flex;
+    justify-content: center;
+
+    img{
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.invoice_content{
+
+    h1{
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 17px;
+        letter-spacing: 0em;
+        color: #fff;
+    }
+    
+    .item{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        p:nth-child(odd){
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 18px;
+            letter-spacing: 0.20000000298023224px;
+            color: #fff;                
+        }
+
+        p:nth-child(even){
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 17px;
+            letter-spacing: 0.20000000298023224px;
+            color: #fff;
+            font-family: "font-number" !important;
+        }
+    }
+}
+
+.invoice{
+    margin-bottom: 1rem;
+
+    .total{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .title{
+            font-family: "font-light" !important;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            letter-spacing: 0em;
+            color: #fff;
+
+        }
+
+        .price{
+
+
+            font-family: "font-number" !important;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            letter-spacing: 0em;
+            color: #fff;
+
+
+            small{
+                font-family: "font-light" !important;
+                font-size: 10px;
+                font-weight: 400;
+                line-height: 15px;
+                letter-spacing: 0em;
+            }
+
+        }
+
+        .price_red{
+
+
+            font-family: "font-number" !important;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            letter-spacing: 0em;
+            color: #D80000;
+
+
+            small{
+                font-family: "font-light" !important;
+                font-size: 10px;
+                font-weight: 400;
+                line-height: 15px;
+                letter-spacing: 0em;
+            }
+
+        }
+
+        .price_success{
+
+            font-family: "font-number" !important;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            letter-spacing: 0em;
+            color: #1FC069;
+
+
+            small{
+                font-family: "font-light" !important;
+                font-size: 10px;
+                font-weight: 400;
+                line-height: 15px;
+                letter-spacing: 0em;
+            }
+
+        }
+    }
+}

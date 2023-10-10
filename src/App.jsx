@@ -36,6 +36,7 @@ import NetworkStatus from "./components/network/network";
 import Support from "./components/profile/support/support";
 import ProductCategory from "./components/platform/market/category/product-category";
 import Compare from "./components/platform/market/compare/compare";
+import Invoice from "./components/profile/order/invoice/invoice";
 
 
 
@@ -122,7 +123,8 @@ export default function App() {
               <Route path="/profile/edit" element={<ProfileEdit/>}></Route>
               <Route path="/profile/support" element={<Support/>}></Route>
               <Route path="/profile/order" element={<Order sendInvoice={handelSendProduct}/>}></Route>
-              <Route path="/profile/order/details/:invoice" element={<OrderDetails fetchProduct={fetchProduct}/>}></Route>
+              <Route path="/profile/order/details/:invoice" element={<OrderDetails sendInvoice={handelSendProduct} fetchProduct={fetchProduct}/>}></Route>
+              <Route path="/profile/order/invoice/:details" element={<Invoice fetchProduct={fetchProduct}/>}></Route>
               <Route path="/profile/shop/manage" element={<ManageShop/>}></Route>
               <Route path="/profile/shop/manage/create-product" element={<CreateProduct/>}></Route>
             </Routes>
