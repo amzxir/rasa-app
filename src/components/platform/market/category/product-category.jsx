@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Breadcrumbs } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
 import { FadeTransform } from "react-animation-components";
@@ -23,6 +23,11 @@ export default function ProductCategory() {
         <Box sx={{ mt: 5, mb: 5 }}>
 
             <Search setIsOpen={setIsOpen} />
+
+            <Breadcrumbs className={theme.palette.mode === "light" ? LightStyles.breadcrumb : DarkStyles.breadcrumb}>
+                <NavLink to={"/shop/category-list"} state={fa["category product"]}>{fa["category product"]}</NavLink>
+                <p>کبالت</p>
+            </Breadcrumbs>
 
             <Grid container spacing={2}>
                 <Grid item xs={6}>
@@ -59,25 +64,25 @@ export default function ProductCategory() {
                 <div className={theme.palette.mode === "light" ? LightStyles.category_filter : DarkStyles.category_filter}>
                     <h1>{fa["category all"]}</h1>
                     <div className={theme.palette.mode === "light" ? LightStyles.input_relative : DarkStyles.input_relative}>
-                        <input type="checkbox" value="High" name="flexRadioDefault0" id="category1"/>
+                        <input type="checkbox" value="High" name="flexRadioDefault0" id="category1" />
                         <label htmlFor="category1" className={theme.palette.mode === "light" ? LightStyles.label_absolute : DarkStyles.label_absolute}>
                             <p>اندو دانتیکس</p>
                         </label>
                     </div>
                     <div className={theme.palette.mode === "light" ? LightStyles.input_relative : DarkStyles.input_relative}>
-                        <input type="checkbox" value="High" name="flexRadioDefault0" id="category2"/>
+                        <input type="checkbox" value="High" name="flexRadioDefault0" id="category2" />
                         <label htmlFor="category2" className={theme.palette.mode === "light" ? LightStyles.label_absolute : DarkStyles.label_absolute}>
                             <p>شستشو و ضد عفونی کننده کانال</p>
                         </label>
                     </div>
                     <div className={theme.palette.mode === "light" ? LightStyles.input_relative : DarkStyles.input_relative}>
-                        <input type="checkbox" value="High" name="flexRadioDefault0" id="category3"/>
+                        <input type="checkbox" value="High" name="flexRadioDefault0" id="category3" />
                         <label htmlFor="category3" className={theme.palette.mode === "light" ? LightStyles.label_absolute : DarkStyles.label_absolute}>
                             <p>اسپریدر و پلاگر</p>
                         </label>
                     </div>
                     <div className={theme.palette.mode === "light" ? LightStyles.input_relative : DarkStyles.input_relative}>
-                        <input type="checkbox" value="High" name="flexRadioDefault0" id="category4"/>
+                        <input type="checkbox" value="High" name="flexRadioDefault0" id="category4" />
                         <label htmlFor="category4" className={theme.palette.mode === "light" ? LightStyles.label_absolute : DarkStyles.label_absolute}>
                             <p>پرکننده موقت کانال</p>
                         </label>

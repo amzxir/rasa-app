@@ -1,0 +1,178 @@
+.responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 25px;
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+
+    .d_flex {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        .compare_card {
+            padding-left: 10px;
+            margin-bottom: 2rem;
+            flex: 0 0 auto;
+            width: 33.3%;
+            margin: auto;
+            text-align: center;
+
+            .img_center {
+                position: relative;
+
+                img {
+                    width: 140px;
+                    height: 140px;
+                }
+
+                .remove{
+                    position: absolute;
+                    width: 14px;
+                    height: 14px;
+                    background: red;
+                    border-radius: 50%;
+                    right: -2px;
+                    top: 0px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+
+                }
+            }
+
+            .content_product {
+                
+
+                .name {
+                    font-size: 10px;
+                    font-weight: 500;
+                    line-height: 15px;
+                    letter-spacing: 0em;
+                    color: #fff;
+                    margin-block: .5rem;
+                }
+
+                .price {
+                    color: #1FC069;
+                    margin-block: .5rem;
+
+                    span:nth-child(odd) {
+                        font-family: "font-number" !important;
+                        font-size: 13px;
+                        font-weight: 700;
+                        line-height: 20px;
+                        letter-spacing: 0em;
+                    }
+
+                    span:nth-child(even) {
+                        font-size: 10px;
+                        font-family: "font-light" !important;
+                        font-weight: 400;
+                        line-height: 20px;
+                        letter-spacing: 0em;
+
+                    }
+                }
+
+                .details_product {
+                    display: block;
+                    margin-top: 1rem;
+                    text-decoration: none;
+                    box-sizing: border-box;
+                    border: 1px solid #3282F9;
+                    width: 100%;
+                    gap: 10px;
+                    border-radius: 7px;
+                    background: #3282F9;
+                    color: #fff;
+                    padding: .5rem;
+                    cursor: pointer;
+                    text-align: center;
+
+                    span {
+                        font-family: "font-light" !important;
+                        font-size: 12px;
+                        font-weight: 700;
+                        line-height: 22px;
+                        letter-spacing: 0.20000000298023224px;
+                        color: #FFFFFF;
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+    .content_compare{
+        margin-bottom: 1rem;
+
+        
+        h1{
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 17px;
+            letter-spacing: 0.20000000298023224px;
+            color: #FF0000;
+        }
+
+        .flex_content{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            .content{
+                background: #202020;
+                padding: 1rem;
+                width: 100%;
+                box-sizing: border-box;
+                flex: 0 0 auto;
+                width: 45%;
+     
+                p{
+                    font-size: 8px;
+                    font-weight: 300;
+                    line-height: 15px;
+                    letter-spacing: 0.20000000298023224px;
+                    color: #fff;
+                }
+
+            }
+        }
+ 
+
+
+    }
+    
+
+}
+
+/* width */
+.responsive::-webkit-scrollbar {
+    width: 5px !important;
+    display: block !important;
+}
+
+/* Track */
+.responsive::-webkit-scrollbar-track {
+    background: #202020 !important;
+    border-radius: 10px;
+}
+
+/* Handle */
+.responsive::-webkit-scrollbar-thumb {
+    background: #3282F9;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.responsive::-webkit-scrollbar-thumb:hover {
+    background: #3282F9;
+    border-radius: 10px;
+}
