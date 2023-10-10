@@ -258,6 +258,7 @@ export default function Single() {
         <a className={active === 4 ? "active-tab-single" : ""} onClick={handelTabFour}>{fa["Register a comment"]}</a>
       </div>
 
+
       {tab}
 
     </Box>

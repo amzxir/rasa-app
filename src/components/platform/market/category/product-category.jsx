@@ -64,25 +64,25 @@ export default function ProductCategory() {
                 <div className={theme.palette.mode === "light" ? LightStyles.category_filter : DarkStyles.category_filter}>
                     <h1>{fa["category all"]}</h1>
                     <div className={theme.palette.mode === "light" ? LightStyles.input_relative : DarkStyles.input_relative}>
-                        <input type="checkbox" value="High" name="flexRadioDefault0" id="category1" />
+                        <input type="radio" value="High" name="flexRadioDefault0" id="category1" />
                         <label htmlFor="category1" className={theme.palette.mode === "light" ? LightStyles.label_absolute : DarkStyles.label_absolute}>
                             <p>اندو دانتیکس</p>
                         </label>
                     </div>
                     <div className={theme.palette.mode === "light" ? LightStyles.input_relative : DarkStyles.input_relative}>
-                        <input type="checkbox" value="High" name="flexRadioDefault0" id="category2" />
+                        <input type="radio" value="High" name="flexRadioDefault0" id="category2" />
                         <label htmlFor="category2" className={theme.palette.mode === "light" ? LightStyles.label_absolute : DarkStyles.label_absolute}>
                             <p>شستشو و ضد عفونی کننده کانال</p>
                         </label>
                     </div>
                     <div className={theme.palette.mode === "light" ? LightStyles.input_relative : DarkStyles.input_relative}>
-                        <input type="checkbox" value="High" name="flexRadioDefault0" id="category3" />
+                        <input type="radio" value="High" name="flexRadioDefault0" id="category3" />
                         <label htmlFor="category3" className={theme.palette.mode === "light" ? LightStyles.label_absolute : DarkStyles.label_absolute}>
                             <p>اسپریدر و پلاگر</p>
                         </label>
                     </div>
                     <div className={theme.palette.mode === "light" ? LightStyles.input_relative : DarkStyles.input_relative}>
-                        <input type="checkbox" value="High" name="flexRadioDefault0" id="category4" />
+                        <input type="radio" value="High" name="flexRadioDefault0" id="category4" />
                         <label htmlFor="category4" className={theme.palette.mode === "light" ? LightStyles.label_absolute : DarkStyles.label_absolute}>
                             <p>پرکننده موقت کانال</p>
                         </label>

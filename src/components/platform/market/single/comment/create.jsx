@@ -1,6 +1,7 @@
-import React , { useContext } from "react";
+import React, { useContext } from "react";
 import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { FadeTransform } from "react-animation-components";
 import LightStyles from "../../../../../assets/sass/light/market/single.module.scss";
 import DarkStyles from "../../../../../assets/sass/dark/market/single.module.scss";
 import ColorModeContext from "../../../../../context/color-mode-context";
@@ -12,22 +13,24 @@ export default function Create() {
   const { colorMode } = useContext(ColorModeContext);
   // end function darkmode
   return (
-    <Box sx={{ mt:3 }}>
+    <FadeTransform in transformProps={{ exitTransform: 'translateX(-100px)' }}>
+      <Box sx={{ mt: 3 }}>
         <form>
-            <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
-              <select>
-                  <option>{fa["Do you recommend buying this product?"]}</option>
-                  <option value="1">{fa["yes"]}</option>
-                  <option value="2">{fa["no"]}</option>
-              </select>
-            </div>
-            <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
-              <textarea placeholder={fa["Enter your text..."]} type="text" ></textarea>
-            </div>
-            <button className={theme.palette.mode === "light" ? LightStyles.btn_send : DarkStyles.btn_send}>
-              <span>{fa["submit comment"]}</span>
-            </button>
+          <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
+            <select>
+              <option>{fa["Do you recommend buying this product?"]}</option>
+              <option value="1">{fa["yes"]}</option>
+              <option value="2">{fa["no"]}</option>
+            </select>
+          </div>
+          <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
+            <textarea placeholder={fa["Enter your text..."]} type="text" ></textarea>
+          </div>
+          <button className={theme.palette.mode === "light" ? LightStyles.btn_send : DarkStyles.btn_send}>
+            <span>{fa["submit comment"]}</span>
+          </button>
         </form>
-    </Box>
+      </Box>
+    </FadeTransform>
   );
 }
