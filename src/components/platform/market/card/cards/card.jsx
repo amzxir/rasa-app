@@ -18,7 +18,7 @@ export default function Cards() {
   // end function darkmode
 
   // start state product card
-  const productCard = new Array(2).fill(null).map((p , i)=> ({
+  const productCard = new Array(4).fill(null).map((p , i)=> ({
     id:i,
     name:`کامپوزیت سارمکو ${i}`,
     count:2,
@@ -125,34 +125,18 @@ export default function Cards() {
           })}
         </Grid>
 
-        <Card sx={{ boxShadow:0 , borderRadius:'15px' , p:2 }}>
+        <Card sx={{ boxShadow:0 , borderRadius:'15px' , p:2 , position:'sticky' , bottom:'0' }}>
           <div className={theme.palette.mode === "light" ? LightStyles.formDiscount : DarkStyles.formDiscount}>
             <input value={input} onChange={handleChange} type="text" placeholder={fa["enter discount code"]} />
             <button  style={{ background: color ? color : "" }} disabled={input.length === 10}><span>{fa["submit"]}</span></button>
           </div>
           <div className={theme.palette.mode === "light" ? LightStyles.invoice : DarkStyles.invoice}>
             <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
-              <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["price products"]}</p>
-              <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>150/000 {fa["Toman"]}</p>
+              <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["Number of items"]}</p>
+              <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>15 عدد</p>
             </div>
             <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
-              <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["tax"]}</p>
-              <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>150/00 {fa["Toman"]}</p>
-            </div>
-            <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
-              <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["shipping cost"]}</p>
-              <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>100/00 {fa["Toman"]}</p>
-            </div>
-            <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
-              <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["discount"]}</p>
-              <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>500 {fa["Toman"]}</p>
-            </div>
-            {/* <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
-              <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["Your profit from the purchase"]}</p>
-              <p className={theme.palette.mode === "light" ? LightStyles.price_red : DarkStyles.price_red}>150/000 {fa["Toman"]}</p>
-            </div> */}
-            <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
-              <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["Total amount"]}</p>
+              <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["Total shopping cart"]}</p>
               <p className={theme.palette.mode === "light" ? LightStyles.price_success : DarkStyles.price_success}>150/000 {fa["Toman"]}</p>
             </div>
           </div>

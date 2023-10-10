@@ -47,7 +47,31 @@
     gap: 10px;
     background: #3282F9;
     border: 1px solid #3282F9;
-    box-shadow: 4px 8px 24px 0px #00000040;
+
+    span{
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 17px;
+        letter-spacing: 0.20000000298023224px;
+        text-align: center;
+        color: #FFFFFF;
+
+    }
+
+}
+
+.btn_reload{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 16px 10px 16px;
+    border-radius: 100px;
+    gap: 10px;
+    background: #AD1E1C;
+    border: 1px solid #AD1E1C;
 
     span{
         font-size: 12px;
