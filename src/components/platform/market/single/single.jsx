@@ -113,9 +113,11 @@ export default function Single() {
         <div className={theme.palette.mode === "light" ? LightStyles.name_content : DarkStyles.name_content}>
           <h1>کامپوزیت سارمکو</h1>
           <div>
-            <IconButton>
-              <CompareIcon />
-            </IconButton>
+            <NavLink to={"/shop/compare"} state={fa["product compare"]}>
+              <IconButton>
+                <CompareIcon />
+              </IconButton>
+            </NavLink>
             <IconButton>
               <BookmarkIcon />
             </IconButton>

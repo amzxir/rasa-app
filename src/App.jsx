@@ -35,6 +35,7 @@ import CategoryList from "./components/platform/market/category/category-list";
 import NetworkStatus from "./components/network/network";
 import Support from "./components/profile/support/support";
 import ProductCategory from "./components/platform/market/category/product-category";
+import Compare from "./components/platform/market/compare/compare";
 
 
 
@@ -95,6 +96,7 @@ export default function App() {
               {/* routeing component shop */}
               <Route exact path="/shop" element={<HomeShop sendProduct={handelSendProduct} />}></Route>
               <Route path="/shop/category-list" element={<CategoryList />}></Route>
+              <Route path="/shop/compare" element={<Compare />}></Route>
               <Route path="/shop/products/:productName" element={<ProductSpecial fetchProduct={fetchProduct} />}></Route>
               <Route path="/shop/notification" element={<Notification sendNotif={handelSendProduct} />}></Route>
               <Route path="/shop/notification-single/:notifId" element={<NotificationSingle fetchNotif={fetchProduct} />}></Route>
