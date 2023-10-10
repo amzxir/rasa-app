@@ -21,10 +21,10 @@ export default function Order({ sendInvoice }) {
 
   // start fetch state in product order
   const orderProduct = [
-    {id:1 , name:'شماره فاکتور 1' , trakingCode:'12378' , url_img:'/image/invoice.svg' , cancelled:true , delivery:false , returne:false},
-    {id:2 , name:'شماره فاکتور 2' , trakingCode:'34324' , url_img:'/image/invoice.svg' , cancelled:false , delivery:true , returne:true},
-    {id:3 , name:'شماره فاکتور 3' , trakingCode:'23456' , url_img:'/image/invoice.svg' , cancelled:false , delivery:true , returne:true},
-    {id:4 , name:'شماره فاکتور 3' , trakingCode:'12335' , url_img:'/image/invoice.svg' , cancelled:false , delivery:true , returne:true},
+    {id:1 , name:'شماره فاکتور 1' , trakingCode:'12378' , url_img:'/image/invo.svg' , cancelled:true , delivery:false , returne:false},
+    {id:2 , name:'شماره فاکتور 2' , trakingCode:'34324' , url_img:'/image/invo.svg' , cancelled:false , delivery:true , returne:true},
+    {id:3 , name:'شماره فاکتور 3' , trakingCode:'23456' , url_img:'/image/invo.svg' , cancelled:false , delivery:true , returne:true},
+    {id:4 , name:'شماره فاکتور 3' , trakingCode:'12335' , url_img:'/image/invo.svg' , cancelled:false , delivery:true , returne:true},
   ]
   const [productOrder , setProductOrder] = useState(orderProduct)
   // start fetch state in product order
@@ -52,12 +52,12 @@ export default function Order({ sendInvoice }) {
 
 
   return (
-    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} fadeProps={{enterOpacity: 0.85,}}>
+    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}}>
       <Box sx={{ mt: 5, mb: 5 }}>
         <div className={theme.palette.mode === "light" ? LightStyles.navs : DarkStyles.navs}>
           <a style={{ color:navItem === 1  ? '#113D8D' : '' }} onClick={handelCompoentFirst}><span className="span_bottom" style={{ borderBottom:navItem === 1  ? '2px solid #113D8D' : '' }}></span>{fa["Current and delivery"]}</a>
-          <a style={{ color:navItem === 2 ? '#113D8D' : '' }} onClick={handelCompoentSecend}><span className="span_bottom" style={{ borderBottom:navItem === 2  ? '2px solid #113D8D' : '' }}></span>{fa["Returned"]}</a>
-          <a style={{ color:navItem === 3 ? '#113D8D' : '' }} onClick={handelCompoentThird}><span className="span_bottom" style={{ borderBottom:navItem === 3  ? '2px solid #113D8D' : '' }}></span>{fa["Cancelled"]}</a>
+          <a style={{ color:navItem === 2 ? '#EC5A1C' : '' }} onClick={handelCompoentSecend}><span className="span_bottom" style={{ borderBottom:navItem === 2  ? '2px solid #EC5A1C' : '' }}></span>{fa["Returned"]}</a>
+          <a style={{ color:navItem === 3 ? '#8D0000' : '' }} onClick={handelCompoentThird}><span className="span_bottom" style={{ borderBottom:navItem === 3  ? '2px solid #8D0000' : '' }}></span>{fa["Cancelled"]}</a>
         </div>
         {nav}
       </Box>

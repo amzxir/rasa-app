@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
-import { Box , Grid , Card , Modal , Table , TableBody , TableCell ,TableContainer , TableHead , TableRow , Paper } from "@mui/material";
+import { Box , Grid , Card , Modal } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { FadeTransform } from "react-animation-components";
+import { NavLink } from "react-router-dom";
 import LightStyles from "../../../../assets/sass/light/order.module.scss";
 import DarkStyles from "../../../../assets/sass/dark/order.module.scss";
 import ColorModeContext from "../../../../context/color-mode-context";
@@ -12,6 +13,7 @@ import CarIcon from "../../../../assets/svg/car";
 import PersonIcon from "../../../../assets/svg/person";
 import OpenBoxIcon from "../../../../assets/svg/open-box";
 import CarBigIcon from "../../../../assets/svg/car-big";
+import ArrowBtnIcon from "../../../../assets/svg/arrow-btn";
 
 export default function Details({ fetchProduct }) {
   // start function darkmode
@@ -29,14 +31,9 @@ export default function Details({ fetchProduct }) {
   const handleClose = () => setOpen(false);
   // end function and state modal
 
-  // start function collaps
-  const [collaps , setCollaps] = useState(false)
-  const handleCollapsOpen = () => setCollaps(!collaps);
-  const handleCollapsClose = () => setCollaps(false);
-  // end function collaps
 
   return (
-    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} fadeProps={{enterOpacity: 0.85,}}>
+    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}}>
       <Box sx={{ mt: 5, mb: 5 }}>
           <Grid container>
             <Grid item key={fetchInvoice.id} style={{ marginBottom:'1rem' }} xs={12}>
@@ -45,14 +42,15 @@ export default function Details({ fetchProduct }) {
                         <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
                             <h1>{fetchInvoice.name}</h1>
                             <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}><span>{fa["tracking code"]}</span><span>{fetchInvoice.trakingCode}</span></p>
+                            <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}><span>{fa["tracking code"]}</span><span>{fetchInvoice.trakingCode}</span></p>
                             {fetchInvoice.delivery === true ?
-                              <button onClick={handleOpen} className={theme.palette.mode === "light" ? LightStyles.btn_order : DarkStyles.btn_order}><span>{fa["Cancel the order"]}</span></button>
+                              <button onClick={handleOpen} className={theme.palette.mode === "light" ? LightStyles.btn_order : DarkStyles.btn_order}><span>{fa["Cancel the order"]}</span><span><ArrowBtnIcon/></span></button>
                               :
                               null
                             }
 
                             {fetchInvoice.cancelled === true ?
-                              <button onClick={handleOpen} className={theme.palette.mode === "light" ? LightStyles.btn_order : DarkStyles.btn_order}><span>{fa["reorder"]}</span></button>
+                              <button onClick={handleOpen} className={theme.palette.mode === "light" ? LightStyles.btn_order : DarkStyles.btn_order}><span>{fa["reorder"]}</span><span><ArrowBtnIcon/></span></button>
                               :
                               null
                             }
@@ -136,39 +134,9 @@ export default function Details({ fetchProduct }) {
           </ul>
 
           <div className={theme.palette.mode === "light" ? LightStyles.detail_invoice : DarkStyles.detail_invoice}>
-            <button onClick={handleCollapsOpen} className={theme.palette.mode === "light" ? LightStyles.btn_collaps : DarkStyles.btn_collaps}><span>{fa["details invoice"]}</span></button>
+            <NavLink className={theme.palette.mode === "light" ? LightStyles.btn_collaps : DarkStyles.btn_collaps}><span>{fa["details invoice"]}</span></NavLink>
           </div>
-          <div className={collaps === true ? theme.palette.mode === "light" ? LightStyles.collaps_open : DarkStyles.collaps_open : theme.palette.mode === "light" ? LightStyles.collaps_close : DarkStyles.collaps_close}>
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                  <TableHead>
-                    <TableRow>
-                      <TableCell align="center"></TableCell>
-                      <TableCell className={theme.palette.mode === "light" ? LightStyles.th_font : DarkStyles.th_font} align="center">{fa["Name Product"]}</TableCell>
-                      <TableCell className={theme.palette.mode === "light" ? LightStyles.th_font : DarkStyles.th_font} align="center">{fa["count"]}</TableCell>
-                      <TableCell className={theme.palette.mode === "light" ? LightStyles.th_font : DarkStyles.th_font} align="center">{fa["Unit price"]}</TableCell>
-                      <TableCell className={theme.palette.mode === "light" ? LightStyles.th_font : DarkStyles.th_font} align="center">{fa["Total price"]}</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                      <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                        <TableCell className={theme.palette.mode === "light" ? LightStyles.td_count : DarkStyles.td_count} align="center">1</TableCell>
-                        <TableCell className={theme.palette.mode === "light" ? LightStyles.th_font : DarkStyles.th_font} align="center">توربین پوش باتن پروتکشن</TableCell>
-                        <TableCell className={theme.palette.mode === "light" ? LightStyles.td_count : DarkStyles.td_count} align="center">2</TableCell>
-                        <TableCell className={theme.palette.mode === "light" ? LightStyles.td_count : DarkStyles.td_count} align="center">120/000 {fa["Toman"]}</TableCell>
-                        <TableCell className={theme.palette.mode === "light" ? LightStyles.td_count : DarkStyles.td_count} align="center">320/000 {fa["Toman"]}</TableCell>
-                      </TableRow>
-                      <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                        <TableCell className={theme.palette.mode === "light" ? LightStyles.td_count : DarkStyles.td_count} align="center">2</TableCell>
-                        <TableCell className={theme.palette.mode === "light" ? LightStyles.th_font : DarkStyles.th_font} align="center">آلژینات زرماخ</TableCell>
-                        <TableCell className={theme.palette.mode === "light" ? LightStyles.td_count : DarkStyles.td_count} align="center">4</TableCell>
-                        <TableCell className={theme.palette.mode === "light" ? LightStyles.td_count : DarkStyles.td_count} align="center">100/000 {fa["Toman"]}</TableCell>
-                        <TableCell className={theme.palette.mode === "light" ? LightStyles.td_count : DarkStyles.td_count} align="center">400/000 {fa["Toman"]}</TableCell>
-                      </TableRow>
-                  </TableBody>
-                </Table>
-            </TableContainer>
-          </div>
+
   
       </Box>
     </FadeTransform>

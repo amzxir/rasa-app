@@ -13,19 +13,16 @@
             height: 120px;
         }
 
-        a{
+        .btn_chnage_img{
 
             position: absolute;
-            right: 135px;
-            bottom: -10px;
+            right: 145px;
+            bottom: 0px;
             z-index: 100;
-            .btn_chnage_img{
-                display: flex;
-                align-items: center;
-                justify-content: center;
+
     
-            }
         }
+
 
     }
 
