@@ -32,7 +32,7 @@ export default function Manage() {
     <Box sx={{ mt: 5, mb: 5 }}>
       <div className={theme.palette.mode === "light" ? LightStyles.details_shop : DarkStyles.details_shop}>
         <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
-            <img src="/image/ImageShop.png" alt="" />
+            <img src="/image/me.png" alt="" />
         </div>
         <h1>فروشگاه رسادنت</h1>
         <p>ww.rasadent.com/@RASADENT</p>
@@ -43,17 +43,17 @@ export default function Manage() {
             <p>{fa["Successful purchase"]}</p>
         </div>
         <div className={theme.palette.mode === "light" ? LightStyles.items : DarkStyles.items}>
-            <p>213</p>
+            <p>15</p>
             <p>{fa["Active Card"]}</p>
         </div>
         <div className={theme.palette.mode === "light" ? LightStyles.items_none_border : DarkStyles.items_none_border}>
-            <p>213</p>
-            <p>{fa["your income"]}</p>
+            <p>18</p>
+            <p>محصولات مرجوع</p>
         </div>
       </div>
       <div className={theme.palette.mode === "light" ? LightStyles.tabs : DarkStyles.tabs}>
-        <a onClick={handelCompoentFirst}><span className={navItem === true ? 'active-tabs' : ''}></span><span className={theme.palette.mode === "light" ? LightStyles.name : DarkStyles.name}>{fa["Sale statistics"]}</span></a>
-        <a onClick={handelCompoentSecend}><span className={navItem === false ? 'active-tabs' : ''}></span><span className={theme.palette.mode === "light" ? LightStyles.name : DarkStyles.name}>{fa["your products"]}</span></a>
+        <a onClick={handelCompoentFirst}><span className={navItem === true ? 'active-tabs' : ''}></span><span className={theme.palette.mode === "light" ? LightStyles.name : DarkStyles.name}>پیشخوان</span></a>
+        <a onClick={handelCompoentSecend}><span className={navItem === false ? 'active-tabs' : ''}></span><span className={theme.palette.mode === "light" ? LightStyles.name : DarkStyles.name}>پشتیبانی فروشندگان</span></a>
       </div>
       {tab}
     </Box>

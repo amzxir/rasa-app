@@ -166,9 +166,11 @@
 .card_charts{
     text-align: center;
     position: relative;
-    padding: 1rem;
+    padding: 1rem .5rem 1rem .5rem;
     border-radius: 12px;
-    background: #CE34400D;
+    background: #366DFA1A;
+    text-decoration: none;
+    display: block;
 
     .content{
 
@@ -184,14 +186,27 @@
         }
     
         .details{
-            font-family: "font-light" !important;
-            font-size: 10px;
-            font-weight: 400;
-            line-height: 15px;
-            letter-spacing: 0.20000000298023224px;
-            color: #64748B;
-            margin-block-end: 0;
-        
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0;
+
+            span:nth-child(odd){
+                font-family: "font-light" !important;
+                color: #64748B;
+                margin-block-end: 0;
+                font-size: 8px;
+                font-weight: 400;
+                line-height: 12px;
+                letter-spacing: 0.20000000298023224px;
+
+            }
+
+            span:nth-child(even){
+                display: flex;
+                align-items: center;
+      
+            }
         }
     }
 

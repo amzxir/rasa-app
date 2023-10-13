@@ -1,14 +1,23 @@
 import React , { useContext, useState } from "react";
 import { Box, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { NavLink } from "react-router-dom";
 import LightStyles from "../../../../assets/sass/light/manage-shop.module.scss";
 import DarkStyles from "../../../../assets/sass/dark/manage-shop.module.scss";
 import fa from "../../../../lang/fa.json";
 import ColorModeContext from "../../../../context/color-mode-context";
-import FiRrShopIcon from "../../../../assets/svg/fi-rr-shop";
-import ShoppingCardIcon from "../../../../assets/svg/fi-rr-shopping-cart-check";
-import SignInIcon from "../../../../assets/svg/fi-rr-sign-in-alt";
+import ArrowSmallIcon from "../../../../assets/svg/arrow-small-left";
 import LineChart from "../../../chart/line";
+import LayoutIcon from "../../../../assets/svg/layout";
+import LayersIcon from "../../../../assets/svg/layers";
+import FingerIcon from "../../../../assets/svg/finger";
+import BankIcon from "../../../../assets/svg/bank";
+import ChartPieIcon from "../../../../assets/svg/chart-pie";
+import BoxIcon from "../../../../assets/svg/box";
+import TicketsIcon from "../../../../assets/svg/tickets";
+import FilIcon from "../../../../assets/svg/fil";
+
+
 
 
 export default function Statistics() {
@@ -19,9 +28,14 @@ export default function Statistics() {
 
   // start fetch data card shop manage
   const CardProduct = [
-    {id:1 , name:fa["count products"] , count:25 , icon :<FiRrShopIcon/>},
-    {id:2 , name:fa["count buy"] , count:25 , icon :<ShoppingCardIcon/>},
-    {id:3 , name:fa["count back"] , count:25 , icon :<SignInIcon/>},
+    {id:1 , name:'محصولات' , link:'#' , icon :<LayoutIcon/>},
+    {id:2 , name:'سفارشات' , link:'#' , icon :<LayersIcon/>},
+    {id:3 , name:'احراز هویت' , link:'#' , icon :<FingerIcon/>},
+    {id:4 , name:'شخصی سازی' , link:'#' , icon :<FilIcon/>},
+    {id:5 , name:'اطلاعات بانکی' , link:'#' , icon :<BankIcon/>},
+    {id:6 , name:'گزارش مالی' , link:'#' , icon :<ChartPieIcon/>},
+    {id:7 , name:'آپلود مدارک' , link:'#' , icon :<BoxIcon/>},
+    {id:8 , name:'تخفیفات' , link:'#' , icon :<TicketsIcon/>},
   ]
   const [details , setDetails] = useState(CardProduct);
   // end fetch data card shop manage
@@ -35,14 +49,16 @@ export default function Statistics() {
       <Grid container spacing={2}>
         {details.map((i , index)=> {
             return(
-                <Grid item key={i.id} xs={4}>
-                    <div className={theme.palette.mode === "light" ? LightStyles.card_charts : DarkStyles.card_charts}>
+                <Grid item key={i.id} xs={3}>
+                    <NavLink className={theme.palette.mode === "light" ? LightStyles.card_charts : DarkStyles.card_charts}>
                         <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
                             {i.icon}
-                            <p className={theme.palette.mode === "light" ? LightStyles.number : DarkStyles.number}>{i.count}</p>
-                            <p className={theme.palette.mode === "light" ? LightStyles.details : DarkStyles.details}>{i.name}</p>
+                            <p className={theme.palette.mode === "light" ? LightStyles.details : DarkStyles.details}>
+                              <span>{i.name}</span>
+                              <span><ArrowSmallIcon/></span>
+                            </p>
                         </div>
-                    </div>
+                    </NavLink>
                 </Grid>
             )
         })}
