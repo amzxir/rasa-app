@@ -9,7 +9,7 @@ import ColorModeContext from "../../../../context/color-mode-context";
 import EyeIcon from "../../../../assets/svg/eye";
 import PencilIcon from "../../../../assets/svg/pencil";
 
-export default function product() {
+export default function productShop() {
   // start function darkmode
   const theme = useTheme();
   const { colorMode } = useContext(ColorModeContext);

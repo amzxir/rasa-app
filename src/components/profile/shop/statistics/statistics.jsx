@@ -28,7 +28,7 @@ export default function Statistics() {
 
   // start fetch data card shop manage
   const CardProduct = [
-    {id:1 , name:'محصولات' , link:'#' , icon :<LayoutIcon/>},
+    {id:1 , name:'محصولات' , link:'/profile/shop/products' , icon :<LayoutIcon/>},
     {id:2 , name:'سفارشات' , link:'#' , icon :<LayersIcon/>},
     {id:3 , name:'احراز هویت' , link:'#' , icon :<FingerIcon/>},
     {id:4 , name:'شخصی سازی' , link:'#' , icon :<FilIcon/>},
@@ -50,7 +50,7 @@ export default function Statistics() {
         {details.map((i , index)=> {
             return(
                 <Grid item key={i.id} xs={3}>
-                    <NavLink className={theme.palette.mode === "light" ? LightStyles.card_charts : DarkStyles.card_charts}>
+                    <NavLink to={i.link} state={fa["product"]} className={theme.palette.mode === "light" ? LightStyles.card_charts : DarkStyles.card_charts}>
                         <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
                             {i.icon}
                             <p className={theme.palette.mode === "light" ? LightStyles.details : DarkStyles.details}>

@@ -7,7 +7,7 @@ import fa from "../../../lang/fa.json";
 import ColorModeContext from "../../../context/color-mode-context";
 
 const Statistics = lazy(() => import("./statistics/statistics"));
-const YourProduct = lazy(() => import("./product/product"));
+const SupportShop = lazy(() => import("./support/support"));
 
 export default function Manage() {
   // start function darkmode
@@ -24,7 +24,7 @@ export default function Manage() {
   }
 
   const handelCompoentSecend = () => {
-    setTab(<Suspense fallback={<div>Loading</div>}><YourProduct/></Suspense>)
+    setTab(<Suspense fallback={<div>Loading</div>}><SupportShop/></Suspense>)
     setNavItem(false)
   }
   // start state navig
