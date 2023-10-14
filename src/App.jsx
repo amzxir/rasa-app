@@ -44,6 +44,10 @@ import Information from "./components/profile/shop/bank/information";
 import Documents from "./components/profile/shop/documents/documents";
 import Orders from "./components/profile/shop/orders/orders";
 import Chortkeh from "./components/platform/chortkeh/chortkeh";
+import HomeForm from "./components/platform/form/home/home";
+import Form from "./components/platform/form/form/form";
+import Alert from "./components/platform/form/alert/alert";
+import Download from "./components/platform/form/download/download";
 
 
 
@@ -127,6 +131,11 @@ export default function App() {
               <Route path="/club" element={<Club />}></Route>
               {/* routeing component chortkeh */}
               <Route path="/chortkeh" element={<Chortkeh />}></Route>
+              {/* routeing component form */}
+              <Route path="/form" element={<HomeForm/>}></Route>
+              <Route path="/form/create" element={<Form/>}></Route>
+              <Route path="/form/create/alert" element={<Alert/>}></Route>
+              <Route path="/form/create/download" element={<Download/>}></Route>
               {/* routing compoent profile */}
               <Route exact path="/profile" element={<Profile />}></Route>
               <Route path="/profile/edit" element={<ProfileEdit />}></Route>

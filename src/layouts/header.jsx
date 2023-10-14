@@ -34,7 +34,8 @@ export default function Header() {
       {path !== "/" && path !== "/shop" &&
         path !== "/jet" && path !== "/club" &&
         path !== "/blog" && path !== `/shop/product-category/${query}` &&
-        path !== "/chortkeh" ? (
+        path !== "/chortkeh" && path !== "/form" && path !== "/form/create" &&
+        path !== "/form/create/alert" && path !== "/form/create/download" ? (
         <div className={theme.palette.mode === "light" ? LightStyles.header_back : DarkStyles.header_back}>
           <div className={theme.palette.mode === "light" ? LightStyles.title_navigate : DarkStyles.title_navigate}>
             {location.state}

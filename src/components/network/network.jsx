@@ -1,4 +1,4 @@
-import React, { useState, useEffect , useContext} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useTheme } from "@mui/material/styles";
 import LightStyles from "../../assets/sass/light/network.module.scss";
 import DarkStyles from "../../assets/sass/dark/network.module.scss";
@@ -30,9 +30,17 @@ export default function Network(props) {
     return props.children;
   } else {
     return (
-        <div className={theme.palette.mode === "light" ? LightStyles.internet : DarkStyles.internet}>
-            <p>{fa["Internet is not available"]}</p>
+      <div className={theme.palette.mode === "light" ? LightStyles.internet : DarkStyles.internet}>
+        <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
+          <img src="/image/wifi.png" alt="" />
         </div>
+        <h1>اوووپس !</h1>
+        <p>اینترنت در دسترس نیست</p>
+        <p style={{ padding:'0rem 4rem' , fontSize:'13px' }}>
+          لطفا تنظیمات اینترنت خود را برسی کنید
+          از غیر فعال بودن vpn خود مطمئن شوید
+        </p>
+      </div>
     )
   }
 }

@@ -39,7 +39,7 @@ export default function Home() {
     },
     {
       id: 3,
-      path: null,
+      path: "/form",
       name: "رسـا فرم",
       path_img: "/image/form.svg",
       slogan: "این یک متن تست است",

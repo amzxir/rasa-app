@@ -1,10 +1,32 @@
-.internet{
-    position: absolute;
-    bottom: 20%;
-    right: 0;
-    left: 0;
-    p{
+.internet {
+
+    .img_center {
+        display: flex;
+        justify-content: center;
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    h1{
+        font-size: 33px;
+        font-weight: 900;
+        line-height: 50px;
+        letter-spacing: 0.20937757194042206px;
+        text-align: center;
         color: #000;
+
+    }
+
+    p {
+        font-family: "font-light" !important;
+        color: #000;
+        font-size: 20px;
+        font-weight: 300;
+        line-height: 30px;
+        letter-spacing: 0.20937757194042206px;
         text-align: center;
     }
 }
