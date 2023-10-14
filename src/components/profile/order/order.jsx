@@ -6,11 +6,12 @@ import LightStyles from "../../../assets/sass/light/order.module.scss";
 import DarkStyles from "../../../assets/sass/dark/order.module.scss";
 import fa from "../../../lang/fa.json";
 import ColorModeContext from "../../../context/color-mode-context";
-import Returned from "./returned/returned";
 
 
 const DeliveryOrder = lazy(() => import("./delivery/delivery"));
 const CancelledOrder = lazy(() => import("./cancelled/cancelled"));
+const Returned = lazy(() => import("./returned/returned"));
+
 
 
 export default function Order({ sendInvoice }) {
