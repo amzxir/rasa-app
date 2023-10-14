@@ -31,7 +31,7 @@ export default function Statistics() {
     {id:1 , name:'محصولات' , link:'/profile/shop/products' , icon :<LayoutIcon/>},
     {id:2 , name:'سفارشات' , link:'#' , icon :<LayersIcon/>},
     {id:3 , name:'احراز هویت' , link:'#' , icon :<FingerIcon/>},
-    {id:4 , name:'شخصی سازی' , link:'#' , icon :<FilIcon/>},
+    {id:4 , name:'شخصی سازی' , link:'/profile/shop/personalization' , icon :<FilIcon/>},
     {id:5 , name:'اطلاعات بانکی' , link:'#' , icon :<BankIcon/>},
     {id:6 , name:'گزارش مالی' , link:'#' , icon :<ChartPieIcon/>},
     {id:7 , name:'آپلود مدارک' , link:'#' , icon :<BoxIcon/>},
@@ -50,7 +50,7 @@ export default function Statistics() {
         {details.map((i , index)=> {
             return(
                 <Grid item key={i.id} xs={3}>
-                    <NavLink to={i.link} state={fa["product"]} className={theme.palette.mode === "light" ? LightStyles.card_charts : DarkStyles.card_charts}>
+                    <NavLink to={i.link} state={i.name} className={theme.palette.mode === "light" ? LightStyles.card_charts : DarkStyles.card_charts}>
                         <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
                             {i.icon}
                             <p className={theme.palette.mode === "light" ? LightStyles.details : DarkStyles.details}>

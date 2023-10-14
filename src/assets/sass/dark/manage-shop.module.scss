@@ -237,6 +237,31 @@
 
 }
 
+.btn{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 14px 8px 14px;
+    border-radius: 100px;
+    gap: 10px;
+    background: #3282F9;
+    border: 1px solid #3282F9;
+
+    span{
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 17px;
+        letter-spacing: 0.20000000298023224px;
+        text-align: center;
+        color: #FFFFFF;
+
+    }
+
+}
+
 .card_product{
     box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
     border-radius: 12px !important;
@@ -413,7 +438,28 @@
         top: 0px;
     }
 
+    input[type="text"]:disabled {
+        background: #000;
+    }   
 
+}
+
+.small{
+    font-family: "font-light" !important;
+    font-size: 8px;
+    font-weight: 300;
+    line-height: 15px;
+    letter-spacing: 0px;
+    color: #fff;
+}
+
+.labels{
+    font-family: "font-light" !important;
+    font-size: 10px;
+    font-weight: 300;
+    line-height: 20px;
+    letter-spacing: 0px;
+    color: #fff;
 }
 
 .btn_product{
@@ -441,7 +487,6 @@
 
 }
 
-
 .fade_open{
     background: #09101DBF;
     width: 100%;
@@ -455,6 +500,7 @@
     max-height: 100%;
     transition: max-height 10s ease-out;
 }
+
 .fade_close{
 
 }
