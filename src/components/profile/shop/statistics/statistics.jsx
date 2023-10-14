@@ -29,12 +29,12 @@ export default function Statistics() {
   // start fetch data card shop manage
   const CardProduct = [
     {id:1 , name:'محصولات' , link:'/profile/shop/products' , icon :<LayoutIcon/>},
-    {id:2 , name:'سفارشات' , link:'#' , icon :<LayersIcon/>},
-    {id:3 , name:'احراز هویت' , link:'#' , icon :<FingerIcon/>},
+    {id:2 , name:'سفارشات' , link:'/profile/shop/orders' , icon :<LayersIcon/>},
+    {id:3 , name:'احراز هویت' , link:'/profile/shop/authentication' , icon :<FingerIcon/>},
     {id:4 , name:'شخصی سازی' , link:'/profile/shop/personalization' , icon :<FilIcon/>},
-    {id:5 , name:'اطلاعات بانکی' , link:'#' , icon :<BankIcon/>},
+    {id:5 , name:'اطلاعات بانکی' , link:'/profile/shop/bank-information' , icon :<BankIcon/>},
     {id:6 , name:'گزارش مالی' , link:'#' , icon :<ChartPieIcon/>},
-    {id:7 , name:'آپلود مدارک' , link:'#' , icon :<BoxIcon/>},
+    {id:7 , name:'آپلود مدارک' , link:'/profile/shop/documents' , icon :<BoxIcon/>},
     {id:8 , name:'تخفیفات' , link:'#' , icon :<TicketsIcon/>},
   ]
   const [details , setDetails] = useState(CardProduct);

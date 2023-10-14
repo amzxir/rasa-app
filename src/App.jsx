@@ -39,6 +39,10 @@ import Compare from "./components/platform/market/compare/compare";
 import Invoice from "./components/profile/order/invoice/invoice";
 import ProductShop from "./components/profile/shop/product/product";
 import Personalization from "./components/profile/shop/personalization/personalization";
+import Authentication from "./components/profile/shop/authentication/authentication";
+import Information from "./components/profile/shop/bank/information";
+import Documents from "./components/profile/shop/documents/documents";
+import Orders from "./components/profile/shop/orders/orders";
 
 
 
@@ -129,6 +133,10 @@ export default function App() {
               <Route path="/profile/order/invoice/:details" element={<Invoice fetchProduct={fetchProduct}/>}></Route>
               <Route path="/profile/shop/manage" element={<ManageShop/>}></Route>
               <Route path="/profile/shop/personalization" element={<Personalization/>}></Route>
+              <Route path="/profile/shop/authentication" element={<Authentication/>}></Route>
+              <Route path="/profile/shop/bank-information" element={<Information/>}></Route>
+              <Route path="/profile/shop/documents" element={<Documents/>}></Route>
+              <Route path="/profile/shop/orders" element={<Orders/>}></Route>
               <Route path="/profile/shop/products" element={<ProductShop/>}></Route>
               <Route path="/profile/shop/manage/create-product" element={<CreateProduct/>}></Route>
             </Routes>
