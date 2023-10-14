@@ -32,7 +32,7 @@ export default function Home() {
     },
     {
       id: 2,
-      path: null,
+      path: "/chortkeh",
       name: "رسـا چرتـکه",
       path_img: "/image/bar.svg",
       slogan: "این یک متن تست است",

@@ -33,7 +33,8 @@ export default function Header() {
     <Container className={theme.palette.mode === "light" ? LightStyles.navbar_fixed : DarkStyles.navbar_fixed} maxWidth="sm">
       {path !== "/" && path !== "/shop" &&
         path !== "/jet" && path !== "/club" &&
-        path !== "/blog" && path !== `/shop/product-category/${query}` ? (
+        path !== "/blog" && path !== `/shop/product-category/${query}` &&
+        path !== "/chortkeh" ? (
         <div className={theme.palette.mode === "light" ? LightStyles.header_back : DarkStyles.header_back}>
           <div className={theme.palette.mode === "light" ? LightStyles.title_navigate : DarkStyles.title_navigate}>
             {location.state}

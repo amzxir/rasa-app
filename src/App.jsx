@@ -43,6 +43,7 @@ import Authentication from "./components/profile/shop/authentication/authenticat
 import Information from "./components/profile/shop/bank/information";
 import Documents from "./components/profile/shop/documents/documents";
 import Orders from "./components/profile/shop/orders/orders";
+import Chortkeh from "./components/platform/chortkeh/chortkeh";
 
 
 
@@ -79,14 +80,14 @@ export default function App() {
   // end function darkmode
 
   // start fetch product data 
-  const [fetchProduct , setFetchProduct] = useState()
+  const [fetchProduct, setFetchProduct] = useState()
 
   const handelSendProduct = (i) => {
     setFetchProduct(i)
   }
   // end fetch product data 
 
-  
+
 
   return (
     <ColorModeContext.Provider value={{ colorMode }}>
@@ -110,13 +111,13 @@ export default function App() {
               <Route path="/shop/product-category/:productName" element={<ProductCategory />}></Route>
               <Route path="/shop/wishlist" element={<Wishlist />}></Route>
               <Route path="/shop/single-product" element={<SingleShop />}></Route>
-              <Route path="/shop/card" element={<CardShop/>}></Route>
-              <Route path="/shop/shopping" element={<ShoppingShop/>}></Route>
-              <Route path="/shop/add-address" element={<AddAddressShop/>}></Route>
-              <Route path="/shop/new-address" element={<NewAddressShop/>}></Route>
-              <Route path="/shop/invoice" element={<PayShop/>}></Route>
-              <Route path="/shop/pay/sucess" element={<SuccessPayShop/>}></Route>
-              <Route path="/shop/pay/error" element={<ErrorPayShop/>}></Route>
+              <Route path="/shop/card" element={<CardShop />}></Route>
+              <Route path="/shop/shopping" element={<ShoppingShop />}></Route>
+              <Route path="/shop/add-address" element={<AddAddressShop />}></Route>
+              <Route path="/shop/new-address" element={<NewAddressShop />}></Route>
+              <Route path="/shop/invoice" element={<PayShop />}></Route>
+              <Route path="/shop/pay/sucess" element={<SuccessPayShop />}></Route>
+              <Route path="/shop/pay/error" element={<ErrorPayShop />}></Route>
               {/* routeing component jet */}
               <Route exact path="/jet" element={<HomeJet />}></Route>
               <Route path="/jet/send" element={<JetText />}></Route>
@@ -124,21 +125,23 @@ export default function App() {
               <Route path="/blog" element={<Blog />}></Route>
               {/* routeing component club */}
               <Route path="/club" element={<Club />}></Route>
+              {/* routeing component chortkeh */}
+              <Route path="/chortkeh" element={<Chortkeh />}></Route>
               {/* routing compoent profile */}
-              <Route exact path="/profile" element={<Profile/>}></Route>
-              <Route path="/profile/edit" element={<ProfileEdit/>}></Route>
-              <Route path="/profile/support" element={<Support/>}></Route>
-              <Route path="/profile/order" element={<Order sendInvoice={handelSendProduct}/>}></Route>
-              <Route path="/profile/order/details/:invoice" element={<OrderDetails sendInvoice={handelSendProduct} fetchProduct={fetchProduct}/>}></Route>
-              <Route path="/profile/order/invoice/:details" element={<Invoice fetchProduct={fetchProduct}/>}></Route>
-              <Route path="/profile/shop/manage" element={<ManageShop/>}></Route>
-              <Route path="/profile/shop/personalization" element={<Personalization/>}></Route>
-              <Route path="/profile/shop/authentication" element={<Authentication/>}></Route>
-              <Route path="/profile/shop/bank-information" element={<Information/>}></Route>
-              <Route path="/profile/shop/documents" element={<Documents/>}></Route>
-              <Route path="/profile/shop/orders" element={<Orders/>}></Route>
-              <Route path="/profile/shop/products" element={<ProductShop/>}></Route>
-              <Route path="/profile/shop/manage/create-product" element={<CreateProduct/>}></Route>
+              <Route exact path="/profile" element={<Profile />}></Route>
+              <Route path="/profile/edit" element={<ProfileEdit />}></Route>
+              <Route path="/profile/support" element={<Support />}></Route>
+              <Route path="/profile/order" element={<Order sendInvoice={handelSendProduct} />}></Route>
+              <Route path="/profile/order/details/:invoice" element={<OrderDetails sendInvoice={handelSendProduct} fetchProduct={fetchProduct} />}></Route>
+              <Route path="/profile/order/invoice/:details" element={<Invoice fetchProduct={fetchProduct} />}></Route>
+              <Route path="/profile/shop/manage" element={<ManageShop />}></Route>
+              <Route path="/profile/shop/personalization" element={<Personalization />}></Route>
+              <Route path="/profile/shop/authentication" element={<Authentication />}></Route>
+              <Route path="/profile/shop/bank-information" element={<Information />}></Route>
+              <Route path="/profile/shop/documents" element={<Documents />}></Route>
+              <Route path="/profile/shop/orders" element={<Orders />}></Route>
+              <Route path="/profile/shop/products" element={<ProductShop />}></Route>
+              <Route path="/profile/shop/manage/create-product" element={<CreateProduct />}></Route>
             </Routes>
           </NetworkStatus>
         </Layouts>
