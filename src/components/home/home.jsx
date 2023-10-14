@@ -101,7 +101,7 @@ export default function Home() {
   const [dataEducation, setDataEducation] = useState(education);
 
   return (
-    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} fadeProps={{enterOpacity: 0.85,}}>
+    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}}>
       <Box sx={{ mt: 5, mb: 5 }}>
         <div
           className={

@@ -15,8 +15,6 @@ import EditIcon from "../../../../assets/svg/edits";
 import DeleteIcon from "../../../../assets/svg/delets";
 
 
-
-
 export default function Item() {
     // start function darkmode
     const theme = useTheme();

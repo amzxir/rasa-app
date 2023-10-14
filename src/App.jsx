@@ -1,10 +1,10 @@
 import React, { useMemo, useState, useEffect } from "react";
-import Layouts from "./layouts/layouts";
 import { Route, Routes } from "react-router-dom";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Layouts from "./layouts/layouts";
 import Home from "./components/home/home";
 import About from "./components/about/about";
 import Terms from "./components/terms/terms";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
 import ColorModeContext from "./context/color-mode-context";
 import Faq from "./components/faq/faq";
 import Auth from "./components/auth/auth";

@@ -6,7 +6,7 @@ import { FadeTransform } from "react-animation-components";
 import LightStyles from "../../../../assets/sass/light/market/wishlist.module.scss";
 import DarkStyles from "../../../../assets/sass/dark/market/wishlist.module.scss";
 import ColorModeContext from "../../../../context/color-mode-context";
-import Heart from "../../../../assets/svg/heart";
+import BooknarkIcon from "../../../../assets/svg/Bookmark";
 import fa from '../../../../lang/fa.json';
 
 export default function Wishlist() {
@@ -109,7 +109,7 @@ export default function Wishlist() {
                           : DarkStyles.icon_wishlist
                       }
                     >
-                      <Heart />
+                      <BooknarkIcon />
                     </div>
                   </div>
                   <div

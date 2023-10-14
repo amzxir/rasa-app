@@ -14,35 +14,37 @@ export default function Download() {
     const { colorMode } = useContext(ColorModeContext);
     // end function darkmode
     return (
-        <Box sx={{ mt: 5, mb: 5 }}>
-            <Card className={theme.palette.mode === "light" ? LightStyles.download : DarkStyles.download}>
-                <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
-                    <img src="/image/implant.png" alt="" />
-                </div>
-                <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
-                    <p className={theme.palette.mode === "light" ? LightStyles.name : DarkStyles.name}>مراقبت های لازم بعد از جراحی لثه</p>
-                    <button className={theme.palette.mode === "light" ? LightStyles.btn_down : DarkStyles.btn_down}><span>دانلود PDF</span></button>
-                </div>
-            </Card>
-            <Card className={theme.palette.mode === "light" ? LightStyles.download : DarkStyles.download}>
-                <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
-                    <img src="/image/implant.png" alt="" />
-                </div>
-                <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
-                    <p className={theme.palette.mode === "light" ? LightStyles.name : DarkStyles.name}>مراقبت های بعد از تحویل پروتز متحرک(کامل یا پارسیل)</p>
-                    <button className={theme.palette.mode === "light" ? LightStyles.btn_down : DarkStyles.btn_down}><span>دانلود PDF</span></button>
-                </div>
-            </Card>
-            <Card className={theme.palette.mode === "light" ? LightStyles.download : DarkStyles.download}>
-                <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
-                    <img src="/image/implant.png" alt="" />
-                </div>
-                <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
-                    <p className={theme.palette.mode === "light" ? LightStyles.name : DarkStyles.name}>مراقبت های پس از اعمال دندانپزشکی کودکان</p>
-                    <button className={theme.palette.mode === "light" ? LightStyles.btn_down : DarkStyles.btn_down}><span>دانلود PDF</span></button>
-                </div>
-            </Card>
-        </Box>
+        <FadeTransform in transformProps={{ exitTransform: 'translateX(-100px)' }}>
+            <Box sx={{ mt: 5, mb: 5 }}>
+                <Card className={theme.palette.mode === "light" ? LightStyles.download : DarkStyles.download}>
+                    <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
+                        <img src="/image/implant.png" alt="" />
+                    </div>
+                    <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
+                        <p className={theme.palette.mode === "light" ? LightStyles.name : DarkStyles.name}>مراقبت های لازم بعد از جراحی لثه</p>
+                        <button className={theme.palette.mode === "light" ? LightStyles.btn_down : DarkStyles.btn_down}><span>دانلود PDF</span></button>
+                    </div>
+                </Card>
+                <Card className={theme.palette.mode === "light" ? LightStyles.download : DarkStyles.download}>
+                    <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
+                        <img src="/image/implant.png" alt="" />
+                    </div>
+                    <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
+                        <p className={theme.palette.mode === "light" ? LightStyles.name : DarkStyles.name}>مراقبت های بعد از تحویل پروتز متحرک(کامل یا پارسیل)</p>
+                        <button className={theme.palette.mode === "light" ? LightStyles.btn_down : DarkStyles.btn_down}><span>دانلود PDF</span></button>
+                    </div>
+                </Card>
+                <Card className={theme.palette.mode === "light" ? LightStyles.download : DarkStyles.download}>
+                    <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
+                        <img src="/image/implant.png" alt="" />
+                    </div>
+                    <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
+                        <p className={theme.palette.mode === "light" ? LightStyles.name : DarkStyles.name}>مراقبت های پس از اعمال دندانپزشکی کودکان</p>
+                        <button className={theme.palette.mode === "light" ? LightStyles.btn_down : DarkStyles.btn_down}><span>دانلود PDF</span></button>
+                    </div>
+                </Card>
+            </Box>
+        </FadeTransform>
     )
 }
 

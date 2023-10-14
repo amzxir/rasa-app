@@ -80,10 +80,10 @@ export default function Profile() {
             <div><SupportIcon /><span>{fa["Support center"]}</span></div>
             <ArrowRight />
           </NavLink>
-          <NavLink className={theme.palette.mode === "light" ? LightStyles.routing : DarkStyles.routing}>
+          {/* <NavLink className={theme.palette.mode === "light" ? LightStyles.routing : DarkStyles.routing}>
             <div><InfoIcon /><span>{fa["invite friends"]}</span></div>
             <ArrowRight />
-          </NavLink>
+          </NavLink> */}
           <NavLink className={theme.palette.mode === "light" ? LightStyles.routing : DarkStyles.routing}>
             <div><ExitProfileIcon /><span className={theme.palette.mode === "light" ? LightStyles.exit : DarkStyles.exit}>{fa["exit"]}</span></div>
           </NavLink>
