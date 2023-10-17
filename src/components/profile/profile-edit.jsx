@@ -27,7 +27,7 @@ export default function ProfileEdit() {
 
   // end state calender
   return (
-    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} fadeProps={{enterOpacity: 0.85,}}>
+    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} >
       <Box sx={{ mt: 5, mb: 5 }}>
         <Grid container>
           <Grid item xs={12}>

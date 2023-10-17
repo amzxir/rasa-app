@@ -241,7 +241,7 @@ export default function LandingShop({sendProduct}) {
   const [productData, setProductData] = useState(product);
   // end fetch data title and product
   return (
-    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} fadeProps={{enterOpacity: 0.85,}}>
+    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} >
       <Box sx={{ mt: 5, mb: 5 }}>
         <Search />
 

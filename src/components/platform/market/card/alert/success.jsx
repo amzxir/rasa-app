@@ -15,7 +15,7 @@ export default function Success() {
   const { colorMode } = useContext(ColorModeContext);
   // end function darkmode
   return (
-    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} fadeProps={{enterOpacity: 0.85,}}>
+    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} >
       <Box sx={{ mt:5 , mb:5 }}>
           <div className={theme.palette.mode === "light" ? LightStyles.alert_success : DarkStyles.alert_success}>
             <figure>

@@ -13,7 +13,7 @@ export default function Single({ fetchNotif }) {
     const { colorMode } = useContext(ColorModeContext);
     // end function darkmode
     return (
-        <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} fadeProps={{enterOpacity: 0.85,}}>
+        <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} >
             <Box sx={{ mb:5 , mt:5 }}>
                 <div className={theme.palette.mode === "light" ? LightStyles.box_notif : DarkStyles.box_notif}>
                     <div className={theme.palette.mode === "light" ? LightStyles.content_notif : DarkStyles.content_notif}>

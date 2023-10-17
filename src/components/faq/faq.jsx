@@ -14,7 +14,7 @@ export default function Faq() {
   const { colorMode } = useContext(ColorModeContext);
   // end function darkmode
   return (
-    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} fadeProps={{enterOpacity: 0.85,}}>
+    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} >
       <Box sx={{ mt: 5, mb: 5 }}>
         <div className={theme.palette.mode === "light" ? LightStyles.img_content : DarkStyles.img_content}>
           <img className={theme.palette.mode === "light" ? LightStyles.img_fluid : DarkStyles.img_fluid} src="/image/terms.svg" alt="terms"/>

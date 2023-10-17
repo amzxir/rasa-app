@@ -8,7 +8,7 @@ import AuthenticationCode from "./step-two/authentication-code";
 
 export default function Auth() {
   return (
-    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} fadeProps={{enterOpacity: 0.85,}}>
+    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} >
       <Box sx={{ mt: 5, mb: 5 }}>
         <WizardForm>
           <Login />

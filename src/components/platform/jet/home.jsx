@@ -15,7 +15,7 @@ export default function Home() {
   // end function darkmode
 
   return (
-    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} fadeProps={{enterOpacity: 0.85,}}>
+    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} >
       <Box sx={{ mt: 5, mb: 5 }}>
         <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
           <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>

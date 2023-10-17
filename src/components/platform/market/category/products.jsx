@@ -24,7 +24,7 @@ export default function Products({ fetchProduct }) {
   // end fetch data product
 
   return (
-    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} fadeProps={{enterOpacity: 0.85,}}>
+    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} >
         <Box sx={{ mt: 5, mb: 5 }}>
             <Grid container spacing={2}>
                 {products.map((i, index)=> {

@@ -71,7 +71,7 @@ export default function Wishlist() {
   const [wishlistData, setWishlistData] = useState(wishlist);
   // end fetch data title and wishlist
   return (
-    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} fadeProps={{enterOpacity: 0.85,}}>
+    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} >
       <Box sx={{ mt: 5, mb: 5 }}>
         <Grid container spacing={2}>
           {wishlistData.map((i) => {

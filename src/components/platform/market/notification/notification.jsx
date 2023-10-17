@@ -55,7 +55,7 @@ export default function Notification({ sendNotif }) {
   const [notifData, setNotifData] = useState(notification);
   // end fetch data notification
   return (
-    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} fadeProps={{enterOpacity: 0.85,}}>
+    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} >
       <Box sx={{ mt: 5, mb: 5 }}>
         {notifData.map((i) => {
           return (
