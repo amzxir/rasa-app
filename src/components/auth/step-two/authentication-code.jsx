@@ -88,6 +88,9 @@ export default function AuthenticationCode(props) {
   // end handel submit login
 
   // start handel send agian code 
+
+  const [limit , setLimit] = useState(true);
+
   const handelSendAgain = async () => {
     const mobile = props.data;
     try {
@@ -97,8 +100,8 @@ export default function AuthenticationCode(props) {
       } else if (response.data.status_code === 200) {
         toast.success(response.data.msg)
       }
+      setLimit(false);
       // console.log(response);
-      props.nextStep(data);
     } catch (error) {
       // console.error(error);
     }
@@ -106,7 +109,7 @@ export default function AuthenticationCode(props) {
   // end handel send agian code 
 
   return (
-    timer === 0 ? props.previousStep() && toast.error("زمان به ارسال رسید لطفا مجددا تلاش کنید") :
+    // timer === 0 ? props.previousStep() && toast.error("زمان به ارسال رسید لطفا مجددا تلاش کنید") :
       <FadeTransform in transformProps={{ exitTransform: 'translateX(-100px)' }} fadeProps={{ enterOpacity: 0.85, }}>
         <Box className={theme.palette.mode === "light" ? LightStyles.form_code : DarkStyles.form_code}>
           <h1>{fa["Verification of identity code"]}</h1>
@@ -117,7 +120,6 @@ export default function AuthenticationCode(props) {
           <p className={theme.palette.mode === "light" ? LightStyles.text_mobile : DarkStyles.text_mobile}>
             {fa["Code for the number"]} <span>{mobile}</span> {fa["has been sent"]}
           </p>
-
           <form onSubmit={handleSubmit(handelFinalSubmit)} className={theme.palette.mode === "light" ? LightStyles.send_code : DarkStyles.send_code}>
             <div className={theme.palette.mode === "light" ? LightStyles.form_flex : DarkStyles.form_flex}>
               {otp.map((data, index) => {
@@ -145,7 +147,7 @@ export default function AuthenticationCode(props) {
           <div className={theme.palette.mode === "light" ? LightStyles.re_send : DarkStyles.re_send}>
             <p className={theme.palette.mode === "light" ? LightStyles.text_two : DarkStyles.text_two}>
               {fa["I did not receive the code"]}
-              <span onClick={handelSendAgain} className={theme.palette.mode === "light" ? LightStyles.text_one : DarkStyles.text_one}>
+              <span onClick={limit === true ? handelSendAgain : null} className={theme.palette.mode === "light" ? LightStyles.text_one : DarkStyles.text_one}>
                 {fa["Send agian"]}
               </span>
             </p>
