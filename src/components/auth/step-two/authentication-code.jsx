@@ -1,22 +1,32 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Box, Grid } from "@mui/material";
+import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { FadeTransform } from "react-animation-components";
+import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify'
+import axios from "axios";
 import LightStyles from "../../../assets/sass/light/auth.module.scss";
 import DarkStyles from "../../../assets/sass/dark/auth.module.scss";
 import ArrowSmallLeftLight from "../../../assets/svg/arrow-small-left-light";
 import ColorModeContext from "../../../context/color-mode-context";
 import fa from "../../../lang/fa.json";
 
+
 export default function AuthenticationCode(props) {
+  // start react router dom use navigate
   let navigate = useNavigate();
+  // end react router dom use navigate
 
   // start function darkmode
   const theme = useTheme();
   const { colorMode } = useContext(ColorModeContext);
   // end function darkmode
 
+  // start react hook form
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  // end react hook form
+  
   // start function and state in timer code
   const [timer, serTimer] = useState(60);
   useEffect(() => {
@@ -52,44 +62,66 @@ export default function AuthenticationCode(props) {
   // end function reset mobile
 
   // start handel submit login
-  const handelFinalSubmit = () => {
-    navigate("/");
+  const handelFinalSubmit = async () => {
+    const verOtp = otp.join("");
+    const verify = {
+      mobile: props.data.mobile,
+      code: verOtp,
+    }
+    console.log(verify)
+    try {
+      const response = await axios.post("https://rasadent.com/api/VerifyOtp", verify);
+      // if (response.data.status_code === 422) {
+      //   toast.error(response.data.msg)
+      // } else if (response.data.status_code === 200) {
+      //   toast.success(response.data.msg)
+      // }
+      // console.log(response);
+      const getToken = response.data.token;
+      localStorage.setItem("token", getToken);
+      toast.success("به رسادنت خوش آمدید");
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+    }
   };
   // end handel submit login
 
+  // start handel send agian code 
+  const handelSendAgain = async () => {
+    const mobile = props.data;
+    try {
+      const response = await axios.post("https://rasadent.com/api/SendOtp", mobile);
+      if (response.data.status_code === 422) {
+        toast.error(response.data.msg)
+      } else if (response.data.status_code === 200) {
+        toast.success(response.data.msg)
+      }
+      // console.log(response);
+      props.nextStep(data);
+    } catch (error) {
+      // console.error(error);
+    }
+  }
+  // end handel send agian code 
+
   return (
-    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} fadeProps={{enterOpacity: 0.85,}}>
-      <Box
-        className={
-          theme.palette.mode === "light"
-            ? LightStyles.form_code
-            : DarkStyles.form_code
-        }
-      >
-        <h1>{fa["Verification of identity code"]}</h1>
+    timer === 0 ? props.previousStep() && toast.error("زمان به ارسال رسید لطفا مجددا تلاش کنید") :
+      <FadeTransform in transformProps={{ exitTransform: 'translateX(-100px)' }} fadeProps={{ enterOpacity: 0.85, }}>
+        <Box className={theme.palette.mode === "light" ? LightStyles.form_code : DarkStyles.form_code}>
+          <h1>{fa["Verification of identity code"]}</h1>
+          <div className={theme.palette.mode === "light" ? LightStyles.timer : DarkStyles.timer}>
+            <span>{timer}</span>
+          </div>
 
-        <div
-          className={
-            theme.palette.mode === "light" ? LightStyles.timer : DarkStyles.timer
-          }
-        >
-          <span>{timer}</span>
-        </div>
+          <p className={theme.palette.mode === "light" ? LightStyles.text_mobile : DarkStyles.text_mobile}>
+            {fa["Code for the number"]} <span>{mobile}</span> {fa["has been sent"]}
+          </p>
 
-        <p
-          className={
-            theme.palette.mode === "light"
-              ? LightStyles.text_mobile
-              : DarkStyles.text_mobile
-          }
-        >
-          {fa["Code for the number"]} <span>{mobile}</span> {fa["has been sent"]}
-        </p>
-
-        <form onSubmit={handelFinalSubmit} className={theme.palette.mode === "light" ? LightStyles.send_code : DarkStyles.send_code}>
-          <div className={theme.palette.mode === "light" ? LightStyles.form_flex : DarkStyles.form_flex}>
-            {otp.map((data, index) => {
-              return (
+          <form onSubmit={handleSubmit(handelFinalSubmit)} className={theme.palette.mode === "light" ? LightStyles.send_code : DarkStyles.send_code}>
+            <div className={theme.palette.mode === "light" ? LightStyles.form_flex : DarkStyles.form_flex}>
+              {otp.map((data, index) => {
+                return (
                   <input
                     key={index}
                     value={data}
@@ -104,49 +136,26 @@ export default function AuthenticationCode(props) {
                     maxLength="1"
                     type="text"
                   />
-              );
-            })}
+                );
+              })}
+            </div>
+            <button><span>{fa["login"]}</span><ArrowSmallLeftLight /></button>
+          </form>
+
+          <div className={theme.palette.mode === "light" ? LightStyles.re_send : DarkStyles.re_send}>
+            <p className={theme.palette.mode === "light" ? LightStyles.text_two : DarkStyles.text_two}>
+              {fa["I did not receive the code"]}
+              <span onClick={handelSendAgain} className={theme.palette.mode === "light" ? LightStyles.text_one : DarkStyles.text_one}>
+                {fa["Send agian"]}
+              </span>
+            </p>
+            <p
+              onClick={chnageMobile}
+              className={theme.palette.mode === "light" ? LightStyles.text_there : DarkStyles.text_there}>
+              {fa["Change number"]}
+            </p>
           </div>
-          <button><span>{fa["login"]}</span><ArrowSmallLeftLight /></button>
-        </form>
-      
-        <div
-          className={
-            theme.palette.mode === "light"
-              ? LightStyles.re_send
-              : DarkStyles.re_send
-          }
-        >
-          <p
-            className={
-              theme.palette.mode === "light"
-                ? LightStyles.text_two
-                : DarkStyles.text_two
-            }
-          >
-            {fa["I did not receive the code"]}
-            <span
-              className={
-                theme.palette.mode === "light"
-                  ? LightStyles.text_one
-                  : DarkStyles.text_one
-              }
-            >
-              {fa["Send agian"]}
-            </span>
-          </p>
-          <p
-            onClick={chnageMobile}
-            className={
-              theme.palette.mode === "light"
-                ? LightStyles.text_there
-                : DarkStyles.text_there
-            }
-          >
-            {fa["Change number"]}
-          </p>
-        </div>
-      </Box>
-    </FadeTransform>
+        </Box>
+      </FadeTransform>
   );
 }

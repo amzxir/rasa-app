@@ -1,6 +1,7 @@
 import React, { useMemo, useState, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes , useLocation } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { ToastContainer } from 'react-toastify';
 import Layouts from "./layouts/layouts";
 import Home from "./components/home/home";
 import About from "./components/about/about";
@@ -48,6 +49,8 @@ import HomeForm from "./components/platform/form/home/home";
 import Form from "./components/platform/form/form/form";
 import Alert from "./components/platform/form/alert/alert";
 import Download from "./components/platform/form/download/download";
+import 'react-toastify/dist/ReactToastify.css';
+import Protected from "./protected";
 
 
 
@@ -91,68 +94,82 @@ export default function App() {
   }
   // end fetch product data 
 
+  // start fetch data token in authentication
+  const token = localStorage.getItem("token");
+  const location = useLocation();
+  // end fetch data token in authentication
+
 
 
   return (
-    <ColorModeContext.Provider value={{ colorMode }}>
+    <ColorModeContext.Provider value={{ colorMode, token }}>
       <ThemeProvider theme={theme}>
         <Layouts>
           <NetworkStatus>
-            <Routes>
+            <Routes key={location.key} location={location}>
               {/* routeing component layout */}
-              <Route exact path="/" element={<Home />}></Route>
               <Route path="/login" element={<Auth />}></Route>
-              <Route path="/about" element={<About />}></Route>
-              <Route path="/terms" element={<Terms />}></Route>
-              <Route path="/faq" element={<Faq />}></Route>
-              {/* routeing component shop */}
-              <Route exact path="/shop" element={<HomeShop sendProduct={handelSendProduct} />}></Route>
-              <Route path="/shop/category-list" element={<CategoryList />}></Route>
-              <Route path="/shop/compare" element={<Compare />}></Route>
-              <Route path="/shop/products/:productName" element={<ProductSpecial fetchProduct={fetchProduct} />}></Route>
-              <Route path="/shop/notification" element={<Notification sendNotif={handelSendProduct} />}></Route>
-              <Route path="/shop/notification-single/:notifId" element={<NotificationSingle fetchNotif={fetchProduct} />}></Route>
-              <Route path="/shop/product-category/:productName" element={<ProductCategory />}></Route>
-              <Route path="/shop/wishlist" element={<Wishlist />}></Route>
-              <Route path="/shop/single-product" element={<SingleShop />}></Route>
-              <Route path="/shop/card" element={<CardShop />}></Route>
-              <Route path="/shop/shopping" element={<ShoppingShop />}></Route>
-              <Route path="/shop/add-address" element={<AddAddressShop />}></Route>
-              <Route path="/shop/new-address" element={<NewAddressShop />}></Route>
-              <Route path="/shop/invoice" element={<PayShop />}></Route>
-              <Route path="/shop/pay/sucess" element={<SuccessPayShop />}></Route>
-              <Route path="/shop/pay/error" element={<ErrorPayShop />}></Route>
-              {/* routeing component jet */}
-              <Route exact path="/jet" element={<HomeJet />}></Route>
-              <Route path="/jet/send" element={<JetText />}></Route>
-              {/* routeing component blog */}
-              <Route path="/blog" element={<Blog />}></Route>
-              {/* routeing component club */}
-              <Route path="/club" element={<Club />}></Route>
-              {/* routeing component chortkeh */}
-              <Route path="/chortkeh" element={<Chortkeh />}></Route>
-              {/* routeing component form */}
-              <Route path="/form" element={<HomeForm/>}></Route>
-              <Route path="/form/create" element={<Form/>}></Route>
-              <Route path="/form/create/alert" element={<Alert/>}></Route>
-              <Route path="/form/create/download" element={<Download/>}></Route>
-              {/* routing compoent profile */}
-              <Route exact path="/profile" element={<Profile />}></Route>
-              <Route path="/profile/edit" element={<ProfileEdit />}></Route>
-              <Route path="/profile/support" element={<Support />}></Route>
-              <Route path="/profile/order" element={<Order sendInvoice={handelSendProduct} />}></Route>
-              <Route path="/profile/order/details/:invoice" element={<OrderDetails sendInvoice={handelSendProduct} fetchProduct={fetchProduct} />}></Route>
-              <Route path="/profile/order/invoice/:details" element={<Invoice fetchProduct={fetchProduct} />}></Route>
-              <Route path="/profile/shop/manage" element={<ManageShop />}></Route>
-              <Route path="/profile/shop/personalization" element={<Personalization />}></Route>
-              <Route path="/profile/shop/authentication" element={<Authentication />}></Route>
-              <Route path="/profile/shop/bank-information" element={<Information />}></Route>
-              <Route path="/profile/shop/documents" element={<Documents />}></Route>
-              <Route path="/profile/shop/orders" element={<Orders />}></Route>
-              <Route path="/profile/shop/products" element={<ProductShop />}></Route>
-              <Route path="/profile/shop/manage/create-product" element={<CreateProduct />}></Route>
+              <Route element={<Protected />}>
+                <Route exact path="/" element={<Home />}></Route>
+                <Route path="/about" element={<About />}></Route>
+                <Route path="/terms" element={<Terms />}></Route>
+                <Route path="/faq" element={<Faq />}></Route>
+                {/* routeing component shop */}
+                <Route exact path="/shop" element={<HomeShop sendProduct={handelSendProduct} />}></Route>
+                <Route path="/shop/category-list" element={<CategoryList />}></Route>
+                <Route path="/shop/compare" element={<Compare />}></Route>
+                <Route path="/shop/products/:productName" element={<ProductSpecial fetchProduct={fetchProduct} />}></Route>
+                <Route path="/shop/notification" element={<Notification sendNotif={handelSendProduct} />}></Route>
+                <Route path="/shop/notification-single/:notifId" element={<NotificationSingle fetchNotif={fetchProduct} />}></Route>
+                <Route path="/shop/product-category/:productName" element={<ProductCategory />}></Route>
+                <Route path="/shop/wishlist" element={<Wishlist />}></Route>
+                <Route path="/shop/single-product" element={<SingleShop />}></Route>
+                <Route path="/shop/card" element={<CardShop />}></Route>
+                <Route path="/shop/shopping" element={<ShoppingShop />}></Route>
+                <Route path="/shop/add-address" element={<AddAddressShop />}></Route>
+                <Route path="/shop/new-address" element={<NewAddressShop />}></Route>
+                <Route path="/shop/invoice" element={<PayShop />}></Route>
+                <Route path="/shop/pay/sucess" element={<SuccessPayShop />}></Route>
+                <Route path="/shop/pay/error" element={<ErrorPayShop />}></Route>
+                {/* routeing component jet */}
+                <Route exact path="/jet" element={<HomeJet />}></Route>
+                <Route path="/jet/send" element={<JetText />}></Route>
+                {/* routeing component blog */}
+                <Route path="/blog" element={<Blog />}></Route>
+                {/* routeing component club */}
+                <Route path="/club" element={<Club />}></Route>
+                {/* routeing component chortkeh */}
+                <Route path="/chortkeh" element={<Chortkeh />}></Route>
+                {/* routeing component form */}
+                <Route path="/form" element={<HomeForm />}></Route>
+                <Route path="/form/create" element={<Form />}></Route>
+                <Route path="/form/create/alert" element={<Alert />}></Route>
+                <Route path="/form/create/download" element={<Download />}></Route>
+                {/* routing compoent profile */}
+                <Route exact path="/profile" element={<Profile />}></Route>
+                <Route path="/profile/edit" element={<ProfileEdit />}></Route>
+                <Route path="/profile/support" element={<Support />}></Route>
+                <Route path="/profile/order" element={<Order sendInvoice={handelSendProduct} />}></Route>
+                <Route path="/profile/order/details/:invoice" element={<OrderDetails sendInvoice={handelSendProduct} fetchProduct={fetchProduct} />}></Route>
+                <Route path="/profile/order/invoice/:details" element={<Invoice fetchProduct={fetchProduct} />}></Route>
+                <Route path="/profile/shop/manage" element={<ManageShop />}></Route>
+                <Route path="/profile/shop/personalization" element={<Personalization />}></Route>
+                <Route path="/profile/shop/authentication" element={<Authentication />}></Route>
+                <Route path="/profile/shop/bank-information" element={<Information />}></Route>
+                <Route path="/profile/shop/documents" element={<Documents />}></Route>
+                <Route path="/profile/shop/orders" element={<Orders />}></Route>
+                <Route path="/profile/shop/products" element={<ProductShop />}></Route>
+                <Route path="/profile/shop/manage/create-product" element={<CreateProduct />}></Route>
+              </Route>
             </Routes>
           </NetworkStatus>
+          <ToastContainer
+            position="top-right"
+            rtl={true}
+            theme="colored"
+            style={{ zIndex: '100000' }}
+          />
+
         </Layouts>
       </ThemeProvider>
     </ColorModeContext.Provider>
