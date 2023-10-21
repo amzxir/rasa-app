@@ -25,7 +25,7 @@ const schema = yup.object().shape({
 export default function Login(props) {
   // start function darkmode
   const theme = useTheme();
-  const { colorMode, spinner, setSpinner } = useContext(ColorModeContext);
+  const { colorMode, spinner, setSpinner , mobile } = useContext(ColorModeContext);
   // end function darkmode
   // start react hook form
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -44,6 +44,7 @@ export default function Login(props) {
         toast.success(response.data.msg)
       }
       setSpinner(false)
+      localStorage.setItem("mobile", data.mobile);
       // console.log(response);
       props.nextStep(data);
     } catch (error) {

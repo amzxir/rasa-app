@@ -99,6 +99,7 @@ export default function App() {
 
   // start fetch data token in authentication
   const token = localStorage.getItem("token");
+  const mobile = localStorage.getItem("mobile");
   const location = useLocation();
   // end fetch data token in authentication
 
@@ -107,7 +108,7 @@ export default function App() {
   // end state loading 
 
   return (
-    <ColorModeContext.Provider value={{ colorMode, token, spinner, setSpinner }}>
+    <ColorModeContext.Provider value={{ colorMode, token, spinner, setSpinner , mobile }}>
       <ThemeProvider theme={theme}>
         <Layouts>
           <NetworkStatus>

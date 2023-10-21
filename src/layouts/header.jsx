@@ -23,6 +23,10 @@ export default function Header() {
   let navigate = useNavigate();
   // end variable react router dom
 
+  // start fetch mobile user
+  const mobile = localStorage.getItem("mobile")
+  // end fetch mobile user
+
 
   // start find query link 
   let paths = window.location.pathname.split("/");
@@ -56,7 +60,7 @@ export default function Header() {
                   👋 خوش آمدید
                 </p>
                 <p className={theme.palette.mode === "light" ? LightStyles.text_name : DarkStyles.text_name}>
-                  پویا رستمی
+                  {mobile}
                 </p>
               </div>
             </Stack>
