@@ -72,7 +72,7 @@ export default function AuthenticationCode(props) {
     }
     console.log(verify)
     try {
-      const response = await axios.post("https://rasadent.com/api/VerifyOtp", verify);
+      const response = await axios.post("https://rasadent.reshe.ir/api/VerifyOtp", verify);
       // if (response.data.status_code === 422) {
       //   toast.error(response.data.msg)
       // } else if (response.data.status_code === 200) {
