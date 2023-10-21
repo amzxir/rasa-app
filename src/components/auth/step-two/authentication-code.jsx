@@ -136,7 +136,8 @@ export default function AuthenticationCode(props) {
                     }
                     name="otp"
                     maxLength="1"
-                    type="text"
+                    type="number"
+                    inputMode="numeric"
                   />
                 );
               })}
