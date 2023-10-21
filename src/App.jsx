@@ -51,6 +51,10 @@ import Alert from "./components/platform/form/alert/alert";
 import Download from "./components/platform/form/download/download";
 import 'react-toastify/dist/ReactToastify.css';
 import Protected from "./protected";
+import AddToHomeScreen from './add-to-home-screen/AddToHomeScreen';
+// import './modifiedStyling.scss';
+
+
 
 
 
@@ -170,6 +174,42 @@ export default function App() {
             theme="colored"
             style={{ zIndex: '100000' }}
           />
+
+          {/* <AddToHomeScreen
+            appId='Add-to-Homescreen React Live Demo'
+            startAutomatically={true}
+            startDelay={0}
+            lifespan={30}
+            skipFirstVisit={true}
+            displayPace={0}
+            customPromptContent={{
+              cancelMsg: '',
+              installMsg: 'نصب',
+              guidanceCancelMsg: ''
+            }}
+            customPromptElements={{
+              container: 'athContainer',
+              containerAddOns: '',
+              banner: 'athBanner',
+              logoCell: 'athLogoCell',
+              logoCellAddOns: 'athContentCell',
+              logo: 'athLogo',
+              titleCell: 'athTitleCell',
+              titleCellAddOns: 'athContentCell',
+              title: 'athTitle',
+              cancelButtonCell: 'athCancelButtonCell',
+              cancelButtonCellAddOns: 'athButtonCell',
+              cancelButton: 'athCancelButton',
+              installButtonCell: 'athInstallButtonCell',
+              installButtonCellAddOns: 'athButtonCell',
+              installButton: 'athInstallButton',
+              installButtonAddOns: 'button',
+              guidance: 'athGuidance',
+              guidanceImageCell: 'athGuidanceImageCell',
+              guidanceImageCellAddOns: '',
+              guidanceCancelButton: 'athGuidanceCancelButton'
+            }}
+          /> */}
 
         </Layouts>
       </ThemeProvider>
