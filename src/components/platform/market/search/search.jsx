@@ -1,6 +1,7 @@
-import React, { useContext, useState, startTransition } from "react";
+import React, { useContext, useState, startTransition, useEffect } from "react";
 import { Modal, IconButton, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import axios from "axios";
 import ColorModeContext from "../../../../context/color-mode-context";
 import LightStyles from "../../../../assets/sass/light/market/landing.module.scss";
 import DarkStyles from "../../../../assets/sass/dark/market/landing.module.scss";
@@ -15,8 +16,9 @@ import FilterIcon from "../../../../assets/svg/filter";
 export default function Search({ setIsOpen }) {
   // start function darkmode
   const theme = useTheme();
-  const { colorMode } = useContext(ColorModeContext);
+  const { colorMode, token } = useContext(ColorModeContext);
   // end function darkmode
+
   // start state modal
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -24,28 +26,44 @@ export default function Search({ setIsOpen }) {
   // end state modal
 
   // start function for search
-  let unfilteredItem = new Array(2500).fill(null).map((v, i) => ({
-    id: i,
-    name: `محصول شماره ${i}`,
-    category: `دسته بندی ${i}`,
-    price: `${i}000`,
-  }));
 
   let [filter, setFilter] = useState("");
   let [items, setItems] = useState([]);
 
+  const handelResponsSearch = async () => {
+
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    }
+
+    const bodyParameters = {
+      key: "value",
+      product_name:filter,
+    }
+
+    try {
+      const response = await axios.post('https://rasadent.reshe.ir/api/product_search_application', bodyParameters, config);
+      // console.log(response.data.products);
+      setItems(response.data.products)
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   const onChange = (e) => {
     setFilter(e.target.value);
-    startTransition(() => {
-      setItems(
-        e.target.value === ""
-          ? []
-          : unfilteredItem.filter((item) => item.name.includes(e.target.value))
-      );
-    });
+    // startTransition(() => {
+    //   setItems(
+    //     e.target.value === ""
+    //       ? []
+    //       : items.filter((item) => item.fa_name.includes(e.target.value))
+    //   );
+    // });
     setProductSearch("");
   };
   // end function for search
+
+  console.log(items)
 
   // start fetch data card search
   const [productSearch, setProductSearch] = useState([]);
@@ -72,7 +90,7 @@ export default function Search({ setIsOpen }) {
         </Grid>
         {url === `/shop/product-category/${query}` ?
           <Grid sx={{ pr: 1 }} xs={2}>
-            <button onClick={()=> setIsOpen(true)} className={theme.palette.mode === "light" ? LightStyles.btn_fillter : DarkStyles.btn_fillter}>
+            <button onClick={() => setIsOpen(true)} className={theme.palette.mode === "light" ? LightStyles.btn_fillter : DarkStyles.btn_fillter}>
               <FilterIcon />
             </button>
           </Grid>
@@ -87,13 +105,12 @@ export default function Search({ setIsOpen }) {
               <ExitIcon />
             </IconButton>
             <input type="text" placeholder={fa["Search for your product..."]} value={filter} onChange={onChange} />
-            <IconButton className={theme.palette.mode === "light" ? LightStyles.search_icon : DarkStyles.search_icon}>
+            <IconButton onClick={handelResponsSearch} className={theme.palette.mode === "light" ? LightStyles.search_icon : DarkStyles.search_icon}>
               <SearchsIcon />
             </IconButton>
           </div>
           <ul className={theme.palette.mode === "light" ? LightStyles.list_search : DarkStyles.list_search}>
-            {items.length === 0 && filter !== "" &&
-              productSearch.length === 0 ? (
+            {items?.length === 0 || filter.length === 0 ? (
               <div className={theme.palette.mode === "light" ? LightStyles.page_404 : DarkStyles.page_404}>
                 <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
                   <img src="image/404.png" alt="" />
@@ -108,11 +125,11 @@ export default function Search({ setIsOpen }) {
                 </div>
               </div>
             ) : (
-              items.map((i) => {
+              items?.map((i) => {
                 return (
                   <li key={i.id}>
-                    <NavLink to={"/shop/single-product"} state={"کامپوزیت سارمکو"}>
-                      <BexitIcon /> <span>{i.name}</span>
+                    <NavLink to={"/shop/single-product"} state={i.fa_name}>
+                      <BexitIcon /> <span>{i.fa_name}</span>
                     </NavLink>
                   </li>
                 );
