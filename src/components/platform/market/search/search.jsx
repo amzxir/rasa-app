@@ -63,8 +63,6 @@ export default function Search({ setIsOpen }) {
   };
   // end function for search
 
-  console.log(items)
-
   // start fetch data card search
   const [productSearch, setProductSearch] = useState([]);
   const cardSearch = (i) => {
