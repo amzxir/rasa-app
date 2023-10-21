@@ -23,6 +23,8 @@ export default function Products({ fetchProduct }) {
   const [products , setProducts] = useState(fetchData)
   // end fetch data product
 
+  console.log(fetchData)
+
   return (
     <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} >
         <Box sx={{ mt: 5, mb: 5 }}>

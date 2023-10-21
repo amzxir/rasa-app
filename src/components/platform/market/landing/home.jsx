@@ -7,7 +7,9 @@ import Search from "../search/search";
 
 const Banner = lazy(() => import("./banner/banner"));
 const Slide = lazy(() => import("./banner/slide"));
-const ProductSlide = lazy(() => import("./product/product-slide"));
+const MostProduct = lazy(() => import("./product/most"));
+const AmazingProduct = lazy(() => import("./product/amazing"));
+const NewProduct = lazy(() => import("./product/new"));
 const Categories = lazy(() => import("./category/category"));
 
 export default function LandingShop({sendProduct}) {
@@ -254,7 +256,15 @@ export default function LandingShop({sendProduct}) {
         </Suspense>
 
         <Suspense fallback={<div>Loading...</div>}>
-          <ProductSlide productData={productData} sendProduct={sendProduct} />
+          <MostProduct productData={productData} sendProduct={sendProduct} />
+        </Suspense>
+
+        <Suspense fallback={<div>Loading...</div>}>
+          <AmazingProduct productData={productData} sendProduct={sendProduct} />
+        </Suspense>
+
+        <Suspense fallback={<div>Loading...</div>}>
+          <NewProduct productData={productData} sendProduct={sendProduct} />
         </Suspense>
 
         <Suspense fallback={<div>Loading...</div>}>
