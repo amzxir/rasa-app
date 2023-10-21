@@ -179,12 +179,12 @@ export default function App() {
             appId='Add-to-Homescreen React Live Demo'
             startAutomatically={true}
             startDelay={0}
-            lifespan={30}
+            lifespan={60}
             skipFirstVisit={true}
             displayPace={0}
             customPromptContent={{
-              cancelMsg: '',
-              installMsg: 'نصب',
+              cancelMsg: 'متوجه شدم',
+              // installMsg: 'نصب',
               guidanceCancelMsg: ''
             }}
             customPromptElements={{

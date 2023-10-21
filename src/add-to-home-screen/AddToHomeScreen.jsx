@@ -7,7 +7,7 @@ import DEFAULT_CONFIGURATION from './addToHomeScreenConfiguration.json';
 export default function AddToHomeScreen(props) {
 
   const DEFAULT_PROMPT = {
-    title: 'نصب اپلیکیشن رسادنت',
+    title: 'وب اپلیکیشن رسادنت را به صفحه اضافه کنید',
     cancelMsg: 'الان نه',
     installMsg: 'نصب',
     guidanceCancelMsg: 'خروج',
@@ -25,7 +25,7 @@ export default function AddToHomeScreen(props) {
 
   let configuration = buildConfiguration();
 
-  doLog(`final configuration: ${ JSON.stringify(configuration) }`);
+  doLog(`final configuration: ${JSON.stringify(configuration)}`);
 
   let session = {};
   let platform = {};
@@ -127,7 +127,7 @@ export default function AddToHomeScreen(props) {
   function showPlatformGuidance(skipNative) {
     let target = getPlatform(skipNative);
     doLog('showing platform guidance for: ' + target);
-    let athWrapper = document.querySelector(`.${ configuration.customPromptElements.container }`);
+    let athWrapper = document.querySelector(`.${configuration.customPromptElements.container}`);
 
     if (athWrapper) {
       if (autoHideTimer) {
@@ -144,10 +144,10 @@ export default function AddToHomeScreen(props) {
           location.replace(promptTarget.targetUrl);
         } else {
           if (promptTarget.images && promptTarget.images.length > 0) {
-            let promptDialogBannerBody = athWrapper.querySelector(`.${ configuration.customPromptElements.banner }`);
-            let promptDialogGuidanceBody = athWrapper.querySelector(`.${ configuration.customPromptElements.guidance }`);
-            let promptDialogGuidanceImageCell = athWrapper.querySelector(`.${ configuration.customPromptElements.guidanceImageCell }`);
-            let promptDialogGuidanceCancelButton = athWrapper.querySelector(`.${ configuration.customPromptElements.guidanceCancelButton }`);
+            let promptDialogBannerBody = athWrapper.querySelector(`.${configuration.customPromptElements.banner}`);
+            let promptDialogGuidanceBody = athWrapper.querySelector(`.${configuration.customPromptElements.guidance}`);
+            let promptDialogGuidanceImageCell = athWrapper.querySelector(`.${configuration.customPromptElements.guidanceImageCell}`);
+            let promptDialogGuidanceCancelButton = athWrapper.querySelector(`.${configuration.customPromptElements.guidanceCancelButton}`);
 
             promptDialogBannerBody.classList.add(configuration.hideClass);
             promptDialogGuidanceBody.classList.add(configuration.showClass);
@@ -168,7 +168,7 @@ export default function AddToHomeScreen(props) {
               promptDialogGuidanceCancelButton.addEventListener('click', cancelPrompt);
               promptDialogGuidanceCancelButton.classList.remove(configuration.hideClass);
               promptDialogGuidanceCancelButton.innerText = promptTarget.guidanceCancelMsg != null ? promptTarget.guidanceCancelMsg :
-                  ((promptTarget.action && promptTarget.action.guidanceCancel) ? promptTarget.action.guidanceCancel : '');
+                ((promptTarget.action && promptTarget.action.guidanceCancel) ? promptTarget.action.guidanceCancel : '');
             }
           }
           if (!isVisible(athWrapper)) {
@@ -264,7 +264,7 @@ export default function AddToHomeScreen(props) {
     platform.isiPad = (platform.isMobileSafari && userAgent.indexOf('iPad') > -1);
     platform.isiPhone = (platform.isMobileSafari && userAgent.indexOf('iPad') === -1);
     platform.isCompatible = (platform.isChromium || platform.isMobileSafari ||
-        platform.isSamsung || platform.isFireFox || platform.isOpera);
+      platform.isSamsung || platform.isFireFox || platform.isOpera);
   }
 
   function getPlatform(native) {
@@ -331,9 +331,9 @@ export default function AddToHomeScreen(props) {
         triggerNativePrompt();
       } else {
         let target = getPlatform();
-        let athWrapper = document.querySelector(`.${ configuration.customPromptElements.container }`);
+        let athWrapper = document.querySelector(`.${configuration.customPromptElements.container}`);
 
-        doLog(`show generic prompt for platform ${ target }`);
+        doLog(`show generic prompt for platform ${target}`);
         if (athWrapper && !session.optedOut) {
           athWrapper.classList.remove(configuration.hideClass);
 
@@ -349,10 +349,10 @@ export default function AddToHomeScreen(props) {
             athWrapper.classList.add(promptTarget.showClasses[index]);
           }
 
-          let promptDialogTitle = athWrapper.querySelector(`.${ configuration.customPromptElements.title }`);
-          let promptDialogLogo = athWrapper.querySelector(`.${ configuration.customPromptElements.logo }`);
-          let promptDialogCancelButton = athWrapper.querySelector(`.${ configuration.customPromptElements.cancelButton }`);
-          let promptDialogInstallButton = athWrapper.querySelector(`.${ configuration.customPromptElements.installButton }`);
+          let promptDialogTitle = athWrapper.querySelector(`.${configuration.customPromptElements.title}`);
+          let promptDialogLogo = athWrapper.querySelector(`.${configuration.customPromptElements.logo}`);
+          let promptDialogCancelButton = athWrapper.querySelector(`.${configuration.customPromptElements.cancelButton}`);
+          let promptDialogInstallButton = athWrapper.querySelector(`.${configuration.customPromptElements.installButton}`);
 
           if (promptDialogTitle && promptTarget.title) {
             promptDialogTitle.innerText = promptTarget.title;
@@ -371,14 +371,14 @@ export default function AddToHomeScreen(props) {
             promptDialogInstallButton.addEventListener('click', handleInstall);
             promptDialogInstallButton.classList.remove(configuration.hideClass);
             promptDialogInstallButton.innerText = promptTarget.installMsg != null ? promptTarget.installMsg :
-                ((promptTarget.action && promptTarget.action.ok) ? promptTarget.action.ok : '');
+              ((promptTarget.action && promptTarget.action.ok) ? promptTarget.action.ok : '');
           }
 
           if (promptDialogCancelButton) {
             promptDialogCancelButton.addEventListener('click', cancelPrompt);
             promptDialogCancelButton.classList.remove(configuration.hideClass);
             promptDialogCancelButton.innerText = promptTarget.cancelMsg != null ? promptTarget.cancelMsg :
-                ((promptTarget.action && promptTarget.action.cancel) ? promptTarget.action.cancel : '');
+              ((promptTarget.action && promptTarget.action.cancel) ? promptTarget.action.cancel : '');
           }
         }
 
@@ -532,44 +532,44 @@ export default function AddToHomeScreen(props) {
   /* displays native A2HS prompt & stores results */
   function triggerNativePrompt() {
     return beforeInstallPromptEvent.prompt()
-        .then(function () {
-          // Wait for the user to respond to the prompt
-          return beforeInstallPromptEvent.userChoice;
-        })
-        .then(function (choiceResult) {
-          session.added = (choiceResult.outcome === 'accepted');
+      .then(function () {
+        // Wait for the user to respond to the prompt
+        return beforeInstallPromptEvent.userChoice;
+      })
+      .then(function (choiceResult) {
+        session.added = (choiceResult.outcome === 'accepted');
 
-          if (session.added) {
-            doLog('user accepted the A2HS prompt');
-            if (configuration.onAdd) {
-              configuration.onAdd();
-            }
-          } else {
-            if (configuration.onCancel) {
-              configuration.onCancel();
-            }
-            session.optedOut = true;
-            doLog('user dismissed the A2HS prompt');
+        if (session.added) {
+          doLog('user accepted the A2HS prompt');
+          if (configuration.onAdd) {
+            configuration.onAdd();
           }
-          updateSession();
-          beforeInstallPromptEvent = null;
+        } else {
+          if (configuration.onCancel) {
+            configuration.onCancel();
+          }
+          session.optedOut = true;
+          doLog('user dismissed the A2HS prompt');
+        }
+        updateSession();
+        beforeInstallPromptEvent = null;
 
-        })
-        .catch(function (err) {
+      })
+      .catch(function (err) {
+        doLog(err.message);
+
+        if (err.message.indexOf('user gesture') > -1) {
+          configuration.mustShowCustomPrompt = true;
+          delayedShow();
+        } else if (err.message.indexOf('The app is already installed') > -1) {
           doLog(err.message);
-
-          if (err.message.indexOf('user gesture') > -1) {
-            configuration.mustShowCustomPrompt = true;
-            delayedShow();
-          } else if (err.message.indexOf('The app is already installed') > -1) {
-            doLog(err.message);
-            session.added = true;
-            updateSession();
-          } else {
-            doLog(err);
-            return err;
-          }
-        });
+          session.added = true;
+          updateSession();
+        } else {
+          doLog(err);
+          return err;
+        }
+      });
   }
 
   function cancelPrompt(event) {
@@ -582,7 +582,7 @@ export default function AddToHomeScreen(props) {
   }
 
   function closePrompt() {
-    let athWrapper = document.querySelector(`.${ configuration.customPromptElements.container }`);
+    let athWrapper = document.querySelector(`.${configuration.customPromptElements.container}`);
     if (athWrapper) {
       let target = getPlatform();
       let promptTarget = configuration.customPromptPlatformDependencies[target];
@@ -605,7 +605,7 @@ export default function AddToHomeScreen(props) {
   }
 
   function autoHide() {
-    let athWrapper = document.querySelector(`.${ configuration.customPromptElements.container }`);
+    let athWrapper = document.querySelector(`.${configuration.customPromptElements.container}`);
 
     closePrompt();
     if (athWrapper) {
@@ -614,28 +614,33 @@ export default function AddToHomeScreen(props) {
   }
 
   return (
-      <div style={{ width : '100%' , boxSizing:'border-box' }} className={ `${ configuration.customPromptElements.container } ${ configuration.customPromptElements.containerAddOns }` }>
-        <div className={ `${ configuration.customPromptElements.banner } ${ configuration.customPromptElements.bannerAddOns }` }>
-          <div className={ `${ configuration.customPromptElements.logoCell } ${ configuration.customPromptElements.logoCellAddOns }` }>
-            <img alt="Application Logo" width="50" height="50" className={ `${ configuration.customPromptElements.logo } ${ configuration.customPromptElements.logoAddOns }` }/>
-          </div>
-          <div className={ `${ configuration.customPromptElements.titleCell } ${ configuration.customPromptElements.titleCellAddOns }` }>
-            <div className={ `${ configuration.customPromptElements.title } ${ configuration.customPromptElements.titleAddOns }` }/>
-          </div>
-          <div className={ `${ configuration.customPromptElements.cancelButtonCell } ${ configuration.customPromptElements.cancelButtonCellAddOns }` }>
-            <button className={ `${ configuration.customPromptElements.cancelButton } ${ configuration.customPromptElements.cancelButtonAddOns }` }>Not Now</button>
-          </div>
-          <div className={ `${ configuration.customPromptElements.installButtonCell } ${ configuration.customPromptElements.installButtonCellAddOns }` }>
-            <button className={ `${ configuration.customPromptElements.installButton } ${ configuration.customPromptElements.installButtonAddOns }` }>Install</button>
-          </div>
+    <div className={`${configuration.customPromptElements.container} ${configuration.customPromptElements.containerAddOns} home-screen`}>
+      <div style={{ position: 'relative', marginTop: '5rem' }} className={`${configuration.customPromptElements} ${configuration.customPromptElements.bannerAddOns}`}>
+        <div className={`${configuration.customPromptElements.logoCell} ${configuration.customPromptElements.logoCellAddOns} img-center-add-home`}>
+          <img alt="Application Logo" className={`${configuration.customPromptElements.logo} ${configuration.customPromptElements.logoAddOns} img-fluid`} />
         </div>
-        <div className={ `${ configuration.customPromptElements.guidance } ${ configuration.customPromptElements.guidanceAddOns }` }>
+        <div style={{ textAlign:'center' }} className={`${configuration.customPromptElements.titleCell} ${configuration.customPromptElements.titleCellAddOns}`}>
+          <div className={`${configuration.customPromptElements.title} ${configuration.customPromptElements.titleAddOns} title-add-to-home-screen`} />
+        </div>
+        <div style={{ textAlign:'center' }}>
+          <p className={`${configuration.customPromptElements.title} ${configuration.customPromptElements.titleAddOns} details-add-to-home-screen`}>1 - در نوار پایین روی دکمه share بزنید</p>
+          <p className={`${configuration.customPromptElements.title} ${configuration.customPromptElements.titleAddOns} details-add-to-home-screen`}>2 - در منوی باز شده گزینه add to home screen را انتخاب کنید</p>
+          <p className={`${configuration.customPromptElements.title} ${configuration.customPromptElements.titleAddOns} details-add-to-home-screen`}>3 - در قسمت روی add کلیک کنید</p>
+        </div>
+        <div className={`${configuration.customPromptElements.cancelButtonCell} ${configuration.customPromptElements.cancelButtonCellAddOns}`}>
+          <button className={`${configuration.customPromptElements.cancelButton} ${configuration.customPromptElements.cancelButtonAddOns} btn-cencell`}>Not Now</button>
+        </div>
+        {/* <div className={ `${ configuration.customPromptElements.installButtonCell } ${ configuration.customPromptElements.installButtonCellAddOns }` }>
+            <button className={ `${ configuration.customPromptElements.installButton } ${ configuration.customPromptElements.installButtonAddOns }` }>Install</button>
+          </div> */}
+      </div>
+      {/* <div className={ `${ configuration.customPromptElements.guidance } ${ configuration.customPromptElements.guidanceAddOns }` }>
           <div className={ `${ configuration.customPromptElements.guidanceImageCell } ${ configuration.customPromptElements.guidanceImageCellAddOns }` }/>
           <div className={ `${ configuration.customPromptElements.cancelButtonCell } ${ configuration.customPromptElements.cancelButtonCellAddOns }` }>
             <button className={ `${ configuration.customPromptElements.guidanceCancelButton } ${ configuration.customPromptElements.guidanceCancelButtonAddOns }` }>Close</button>
           </div>
-        </div>
-      </div>
+        </div> */}
+    </div>
   );
 }
 
