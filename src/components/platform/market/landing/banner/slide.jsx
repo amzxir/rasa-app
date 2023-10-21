@@ -4,6 +4,7 @@ import { SplideSlide, Splide, SplideTrack } from "@splidejs/react-splide";
 import LightStyles from "../../../../../assets/sass/light/market/landing.module.scss";
 import DarkStyles from "../../../../../assets/sass/dark/market/landing.module.scss";
 import ColorModeContext from "../../../../../context/color-mode-context";
+import { NavLink } from "react-router-dom";
 
 export default function Slide({ bannerData }) {
   // start function darkmode
@@ -31,15 +32,17 @@ export default function Slide({ bannerData }) {
         {bannerData && bannerData.map((i, index) => {
           return (
             <SplideSlide key={index}>
-              <img
-                className={
-                  theme.palette.mode === "light"
-                    ? LightStyles.img_fluid
-                    : DarkStyles.img_fluid
-                }
-                src={i.path_img}
-                alt={i.name}
-              />
+              <NavLink to={"https://rasadent.com/"} target="_black">
+                <img
+                  className={
+                    theme.palette.mode === "light"
+                      ? LightStyles.img_fluid
+                      : DarkStyles.img_fluid
+                  }
+                  src={i.path_img}
+                  alt={i.name}
+                />
+              </NavLink>
             </SplideSlide>
           );
         })}
