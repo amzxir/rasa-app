@@ -52,7 +52,7 @@ import Download from "./components/platform/form/download/download";
 import 'react-toastify/dist/ReactToastify.css';
 import Protected from "./protected";
 import AddToHomeScreen from './add-to-home-screen/AddToHomeScreen';
-// import './modifiedStyling.scss';
+import './modifiedStyling.scss';
 
 
 
@@ -175,7 +175,7 @@ export default function App() {
             style={{ zIndex: '100000' }}
           />
 
-          {/* <AddToHomeScreen
+          <AddToHomeScreen
             appId='Add-to-Homescreen React Live Demo'
             startAutomatically={true}
             startDelay={0}
@@ -209,7 +209,7 @@ export default function App() {
               guidanceImageCellAddOns: '',
               guidanceCancelButton: 'athGuidanceCancelButton'
             }}
-          /> */}
+          />
 
         </Layouts>
       </ThemeProvider>

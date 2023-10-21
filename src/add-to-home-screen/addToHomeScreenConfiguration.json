@@ -104,7 +104,7 @@
       ],
       "images": [
         {
-          "src": "images/guidance/iphone.png",
+          "src": "/image/product-slider.png",
           "alt": "Guide to install application on home screen."
         }
       ]
