@@ -12,6 +12,7 @@ import DarkStyles from "../../../assets/sass/dark/auth.module.scss";
 import Fingerprint from "../../../assets/svg/fingerprint";
 import ColorModeContext from "../../../context/color-mode-context";
 import fa from "../../../lang/fa.json"
+import Loading from "../../loading/loading";
 
 // regex error validation
 const phoneRegExp = /^(\+\d{1,3}[- ]?)?\d{11}$/;
@@ -24,7 +25,7 @@ const schema = yup.object().shape({
 export default function Login(props) {
   // start function darkmode
   const theme = useTheme();
-  const { colorMode } = useContext(ColorModeContext);
+  const { colorMode, spinner, setSpinner } = useContext(ColorModeContext);
   // end function darkmode
   // start react hook form
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -33,21 +34,31 @@ export default function Login(props) {
   // end react hook form
   // start function send mobile
   const handleSubmits = async (data) => {
+    setSpinner(true)
     const mobile = data;
     try {
-      const response = await axios.post("https://rasadent.com/api/SendOtp" , mobile);
+      const response = await axios.post("https://rasadent.com/api/SendOtp", mobile);
       if (response.data.status_code === 422) {
         toast.error(response.data.msg)
       } else if (response.data.status_code === 200) {
         toast.success(response.data.msg)
       }
+      setSpinner(false)
       // console.log(response);
       props.nextStep(data);
     } catch (error) {
+      setSpinner(false)
       // console.error(error);
     }
   };
   // end function send mobile
+
+  // start function loading
+  if (spinner) {
+    return <Loading/>
+  }
+  // end function loading
+
   return (
     <FadeTransform in transformProps={{ exitTransform: 'translateX(-100px)' }}>
       <Box>
@@ -71,7 +82,7 @@ export default function Login(props) {
               </div>
               <span className="error">{errors.mobile?.message}</span>
             </div>
-            <button>{fa["Get code"]}</button>
+            <button disabled={spinner}>{fa["Get code"]}</button>
           </form>
         </div>
       </Box>

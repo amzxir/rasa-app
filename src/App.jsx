@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useEffect } from "react";
-import { Route, Routes , useLocation } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { ToastContainer } from 'react-toastify';
 import Layouts from "./layouts/layouts";
@@ -57,7 +57,6 @@ import Protected from "./protected";
 
 export default function App() {
 
-
   // start function darkmode
   const storage = localStorage.theme !== "undefined" ? localStorage.theme : "light";
   const [storageTheme, setStorageTheme] = useState(storage);
@@ -99,10 +98,12 @@ export default function App() {
   const location = useLocation();
   // end fetch data token in authentication
 
-
+  // start state loading 
+  const [spinner, setSpinner] = useState(false);
+  // end state loading 
 
   return (
-    <ColorModeContext.Provider value={{ colorMode, token }}>
+    <ColorModeContext.Provider value={{ colorMode, token, spinner, setSpinner }}>
       <ThemeProvider theme={theme}>
         <Layouts>
           <NetworkStatus>
