@@ -12,11 +12,8 @@ import ArrowRight from "../../assets/svg/arrow-right";
 import PinsIcon from "../../assets/svg/pins";
 import OrderIcon from "../../assets/svg/order";
 import StoreIcon from "../../assets/svg/store";
-import SettingIcon from "../../assets/svg/setting";
 import EyesIcon from "../../assets/svg/eyes";
-import FaqsIcon from "../../assets/svg/faq";
 import SupportIcon from "../../assets/svg/support";
-import InfoIcon from "../../assets/svg/info";
 import ExitProfileIcon from "../../assets/svg/exit-profile";
 import fa from "../../lang/fa.json";
 import NotifIcon from "../../assets/svg/notif";
@@ -26,6 +23,10 @@ export default function Profile() {
   const theme = useTheme();
   const { colorMode } = useContext(ColorModeContext);
   // end function
+
+  // start fetch details user
+  const mobile = localStorage.getItem("mobile");
+  // end fetch details user
   return (
     <FadeTransform in transformProps={{ exitTransform: 'translateX(-100px)' }} fadeProps={{ enterOpacity: 0.85, }}>
       <Box sx={{ mt: 5, mb: 5 }}>
@@ -40,7 +41,7 @@ export default function Profile() {
             </div>
           </div>
           <h1 className={theme.palette.mode === "light" ? LightStyles.h1_name : DarkStyles.h1_name}>امیر احمدی</h1>
-          <p className={theme.palette.mode === "light" ? LightStyles.p_mobile : DarkStyles.p_mobile}>09199954356</p>
+          <p className={theme.palette.mode === "light" ? LightStyles.p_mobile : DarkStyles.p_mobile}>{mobile}</p>
         </div>
         <hr />
         <div className={theme.palette.mode === "light" ? LightStyles.routing_profile : DarkStyles.routing_profile}>

@@ -110,8 +110,8 @@ export default function Search({ setIsOpen }) {
           <ul className={theme.palette.mode === "light" ? LightStyles.list_search : DarkStyles.list_search}>
             {items?.length === 0 || filter.length === 0 ? (
               <div className={theme.palette.mode === "light" ? LightStyles.page_404 : DarkStyles.page_404}>
-                <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
-                  <img src="image/404.png" alt="" />
+                <div className={theme.palette.mode === "light" ? LightStyles.img_centers : DarkStyles.img_centers}>
+                  <img src="/image/404.png" alt="" />
                 </div>
                 <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
                   <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>

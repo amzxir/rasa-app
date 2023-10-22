@@ -316,15 +316,14 @@
 .page_404{
     margin-top: 2rem;
 
-    .img_center{
+    .img_centers{
         display: flex;
         justify-content: center;
 
         img{
-            width: 165px;
-            height: 165px;
+            max-width: 100%;
+            height: auto;
             border-radius: 12px;
-            background: #ebebeb;
         }
     }
 
