@@ -19,6 +19,7 @@ export default function MostProduct({ productData, sendProduct }) {
   // start fetch data product
   const [promotion, setPromotion] = useState([]);
   const [getProduct, setGetProduct] = useState([]);
+  
   const handelGetPromotion = async () => {
 
     const config = {
