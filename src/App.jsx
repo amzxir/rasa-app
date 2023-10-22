@@ -127,7 +127,7 @@ export default function App() {
                 <Route path="/shop/products/:productName" element={<ProductSpecial fetchProduct={fetchProduct} sendProduct={handelSendProduct} />}></Route>
                 <Route path="/shop/notification" element={<Notification sendNotif={handelSendProduct} />}></Route>
                 <Route path="/shop/notification-single/:notifId" element={<NotificationSingle fetchNotif={fetchProduct} />}></Route>
-                <Route path="/shop/product-category/:productName" element={<ProductCategory />}></Route>
+                <Route path="/shop/product-category/:productName" element={<ProductCategory sendProduct={handelSendProduct} />}></Route>
                 <Route path="/shop/wishlist" element={<Wishlist />}></Route>
                 <Route path="/shop/single-product/:name" element={<SingleShop fetchProduct={fetchProduct} />}></Route>
                 <Route path="/shop/card" element={<CardShop />}></Route>

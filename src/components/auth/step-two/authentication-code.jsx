@@ -70,7 +70,7 @@ export default function AuthenticationCode(props) {
       mobile: props.data.mobile,
       code: verOtp,
     }
-    console.log(verOtp)
+    // console.log(verOtp)
     try {
       const response = await axios.post("https://rasadent.reshe.ir/api/VerifyOtp", verify);
       console.log(response);

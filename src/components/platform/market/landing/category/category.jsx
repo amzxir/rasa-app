@@ -53,7 +53,7 @@ export default function Category() {
                 {category?.slice(0 ,7).map((i, index) => {
                     return (
                         <Grid item key={i.id} xs={3}>
-                            <NavLink to={`/shop/product-category/${i.name}`} className={theme.palette.mode === "light" ? LightStyles.category_list : DarkStyles.category_list}>
+                            <NavLink to={`/shop/product-category/${i.name}`} state={i.name} className={theme.palette.mode === "light" ? LightStyles.category_list : DarkStyles.category_list}>
                                 <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
                                     <img src={`https://rasadent.com/storage/category/${i.img}`} alt="" />
                                 </div>
