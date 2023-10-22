@@ -1,4 +1,4 @@
-import React , { useContext, useEffect, useState , memo } from "react";
+import React , { useContext, useEffect, useState } from "react";
 import { Box, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useParams , NavLink } from "react-router-dom";
@@ -24,11 +24,8 @@ export default function Products({ fetchProduct , sendProduct }) {
     const handelFetchProduct = () => {
         setProducts(fetchProduct)
     }
-
     handelFetchProduct();
   },[])
-
-
 
   // end fetch data product
 

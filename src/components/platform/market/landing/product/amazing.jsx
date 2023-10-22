@@ -19,26 +19,26 @@ export default function AmazingProduct({ productData, sendProduct }) {
   // start fetch data product
   const [promotion, setPromotion] = useState([]);
 
-  const handelGetPromotion = async () => {
-    const config = {
-      headers: { Authorization: `Bearer ${token}` }
-    }
-    const bodyParameters = {
-      key: "value",
-    }
-
-    try {
-      const response = await axios.post('https://rasadent.reshe.ir/api/promotions', bodyParameters, config);
-      // console.log(response.data.promotions_product_ids);
-      setPromotion(response.data.promotions_product_ids)
-    } catch (error) {
-      console.error(error);
-    }
-
-  }
   useEffect(() => {
+    const handelGetPromotion = async () => {
+      const config = {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+      const bodyParameters = {
+        key: "value",
+      }
+  
+      try {
+        const response = await axios.post('https://rasadent.reshe.ir/api/promotions', bodyParameters, config);
+        // console.log(response.data.promotions_product_ids);
+        setPromotion(response.data.promotions_product_ids)
+      } catch (error) {
+        console.error(error);
+      }
+  
+    }
     handelGetPromotion();
-  }, [])
+  }, [promotion])
 
   const amazing = promotion.filter(obj => {
     return obj.lable === "amazing";
@@ -50,26 +50,26 @@ export default function AmazingProduct({ productData, sendProduct }) {
 
   const [getProduct, setGetProduct] = useState([]);
 
-  const handelGetProducts = async () => {
-    const config = {
-      headers: { Authorization: `Bearer ${token}` }
-    }
-    const bodyParameters = {
-      key: "value",
-      product_ids: product_id,
-    }
-
-    try {
-      const response = await axios.post('https://rasadent.reshe.ir/api/get_products', bodyParameters, config);
-      // console.log(response.data.Products);
-      setGetProduct(response.data.Products)
-    } catch (error) {
-      console.error(error);
-    }
-  }
   useEffect(() => {
+    const handelGetProducts = async () => {
+      const config = {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+      const bodyParameters = {
+        key: "value",
+        product_ids: product_id,
+      }
+  
+      try {
+        const response = await axios.post('https://rasadent.reshe.ir/api/get_products', bodyParameters, config);
+        // console.log(response.data.Products);
+        setGetProduct(response.data.Products)
+      } catch (error) {
+        console.error(error);
+      }
+    }
     handelGetProducts();
-  }, [])
+  }, [getProduct])
 
   // end fetch data product
   return (
