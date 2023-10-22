@@ -16,36 +16,31 @@ export default function CategoryList() {
   // end function darkmode
 
   // start fetch category all
+  const [category, setCategory] = useState([]);
+  const handelCategoryAll = async () => {
 
-  useEffect(() => {
-
-    const handelCategoryAll = async () => {
-
-      const config = {
-        headers: { Authorization: `Bearer ${token}` }
-      }
-      const bodyParameters = {
-        key: "value",
-      }
-
-      try {
-        const response = await axios.post('https://rasadent.reshe.ir/api/AllCategory', bodyParameters, config);
-        setCategory(response.data.categories)
-        // console.log(response.data.categories);
-      } catch (error) {
-        console.error(error);
-      }
-
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    }
+    const bodyParameters = {
+      key: "value",
     }
 
+    try {
+      const response = await axios.post('https://rasadent.reshe.ir/api/AllCategory', bodyParameters, config);
+      setCategory(response.data.categories)
+      // console.log(response.data.categories);
+    } catch (error) {
+      console.error(error);
+    }
+
+  }
+  useEffect(() => {
     handelCategoryAll();
-  }, [])
+  }, [category])
 
   // start fetch category all 
 
-  // start fetch data category list 
-  const [category, setCategory] = useState([]);
-  // end fetch data category list 
 
 
   return (
