@@ -70,22 +70,26 @@ export default function AuthenticationCode(props) {
       mobile: props.data.mobile,
       code: verOtp,
     }
-    console.log(verify)
+    console.log(verOtp)
     try {
       const response = await axios.post("https://rasadent.reshe.ir/api/VerifyOtp", verify);
-      // if (response.data.status_code === 422) {
-      //   toast.error(response.data.msg)
-      // } else if (response.data.status_code === 200) {
-      //   toast.success(response.data.msg)
-      // }
+      console.log(response);
+
+      if (response.data.msg === "data invalid") {
+        setSpinner(false)
+        toast.success(response.data.msg)
+      } else if (response.data.token) {
+        setSpinner(false)
+        const getToken = response.data.token;
+        localStorage.setItem("token", getToken);
+        toast.success("به رسادنت خوش آمدید");
+        navigate("/");
+
+      }
       // console.log(response);
-      setSpinner(false)
-      const getToken = response.data.token;
-      localStorage.setItem("token", getToken);
-      toast.success("به رسادنت خوش آمدید");
-      navigate("/");
+
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       setSpinner(false)
     }
   };
