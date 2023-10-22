@@ -18,63 +18,58 @@ export default function AmazingProduct({ productData, sendProduct }) {
 
   // start fetch data product
   const [promotion, setPromotion] = useState([]);
-  useEffect(() => {
-    const handelGetPromotion = async () => {
 
-      const config = {
-        headers: { Authorization: `Bearer ${token}` }
-      }
-      const bodyParameters = {
-        key: "value",
-      }
-
-      try {
-        const response = await axios.post('https://rasadent.reshe.ir/api/promotions', bodyParameters, config);
-        // console.log(response.data.promotions_product_ids);
-        setPromotion(response.data.promotions_product_ids)
-      } catch (error) {
-        console.error(error);
-      }
+  const handelGetPromotion = async () => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
     }
+    const bodyParameters = {
+      key: "value",
+    }
+
+    try {
+      const response = await axios.post('https://rasadent.reshe.ir/api/promotions', bodyParameters, config);
+      // console.log(response.data.promotions_product_ids);
+      setPromotion(response.data.promotions_product_ids)
+    } catch (error) {
+      console.error(error);
+    }
+
+  }
+  useEffect(() => {
     handelGetPromotion();
   }, [])
 
-  
   const amazing = promotion.filter(obj => {
     return obj.lable === "amazing";
   });
 
-  const product_id = amazing.map(obj =>  {
+  const product_id = amazing.map(obj => {
     return obj.product_id
   })
-  
-  const [getProduct , setGetProduct] = useState([]);
 
-  useEffect(() => {
-    const handelGetProducts = async() => {
-      const config = {
-        headers: { Authorization: `Bearer ${token}` }
-      }
-      const bodyParameters = {
-        key: "value",
-        product_ids:product_id,
-      }
+  const [getProduct, setGetProduct] = useState([]);
 
-      try {
-        const response = await axios.post('https://rasadent.reshe.ir/api/get_products', bodyParameters, config);
-        // console.log(response.data.Products);
-        setGetProduct(response.data.Products)
-      } catch (error) {
-        console.error(error);
-      }
+  const handelGetProducts = async () => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    }
+    const bodyParameters = {
+      key: "value",
+      product_ids: product_id,
     }
 
+    try {
+      const response = await axios.post('https://rasadent.reshe.ir/api/get_products', bodyParameters, config);
+      // console.log(response.data.Products);
+      setGetProduct(response.data.Products)
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  useEffect(() => {
     handelGetProducts();
-  },[])
-
-
-
-
+  }, [])
 
   // end fetch data product
   return (
@@ -82,7 +77,7 @@ export default function AmazingProduct({ productData, sendProduct }) {
       <div data-test="data-product" className={theme.palette.mode === "light" ? LightStyles.m_b_1 : DarkStyles.m_b_1}>
         <div className={theme.palette.mode === "light" ? LightStyles.title_content_product : DarkStyles.title_content_product}>
           <h1>📍 {"پیشنهاد شگقت انگیز"}</h1>
-          <NavLink to={`/shop/products/پیشنهاد شگقت انگیز`} state={"پیشنهاد شگقت انگیز"}>{fa["view all"]}</NavLink>
+          <NavLink onClick={() => sendProduct(getProduct)} to={`/shop/products/پیشنهاد شگقت انگیز`} state={"پیشنهاد شگقت انگیز"} >{fa["view all"]}</NavLink>
         </div>
         <Splide className={theme.palette.mode === "light" ? LightStyles.slider_product : DarkStyles.slider_product}
           hasTrack={false}
@@ -94,32 +89,32 @@ export default function AmazingProduct({ productData, sendProduct }) {
             perPage: 2,
           }}>
           <SplideTrack>
-          {getProduct?.map((i) => {
-            return(
+            {getProduct?.map((i) => {
+              return (
                 <SplideSlide key={i.id}>
-                    <div className={theme.palette.mode === "light" ? LightStyles.card_product : DarkStyles.card_product}>
+                  <div className={theme.palette.mode === "light" ? LightStyles.card_product : DarkStyles.card_product}>
                     <div className={theme.palette.mode === "light" ? LightStyles.card_img : DarkStyles.card_img}>
-                        <NavLink className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
+                      <NavLink onClick={() => sendProduct(i)} to={`/shop/single-product/${i.fa_name}`} state={i.fa_name} className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
                         <img src={`https://rasadent.com/storage/product/${i.image}`} />
-                        </NavLink>
-                        <div className={theme.palette.mode === "light" ? LightStyles.icon_wishlist : DarkStyles.icon_wishlist}>
+                      </NavLink>
+                      <div className={theme.palette.mode === "light" ? LightStyles.icon_wishlist : DarkStyles.icon_wishlist}>
                         <MarkProductIcon />
-                        </div>
+                      </div>
                     </div>
                     <div className={theme.palette.mode === "light" ? LightStyles.shop : DarkStyles.shop}>
-                        <span>{i.en_name}</span>
+                      <span>{i.en_name}</span>
                     </div>
                     <div className={theme.palette.mode === "light" ? LightStyles.product_details : DarkStyles.product_details}>
-                        <NavLink className={theme.palette.mode === "light" ? LightStyles.name_product : DarkStyles.name_product}>
+                      <NavLink onClick={() => sendProduct(i)} to={`/shop/single-product/${i.fa_name}`} state={i.fa_name} className={theme.palette.mode === "light" ? LightStyles.name_product : DarkStyles.name_product}>
                         {i.fa_name}
-                        </NavLink>
-                        <p className={theme.palette.mode === "light" ? LightStyles.price_product : DarkStyles.price_product}>
+                      </NavLink>
+                      <p className={theme.palette.mode === "light" ? LightStyles.price_product : DarkStyles.price_product}>
                         {i.code} {fa["Toman"]}
-                        </p>
+                      </p>
                     </div>
-                    </div>
+                  </div>
                 </SplideSlide>
-            )
+              )
             })}
           </SplideTrack>
         </Splide>

@@ -24,7 +24,7 @@ const Comment = lazy(() => import("./comment/comment"));
 const Create = lazy(() => import("./comment/create"));
 
 
-export default function Single() {
+export default function Single({ fetchProduct }) {
   // start function darkmode
   const theme = useTheme();
   const { colorMode } = useContext(ColorModeContext);
@@ -87,7 +87,7 @@ export default function Single() {
 
   // end function and state tabs 
 
-
+  console.log(fetchProduct)
 
   return (
     <Box data-test="component-single" sx={{ mt: 5, mb: 5 }}>
@@ -101,17 +101,14 @@ export default function Single() {
           }}>
           <SplideTrack>
             <SplideSlide>
-              <img className={theme.palette.mode === "light" ? LightStyles.img_product : DarkStyles.img_product} src="/image/product-slider.png" alt="" />
-            </SplideSlide>
-            <SplideSlide>
-              <img className={theme.palette.mode === "light" ? LightStyles.img_product : DarkStyles.img_product} src="/image/product-slider.png" alt="" />
+              <img className={theme.palette.mode === "light" ? LightStyles.img_product : DarkStyles.img_product} src={`https://rasadent.com/storage/product/${fetchProduct.image}`} alt="" />
             </SplideSlide>
           </SplideTrack>
         </Splide>
       </div>
       <div className={theme.palette.mode === "light" ? LightStyles.content_name_product : DarkStyles.content_name_product}>
         <div className={theme.palette.mode === "light" ? LightStyles.name_content : DarkStyles.name_content}>
-          <h1>کامپوزیت سارمکو</h1>
+          <h1>{fetchProduct.fa_name}</h1>
           <div>
             <NavLink to={"/shop/compare"} state={fa["product compare"]}>
               <IconButton>
@@ -124,7 +121,7 @@ export default function Single() {
           </div>
 
         </div>
-        <p>SAREMCO</p>
+        <p>{fetchProduct.en_name}</p>
         <div className={theme.palette.mode === "light" ? LightStyles.shop_content : DarkStyles.shop_content}>
           <div className={theme.palette.mode === "light" ? LightStyles.alert_primary : DarkStyles.alert_primary}>
             <span>3,284 رضایت مشتری</span>
@@ -136,7 +133,7 @@ export default function Single() {
             <p>
               دسته بندی: کامپوزیت
               <br />
-              شماره سریال: 157954
+              شماره سریال: {fetchProduct.code}
             </p>
           </div>
         </div>

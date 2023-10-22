@@ -124,12 +124,12 @@ export default function App() {
                 <Route exact path="/shop" element={<HomeShop sendProduct={handelSendProduct} />}></Route>
                 <Route path="/shop/category-list" element={<CategoryList />}></Route>
                 <Route path="/shop/compare" element={<Compare />}></Route>
-                <Route path="/shop/products/:productName" element={<ProductSpecial fetchProduct={fetchProduct} />}></Route>
+                <Route path="/shop/products/:productName" element={<ProductSpecial fetchProduct={fetchProduct} sendProduct={handelSendProduct} />}></Route>
                 <Route path="/shop/notification" element={<Notification sendNotif={handelSendProduct} />}></Route>
                 <Route path="/shop/notification-single/:notifId" element={<NotificationSingle fetchNotif={fetchProduct} />}></Route>
                 <Route path="/shop/product-category/:productName" element={<ProductCategory />}></Route>
                 <Route path="/shop/wishlist" element={<Wishlist />}></Route>
-                <Route path="/shop/single-product" element={<SingleShop />}></Route>
+                <Route path="/shop/single-product/:name" element={<SingleShop fetchProduct={fetchProduct} />}></Route>
                 <Route path="/shop/card" element={<CardShop />}></Route>
                 <Route path="/shop/shopping" element={<ShoppingShop />}></Route>
                 <Route path="/shop/add-address" element={<AddAddressShop />}></Route>
@@ -174,42 +174,6 @@ export default function App() {
             rtl={true}
             theme="colored"
             style={{ zIndex: '100000' }}
-          />
-
-          <AddToHomeScreen
-            appId='Add-to-Homescreen React Live Demo'
-            startAutomatically={true}
-            startDelay={0}
-            lifespan={60}
-            skipFirstVisit={true}
-            displayPace={0}
-            customPromptContent={{
-              cancelMsg: 'متوجه شدم',
-              // installMsg: 'نصب',
-              guidanceCancelMsg: ''
-            }}
-            customPromptElements={{
-              container: 'athContainer',
-              containerAddOns: '',
-              banner: 'athBanner',
-              logoCell: 'athLogoCell',
-              logoCellAddOns: 'athContentCell',
-              logo: 'athLogo',
-              titleCell: 'athTitleCell',
-              titleCellAddOns: 'athContentCell',
-              title: 'athTitle',
-              cancelButtonCell: 'athCancelButtonCell',
-              cancelButtonCellAddOns: 'athButtonCell',
-              cancelButton: 'athCancelButton',
-              installButtonCell: 'athInstallButtonCell',
-              installButtonCellAddOns: 'athButtonCell',
-              installButton: 'athInstallButton',
-              installButtonAddOns: 'button',
-              guidance: 'athGuidance',
-              guidanceImageCell: 'athGuidanceImageCell',
-              guidanceImageCellAddOns: '',
-              guidanceCancelButton: 'athGuidanceCancelButton'
-            }}
           />
 
         </Layouts>
