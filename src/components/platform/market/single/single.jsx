@@ -150,7 +150,7 @@ export default function Single({ fetchProduct }) {
   const [active, setActive] = useState(1);
 
   const handelTabOne = () => {
-    setTab(<Suspense fallback={<div>Loading...</div>}><Description /></Suspense>);
+    setTab(<Suspense fallback={<div>Loading...</div>}><Description des={fetchProduct.product_description} /></Suspense>);
     setActive(1);
   }
 
@@ -172,7 +172,7 @@ export default function Single({ fetchProduct }) {
   // end function and state tabs 
   
 
-  // console.log(fetchProduct.id)
+  // console.log(fetchProduct)
 
   return (
     <Box data-test="component-single" sx={{ mt: 5, mb: 5 }}>
@@ -190,7 +190,7 @@ export default function Single({ fetchProduct }) {
                 <SplideTrack>
                   {it.image.map((i) => {
                     return(
-                      <SplideSlide>
+                      <SplideSlide key={i.id}>
                         <img className={theme.palette.mode === "light" ? LightStyles.img_product : DarkStyles.img_product} src={`https://rasadent.com/storage/product/${i.image}`} alt="" />
                       </SplideSlide>
                     )
