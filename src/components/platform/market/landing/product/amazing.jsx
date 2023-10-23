@@ -3,6 +3,7 @@ import { useTheme } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
 import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide";
 import { Box, Skeleton, Stack } from "@mui/material";
+import { toast } from 'react-toastify';
 import axios from "axios";
 import LightStyles from "../../../../../assets/sass/light/market/landing.module.scss";
 import DarkStyles from "../../../../../assets/sass/dark/market/landing.module.scss";
@@ -10,7 +11,7 @@ import ColorModeContext from "../../../../../context/color-mode-context";
 import MarkProductIcon from "../../../../../assets/svg/mark-product";
 import fa from "../../../../../lang/fa.json";
 
-export default function AmazingProduct({ productData, sendProduct }) {
+export default function AmazingProduct({ sendProduct }) {
   // start function darkmode
   const theme = useTheme();
   const { colorMode, token, spinner, setSpinner } = useContext(ColorModeContext);
@@ -73,6 +74,32 @@ export default function AmazingProduct({ productData, sendProduct }) {
 
   // end fetch data product
 
+  // start function add bookmark
+
+  const handelBookmark = async (id) => {
+
+    const mobile = localStorage.getItem("mobile");
+
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    }
+    const bodyParameters = {
+      key: "value",
+      mobile:mobile,
+      product_id:id,
+    }
+
+    try {
+      const response = await axios.post("https://rasadent.reshe.ir/api/CreateBookmark" , bodyParameters , config);
+      // console.log(response.data);
+      toast.success('به علاقه مندی ها اضافه شد')
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  // end function add bookmark
+
   return (
     <Box>
       <div data-test="data-product" className={theme.palette.mode === "light" ? LightStyles.m_b_1 : DarkStyles.m_b_1}>
@@ -99,7 +126,7 @@ export default function AmazingProduct({ productData, sendProduct }) {
                         <NavLink onClick={() => sendProduct(i)} to={`/shop/single-product/${i.fa_name}`} state={i.fa_name} className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
                           <img src={`https://rasadent.com/storage/product/${i.image}`} />
                         </NavLink>
-                        <div className={theme.palette.mode === "light" ? LightStyles.icon_wishlist : DarkStyles.icon_wishlist}>
+                        <div onClick={() => handelBookmark (i.id)} className={theme.palette.mode === "light" ? LightStyles.icon_wishlist : DarkStyles.icon_wishlist}>
                           <MarkProductIcon />
                         </div>
                       </div>

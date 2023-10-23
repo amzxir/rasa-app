@@ -3,31 +3,58 @@ import { Box, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useParams , NavLink } from "react-router-dom";
 import { FadeTransform } from "react-animation-components";
+import { toast } from 'react-toastify';
+import axios from "axios";
 import LightStyles from "../../../../assets/sass/light/market/category.module.scss";
 import DarkStyles from "../../../../assets/sass/dark/market/category.module.scss";
 import fa from "../../../../lang/fa.json";
 import ColorModeContext from "../../../../context/color-mode-context";
 import BookmarkIcon from "../../../../assets/svg/Bookmark";
 
+
 export default function Products({ fetchProduct , sendProduct }) {
-  // start function darkmode
-  const theme = useTheme();
-  const { colorMode } = useContext(ColorModeContext);
-  // end function darkmode
-  // start attribute react router dom for get params
-  const params = useParams();
-  // end attribute react router dom for get params
+    // start function darkmode
+    const theme = useTheme();
+    const { colorMode , token } = useContext(ColorModeContext);
+    // end function darkmode
+    // start attribute react router dom for get params
+    const params = useParams();
+    // end attribute react router dom for get params
 
-  // start fetch data product
-  const [products , setProducts] = useState([]);
-  useEffect(() => {
-    const handelFetchProduct = () => {
-        setProducts(fetchProduct)
+    // start fetch data product
+    const [products , setProducts] = useState([]);
+    useEffect(() => {
+        const handelFetchProduct = () => {
+            setProducts(fetchProduct)
+        }
+        handelFetchProduct();
+    },[])
+
+    // end fetch data product
+
+    // start function add bookmark
+    const handelBookmark = async (id) => {
+        const mobile = localStorage.getItem("mobile");
+
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        }
+        const bodyParameters = {
+            key: "value",
+            mobile:mobile,
+            product_id:id,
+        }
+
+        try {
+            const response = await axios.post("https://rasadent.reshe.ir/api/CreateBookmark" , bodyParameters , config);
+            // console.log(response.data);
+            toast.success('به علاقه مندی ها اضافه شد')
+        } catch (error) {
+            console.error(error);
+        }
     }
-    handelFetchProduct();
-  },[])
+    // end function add bookmark
 
-  // end fetch data product
 
   return (
     <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} >
@@ -41,7 +68,7 @@ export default function Products({ fetchProduct , sendProduct }) {
                                     <NavLink onClick={() => sendProduct(i)} to={`/shop/single-product/${i.fa_name}`} state={i.fa_name} className={ theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
                                         <img src={`https://rasadent.com/storage/product/${i.image}`} alt={i.fa_name} />
                                     </NavLink>
-                                    <div className={ theme.palette.mode === "light" ? LightStyles.icon_wishlist : DarkStyles.icon_wishlist }>
+                                    <div onClick={() => handelBookmark (i.id)} className={ theme.palette.mode === "light" ? LightStyles.icon_wishlist : DarkStyles.icon_wishlist }>
                                         <BookmarkIcon />
                                     </div>
                                 </div>

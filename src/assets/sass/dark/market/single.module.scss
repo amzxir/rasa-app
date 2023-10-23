@@ -498,6 +498,7 @@
 .card_product_close{
     visibility: hidden;
     opacity: 0;
+    display: none;
     transition: visibility 0s, opacity 0.5s linear;
     height: 0;
     max-height: 0;

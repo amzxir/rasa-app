@@ -479,6 +479,7 @@
     transition: visibility 0s, opacity 0.5s linear;
     height: 0;
     max-height: 0;
+    display: none;
     transition: max-height 0.15s ease-out;
 
 }

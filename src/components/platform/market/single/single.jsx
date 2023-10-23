@@ -4,6 +4,7 @@ import { useTheme } from "@mui/material/styles";
 import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide";
 import { NavLink } from "react-router-dom";
 import { FadeTransform } from "react-animation-components";
+import { toast } from 'react-toastify'
 import axios from "axios";
 import LightStyles from "../../../../assets/sass/light/market/single.module.scss";
 import DarkStyles from "../../../../assets/sass/dark/market/single.module.scss";
@@ -59,6 +60,33 @@ export default function Single({ fetchProduct }) {
 
   // end fetch details product 
 
+  // start function add to bokmark 
+
+  const handelCreateBookmark = async () => {
+
+    const mobile = localStorage.getItem("mobile");
+
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    }
+    const bodyParameters = {
+      key: "value",
+      product_id:fetchProduct.id,
+      mobile:mobile,
+    }
+
+    try {
+      const response = await axios.post("https://rasadent.reshe.ir/api/CreateBookmark" , bodyParameters , config);
+      console.log(response.data);
+      toast.success('به علاقه مندی ها اضافه شد')
+    } catch (error) {
+      console.error(error);
+    }
+  } 
+  
+
+  // end function add to bokmark 
+
   // start function input number
   const stock = 10;
   let [count, setCount] = React.useState(1)
@@ -99,18 +127,19 @@ export default function Single({ fetchProduct }) {
   }
 
   const handelTabThree = () => {
-    setTab(<Suspense fallback={<div>Loading...</div>}><Comment /></Suspense>);
+    setTab(<Suspense fallback={<div>Loading...</div>}><Comment id={fetchProduct.id} /></Suspense>);
     setActive(3);
   }
 
   const handelTabFour = () => {
-    setTab(<Suspense fallback={<div>Loading...</div>}><Create /></Suspense>)
+    setTab(<Suspense fallback={<div>Loading...</div>}><Create id={fetchProduct.id} /></Suspense>)
     setActive(4);
   }
 
   // end function and state tabs 
+  
 
-  console.log(detailsProduct)
+  // console.log(fetchProduct.id)
 
   return (
     <Box data-test="component-single" sx={{ mt: 5, mb: 5 }}>
@@ -145,7 +174,7 @@ export default function Single({ fetchProduct }) {
                       <CompareIcon />
                     </IconButton>
                   </NavLink>
-                  <IconButton>
+                  <IconButton onClick={handelCreateBookmark}>
                     <BookmarkIcon />
                   </IconButton>
                 </div>

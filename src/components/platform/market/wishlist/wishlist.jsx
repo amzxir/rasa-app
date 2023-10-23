@@ -1,80 +1,81 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Box, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
 import { FadeTransform } from "react-animation-components";
+import axios from "axios";
 import LightStyles from "../../../../assets/sass/light/market/wishlist.module.scss";
 import DarkStyles from "../../../../assets/sass/dark/market/wishlist.module.scss";
 import ColorModeContext from "../../../../context/color-mode-context";
-import BooknarkIcon from "../../../../assets/svg/Bookmark";
 import fa from '../../../../lang/fa.json';
 
-export default function Wishlist() {
+
+export default function Wishlist({ sendProduct }) {
   // start function darkmode
   const theme = useTheme();
-  const { colorMode } = useContext(ColorModeContext);
+  const { colorMode , token } = useContext(ColorModeContext);
   // end function darkmode
 
   // start fetch data title and wishlist
-  const wishlist = [
-    {
-      id: 1,
-      name: "کامپوزیت سارمکو",
-      path: "/shop/single-product",
-      path_img: "/image/product-1.png",
-      shop_name: "فروشگاه مانگو طب",
-      price: "12000",
-      rating: 3,
-      comment: "12",
-    },
-    {
-      id: 2,
-      name: "باندینگ نسل 8 اف جی ام",
-      path: "/shop/single-product",
-      path_img: "/image/product-2.png",
-      shop_name: "فروشگاه طب",
-      price: "7000",
-      rating: 5,
-      comment: "10",
-    },
-    {
-      id: 3,
-      name: "آلژینات بایر  کولزر",
-      path: "/shop/single-product",
-      path_img: "/image/product-2.png",
-      shop_name: "فروشگاه مانگو",
-      price: "3000",
-      rating: 3,
-      comment: "2",
-    },
-    {
-      id: 4,
-      name: "آلژینات زرماخ",
-      path: "/shop/single-product",
-      path_img: "/image/product-1.png",
-      shop_name: "فروشگاه رسادنت",
-      price: "34000",
-      rating: 2,
-      comment: "5",
-    },
-    {
-      id: 5,
-      name: "کامپوزیت سارمکو",
-      path: "/shop/single-product",
-      path_img: "/image/product-2.png",
-      shop_name: "فروشگاه مانگو طب",
-      price: "56000",
-      rating: 1,
-      comment: "6",
-    },
-  ];
-  const [wishlistData, setWishlistData] = useState(wishlist);
+  const [wishlistData, setWishlistData] = useState([]);
+  const [bookmark , setBookmark] = useState([]);
+
+  useEffect(() => {
+    const handelGetBookmark = async () => {
+
+      const mobile = localStorage.getItem("mobile");
+
+      const config = {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+      const bodyParameters = {
+        key: "value",
+        mobile:mobile,
+      }
+
+      try {
+        const response = await axios.post("https://rasadent.reshe.ir/api/Bookmarks" , bodyParameters , config);
+        // console.log(response.data.products_id);
+        setBookmark(response.data.products_id)
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    handelGetBookmark();
+  },[bookmark])
+  
+
+  useEffect(() => {
+
+    const handelGetProduct = async () => {
+
+      const config = {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+      const bodyParameters = {
+        key: "value",
+        product_ids:bookmark,
+      }
+
+      try {
+        const response = await axios.post("https://rasadent.reshe.ir/api/get_products" , bodyParameters , config);
+        // console.log(response.data.Products);
+        setWishlistData(response.data.Products)
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    handelGetProduct();
+  },[wishlistData])
+
   // end fetch data title and wishlist
   return (
     <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} >
       <Box sx={{ mt: 5, mb: 5 }}>
         <Grid container spacing={2}>
-          {wishlistData.map((i) => {
+          {wishlistData?.map((i) => {
             return (
               <Grid item key={i.id} xs={6}>
                 <div
@@ -92,15 +93,16 @@ export default function Wishlist() {
                     }
                   >
                     <NavLink
-                      state={i.name}
-                      to={i.path}
+                      onClick={() => sendProduct(i)}
+                      to={`/shop/single-product/${i.fa_name}`}
+                      state={i.fa_name}
                       className={
                         theme.palette.mode === "light"
                           ? LightStyles.img_center
                           : DarkStyles.img_center
                       }
                     >
-                      <img src={i.path_img} alt={i.name} />
+                      <img src={`https://rasadent.com/storage/product/${i.image}`} alt={i.fa_name} />
                     </NavLink>
                     <div
                       className={
@@ -109,7 +111,7 @@ export default function Wishlist() {
                           : DarkStyles.icon_wishlist
                       }
                     >
-                      <BooknarkIcon />
+                      <small style={{ color:'red' }}>X</small>
                     </div>
                   </div>
                   <div
@@ -119,7 +121,7 @@ export default function Wishlist() {
                         : DarkStyles.shop
                     }
                   >
-                    <span>{i.shop_name}</span>
+                    <span>{i.en_name}</span>
                   </div>
                   <div
                     className={
@@ -129,15 +131,16 @@ export default function Wishlist() {
                     }
                   >
                     <NavLink
-                      state={i.name}
-                      to={i.path}
+                      onClick={() => sendProduct(i)}
+                      to={`/shop/single-product/${i.fa_name}`}
+                      state={i.fa_name}
                       className={
                         theme.palette.mode === "light"
                           ? LightStyles.name_product
                           : DarkStyles.name_product
                       }
                     >
-                      {i.name}
+                      {i.fa_name}
                     </NavLink>
                     <p
                       className={
@@ -146,7 +149,7 @@ export default function Wishlist() {
                           : DarkStyles.price_product
                       }
                     >
-                      {i.price} {fa["Toman"]}
+                      {i.code} {fa["Toman"]}
                     </p>
                   </div>
                 </div>
