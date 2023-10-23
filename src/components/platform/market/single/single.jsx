@@ -61,7 +61,6 @@ export default function Single({ fetchProduct }) {
   // end fetch details product 
 
   // start function add to bokmark 
-
   const handelCreateBookmark = async () => {
 
     const mobile = localStorage.getItem("mobile");
@@ -83,9 +82,43 @@ export default function Single({ fetchProduct }) {
       console.error(error);
     }
   } 
-  
-
   // end function add to bokmark 
+
+  // start function add to card
+  const handelCard = async (res) => {
+    
+    const mobile = localStorage.getItem("mobile");
+
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    }
+    const bodyParameters = {
+      key: "value",
+      mobile:mobile,
+      count:2,
+      discount:0,
+      discount_price:0,
+      shop_id:res.shop_id,
+      product_id:res.product_id,
+      product_price:res.price,
+      peroperty_price:0,
+      peroperty:res.peroperty,
+      value:res.value,
+    }
+
+    try {
+      const response = await axios.post("https://rasadent.reshe.ir/api/CreateCart" , bodyParameters , config);
+      console.log(response);
+      if(response.data.status_code === 422){
+        toast.error(response.data.msg)
+      } else if (response.data.status_code === 200) {
+        toast.success(response.data.msg)
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  // end function add to card
 
   // start function input number
   const stock = 10;
@@ -205,7 +238,7 @@ export default function Single({ fetchProduct }) {
 
             {it.shops.map((i , index) => {
               return(
-                <div style={{ background:i.pivot.product_stock === 0 ? '#FF000012' : '' }} className={theme.palette.mode === "light" ? LightStyles.card_shop : DarkStyles.card_shop}>
+                <div key={i.id} style={{ background:i.pivot.product_stock === 0 ? '#FF000012' : '' }} className={theme.palette.mode === "light" ? LightStyles.card_shop : DarkStyles.card_shop}>
                   <Grid container spacing={2} className={theme.palette.mode === "light" ? LightStyles.content_product_shop : DarkStyles.content_product_shop}>
                     <Grid item xs={3}>
                       <img className={theme.palette.mode === "light" ? LightStyles.img_product : DarkStyles.img_product} src="/image/profile-shop.png" alt="" />
@@ -270,7 +303,7 @@ export default function Single({ fetchProduct }) {
                                   <NegativeIcon />
                                 </IconButton>
                               </div>
-                              <NavLink to={"/shop/card"} state={fa["card"]} className={theme.palette.mode === "light" ? LightStyles.confirm : DarkStyles.confirm}><span>{fa["Add to card"]}</span></NavLink>
+                              <button onClick={() => handelCard(i)} className={theme.palette.mode === "light" ? LightStyles.confirm : DarkStyles.confirm}><span>{fa["Add to card"]}</span></button>
                             </div>
                           </div>
                         )

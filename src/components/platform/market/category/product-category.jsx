@@ -2,8 +2,9 @@ import React, { useContext, useState, useEffect } from "react";
 import { Box, Grid, Breadcrumbs } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { NavLink, useLocation } from "react-router-dom";
-import axios from "axios";
 import { FadeTransform } from "react-animation-components";
+import { toast } from 'react-toastify';
+import axios from "axios";
 import LightStyles from "../../../../assets/sass/light/market/product-category.module.scss";
 import DarkStyles from "../../../../assets/sass/dark/market/product-category.module.scss";
 import fa from "../../../../lang/fa.json";
@@ -55,12 +56,35 @@ export default function ProductCategory({ sendProduct }) {
 
     // end fetch product category 
 
+    // start function add bookmark
+    const handelBookmark = async (id) => {
+
+        const mobile = localStorage.getItem("mobile");
+
+        const config = {
+        headers: { Authorization: `Bearer ${token}` }
+        }
+        const bodyParameters = {
+        key: "value",
+        mobile:mobile,
+        product_id:id,
+        }
+
+        try {
+        const response = await axios.post("https://rasadent.reshe.ir/api/CreateBookmark" , bodyParameters , config);
+        // console.log(response.data);
+        toast.success('به علاقه مندی ها اضافه شد')
+        } catch (error) {
+        console.error(error);
+        }
+    }
+    // end function add bookmark
+
     // start function loading
     if (spinner) {
         return <Loading />
     }
     // end function loading
-
 
     return (
         <Box sx={{ mt: 5, mb: 5 }}>
@@ -81,7 +105,7 @@ export default function ProductCategory({ sendProduct }) {
                                     <NavLink onClick={() => sendProduct(i)} to={`/shop/single-product/${i.fa_name}`} state={i.fa_name} className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
                                             <img src={`https://rasadent.com/storage/product/${i.image[0]?.image}`} alt="" />
                                     </NavLink>
-                                    <div className={theme.palette.mode === "light" ? LightStyles.icon_wishlist : DarkStyles.icon_wishlist}>
+                                    <div onClick={() => handelBookmark(i)} className={theme.palette.mode === "light" ? LightStyles.icon_wishlist : DarkStyles.icon_wishlist}>
                                         <BookmarkIcon />
                                     </div>
                                 </div>
