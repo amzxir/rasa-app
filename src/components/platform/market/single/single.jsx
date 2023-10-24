@@ -29,11 +29,11 @@ const Create = lazy(() => import("./comment/create"));
 export default function Single({ fetchProduct }) {
   // start function darkmode
   const theme = useTheme();
-  const { colorMode , token } = useContext(ColorModeContext);
+  const { colorMode, token } = useContext(ColorModeContext);
   // end function darkmode
 
   // start fetch details product 
-  const [detailsProduct , setDetailsProduct] = useState([]);
+  const [detailsProduct, setDetailsProduct] = useState([]);
 
   useEffect(() => {
     const handelDetails = async () => {
@@ -43,11 +43,11 @@ export default function Single({ fetchProduct }) {
       }
       const bodyParameters = {
         key: "value",
-        product_id:fetchProduct.id,
+        product_id: fetchProduct.id,
       }
 
       try {
-        const response = await axios.post("https://rasadent.reshe.ir/api/get_product" , bodyParameters , config);
+        const response = await axios.post("https://rasadent.reshe.ir/api/get_product", bodyParameters, config);
         // console.log(response.data.products);
         setDetailsProduct(response.data.products);
       } catch (error) {
@@ -56,7 +56,7 @@ export default function Single({ fetchProduct }) {
     }
 
     handelDetails();
-  },[])
+  }, [])
 
   // end fetch details product 
 
@@ -70,23 +70,23 @@ export default function Single({ fetchProduct }) {
     }
     const bodyParameters = {
       key: "value",
-      product_id:fetchProduct.id,
-      mobile:mobile,
+      product_id: fetchProduct.id,
+      mobile: mobile,
     }
 
     try {
-      const response = await axios.post("https://rasadent.reshe.ir/api/CreateBookmark" , bodyParameters , config);
+      const response = await axios.post("https://rasadent.reshe.ir/api/CreateBookmark", bodyParameters, config);
       console.log(response.data);
       toast.success('به علاقه مندی ها اضافه شد')
     } catch (error) {
       console.error(error);
     }
-  } 
+  }
   // end function add to bokmark 
 
   // start function add to card
   const handelCard = async (res) => {
-    
+
     const mobile = localStorage.getItem("mobile");
 
     const config = {
@@ -94,22 +94,22 @@ export default function Single({ fetchProduct }) {
     }
     const bodyParameters = {
       key: "value",
-      mobile:mobile,
-      count:2,
-      discount:0,
-      discount_price:0,
-      shop_id:res.shop_id,
-      product_id:res.product_id,
-      product_price:res.price,
-      peroperty_price:0,
-      peroperty:res.peroperty,
-      value:res.value,
+      mobile: mobile,
+      count: 2,
+      discount: 0,
+      discount_price: 0,
+      shop_id: res.shop_id,
+      product_id: res.product_id,
+      product_price: 0,
+      peroperty_price: res.price,
+      peroperty: res.peroperty,
+      value: res.value,
     }
 
     try {
-      const response = await axios.post("https://rasadent.reshe.ir/api/CreateCart" , bodyParameters , config);
+      const response = await axios.post("https://rasadent.reshe.ir/api/CreateCart", bodyParameters, config);
       console.log(response);
-      if(response.data.status_code === 422){
+      if (response.data.status_code === 422) {
         toast.error(response.data.msg)
       } else if (response.data.status_code === 200) {
         toast.success(response.data.msg)
@@ -121,22 +121,36 @@ export default function Single({ fetchProduct }) {
   // end function add to card
 
   // start function input number
-  const stock = 10;
-  let [count, setCount] = React.useState(1)
-  const handelTotal = () => {
+  const [count, setCount] = React.useState(1);
+  const [inputCount, setInputCount] = useState();
+
+
+  const handelCount = (e) => {
+    // console.log(e.target.value);
+    setInputCount(e.target.value);
+  }
+
+  const handelTotal = (counter) => {
     if (count === Math.abs(count) * -1) {
-      setCount(1)
+      count(1);
+      setInputCount(count);
     } else {
-      setCount(count === stock ? stock : (prevCount) => prevCount + 1)
+      setCount(count === counter ? counter : (prevCount) => prevCount + 1);
+      setInputCount(count);
     }
+
+    console.log(inputCount)
   }
 
   const handelSubtraction = () => {
     if (count === Math.abs(count) * -1) {
-      setCount(1)
+      setCount(1);
+      setInputCount(count);
     } else {
-      setCount((prevCount) => prevCount - 1)
+      setCount((prevCount) => prevCount - 1);
+      setInputCount(count);
     }
+    console.log(inputCount)
   }
   // end function input number
 
@@ -170,14 +184,14 @@ export default function Single({ fetchProduct }) {
   }
 
   // end function and state tabs 
-  
+
 
   // console.log(fetchProduct)
 
   return (
     <Box data-test="component-single" sx={{ mt: 5, mb: 5 }}>
-      {detailsProduct.map((it , index) => {
-        return(
+      {detailsProduct.map((it, index) => {
+        return (
           <div key={it.id}>
             <div className={theme.palette.mode === "light" ? LightStyles.slider_product : DarkStyles.slider_product}>
               <Splide
@@ -189,7 +203,7 @@ export default function Single({ fetchProduct }) {
                 }}>
                 <SplideTrack>
                   {it.image.map((i) => {
-                    return(
+                    return (
                       <SplideSlide key={i.id}>
                         <img className={theme.palette.mode === "light" ? LightStyles.img_product : DarkStyles.img_product} src={`https://rasadent.com/storage/product/${i.image}`} alt="" />
                       </SplideSlide>
@@ -236,9 +250,9 @@ export default function Single({ fetchProduct }) {
             </div>
 
 
-            {it.shops.map((i , index) => {
-              return(
-                <div key={index} style={{ background:i.pivot.product_stock === 0 ? '#FF000012' : '' }} className={theme.palette.mode === "light" ? LightStyles.card_shop : DarkStyles.card_shop}>
+            {it.shops.map((i, index) => {
+              return (
+                <div key={index} style={{ background: i.pivot.product_stock === 0 ? '#FF000012' : '' }} className={theme.palette.mode === "light" ? LightStyles.card_shop : DarkStyles.card_shop}>
                   <Grid container spacing={2} className={theme.palette.mode === "light" ? LightStyles.content_product_shop : DarkStyles.content_product_shop}>
                     <Grid item xs={3}>
                       <img className={theme.palette.mode === "light" ? LightStyles.img_product : DarkStyles.img_product} src="/image/profile-shop.png" alt="" />
@@ -255,7 +269,7 @@ export default function Single({ fetchProduct }) {
                           </span>
                           <span>
                             <p>{fa["Available in stock"]}</p>
-                            <p style={{ color:i.pivot.product_stock === 0 ? '#FF0000' : '' }}>{i.pivot.product_stock} عدد</p>
+                            <p style={{ color: i.pivot.product_stock === 0 ? '#FF0000' : '' }}>{i.pivot.product_stock} عدد</p>
                           </span>
                         </div>
                         <div className={theme.palette.mode === "light" ? LightStyles.stock : DarkStyles.stock}>
@@ -264,17 +278,17 @@ export default function Single({ fetchProduct }) {
                           </span>
                           <span>
                             <p>{fa["From the price"]}</p>
-                            <p style={{ color:i.pivot.product_stock === 0 ? '#FF0000' : '' }}>{i.pivot.product_stock === 0 ? 'ناموجود' : `${i.pivot.price} ${fa["Toman"]}`}</p>
+                            <p style={{ color: i.pivot.product_stock === 0 ? '#FF0000' : '' }}>{i.pivot.product_stock === 0 ? 'ناموجود' : `${i.pivot.price} ${fa["Toman"]}`}</p>
                           </span>
                         </div>
                       </div>
                     </Grid>
                   </Grid>
                   <div className={theme.palette.mode === "light" ? LightStyles.add_card : DarkStyles.add_card}>
-                    {i.pivot.product_stock === 0 ? 
-                        <button style={{ background: '#B81515', borderColor: '#B81515' }} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Out of stock"]}</span></button>
-                        :
-                        <button onClick={() => setIsOpen(index)} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Select a feature and add to cart"]}</span></button>
+                    {i.pivot.product_stock === 0 ?
+                      <button style={{ background: '#B81515', borderColor: '#B81515' }} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Out of stock"]}</span></button>
+                      :
+                      <button onClick={() => setIsOpen(index)} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Select a feature and add to cart"]}</span></button>
                     }
                   </div>
                   <div onClick={() => setIsOpen(false)} className={isOpen === index ? theme.palette.mode === "light" ? LightStyles.fade_open : DarkStyles.fade_open : theme.palette.mode === "light" ? LightStyles.fade_close : DarkStyles.fade_close}>
@@ -283,29 +297,32 @@ export default function Single({ fetchProduct }) {
                     <h1>تنوع محصول خود را از فروشگاه <span>{i.name}</span> انتخاب کنید</h1>
                     <hr />
                     <div className={theme.palette.mode === "light" ? LightStyles.card_pro : DarkStyles.card_pro}>
-                      {it.value.map((i , index) => {
-                        return(
-                          <div className={theme.palette.mode === "light" ? LightStyles.card : DarkStyles.card}>
-                            <div className={theme.palette.mode === "light" ? LightStyles.option_prodeuct : DarkStyles.option_prodeuct}>
-                              <p className={theme.palette.mode === "light" ? LightStyles.name : DarkStyles.name}><CircleLeftIcon />{i.value}</p>
-                              <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}><BagIcon /><span>{fa["price"]} :</span> <span>{i.price} {fa["Toman"]}</span></p>
-                            </div>
-                            <div className={theme.palette.mode === "light" ? LightStyles.item_product : DarkStyles.item_product}>
-                              <div className={theme.palette.mode === "light" ? LightStyles.input_number : DarkStyles.input_number}>
-                                <IconButton data-test="button-increment" onClick={handelTotal}>
-                                  <PlussIcon />
-                                </IconButton>
-                                <span data-test="count-product">
-                                  {count === 0 ? 1 : count}
-                                  {/* {i.stock} */}
-                                </span>
-                                <IconButton onClick={handelSubtraction}>
-                                  <NegativeIcon />
-                                </IconButton>
+                      {it.value.map((i, index) => {
+                        return (
+                          i.selectable === 1 && i.stock > 0 && i.stock !== null ?
+
+                            <div key={index} className={theme.palette.mode === "light" ? LightStyles.card : DarkStyles.card}>
+                              <div className={theme.palette.mode === "light" ? LightStyles.option_prodeuct : DarkStyles.option_prodeuct}>
+                                <p className={theme.palette.mode === "light" ? LightStyles.name : DarkStyles.name}><CircleLeftIcon />{i.value}</p>
+                                <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}><BagIcon /><span>{fa["price"]} :</span> <span>{i.price} {fa["Toman"]}</span></p>
                               </div>
-                              <button onClick={() => handelCard(i)} className={theme.palette.mode === "light" ? LightStyles.confirm : DarkStyles.confirm}><span>{fa["Add to card"]}</span></button>
+                              <div className={theme.palette.mode === "light" ? LightStyles.item_product : DarkStyles.item_product}>
+                                <div className={theme.palette.mode === "light" ? LightStyles.input_number : DarkStyles.input_number}>
+                                  <IconButton data-test="button-increment" onClick={() => handelTotal(i.stock)}>
+                                    <PlussIcon />
+                                  </IconButton>
+                                  <span data-test="count-product">
+                                    <input type="number" defaultValue={count === 0 ? 1 : i.stock} value={inputCount} onChange={handelCount} />
+                                  </span>
+                                  <IconButton onClick={() => handelSubtraction(i.stock)}>
+                                    <NegativeIcon />
+                                  </IconButton>
+                                </div>
+                                <button onClick={() => handelCard(i)} className={theme.palette.mode === "light" ? LightStyles.confirm : DarkStyles.confirm}><span>{fa["Add to card"]}</span></button>
+                              </div>
                             </div>
-                          </div>
+                            :
+                            <></>
                         )
                       })}
                     </div>
