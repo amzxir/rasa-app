@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { FadeTransform } from "react-animation-components";
@@ -14,8 +14,10 @@ export default function Description({ des }) {
   // end function darkmode
 
   // start change string to element jsx
+
+  
   const htmlRemoveRegex = /(<([^>]+)>)/gi;
-  const description = des.replace(htmlRemoveRegex, '');
+  const description = des?.replace(htmlRemoveRegex, '');
   // end change string to element jsx
 
   return (
