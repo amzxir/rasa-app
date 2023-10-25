@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { Box, Card, Grid , IconButton } from "@mui/material";
+import React, { useContext, useEffect, useState } from "react";
+import { Box, Card, Grid, IconButton } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
 import { FadeTransform } from "react-animation-components";
@@ -14,28 +14,18 @@ import fa from "../../../../../lang/fa.json";
 export default function Cards() {
   // start function darkmode
   const theme = useTheme();
-  const { colorMode } = useContext(ColorModeContext);
+  const { colorMode, cardProduct, setCardProduct } = useContext(ColorModeContext);
   // end function darkmode
 
-  // start state product card
-  const productCard = new Array(4).fill(null).map((p , i)=> ({
-    id:i,
-    name:`کامپوزیت سارمکو ${i}`,
-    count:2,
-    price:'120/000/000',
-    img:'/image/card1.png',
-  }));
+  useEffect(() => { }, [cardProduct])
 
-  const [product , setProduct] = useState(productCard);
-
-  // end state product card
 
   // start finction count product
   const stock = 10;
-  let [count , setCount] = useState(1);
+  let [count, setCount] = useState(1);
 
   const handelTotal = () => {
-    if(count === Math.abs(count) * -1 ){
+    if (count === Math.abs(count) * -1) {
       setCount(1)
     } else {
       setCount(count === stock ? stock : (prevCount) => prevCount + 1)
@@ -43,7 +33,7 @@ export default function Cards() {
   }
 
   const handelSubtraction = () => {
-    if(count === Math.abs(count) * -1 ){
+    if (count === Math.abs(count) * -1) {
       setCount(1)
     } else {
       setCount((prevCount) => prevCount - 1)
@@ -52,7 +42,7 @@ export default function Cards() {
   // end finction count product
 
   // start fetch data and function delete
-  const [isOpen , setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   // end fetch data and function delete 
 
   // start function and state discount
@@ -74,61 +64,107 @@ export default function Cards() {
   };
   // end function and state discount 
 
+  // start function total state product 
+  const price_product = cardProduct?.map(item => item.price).reduce((a, b) => { return a + b }, 0)
+  // end function total state product 
+
+  // start function delete product in card
+  const handelDelete = (id) => {
+    const newProduct = cardProduct?.filter((record) => record.id !== id);
+    setCardProduct(newProduct)
+
+  }
+  // end function delete product in card
+
+
+
+  // console.log(cardProduct)
+
+  const increment = (id , stoke) => {
+    const newQuantity = cardProduct.map(obj => {
+      if (obj.id === id && obj.quantity < stoke) {
+        return { ...obj, quantity: obj.quantity + 1 };
+      }
+      return obj;
+    });
+    setCardProduct(newQuantity);
+  }
+
+  const decrement = (id) => {
+    const newQuantity = cardProduct.map(obj => {
+      if (obj.id === id && obj.quantity > 1) {
+        return { ...obj, quantity: obj.quantity - 1 };
+      }
+      return obj;
+    });
+    setCardProduct(newQuantity);
+  }
+
   return (
-      <Box sx={{ mt: 5, mb: 5 }}>
-        <Grid sx={{ mb:5 }} container spacing={2}>
-          {product.map((i , index)=> {
-            return(
+    <Box sx={{ mt: 5, mb: 5 }}>
+      <Grid sx={{ mb: 5 }} container spacing={2}>
+        {cardProduct.length !== 0 ?
+          cardProduct.map((i, index) => {
+            return (
               <Grid key={i.id} item xs={12}>
-                <Card sx={{ boxShadow:0 , borderRadius:"15px" }}>
+                <Card sx={{ boxShadow: 0, borderRadius: "15px" }}>
                   <div className={theme.palette.mode === "light" ? LightStyles.flexItem : DarkStyles.flexItem}>
-                    <figure>
-                      <img src={i.img} alt={i.name} />
-                    </figure>
-                    <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
-                      <h1 className={theme.palette.mode === "light" ? LightStyles.name_product : DarkStyles.name_product}>{i.name}</h1>
+                    {/* <figure>
+                      <img src={i.img} alt={i.value} />
+                    </figure> */}
+                    <div style={{ marginRight: '2rem' }} className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
+                      <h1 className={theme.palette.mode === "light" ? LightStyles.name_product : DarkStyles.name_product}>{i.value}</h1>
                       <div className={theme.palette.mode === "light" ? LightStyles.count_product : DarkStyles.count_product}>
-                        <IconButton onClick={handelTotal}><AddIcon/></IconButton>
-                        <span>{count}</span>
-                        <IconButton onClick={handelSubtraction}><MinusIcon/></IconButton>
+                        <IconButton onClick={() => increment(i.id , i.stock)}><AddIcon /></IconButton>
+                        <span>{i.quantity}</span>
+                        <IconButton onClick={() => decrement(i.id)}><MinusIcon /></IconButton>
                       </div>
                       <div className={theme.palette.mode === "light" ? LightStyles.details_product : DarkStyles.details_product}>
-                        <p className={theme.palette.mode === "light" ? LightStyles.price_product : DarkStyles.price_product}>{i.price}</p>
-                        <IconButton onClick={() => setIsOpen(index)}><DeleteIcone/></IconButton>
+                        <p className={theme.palette.mode === "light" ? LightStyles.price_product : DarkStyles.price_product}>{i.price.toLocaleString()} {fa["Toman"]}</p>
+                        <IconButton onClick={() => setIsOpen(index)}><DeleteIcone /></IconButton>
                       </div>
                     </div>
                   </div>
                 </Card>
-                  <div onClick={()=> setIsOpen(false)} className={isOpen === index ? theme.palette.mode === "light" ? LightStyles.fade_open : DarkStyles.fade_open : theme.palette.mode === "light" ? LightStyles.fade_close : DarkStyles.fade_close}>
-                  </div>
-                  <div className={isOpen === index ? theme.palette.mode === "light" ? LightStyles.card_delete_open : DarkStyles.card_delete_open : theme.palette.mode === "light" ? LightStyles.card_delete_close : DarkStyles.card_delete_close}>
-                    <h1 className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["Product removed from cart?"]}</h1>
-                    <hr />
-                    <Card className={theme.palette.mode === "light" ? LightStyles.card_pro : DarkStyles.card_pro}>
-                      <div className={theme.palette.mode === "light" ? LightStyles.d_flex : DarkStyles.d_flex}>
-                        <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
-                          <img src={i.img} alt={i.name} />
-                        </div>
-                        <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
-                          <h2>{i.name}</h2>
-                          <p>{i.price} <span>{fa["Toman"]}</span></p>
-                        </div>
+                <div onClick={() => setIsOpen(false)} className={isOpen === index ? theme.palette.mode === "light" ? LightStyles.fade_open : DarkStyles.fade_open : theme.palette.mode === "light" ? LightStyles.fade_close : DarkStyles.fade_close}>
+                </div>
+                <div className={isOpen === index ? theme.palette.mode === "light" ? LightStyles.card_delete_open : DarkStyles.card_delete_open : theme.palette.mode === "light" ? LightStyles.card_delete_close : DarkStyles.card_delete_close}>
+                  <h1 className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["Product removed from cart?"]}</h1>
+                  <hr />
+                  <Card className={theme.palette.mode === "light" ? LightStyles.card_pro : DarkStyles.card_pro}>
+                    <div className={theme.palette.mode === "light" ? LightStyles.d_flex : DarkStyles.d_flex}>
+                      {/* <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
+                        <img src={i.img} alt={i.name} />
+                      </div> */}
+                      <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
+                        <h2>{i.value}</h2>
+                        <p>{i.price.toLocaleString()} <span>{fa["Toman"]}</span></p>
                       </div>
-                    </Card>
-                    <div className={theme.palette.mode === "light" ? LightStyles.d_flex_btn : DarkStyles.d_flex_btn}>
-                      <button className={theme.palette.mode === "light" ? LightStyles.confirm : DarkStyles.confirm}>{fa["yes"]}</button>
-                      <button onClick={()=> setIsOpen(false)} className={theme.palette.mode === "light" ? LightStyles.cancell : DarkStyles.cancell}>{fa["no"]}</button>
                     </div>
+                  </Card>
+                  <div className={theme.palette.mode === "light" ? LightStyles.d_flex_btn : DarkStyles.d_flex_btn}>
+                    <button onClick={() => handelDelete(i.id)} className={theme.palette.mode === "light" ? LightStyles.confirm : DarkStyles.confirm}>{fa["yes"]}</button>
+                    <button onClick={() => setIsOpen(false)} className={theme.palette.mode === "light" ? LightStyles.cancell : DarkStyles.cancell}>{fa["no"]}</button>
                   </div>
+                </div>
               </Grid>
             )
-          })}
-        </Grid>
+          })
+          :
+          <div className={theme.palette.mode === "light" ? LightStyles.not_found : DarkStyles.not_found}>
+            <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
+              <img src="/image/not-found.svg" alt="" />
+            </div>
+            <p>سبد خرید شما خالی است</p>
+          </div>
+        }
+      </Grid>
 
-        <Card sx={{ boxShadow:0 , borderRadius:'15px' , p:2 , position:'sticky' , bottom:'0' }}>
+      {cardProduct.length !== 0 ?
+        <Card sx={{ boxShadow: 0, borderRadius: '15px', p: 2, position: 'sticky', bottom: '0' }}>
           <div className={theme.palette.mode === "light" ? LightStyles.formDiscount : DarkStyles.formDiscount}>
             <input value={input} onChange={handleChange} type="text" placeholder={fa["enter discount code"]} />
-            <button  style={{ background: color ? color : "" }} disabled={input.length === 10}><span>{fa["submit"]}</span></button>
+            <button style={{ background: color ? color : "" }} disabled={input.length === 10}><span>{fa["submit"]}</span></button>
           </div>
           <div className={theme.palette.mode === "light" ? LightStyles.invoice : DarkStyles.invoice}>
             <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
@@ -137,13 +173,16 @@ export default function Cards() {
             </div>
             <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
               <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["Total shopping cart"]}</p>
-              <p className={theme.palette.mode === "light" ? LightStyles.price_success : DarkStyles.price_success}>150/000 {fa["Toman"]}</p>
+              <p className={theme.palette.mode === "light" ? LightStyles.price_success : DarkStyles.price_success}>{price_product.toLocaleString()} {fa["Toman"]}</p>
             </div>
           </div>
           <NavLink to={"/shop/shopping"} state={fa["Time and method of sending"]} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Order"]}</span></NavLink>
         </Card>
+        :
+        <></>
+      }
 
 
-      </Box>
+    </Box>
   );
 }

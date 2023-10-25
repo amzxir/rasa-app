@@ -16,8 +16,8 @@
     }
 
     .content{
-        flex: 0 auto;
-        width: 65%;
+        // flex: 0 auto;
+        // width: 65%;
 
         .name_product{
             font-family: "font-light" !important;
@@ -44,7 +44,7 @@
 
         .details_product{
             display: flex;
-            justify-content: space-between;
+            // justify-content: space-between;
             align-items: center;
 
             .price_product{
@@ -391,4 +391,27 @@
 
 ::-webkit-scrollbar{
     display: none;
+}
+
+.not_found{
+    margin-top: 2rem;
+    text-align: center;
+
+    .img_center{
+        display: flex;
+        justify-content: center;
+
+        img{
+            max-width: 60%;
+            height: auto;
+        }
+    }
+
+    p{
+        margin-top: 2rem;
+        font-family: "font-light" !important;
+        color: #000000;
+
+
+    }
 }

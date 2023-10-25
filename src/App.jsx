@@ -1,7 +1,7 @@
 import React, { useMemo, useState, useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import Layouts from "./layouts/layouts";
 import Home from "./components/home/home";
 import About from "./components/about/about";
@@ -97,18 +97,38 @@ export default function App() {
   }
   // end fetch product data 
 
+  // start fetch and function product card
+  const [cardProduct , setCardProduct] = useState([]);
+
+  const handlerCard = (i , id) => {
+    const arr = [...cardProduct];
+    const newColors = cardProduct.some(item => item.id === id);
+    if(newColors !== true){
+      arr.push(i)
+      setCardProduct(arr)
+      toast.success('به سبد خرید اضافه شد')
+    } else {
+      toast.error('در سبد خرید وجود دارد')
+    }
+  }
+
+  // end fetch and function product card
+
   // start fetch data token in authentication
   const token = localStorage.getItem("token");
   const mobile = localStorage.getItem("mobile");
   const location = useLocation();
   // end fetch data token in authentication
 
+  // start fetch state product in localStorage
+  // end fetch state product in localStorage
+
   // start state loading 
   const [spinner, setSpinner] = useState(false);
   // end state loading 
 
   return (
-    <ColorModeContext.Provider value={{ colorMode, token, spinner, setSpinner , mobile }}>
+    <ColorModeContext.Provider value={{ colorMode, token, spinner, setSpinner , mobile , handlerCard , cardProduct , setCardProduct }}>
       <ThemeProvider theme={theme}>
         <Layouts>
           <NetworkStatus>
