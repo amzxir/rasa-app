@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Box, Grid, Breadcrumbs } from "@mui/material";
+import { Box, Grid, Breadcrumbs , Skeleton , Stack } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { NavLink, useLocation } from "react-router-dom";
 import { FadeTransform } from "react-animation-components";
@@ -28,10 +28,9 @@ export default function ProductCategory({ sendProduct }) {
     // end state location navlink 
 
     // start fetch product category 
-    const [product, setProduct] = useState([]);
+    const [product, setProduct] = useState();
 
     useEffect(() => {
-        setSpinner(true)
         const handelProductCategory = async () => {
             const config = {
                 headers: { Authorization: `Bearer ${token}` }
@@ -42,12 +41,10 @@ export default function ProductCategory({ sendProduct }) {
             }
             try {
                 const response = await axios.post("https://rasadent.reshe.ir/api/ProductCategory", bodyParameters, config);
-                setSpinner(false)
                 setProduct(response.data.products)
                 // console.log(response);
             } catch (error) {
-                setSpinner(false)
-                // console.error(error);
+                console.error(error);
             }
         }
 
@@ -80,11 +77,11 @@ export default function ProductCategory({ sendProduct }) {
     }
     // end function add bookmark
 
-    // start function loading
-    if (spinner) {
-        return <Loading />
-    }
-    // end function loading
+    // // start function loading
+    // if (spinner) {
+    //     return <Loading />
+    // }
+    // // end function loading
 
     return (
         <Box sx={{ mt: 5, mb: 5 }}>
@@ -97,33 +94,80 @@ export default function ProductCategory({ sendProduct }) {
             </Breadcrumbs>
 
             <Grid container spacing={2}>
-                {product && product.map && product.map((i) => {
-                    return (
-                        <Grid key={i.id} item xs={6}>
-                            <div className={theme.palette.mode === "light" ? LightStyles.card_product : DarkStyles.card_product}>
-                                <div className={theme.palette.mode === "light" ? LightStyles.card_img : DarkStyles.card_img}>
-                                    <NavLink onClick={() => sendProduct(i)} to={`/shop/single-product/${i.fa_name}`} state={i.fa_name} className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
-                                            <img src={`https://rasadent.com/storage/product/${i.image[0]?.image}`} alt="" />
-                                    </NavLink>
-                                    <div onClick={() => handelBookmark(i)} className={theme.palette.mode === "light" ? LightStyles.icon_wishlist : DarkStyles.icon_wishlist}>
-                                        <BookmarkIcon />
+                {product ? 
+                    (
+                        product.map((i) => {
+                            return (
+                                <Grid key={i.id} item xs={6}>
+                                    <div className={theme.palette.mode === "light" ? LightStyles.card_product : DarkStyles.card_product}>
+                                        <div className={theme.palette.mode === "light" ? LightStyles.card_img : DarkStyles.card_img}>
+                                            <NavLink onClick={() => sendProduct(i)} to={`/shop/single-product/${i.id}`} state={i.fa_name} className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
+                                                    <img src={`https://rasadent.com/storage/product/${i.image[0]?.image}`} alt="" />
+                                            </NavLink>
+                                            <div onClick={() => handelBookmark(i)} className={theme.palette.mode === "light" ? LightStyles.icon_wishlist : DarkStyles.icon_wishlist}>
+                                                <BookmarkIcon />
+                                            </div>
+                                        </div>
+                                        <div className={theme.palette.mode === "light" ? LightStyles.shop : DarkStyles.shop}>
+                                            <span>{i.shops[0]?.name}</span>
+                                        </div>
+                                        <div className={theme.palette.mode === "light" ? LightStyles.product_details : DarkStyles.product_details}>
+                                            <NavLink to={`/shop/single-product/${i.id}`} state={i.fa_name} className={theme.palette.mode === "light" ? LightStyles.name_product : DarkStyles.name_product}>
+                                                {i.fa_name}
+                                            </NavLink>
+                                            <p className={theme.palette.mode === "light" ? LightStyles.price_product : DarkStyles.price_product} >
+                                                {i.code} {fa["Toman"]}
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className={theme.palette.mode === "light" ? LightStyles.shop : DarkStyles.shop}>
-                                    <span>{i.shops[0]?.name}</span>
-                                </div>
-                                <div className={theme.palette.mode === "light" ? LightStyles.product_details : DarkStyles.product_details}>
-                                    <NavLink to={`/shop/single-product/${i.fa_name}`} state={i.fa_name} className={theme.palette.mode === "light" ? LightStyles.name_product : DarkStyles.name_product}>
-                                        {i.fa_name}
-                                    </NavLink>
-                                    <p className={theme.palette.mode === "light" ? LightStyles.price_product : DarkStyles.price_product} >
-                                        {i.code} {fa["Toman"]}
-                                    </p>
-                                </div>
-                            </div>
-                        </Grid>
+                                </Grid>
+                            )
+                        })
                     )
-                })}
+                    :
+                    (
+                        <>
+                            <Grid container sx={{ mt:2 }} spacing={2}>
+                                <Grid item sx={{ mb:1 }} xs={6} >
+                                    <Stack spacing={1}>
+                                        <Skeleton variant="text" width={180} sx={{ fontSize: '1rem' }} />
+
+                                        <Skeleton variant="circular" width={40} height={40} />
+                                        <Skeleton variant="rectangular" width={180} height={60} />
+                                        <Skeleton variant="rounded" width={180} height={60} />
+                                    </Stack>
+                                </Grid>
+                                <Grid item sx={{ mb:1 }} xs={6} >
+                                    <Stack spacing={1}>
+                                        <Skeleton variant="text" width={180} sx={{ fontSize: '1rem' }} />
+
+                                        <Skeleton variant="circular" width={40} height={40} />
+                                        <Skeleton variant="rectangular" width={180} height={60} />
+                                        <Skeleton variant="rounded" width={180} height={60} />
+                                    </Stack>
+                                </Grid>
+                                <Grid item sx={{ mb:1 }} xs={6} >
+                                    <Stack spacing={1}>
+                                        <Skeleton variant="text" width={180} sx={{ fontSize: '1rem' }} />
+
+                                        <Skeleton variant="circular" width={40} height={40} />
+                                        <Skeleton variant="rectangular" width={180} height={60} />
+                                        <Skeleton variant="rounded" width={180} height={60} />
+                                    </Stack>
+                                </Grid>
+                                <Grid item sx={{ mb:1 }} xs={6} >
+                                    <Stack spacing={1}>
+                                        <Skeleton variant="text" width={180} sx={{ fontSize: '1rem' }} />
+
+                                        <Skeleton variant="circular" width={40} height={40} />
+                                        <Skeleton variant="rectangular" width={180} height={60} />
+                                        <Skeleton variant="rounded" width={180} height={60} />
+                                    </Stack>
+                                </Grid>
+                            </Grid>
+                        </>
+                    )}
+
             </Grid>
 
 

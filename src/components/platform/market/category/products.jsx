@@ -65,7 +65,7 @@ export default function Products({ fetchProduct , sendProduct }) {
                         <Grid item key={i.id} xs={6}>
                             <div className={ theme.palette.mode === "light" ? LightStyles.card_product : DarkStyles.card_product}>
                                 <div className={ theme.palette.mode === "light" ? LightStyles.card_img : DarkStyles.card_img}>
-                                    <NavLink onClick={() => sendProduct(i)} to={`/shop/single-product/${i.fa_name}`} state={i.fa_name} className={ theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
+                                    <NavLink onClick={() => sendProduct(i)} to={`/shop/single-product/${i.id}`} state={i.fa_name} className={ theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
                                         <img src={`https://rasadent.com/storage/product/${i.image}`} alt={i.fa_name} />
                                     </NavLink>
                                     <div onClick={() => handelBookmark (i.id)} className={ theme.palette.mode === "light" ? LightStyles.icon_wishlist : DarkStyles.icon_wishlist }>
@@ -76,7 +76,7 @@ export default function Products({ fetchProduct , sendProduct }) {
                                     <span>{i.en_name}</span>
                                 </div>
                                 <div className={ theme.palette.mode === "light" ? LightStyles.product_details : DarkStyles.product_details}>
-                                    <NavLink onClick={() => sendProduct(i)} to={`/shop/single-product/${i.fa_name}`} state={i.fa_name} className={ theme.palette.mode === "light" ? LightStyles.name_product : DarkStyles.name_product }>
+                                    <NavLink onClick={() => sendProduct(i)} to={`/shop/single-product/${i.id}`} state={i.fa_name} className={ theme.palette.mode === "light" ? LightStyles.name_product : DarkStyles.name_product }>
                                         {i.fa_name}
                                     </NavLink>
                                     <p className={ theme.palette.mode === "light" ? LightStyles.price_product : DarkStyles.price_product } >
