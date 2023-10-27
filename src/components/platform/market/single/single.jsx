@@ -26,7 +26,7 @@ const Comment = lazy(() => import("./comment/comment"));
 const Create = lazy(() => import("./comment/create"));
 
 
-export default function Single({ fetchProduct }) {
+export default function Single() {
   // start function darkmode
   const theme = useTheme();
   const { colorMode, token, handlerCard } = useContext(ColorModeContext);
@@ -99,7 +99,7 @@ export default function Single({ fetchProduct }) {
   const [active, setActive] = useState(1);
 
   const handelTabOne = () => {
-    setTab(<Suspense fallback={<div>Loading...</div>}><Description des={fetchProduct.product_description} /></Suspense>);
+    setTab(<Suspense fallback={<div>Loading...</div>}><Description des={detailsProduct[0].product_description} /></Suspense>);
     setActive(1);
   }
 
@@ -109,12 +109,12 @@ export default function Single({ fetchProduct }) {
   }
 
   const handelTabThree = () => {
-    setTab(<Suspense fallback={<div>Loading...</div>}><Comment id={fetchProduct.id} /></Suspense>);
+    setTab(<Suspense fallback={<div>Loading...</div>}><Comment id={id} /></Suspense>);
     setActive(3);
   }
 
   const handelTabFour = () => {
-    setTab(<Suspense fallback={<div>Loading...</div>}><Create id={fetchProduct.id} /></Suspense>)
+    setTab(<Suspense fallback={<div>Loading...</div>}><Create id={id} /></Suspense>)
     setActive(4);
   }
 

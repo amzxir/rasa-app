@@ -473,7 +473,11 @@
 
 @media only screen and (max-width: 440px) {
     .card_product_open {
-        position: fixed;
+        position: fixed !important;
+    }
+
+    .fade_open{
+        position: fixed !important;
     }
 }
 
