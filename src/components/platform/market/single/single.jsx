@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, Suspense, lazy } from "react";
+import React, { useContext, useEffect, useState, Suspense, lazy , useLayoutEffect  } from "react";
 import { Box, IconButton, Card, Grid , Skeleton , Stack } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide";
@@ -60,13 +60,8 @@ export default function Single({ fetchProduct }) {
         console.error(error);
       }
     }
-
     handelDetails();
   }, [])
-
-  // const product = localStorage.getItem("product")
-  // const parse_product = JSON.parse(product)
-
 
   // end fetch details product 
 
@@ -93,76 +88,6 @@ export default function Single({ fetchProduct }) {
     }
   }
   // end function add to bokmark 
-
-  // start function add to card
-  // const handelCard = async (res) => {
-
-  //   const mobile = localStorage.getItem("mobile");
-
-  //   const config = {
-  //     headers: { Authorization: `Bearer ${token}` }
-  //   }
-  //   const bodyParameters = {
-  //     key: "value",
-  //     mobile: mobile,
-  //     count: 2,
-  //     discount: 0,
-  //     discount_price: 0,
-  //     shop_id: res.shop_id,
-  //     product_id: res.product_id,
-  //     product_price: 0,
-  //     peroperty_price: res.price,
-  //     peroperty: res.peroperty,
-  //     value: res.value,
-  //   }
-
-  //   try {
-  //     const response = await axios.post("https://rasadent.reshe.ir/api/CreateCart", bodyParameters, config);
-  //     console.log(response);
-  //     if (response.data.status_code === 422) {
-  //       toast.error(response.data.msg)
-  //     } else if (response.data.status_code === 200) {
-  //       toast.success(response.data.msg)
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
-  // end function add to card
-
-  // start function input number
-  const [count, setCount] = React.useState(1);
-  const [inputCount, setInputCount] = useState();
-
-
-  const handelCount = (e) => {
-    // console.log(e.target.value);
-    setInputCount(e.target.value);
-  }
-
-  const handelTotal = (counter) => {
-    if (count === Math.abs(count) * -1) {
-      count(1);
-      setInputCount(count);
-    } else {
-      setCount(count === counter ? counter : (prevCount) => prevCount + 1);
-      setInputCount(count);
-    }
-
-    console.log(inputCount)
-  }
-
-  const handelSubtraction = () => {
-    if (count === Math.abs(count) * -1) {
-      setCount(1);
-      setInputCount(count);
-    } else {
-      setCount((prevCount) => prevCount - 1);
-      setInputCount(count);
-    }
-    console.log(inputCount)
-  }
-  // end function input number
 
   // start fetch data and function option product
   const [isOpen, setIsOpen] = useState(false)
@@ -195,31 +120,23 @@ export default function Single({ fetchProduct }) {
 
   // end function and state tabs 
 
-  // console.log(detailsProduct)
-
-  // if(detailsProduct && detailsProduct.length > 0){
-  //   console.log(detailsProduct[0])
-  // }
-
-  const value_filter = detailsProduct[0]?.value?.filter((v) => {
-    return v.selectable === 1 && v.stock > 0 && v.stock !== null
-  });
-
-  const values = [...value_filter]
-
+  // start function filter value data in details product
   const [value, setValue] = useState([]);
 
+  if(detailsProduct && detailsProduct.length > 0){
+    const value_filter = detailsProduct[0]?.value?.filter((v) => {
+      return v.selectable === 1 && v.stock > 0 && v.stock !== null
+    });
+    var values = [...value_filter];
+  }
+
   useEffect(() => {
-    const hnadelValueProduct = window.setTimeout(() => {
-      const val = [...values]
+    handelValue();
+  },[])
 
-      setValue(val)
-    }, 1000);
-
-    return () => window.clearTimeout(hnadelValueProduct);
-
-  }, [])
-
+  const handelValue = () => {
+    setValue(values)
+  }
 
   const increment = (value, id , stoke) => {
     const arr = [...value]
@@ -229,12 +146,8 @@ export default function Single({ fetchProduct }) {
       }
       return obj;
     });
-
-    console.log(newQuantity)
     setValue(newQuantity);
   }
-
-
 
   const decrement = (value, id) => {
     const arr = [...value]
@@ -249,8 +162,8 @@ export default function Single({ fetchProduct }) {
     setValue(newQuantity);
   }
 
+  // end function filter value data in details product
 
-  // console.log(detailsProduct)
 
   return (
     <Box data-test="component-single" sx={{ mt: 5, mb: 5 }}>
@@ -357,7 +270,7 @@ export default function Single({ fetchProduct }) {
                           </div>
                         </Grid>
                       </Grid>
-                      <div className={theme.palette.mode === "light" ? LightStyles.add_card : DarkStyles.add_card}>
+                      <div onClick={() => handelValue()} className={theme.palette.mode === "light" ? LightStyles.add_card : DarkStyles.add_card}>
                         {i.pivot.product_stock === 0 ?
                           <button style={{ background: '#B81515', borderColor: '#B81515' }} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Out of stock"]}</span></button>
                           :
