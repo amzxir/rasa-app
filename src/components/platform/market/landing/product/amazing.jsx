@@ -104,8 +104,8 @@ export default function AmazingProduct({ sendProduct }) {
     <Box>
       <div data-test="data-product" className={theme.palette.mode === "light" ? LightStyles.m_b_1 : DarkStyles.m_b_1}>
         <div className={theme.palette.mode === "light" ? LightStyles.title_content_product : DarkStyles.title_content_product}>
-          <h1>📍 {"پیشنهاد شگقت انگیز"}</h1>
-          <NavLink onClick={() => sendProduct(getProduct)} to={`/shop/products/پیشنهاد شگقت انگیز`} state={"پیشنهاد شگقت انگیز"} >{fa["view all"]}</NavLink>
+          {getProduct ? (<h1>📍 {"پیشنهاد شگقت انگیز"}</h1>) : (<Skeleton variant="text" width={180} sx={{ fontSize: '1rem' }} />)}
+          {getProduct ? (<NavLink onClick={() => sendProduct(getProduct)} to={`/shop/products/پیشنهاد شگقت انگیز`} state={"پیشنهاد شگقت انگیز"} >{fa["view all"]}</NavLink>) : (<Skeleton variant="text" width={50} sx={{ fontSize: '.5rem' }} />)}
         </div>
         <Splide className={theme.palette.mode === "light" ? LightStyles.slider_product : DarkStyles.slider_product}
           hasTrack={false}

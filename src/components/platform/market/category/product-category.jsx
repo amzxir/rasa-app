@@ -84,7 +84,7 @@ export default function ProductCategory({ sendProduct }) {
     // // end function loading
 
     return (
-        <Box sx={{ mt: 5, mb: 5 }}>
+        <Box className={theme.palette.mode === "light" ? 'wrapper-light' : 'wrapper-dark'} sx={{ mt: 5, mb: 5 }}>
 
             <Search setIsOpen={setIsOpen} />
 
