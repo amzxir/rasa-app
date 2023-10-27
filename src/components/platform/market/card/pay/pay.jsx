@@ -18,12 +18,21 @@ import FingerIcon from '../../../../../assets/svg/finger';
 export default function Pay() {
   // start function darkmode
   const theme = useTheme();
-  const { colorMode } = useContext(ColorModeContext);
+  const { colorMode , cardProduct } = useContext(ColorModeContext);
   // end function darkmode
 
   // start state checked input
   const [checked, setChecked] = useState(true);
   // end state checked input
+
+  // start function and fetch data card product for invoice
+  const mobile = localStorage.getItem("mobile");
+  const price_product = cardProduct?.map(item => item.price * item.quantity).reduce((a, b) => { return a + b }, 0)
+  const tax = ( 9 / 100 ) * price_product ;
+  const total_price = tax + price_product;
+  const packing = 46000
+
+  // end function and fetch data card product for invoice
 
 
   return (
@@ -50,7 +59,7 @@ export default function Pay() {
               <p><CallIcon/></p>
               <p>
                 <div style={{ marginBottom:'.3rem' }}>شماره تلفن :</div>
-                <div>09199954356</div>
+                <div>{mobile}</div>
               </p>
             </div>
             <div className={theme.palette.mode === "light" ? LightStyles.item_invoice : DarkStyles.item_invoice}>
@@ -64,72 +73,63 @@ export default function Pay() {
           <hr />
           <div className={theme.palette.mode === "light" ? LightStyles.invoice_content : DarkStyles.invoice_content}>
             <h1>{fa["product"]}</h1>
-            <Card sx={{ boxShadow:'0' , borderRadius:'16px' , p:2 , mb:3  }}>
-              <div className={theme.palette.mode === "light" ? LightStyles.item : DarkStyles.item}>
-                <p>{fa["Name Product"]}</p>
-                <p>کامپوزیت_سارمکو,رنگ A2</p>
-              </div>
-              <div className={theme.palette.mode === "light" ? LightStyles.item : DarkStyles.item}>
-                <p>{fa["count order"]}</p>
-                <p>۱۴ عدد</p>
-              </div>
-              <div className={theme.palette.mode === "light" ? LightStyles.item : DarkStyles.item}>
-                <p>{fa["discount"]}</p>
-                <p>0 {fa["Toman"]}</p>
-              </div>
-              <div className={theme.palette.mode === "light" ? LightStyles.item : DarkStyles.item}>
-                <p>{fa["total"]}</p>
-                <p>120/000/000 {fa["Toman"]}</p>
-              </div>
-            </Card>
-            <Card sx={{ boxShadow:'0' , borderRadius:'16px' , p:2 , mb:3  }}>
-              <div className={theme.palette.mode === "light" ? LightStyles.item : DarkStyles.item}>
-                <p>{fa["Name Product"]}</p>
-                <p>کامپوزیت_سارمکو,رنگ A2</p>
-              </div>
-              <div className={theme.palette.mode === "light" ? LightStyles.item : DarkStyles.item}>
-                <p>{fa["count order"]}</p>
-                <p>۱۴ عدد</p>
-              </div>
-              <div className={theme.palette.mode === "light" ? LightStyles.item : DarkStyles.item}>
-                <p>{fa["discount"]}</p>
-                <p>0 {fa["Toman"]}</p>
-              </div>
-              <div className={theme.palette.mode === "light" ? LightStyles.item : DarkStyles.item}>
-                <p>{fa["total"]}</p>
-                <p>120/000/000 {fa["Toman"]}</p>
-              </div>
-            </Card>
+            {cardProduct.map((i , index) => {
+
+                // start fetch data total price
+                const total_price = i.quantity * i.price;
+                // start fetch data total price
+
+              return(
+                <Card key={i.id} sx={{ boxShadow:'0' , borderRadius:'16px' , p:2 , mb:3  }}>
+                  <div className={theme.palette.mode === "light" ? LightStyles.item : DarkStyles.item}>
+                    <p>{fa["Name Product"]}</p>
+                    <p>{i.value}</p>
+                  </div>
+                  <div className={theme.palette.mode === "light" ? LightStyles.item : DarkStyles.item}>
+                    <p>{fa["count order"]}</p>
+                    <p>{i.quantity} عدد</p>
+                  </div>
+                  <div className={theme.palette.mode === "light" ? LightStyles.item : DarkStyles.item}>
+                    <p>{fa["discount"]}</p>
+                    <p>0 {fa["Toman"]}</p>
+                  </div>
+                  <div className={theme.palette.mode === "light" ? LightStyles.item : DarkStyles.item}>
+                    <p>{fa["total"]}</p>
+                    <p>{total_price.toLocaleString()} {fa["Toman"]}</p>
+                  </div>
+                </Card>
+              )
+            })}
           </div>
         </div>
 
 
         <Card sx={{ boxShadow:0 , borderRadius:'15px' , p:2 }}>
           <div className={theme.palette.mode === "light" ? LightStyles.invoice : DarkStyles.invoice}>
-              <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
+              {/* <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
                 <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["price products"]}</p>
                 <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>150/000 {fa["Toman"]}</p>
-              </div>
+              </div> */}
               <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
                 <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["tax"]}</p>
-                <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>150/00 {fa["Toman"]}</p>
+                <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>{tax.toLocaleString()} {fa["Toman"]}</p>
               </div>
               <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
                 <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["shipping cost"]}</p>
-                <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>100/00 {fa["Toman"]}</p>
+                <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>رایگان</p>
               </div>
               <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
                 <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["discount"]}</p>
-                <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>500 {fa["Toman"]}</p>
+                <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>0 {fa["Toman"]}</p>
               </div>
               <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
                 <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["Total amount"]}</p>
-                <p className={theme.palette.mode === "light" ? LightStyles.price_success : DarkStyles.price_success}>150/000 {fa["Toman"]}</p>
+                <p className={theme.palette.mode === "light" ? LightStyles.price_success : DarkStyles.price_success}>{price_product.toLocaleString()} {fa["Toman"]}</p>
               </div>
               <hr style={{ borderWidth:'.1px' , borderColor:'#ffffff4d' }} />
               <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
                 <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["pay"]}</p>
-                <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>150/000 {fa["Toman"]}</p>
+                <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>{total_price.toLocaleString()} {fa["Toman"]}</p>
               </div>
           </div>
         </Card>

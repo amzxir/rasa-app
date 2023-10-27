@@ -20,27 +20,6 @@ export default function Cards() {
   useEffect(() => { }, [cardProduct])
 
 
-  // start finction count product
-  const stock = 10;
-  let [count, setCount] = useState(1);
-
-  const handelTotal = () => {
-    if (count === Math.abs(count) * -1) {
-      setCount(1)
-    } else {
-      setCount(count === stock ? stock : (prevCount) => prevCount + 1)
-    }
-  }
-
-  const handelSubtraction = () => {
-    if (count === Math.abs(count) * -1) {
-      setCount(1)
-    } else {
-      setCount((prevCount) => prevCount - 1)
-    }
-  }
-  // end finction count product
-
   // start fetch data and function delete
   const [isOpen, setIsOpen] = useState(false)
   // end fetch data and function delete 
@@ -65,7 +44,7 @@ export default function Cards() {
   // end function and state discount 
 
   // start function total state product 
-  const price_product = cardProduct?.map(item => item.price).reduce((a, b) => { return a + b }, 0)
+  const price_product = cardProduct?.map(item => item.price * item.quantity).reduce((a, b) => { return a + b }, 0)
   // end function total state product 
 
   // start function delete product in card
@@ -105,6 +84,11 @@ export default function Cards() {
       <Grid sx={{ mb: 5 }} container spacing={2}>
         {cardProduct.length !== 0 ?
           cardProduct.map((i, index) => {
+
+            // start fetch data total price
+            const total_price = i.quantity * i.price;
+            // start fetch data total price
+
             return (
               <Grid key={i.id} item xs={12}>
                 <Card sx={{ boxShadow: 0, borderRadius: "15px" }}>
@@ -120,7 +104,7 @@ export default function Cards() {
                         <IconButton onClick={() => decrement(i.id)}><MinusIcon /></IconButton>
                       </div>
                       <div className={theme.palette.mode === "light" ? LightStyles.details_product : DarkStyles.details_product}>
-                        <p className={theme.palette.mode === "light" ? LightStyles.price_product : DarkStyles.price_product}>{i.price.toLocaleString()} {fa["Toman"]}</p>
+                        <p className={theme.palette.mode === "light" ? LightStyles.price_product : DarkStyles.price_product}>{total_price.toLocaleString()} {fa["Toman"]}</p>
                         <IconButton onClick={() => setIsOpen(index)}><DeleteIcone /></IconButton>
                       </div>
                     </div>
@@ -169,7 +153,7 @@ export default function Cards() {
           <div className={theme.palette.mode === "light" ? LightStyles.invoice : DarkStyles.invoice}>
             <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
               <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["Number of items"]}</p>
-              <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>15 عدد</p>
+              <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>{cardProduct.length} عدد</p>
             </div>
             <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
               <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["Total shopping cart"]}</p>

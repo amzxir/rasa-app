@@ -22,12 +22,11 @@ export default function Shopping() {
   // end state checked input
 
   // start function total state product 
-  const price_product = cardProduct?.map(item => item.price).reduce((a, b) => { return a + b }, 0)
+  const price_product = cardProduct?.map(item => item.price * item.quantity).reduce((a, b) => { return a + b }, 0)
   const tax = ( 9 / 100 ) * price_product ;
   const total_price = tax + price_product;
   const packing = 46000
   // end function total state product 
-
 
   return (
     <FadeTransform in transformProps={{ exitTransform: 'translateX(-100px)' }}>

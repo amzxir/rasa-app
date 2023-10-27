@@ -264,7 +264,7 @@ export default function Single({ fetchProduct }) {
                               </span>
                               <span>
                                 <p>{fa["From the price"]}</p>
-                                <p style={{ color: i.pivot.product_stock === 0 ? '#FF0000' : '' }}>{i.pivot.product_stock === 0 ? 'ناموجود' : `${price} ${fa["Toman"]}`}</p>
+                                <p style={{ color: i.pivot.product_stock === 0 ? '#FF0000' : '' }}>{i.pivot.product_stock === 0 ? 'ناموجود' : `${price.toLocaleString()} ${fa["Toman"]}`}</p>
                               </span>
                             </div>
                           </div>
@@ -286,11 +286,16 @@ export default function Single({ fetchProduct }) {
                         <hr />
                         <div className={theme.palette.mode === "light" ? LightStyles.card_pro : DarkStyles.card_pro}>
                           {value?.map((i, index) => {
+
+                              // start fetch data total price
+                              const total_price = i.quantity * i.price;
+                              // start fetch data total price
+
                             return (
                                 <div key={index} className={theme.palette.mode === "light" ? LightStyles.card : DarkStyles.card}>
                                   <div className={theme.palette.mode === "light" ? LightStyles.option_prodeuct : DarkStyles.option_prodeuct}>
                                     <p className={theme.palette.mode === "light" ? LightStyles.name : DarkStyles.name}><CircleLeftIcon />{i.value}</p>
-                                    <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}><BagIcon /><span>{fa["price"]} :</span> <span>{i.price} {fa["Toman"]}</span></p>
+                                    <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}><BagIcon /><span>{fa["price"]} :</span> <span>{total_price.toLocaleString()} {fa["Toman"]}</span></p>
                                   </div>
                                   <div className={theme.palette.mode === "light" ? LightStyles.item_product : DarkStyles.item_product}>
                                     <div className={theme.palette.mode === "light" ? LightStyles.input_number : DarkStyles.input_number}>
