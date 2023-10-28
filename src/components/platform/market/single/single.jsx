@@ -30,7 +30,7 @@ const Create = lazy(() => import("./comment/create"));
 export default function Single() {
   // start function darkmode
   const theme = useTheme();
-  const { colorMode, token, handlerCard } = useContext(ColorModeContext);
+  const { colorMode, token, handlerCard , handelCompare } = useContext(ColorModeContext);
   // end function darkmode
 
   // start fetch use params
@@ -195,11 +195,11 @@ export default function Single() {
                   <div className={theme.palette.mode === "light" ? LightStyles.name_content : DarkStyles.name_content}>
                     <h1>{it.fa_name}</h1>
                     <div>
-                      <NavLink to={"/shop/compare"} state={fa["product compare"]}>
-                        <IconButton>
+                      {/* <NavLink  to={"/shop/compare"} state={fa["product compare"]}> */}
+                        <IconButton onClick={() => handelCompare(it , it.id)}>
                           <CompareIcon />
                         </IconButton>
-                      </NavLink>
+                      {/* </NavLink> */}
                       <IconButton onClick={handelCreateBookmark}>
                         <BookmarkIcon />
                       </IconButton>

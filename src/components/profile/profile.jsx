@@ -17,6 +17,7 @@ import SupportIcon from "../../assets/svg/support";
 import ExitProfileIcon from "../../assets/svg/exit-profile";
 import fa from "../../lang/fa.json";
 import NotifIcon from "../../assets/svg/notif";
+import CompareIcon from "../../assets/svg/compares";
 
 export default function Profile() {
   // start function darkmode
@@ -59,6 +60,10 @@ export default function Profile() {
           </NavLink>
           <NavLink to={"/profile/shop/manage"} state={fa["shop manage"]} className={theme.palette.mode === "light" ? LightStyles.routing : DarkStyles.routing}>
             <div><StoreIcon /><span>{fa["store"]}</span></div>
+            <ArrowRight />
+          </NavLink>
+          <NavLink to={"/shop/compare"} state={fa["product compare"]} className={theme.palette.mode === "light" ? LightStyles.routing : DarkStyles.routing}>
+            <div><CompareIcon /><span>{fa["product compare"]}</span></div>
             <ArrowRight />
           </NavLink>
           <NavLink to={"/shop/wishlist"} state={fa["wishlist"]} className={theme.palette.mode === "light" ? LightStyles.routing : DarkStyles.routing}>

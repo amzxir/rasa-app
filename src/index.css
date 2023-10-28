@@ -374,7 +374,6 @@ body {
   transform: translateX(-1px);
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.78) 50%, #fff);
 }
-
 .wrapper-dark::after{
   content: '';
   position: absolute;
@@ -389,7 +388,6 @@ body {
   transform: translateX(-1px);
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.78) 50%, #000);
 }
-
 .wrapper-left-light::after{
   content: '';
   position: absolute;
@@ -404,7 +402,6 @@ body {
   transform: translateX(-1px);
   background-image: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.78) 50%, #f9f9f9);
 }
-
 .lds-dual-ring {
   display: inline-block;
   width: 15px;
@@ -428,4 +425,7 @@ body {
   100% {
     transform: rotate(360deg);
   }
+}
+._img_product_m1405_1{
+  height: auto !important;
 }

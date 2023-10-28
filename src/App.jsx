@@ -89,12 +89,29 @@ export default function App() {
   // end function darkmode
 
   // start fetch product data 
-  const [fetchProduct, setFetchProduct] = useState()
+  const [fetchProduct, setFetchProduct] = useState();
 
   const handelSendProduct = (i) => {
     setFetchProduct(i)
   }
   // end fetch product data 
+
+  // start fetch compare product
+  const [compare , setCompare] = useState([]);
+
+  const handelCompare = (i , id) => {
+    const arr = [...compare];
+    const newId = compare.some(item => item.id === id);
+    if(newId !== true){
+      arr.push(i)
+      setCompare(arr)
+      toast.success('به مقایسه اضافه شد')
+    } else {
+      toast.error('در مقایسه موجود است')
+    }
+  }
+
+  // end fetch compare product
 
   // start fetch and function product card
   const [cardProduct , setCardProduct] = useState([]);
@@ -127,7 +144,7 @@ export default function App() {
   // end state loading 
 
   return (
-    <ColorModeContext.Provider value={{ colorMode, token, spinner, setSpinner , mobile , handlerCard , cardProduct , setCardProduct }}>
+    <ColorModeContext.Provider value={{ colorMode, token, spinner, setSpinner , mobile , handlerCard , cardProduct , setCardProduct , compare , handelCompare , setCompare }}>
       <ThemeProvider theme={theme}>
         <Layouts>
           <NetworkStatus>
