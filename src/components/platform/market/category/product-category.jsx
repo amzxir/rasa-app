@@ -29,6 +29,7 @@ export default function ProductCategory({ sendProduct }) {
 
     // start fetch product category 
     const [product, setProduct] = useState();
+    const [subCategory , setSubCategory] = useState([]);
 
     useEffect(() => {
         const handelProductCategory = async () => {
@@ -50,6 +51,26 @@ export default function ProductCategory({ sendProduct }) {
 
         handelProductCategory();
     }, [])
+
+    useEffect(() => {
+        const handelSubCategory = async () => {
+            const config = {
+                headers: { Authorization: `Bearer ${token}` }
+            }
+            const bodyParameters = {
+                key: "value",
+                name: location.state,
+            }
+            try {
+                const response = await axios.post("https://rasadent.reshe.ir/api/ListSubCategory", bodyParameters, config);
+                setSubCategory(response.data.categories)
+                // console.log(response);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        handelSubCategory();
+    },[])
 
     // end fetch product category 
 
@@ -91,7 +112,6 @@ export default function ProductCategory({ sendProduct }) {
                 {product ? 
                     (
                         product.map((i) => {
-
                             // start max and min price product
                                 const array = i.values.filter((i) => {
                                     return i.selectable === 1 && i.stock > 0 && i.stock !== null 
@@ -172,7 +192,6 @@ export default function ProductCategory({ sendProduct }) {
 
             </Grid>
 
-
             <div onClick={() => setIsOpen(false)} className={isOpen === true ? theme.palette.mode === "light" ? LightStyles.fade_open : DarkStyles.fade_open : theme.palette.mode === "light" ? LightStyles.fade_close : DarkStyles.fade_close}>
             </div>
             <div className={isOpen === true ? theme.palette.mode === "light" ? LightStyles.card_delete_open : DarkStyles.card_delete_open : theme.palette.mode === "light" ? LightStyles.card_delete_close : DarkStyles.card_delete_close}>
@@ -180,30 +199,18 @@ export default function ProductCategory({ sendProduct }) {
                 <hr />
                 <div className={theme.palette.mode === "light" ? LightStyles.category_filter : DarkStyles.category_filter}>
                     <h1>{fa["category all"]}</h1>
-                    <div className={theme.palette.mode === "light" ? LightStyles.input_relative : DarkStyles.input_relative}>
-                        <input type="radio" value="High" name="flexRadioDefault0" id="category1" />
-                        <label htmlFor="category1" className={theme.palette.mode === "light" ? LightStyles.label_absolute : DarkStyles.label_absolute}>
-                            <p>اندو دانتیکس</p>
-                        </label>
-                    </div>
-                    <div className={theme.palette.mode === "light" ? LightStyles.input_relative : DarkStyles.input_relative}>
-                        <input type="radio" value="High" name="flexRadioDefault0" id="category2" />
-                        <label htmlFor="category2" className={theme.palette.mode === "light" ? LightStyles.label_absolute : DarkStyles.label_absolute}>
-                            <p>شستشو و ضد عفونی کننده کانال</p>
-                        </label>
-                    </div>
-                    <div className={theme.palette.mode === "light" ? LightStyles.input_relative : DarkStyles.input_relative}>
-                        <input type="radio" value="High" name="flexRadioDefault0" id="category3" />
-                        <label htmlFor="category3" className={theme.palette.mode === "light" ? LightStyles.label_absolute : DarkStyles.label_absolute}>
-                            <p>اسپریدر و پلاگر</p>
-                        </label>
-                    </div>
-                    <div className={theme.palette.mode === "light" ? LightStyles.input_relative : DarkStyles.input_relative}>
-                        <input type="radio" value="High" name="flexRadioDefault0" id="category4" />
-                        <label htmlFor="category4" className={theme.palette.mode === "light" ? LightStyles.label_absolute : DarkStyles.label_absolute}>
-                            <p>پرکننده موقت کانال</p>
-                        </label>
-                    </div>
+                    {Object.values(subCategory).map((i , index) => {
+                        return(
+                            <div key={index} className={theme.palette.mode === "light" ? LightStyles.input_relative : DarkStyles.input_relative}>
+                                <input type="radio" value="High" name="flexRadioDefault0" id={i} />
+                                <label htmlFor={i} className={theme.palette.mode === "light" ? LightStyles.label_absolute : DarkStyles.label_absolute}>
+                                    <p>{i}</p>
+                                </label>
+                            </div>
+                        )
+                    })}
+     
+               
                 </div>
 
                 <hr />

@@ -195,6 +195,7 @@
 }
 
 .card_delete_close{
+    display: none;
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.5s linear;
@@ -205,6 +206,8 @@
 }
 
 .category_filter{
+    height: 250px;
+    overflow: auto;
 
     h1{
         font-size: 15px;
