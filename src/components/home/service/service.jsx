@@ -52,7 +52,7 @@ export default function Service({ name, path, pathImg, slogan }) {
             }
           >
             <p>{name}</p>
-            <p>CommingSoon</p>
+            <p>بزودی</p>
           </div>
         ) : (
           ""

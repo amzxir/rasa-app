@@ -11,7 +11,6 @@ import fa from "../../../../lang/fa.json";
 import ColorModeContext from "../../../../context/color-mode-context";
 import BookmarkIcon from "../../../../assets/svg/Bookmark";
 import Search from "../search/search";
-import Loading from "../../../loading/loading";
 
 
 export default function ProductCategory({ sendProduct }) {
@@ -77,11 +76,6 @@ export default function ProductCategory({ sendProduct }) {
     }
     // end function add bookmark
 
-    // // start function loading
-    // if (spinner) {
-    //     return <Loading />
-    // }
-    // // end function loading
 
     return (
         <Box className={theme.palette.mode === "light" ? 'wrapper-light' : 'wrapper-dark'} sx={{ mt: 5, mb: 5 }}>

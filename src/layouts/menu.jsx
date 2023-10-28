@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { Container, IconButton } from "@mui/material";
+import { Container, IconButton , Badge } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import LightStyles from "../assets/sass/light/menu.module.scss";
 import DarkStyles from "../assets/sass/dark/menu.module.scss";
@@ -15,13 +15,14 @@ import fa from "../lang/fa.json";
 export default function Menu() {
   // start function darkmode
   const theme = useTheme();
-  const { colorMode } = useContext(ColorModeContext);
+  const { colorMode , cardProduct } = useContext(ColorModeContext);
   // end function
 
   // start search location
   let location = useLocation();
   let path = location.pathname;
   // end search location
+
   return path === "/jet/send" ? null : (
     <div className={theme.palette.mode === "light" ? LightStyles.menu_bar : DarkStyles.menu_bar}>
       <Container className={theme.palette.mode === "light" ? LightStyles.flex : DarkStyles.flex} sx={{ p: 1 }} maxWidth="sm">
@@ -32,16 +33,18 @@ export default function Menu() {
         </NavLink>
         <NavLink to={"/shop/card"} state={fa["card"]} className={theme.palette.mode === "light" ? LightStyles.pl_3 : DarkStyles.pl_3}>
         <IconButton>
-          <ShoppingCartIcon />
+          <Badge badgeContent={cardProduct.length !== 0 ? cardProduct.length : null } size="small" color="error">
+            <ShoppingCartIcon />
+          </Badge>
         </IconButton>
         </NavLink>
         <NavLink to={"/shop"} className={theme.palette.mode === "light" ? LightStyles.shop_box : DarkStyles.shop_box}>
-          <span>
+          {/* <span> */}
             <ShopIcon />
-            <span className={theme.palette.mode === "light" ? LightStyles.bage : DarkStyles.bage}>
+            {/* <span className={theme.palette.mode === "light" ? LightStyles.bage : DarkStyles.bage}>
               4
             </span>
-          </span>
+          </span> */}
         </NavLink>
         <NavLink className={theme.palette.mode === "light" ? LightStyles.pr_3 : DarkStyles.pr_3}>
         <IconButton>

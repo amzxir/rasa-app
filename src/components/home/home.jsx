@@ -9,10 +9,11 @@ import LightStyles from "../../assets/sass/light/home.module.scss";
 import DarkStyles from "../../assets/sass/dark/home.module.scss";
 import GraduationCapIcon from "../../assets/svg/graduation-cap";
 import ColorModeContext from "../../context/color-mode-context";
+import Education from "./education/education";
 
 
 
-const Education = lazy(() => import("./education/education"));
+// const Education = lazy(() => import("./education/education"));
 const Service = lazy(() => import("./service/service"));
 
 export default function Home() {
@@ -25,44 +26,47 @@ export default function Home() {
   const service = [
     {
       id: 1,
-      path: "/jet",
-      name: "رسـاجت",
-      path_img: "/image/rocket.svg",
-      slogan: "این یک متن تست است",
-    },
-    {
-      id: 2,
-      path: "/chortkeh",
-      name: "رسـا چرتـکه",
-      path_img: "/image/bar.svg",
+      path: "/shop",
+      name: "رسـا شــــاپ",
+      path_img: "/image/shop.svg",
       slogan: "این یک متن تست است",
     },
     {
       id: 3,
-      path: "/form",
-      name: "رسـا فرم",
-      path_img: "/image/form.svg",
-      slogan: "این یک متن تست است",
-    },
-    {
-      id: 4,
       path: "/club",
       name: "رسـا کلاب",
       path_img: "/image/club.svg",
       slogan: "این یک متن تست است",
     },
     {
-      id: 5,
+      id: 3,
       path: "/blog",
       name: "رسـا مگ",
       path_img: "/image/mag.svg",
       slogan: "این یک متن تست است",
     },
     {
+      id: 4,
+      // path: "/jet",
+      path:null,
+      name: "رسـاجت",
+      path_img: "/image/rocket.svg",
+      slogan: "این یک متن تست است",
+    },
+    {
+      id: 5,
+      // path: "/chortkeh",
+      path:null,
+      name: "رسـا چرتـکه",
+      path_img: "/image/bar.svg",
+      slogan: "این یک متن تست است",
+    },
+    {
       id: 6,
-      path: "/shop",
-      name: "رسـا شــــاپ",
-      path_img: "/image/shop.svg",
+      // path: "/form",
+      path:null,
+      name: "رسـا فرم",
+      path_img: "/image/form.svg",
       slogan: "این یک متن تست است",
     },
   ];
@@ -153,10 +157,10 @@ export default function Home() {
             padding: { left: 40, right: 0 },
           }}
         >
-          <SplideTrack>
+          <SplideTrack className={theme.palette.mode === "light" ? 'wrapper-left-light' : ''}>
             {dataEducation.map((i, index) => {
               return (
-                <Suspense key={index} fallback={<div>Loading...</div>}>
+                // <Suspense key={index} fallback={<div>Loading...</div>}>
                   <Education
                     title={i.title}
                     path={i.path}
@@ -165,7 +169,7 @@ export default function Home() {
                     category={i.category}
                     date={i.date}
                   />
-                </Suspense>
+                // </Suspense>
               );
             })}
           </SplideTrack>

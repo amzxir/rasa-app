@@ -12,7 +12,6 @@ import DarkStyles from "../../../assets/sass/dark/auth.module.scss";
 import Fingerprint from "../../../assets/svg/fingerprint";
 import ColorModeContext from "../../../context/color-mode-context";
 import fa from "../../../lang/fa.json"
-import Loading from "../../loading/loading";
 
 // regex error validation
 const phoneRegExp = /^(\+\d{1,3}[- ]?)?\d{11}$/;
@@ -54,12 +53,6 @@ export default function Login(props) {
   };
   // end function send mobile
 
-  // start function loading
-  if (spinner) {
-    return <Loading/>
-  }
-  // end function loading
-
   return (
     <FadeTransform in transformProps={{ exitTransform: 'translateX(-100px)' }}>
       <Box>
@@ -83,7 +76,7 @@ export default function Login(props) {
               </div>
               <span className="error">{errors.mobile?.message}</span>
             </div>
-            <button disabled={spinner}>{fa["Get code"]}</button>
+            <button disabled={spinner}>{fa["Get code"]}{spinner ? <div class="lds-dual-ring"></div> : ''}</button>
           </form>
         </div>
       </Box>
