@@ -39,6 +39,7 @@ export default function Single() {
 
   // start fetch details product 
   const [detailsProduct, setDetailsProduct] = useState();
+  const [category , setCategory] = useState();
 
 
   useEffect(() => {
@@ -57,6 +58,7 @@ export default function Single() {
         // console.log(response.data.products);
         // localStorage.setItem("product" , JSON.stringify(response.data.products))
         setDetailsProduct(response.data.products);
+        setCategory(response.data.category)
       } catch (error) {
         console.error(error);
       }
@@ -65,6 +67,7 @@ export default function Single() {
   }, [])
 
   // end fetch details product 
+  
 
   // start function add to bokmark 
   const handelCreateBookmark = async () => {
@@ -184,7 +187,7 @@ export default function Single() {
                       {it.image.map((i) => {
                         return (
                           <SplideSlide key={i.id}>
-                            <LazyLoadImage effect="blur" className={theme.palette.mode === "light" ? LightStyles.img_product : DarkStyles.img_product} src={`https://rasadent.com/storage/product/${i.image}`} alt="" />
+                            <img className={theme.palette.mode === "light" ? LightStyles.img_product : DarkStyles.img_product} src={`https://rasadent.com/storage/product/${i.image}`} alt="" />
                           </SplideSlide>
                         )
                       })}
@@ -216,7 +219,7 @@ export default function Single() {
                         <LazyLoadImage effect="blur" src="/image/shop-profile.png" alt="" />
                       </div>
                       <p>
-                        دسته بندی: کامپوزیت
+                        دسته بندی: {category}
                         <br />
                         شماره سریال: {it.code}
                       </p>

@@ -49,13 +49,13 @@ export default function Pay() {
                 <div>۱۴۰۲-۰۷-۰۷</div>
               </p>
             </div>
-            <div className={theme.palette.mode === "light" ? LightStyles.item_invoice : DarkStyles.item_invoice}>
+            {/* <div className={theme.palette.mode === "light" ? LightStyles.item_invoice : DarkStyles.item_invoice}>
               <p><DocumentIcon/></p>
               <p>
                 <div style={{ marginBottom:'.3rem' }}>شماره :</div>
                 <div>Rasa۵۵۸۶۵۱۱۹</div>
               </p>
-            </div>
+            </div> */}
             <div className={theme.palette.mode === "light" ? LightStyles.item_invoice : DarkStyles.item_invoice}>
               <p><CallIcon/></p>
               <p>

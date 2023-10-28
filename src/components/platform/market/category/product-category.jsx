@@ -77,7 +77,6 @@ export default function ProductCategory({ sendProduct }) {
     }
     // end function add bookmark
 
-
     return (
         <Box className={theme.palette.mode === "light" ? 'wrapper-light' : 'wrapper-dark'} sx={{ mt: 5, mb: 5 }}>
 
@@ -92,6 +91,14 @@ export default function ProductCategory({ sendProduct }) {
                 {product ? 
                     (
                         product.map((i) => {
+
+                            // start max and min price product
+                                const array = i.values.filter((i) => {
+                                    return i.selectable === 1 && i.stock > 0 && i.stock !== null 
+                                })
+                                const price = Math.min(...array.map(o => o.price));
+                            // end max and min price product
+
                             return (
                                 <Grid key={i.id} item xs={6}>
                                     <div className={theme.palette.mode === "light" ? LightStyles.card_product : DarkStyles.card_product}>
@@ -104,14 +111,14 @@ export default function ProductCategory({ sendProduct }) {
                                             </div>
                                         </div>
                                         <div className={theme.palette.mode === "light" ? LightStyles.shop : DarkStyles.shop}>
-                                            <span>{i.shops[0]?.name}</span>
+                                            <span>{i.en_name}</span>
                                         </div>
                                         <div className={theme.palette.mode === "light" ? LightStyles.product_details : DarkStyles.product_details}>
                                             <NavLink to={`/shop/single-product/${i.id}`} state={i.fa_name} className={theme.palette.mode === "light" ? LightStyles.name_product : DarkStyles.name_product}>
                                                 {i.fa_name}
                                             </NavLink>
                                             <p className={theme.palette.mode === "light" ? LightStyles.price_product : DarkStyles.price_product} >
-                                                {i.code} {fa["Toman"]}
+                                                {price === Infinity ? 0 : price.toLocaleString()} {fa["Toman"]}
                                             </p>
                                         </div>
                                     </div>

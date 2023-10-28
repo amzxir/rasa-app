@@ -13,7 +13,7 @@ export default function Banner() {
   // end function darkmode
   return (
     <NavLink to={"https://chortkeh.rasadent.com/"} target="_black" className={ theme.palette.mode === "light" ? LightStyles.banner_shop : DarkStyles.banner_shop}>
-      <LazyLoadImage effect="blur" src="/image/banner.png" alt="" />
+      <img src="/image/banner.png" alt="" />
     </NavLink>
   );
 }

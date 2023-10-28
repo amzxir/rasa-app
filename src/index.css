@@ -426,6 +426,7 @@ body {
     transform: rotate(360deg);
   }
 }
-._img_product_m1405_1{
-  height: auto !important;
+
+.css-y8aa97-MuiBadge-badge{
+  font-family: "font-number" !important;
 }

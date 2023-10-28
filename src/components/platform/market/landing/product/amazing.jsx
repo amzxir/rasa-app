@@ -120,6 +120,12 @@ export default function AmazingProduct({ sendProduct }) {
           <SplideTrack>
             {getProduct ? (
               getProduct?.map((i) => {
+                  // start max and min price product
+                    const array = i.value.filter((i) => {
+                          return i.selectable === 1 && i.stock > 0 && i.stock !== null 
+                      })
+                      const price = Math.min(...array.map(o => o.price));
+                  // end max and min price product
                 return (
                   <SplideSlide key={i.id}>
                     <div className={theme.palette.mode === "light" ? LightStyles.card_product : DarkStyles.card_product}>
@@ -139,7 +145,7 @@ export default function AmazingProduct({ sendProduct }) {
                           {i.fa_name}
                         </NavLink>
                         <p className={theme.palette.mode === "light" ? LightStyles.price_product : DarkStyles.price_product}>
-                          {i.code} {fa["Toman"]}
+                          {price === Infinity ? 0 : price.toLocaleString()} {fa["Toman"]}
                         </p>
                       </div>
                     </div>

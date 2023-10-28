@@ -1,7 +1,6 @@
 import React, { useContext, useState, startTransition, useEffect } from "react";
-import { Modal, IconButton, Grid } from "@mui/material";
+import { Modal, IconButton, Grid , Skeleton, Stack } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import ColorModeContext from "../../../../context/color-mode-context";
@@ -17,7 +16,7 @@ import FilterIcon from "../../../../assets/svg/filter";
 export default function Search({ setIsOpen }) {
   // start function darkmode
   const theme = useTheme();
-  const { colorMode, token } = useContext(ColorModeContext);
+  const { colorMode, token , spinner, setSpinner } = useContext(ColorModeContext);
   // end function darkmode
 
   // start state modal
@@ -32,7 +31,7 @@ export default function Search({ setIsOpen }) {
   let [items, setItems] = useState([]);
 
   const handelResponsSearch = async () => {
-
+    setSpinner(true)
     const config = {
       headers: { Authorization: `Bearer ${token}` }
     }
@@ -45,8 +44,10 @@ export default function Search({ setIsOpen }) {
     try {
       const response = await axios.post('https://rasadent.reshe.ir/api/product_search_application', bodyParameters, config);
       // console.log(response.data.products);
+      setSpinner(false)
       setItems(response.data.products)
     } catch (error) {
+      setSpinner(false)
       console.error(error);
     }
   }
@@ -78,6 +79,7 @@ export default function Search({ setIsOpen }) {
   let paths = window.location.pathname.split("/");
   let query = paths[3];
   // end find url and equal path
+
   return (
     <>
       <Grid container spacing={2} className={theme.palette.mode === "light" ? LightStyles.search : DarkStyles.search}>
@@ -108,11 +110,39 @@ export default function Search({ setIsOpen }) {
               <SearchsIcon />
             </IconButton>
           </div>
+          {spinner ? (
+              <>
+                <Stack sx={{ mt:2 , mb:1 }} spacing={1}>
+                    <Skeleton variant="text" width={400} sx={{ fontSize: '1rem'}} />
+                </Stack>
+                <Stack sx={{ mt:1 , mb:1 }} spacing={1}>
+                    <Skeleton variant="text" width={400} sx={{ fontSize: '1rem'}} />
+                </Stack>
+                <Stack sx={{ mt:1 , mb:1 }} spacing={1}>
+                    <Skeleton variant="text" width={400} sx={{ fontSize: '1rem'}} />
+                </Stack>
+                <Stack sx={{ mt:1 , mb:1 }} spacing={1}>
+                    <Skeleton variant="text" width={400} sx={{ fontSize: '1rem'}} />
+                </Stack>
+                <Stack sx={{ mt:1 , mb:1 }} spacing={1}>
+                    <Skeleton variant="text" width={400} sx={{ fontSize: '1rem'}} />
+                </Stack>
+                <Stack sx={{ mt:1 , mb:1 }} spacing={1}>
+                    <Skeleton variant="text" width={400} sx={{ fontSize: '1rem'}} />
+                </Stack>
+                <Stack sx={{ mt:1 , mb:1 }} spacing={1}>
+                    <Skeleton variant="text" width={400} sx={{ fontSize: '1rem'}} />
+                </Stack>
+                <Stack sx={{ mt:1 , mb:1 }} spacing={1}>
+                    <Skeleton variant="text" width={400} sx={{ fontSize: '1rem'}} />
+                </Stack>
+              </>
+          ) : (
           <ul className={theme.palette.mode === "light" ? LightStyles.list_search : DarkStyles.list_search}>
             {items?.length === 0 || filter.length === 0 ? (
               <div className={theme.palette.mode === "light" ? LightStyles.page_404 : DarkStyles.page_404}>
                 <div className={theme.palette.mode === "light" ? LightStyles.img_centers : DarkStyles.img_centers}>
-                  <LazyLoadImage effect="blur" src="/image/404.png" alt="" />
+                  <img src="/image/404.png" alt="" />
                 </div>
                 <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
                   <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>
@@ -126,15 +156,18 @@ export default function Search({ setIsOpen }) {
             ) : (
               items?.map((i) => {
                 return (
-                  <li key={i.id}>
-                    <NavLink to={"/shop/single-product"} state={i.fa_name}>
-                      <BexitIcon /> <span>{i.fa_name}</span>
-                    </NavLink>
-                  </li>
+                  <>
+                    <li key={i.id}>
+                      <NavLink to={`/shop/single-product/${i.id}`} state={i.fa_name}>
+                        <BexitIcon /> <span>{i.fa_name}</span>
+                      </NavLink>
+                    </li>
+                  </>
                 );
               })
             )}
           </ul>
+          )}
 
         </div>
       </Modal>

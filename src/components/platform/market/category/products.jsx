@@ -62,6 +62,12 @@ export default function Products({ fetchProduct , sendProduct }) {
         <Box sx={{ mt: 5, mb: 5 }}>
             <Grid container spacing={2}>
                 {products && products.map && products.map((i)=> {
+                    // start max and min price product
+                        const array = i.value.filter((i) => {
+                            return i.selectable === 1 && i.stock > 0 && i.stock !== null 
+                        })
+                        const price = Math.min(...array.map(o => o.price));
+                    // end max and min price product
                     return(
                         <Grid item key={i.id} xs={6}>
                             <div className={ theme.palette.mode === "light" ? LightStyles.card_product : DarkStyles.card_product}>
@@ -81,7 +87,7 @@ export default function Products({ fetchProduct , sendProduct }) {
                                         {i.fa_name}
                                     </NavLink>
                                     <p className={ theme.palette.mode === "light" ? LightStyles.price_product : DarkStyles.price_product } >
-                                    {i.code} {fa["Toman"]}
+                                        {price === Infinity ? 0 : price.toLocaleString()} {fa["Toman"]}
                                     </p>
                                 </div>
                             </div>

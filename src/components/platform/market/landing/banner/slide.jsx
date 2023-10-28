@@ -33,7 +33,7 @@ export default function Slide({ bannerData }) {
         {bannerData && bannerData.map((i, index) => {
           return (
             <SplideSlide key={index}>
-              <NavLink to={"https://rasadent.com/"} target="_black">
+              <NavLink to={i.path} target="_black">
                 <LazyLoadImage
                 effect="blur"
                   className={

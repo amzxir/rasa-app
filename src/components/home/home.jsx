@@ -27,8 +27,15 @@ export default function Home() {
     {
       id: 1,
       path: "/shop",
-      name: "رسـا شــــاپ",
+      name: "رسـا مــارکت",
       path_img: "/image/shop.svg",
+      slogan: "این یک متن تست است",
+    },
+    {
+      id: 2,
+      path: "/jet",
+      name: "رسـاجت",
+      path_img: "/image/rocket.svg",
       slogan: "این یک متن تست است",
     },
     {
@@ -39,18 +46,10 @@ export default function Home() {
       slogan: "این یک متن تست است",
     },
     {
-      id: 3,
+      id: 4,
       path: "/blog",
       name: "رسـا مگ",
       path_img: "/image/mag.svg",
-      slogan: "این یک متن تست است",
-    },
-    {
-      id: 4,
-      // path: "/jet",
-      path:null,
-      name: "رسـاجت",
-      path_img: "/image/rocket.svg",
       slogan: "این یک متن تست است",
     },
     {
