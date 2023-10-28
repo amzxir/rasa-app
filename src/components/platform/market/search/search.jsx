@@ -88,7 +88,7 @@ export default function Search({ setIsOpen }) {
           <SearchIcon />
         </Grid>
         {url === `/shop/product-category/${query}` ?
-          <Grid style={{ paddingRight:1 }} xs={2}>
+          <Grid sx={{ pr:1 }} xs={2}>
             <button onClick={() => setIsOpen(true)} className={theme.palette.mode === "light" ? LightStyles.btn_fillter : DarkStyles.btn_fillter}>
               <FilterIcon />
             </button>

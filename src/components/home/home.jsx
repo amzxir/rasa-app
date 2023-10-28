@@ -162,6 +162,7 @@ export default function Home() {
               return (
                 // <Suspense key={index} fallback={<div>Loading...</div>}>
                   <Education
+                    key={i.id}
                     title={i.title}
                     path={i.path}
                     pathImg={i.path_img}
