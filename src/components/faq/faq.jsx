@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { FadeTransform } from "react-animation-components";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import LightStyles from "../../assets/sass/light/terms.module.scss";
 import DarkStyles from "../../assets/sass/dark/terms.module.scss";
 import TouchIcon from "../../assets/svg/touch";
@@ -17,7 +18,7 @@ export default function Faq() {
     <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} >
       <Box sx={{ mt: 5, mb: 5 }}>
         <div className={theme.palette.mode === "light" ? LightStyles.img_content : DarkStyles.img_content}>
-          <img className={theme.palette.mode === "light" ? LightStyles.img_fluid : DarkStyles.img_fluid} src="/image/terms.svg" alt="terms"/>
+          <LazyLoadImage effect="blur" className={theme.palette.mode === "light" ? LightStyles.img_fluid : DarkStyles.img_fluid} src="/image/terms.svg" alt="terms"/>
         </div>
         <p className={theme.palette.mode === "light" ? LightStyles.text_about : DarkStyles.text_about}>
           لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده

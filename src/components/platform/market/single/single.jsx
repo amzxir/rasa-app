@@ -5,6 +5,7 @@ import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide";
 import { NavLink , useParams } from "react-router-dom";
 import { FadeTransform } from "react-animation-components";
 import { toast } from 'react-toastify'
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import axios from "axios";
 import LightStyles from "../../../../assets/sass/light/market/single.module.scss";
 import DarkStyles from "../../../../assets/sass/dark/market/single.module.scss";
@@ -183,7 +184,7 @@ export default function Single() {
                       {it.image.map((i) => {
                         return (
                           <SplideSlide key={i.id}>
-                            <img className={theme.palette.mode === "light" ? LightStyles.img_product : DarkStyles.img_product} src={`https://rasadent.com/storage/product/${i.image}`} alt="" />
+                            <LazyLoadImage effect="blur" className={theme.palette.mode === "light" ? LightStyles.img_product : DarkStyles.img_product} src={`https://rasadent.com/storage/product/${i.image}`} alt="" />
                           </SplideSlide>
                         )
                       })}
@@ -212,7 +213,7 @@ export default function Single() {
                     </div>
                     <div className={theme.palette.mode === "light" ? LightStyles.shop_profiel : DarkStyles.shop_profiel}>
                       <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
-                        <img src="/image/shop-profile.png" alt="" />
+                        <LazyLoadImage effect="blur" src="/image/shop-profile.png" alt="" />
                       </div>
                       <p>
                         دسته بندی: کامپوزیت
@@ -241,7 +242,7 @@ export default function Single() {
                     <div key={index} style={{ background: i.pivot.product_stock === 0 ? '#FF000012' : '' }} className={theme.palette.mode === "light" ? LightStyles.card_shop : DarkStyles.card_shop}>
                       <Grid container spacing={2} className={theme.palette.mode === "light" ? LightStyles.content_product_shop : DarkStyles.content_product_shop}>
                         <Grid item xs={3}>
-                          <img className={theme.palette.mode === "light" ? LightStyles.img_product : DarkStyles.img_product} src="/image/profile-shop.png" alt="" />
+                          <LazyLoadImage effect="blur" className={theme.palette.mode === "light" ? LightStyles.img_product : DarkStyles.img_product} src="/image/profile-shop.png" alt="" />
                         </Grid>
     
                         <Grid item xs={9}>

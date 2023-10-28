@@ -10,6 +10,7 @@ import DarkStyles from "../../../../assets/sass/dark/market/category.module.scss
 import fa from "../../../../lang/fa.json";
 import ColorModeContext from "../../../../context/color-mode-context";
 import BookmarkIcon from "../../../../assets/svg/Bookmark";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 
 export default function Products({ fetchProduct , sendProduct }) {
@@ -66,7 +67,7 @@ export default function Products({ fetchProduct , sendProduct }) {
                             <div className={ theme.palette.mode === "light" ? LightStyles.card_product : DarkStyles.card_product}>
                                 <div className={ theme.palette.mode === "light" ? LightStyles.card_img : DarkStyles.card_img}>
                                     <NavLink onClick={() => sendProduct(i)} to={`/shop/single-product/${i.id}`} state={i.fa_name} className={ theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
-                                        <img src={`https://rasadent.com/storage/product/${i.image}`} alt={i.fa_name} />
+                                        <LazyLoadImage effect="blur" src={`https://rasadent.com/storage/product/${i.image}`} alt={i.fa_name} />
                                     </NavLink>
                                     <div onClick={() => handelBookmark (i.id)} className={ theme.palette.mode === "light" ? LightStyles.icon_wishlist : DarkStyles.icon_wishlist }>
                                         <BookmarkIcon />

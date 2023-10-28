@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { useTheme } from "@mui/material/styles";
 import { SplideSlide, Splide, SplideTrack } from "@splidejs/react-splide";
+import { NavLink } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import LightStyles from "../../../../../assets/sass/light/market/landing.module.scss";
 import DarkStyles from "../../../../../assets/sass/dark/market/landing.module.scss";
 import ColorModeContext from "../../../../../context/color-mode-context";
-import { NavLink } from "react-router-dom";
 
 export default function Slide({ bannerData }) {
   // start function darkmode
@@ -33,7 +34,8 @@ export default function Slide({ bannerData }) {
           return (
             <SplideSlide key={index}>
               <NavLink to={"https://rasadent.com/"} target="_black">
-                <img
+                <LazyLoadImage
+                effect="blur"
                   className={
                     theme.palette.mode === "light"
                       ? LightStyles.img_fluid

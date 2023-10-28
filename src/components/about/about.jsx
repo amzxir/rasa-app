@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Box, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { FadeTransform } from "react-animation-components";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import LightStyles from "../../assets/sass/light/about.module.scss";
 import DarkStyles from "../../assets/sass/dark/about.module.scss";
 import ColorModeContext from "../../context/color-mode-context";
@@ -56,12 +57,13 @@ export default function About() {
                 theme.palette.mode === "light" ? LightStyles.p_0 : DarkStyles.p_0
               }
             >
-              <img
+              <LazyLoadImage
                 className={
                   theme.palette.mode === "light"
                     ? LightStyles.avatar
                     : DarkStyles.avatar
                 }
+                effect="blur"
                 alt="Remy Sharp"
                 src="/image/user.png"
               />

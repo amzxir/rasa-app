@@ -1,6 +1,8 @@
 import React, { useContext, useState, startTransition, useEffect } from "react";
 import { Modal, IconButton, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 import ColorModeContext from "../../../../context/color-mode-context";
 import LightStyles from "../../../../assets/sass/light/market/landing.module.scss";
@@ -9,7 +11,6 @@ import SearchIcon from "../../../../assets/svg/search";
 import SearchsIcon from "../../../../assets/svg/searchs";
 import ExitIcon from "../../../../assets/svg/exit";
 import BexitIcon from "../../../../assets/svg/bexit";
-import { NavLink } from "react-router-dom";
 import fa from "../../../../lang/fa.json"
 import FilterIcon from "../../../../assets/svg/filter";
 
@@ -111,7 +112,7 @@ export default function Search({ setIsOpen }) {
             {items?.length === 0 || filter.length === 0 ? (
               <div className={theme.palette.mode === "light" ? LightStyles.page_404 : DarkStyles.page_404}>
                 <div className={theme.palette.mode === "light" ? LightStyles.img_centers : DarkStyles.img_centers}>
-                  <img src="/image/404.png" alt="" />
+                  <LazyLoadImage effect="blur" src="/image/404.png" alt="" />
                 </div>
                 <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
                   <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>

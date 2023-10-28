@@ -3,6 +3,7 @@ import { Box, IconButton, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
 import { FadeTransform } from "react-animation-components";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import ColorModeContext from "../../../../context/color-mode-context";
 import LightStyles from "../../../../assets/sass/light/form/form.module.scss";
 import DarkStyles from "../../../../assets/sass/dark/form/form.module.scss";
@@ -18,7 +19,7 @@ export default function Alert() {
             <Box sx={{ mt: 5, mb: 5 }}>
                 <div className={theme.palette.mode === "light" ? LightStyles.alert_success : DarkStyles.alert_success}>
                     <figure>
-                        <img src="/image/success.svg" alt="" />
+                        <LazyLoadImage effect="blur" src="/image/success.svg" alt="" />
                     </figure>
                     <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
                         <p>لینک دانلود با موفقیت ارسال شد</p>

@@ -7,6 +7,7 @@ import ColorModeContext from "../../../../context/color-mode-context";
 import LightStyles from "../../../../assets/sass/light/form/form.module.scss";
 import DarkStyles from "../../../../assets/sass/dark/form/form.module.scss";
 import fa from "../../../../lang/fa.json";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function Download() {
     // start function darkmode
@@ -18,7 +19,7 @@ export default function Download() {
             <Box sx={{ mt: 5, mb: 5 }}>
                 <Card className={theme.palette.mode === "light" ? LightStyles.download : DarkStyles.download}>
                     <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
-                        <img src="/image/implant.png" alt="" />
+                        <LazyLoadImage effect="blur" src="/image/implant.png" alt="" />
                     </div>
                     <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
                         <p className={theme.palette.mode === "light" ? LightStyles.name : DarkStyles.name}>مراقبت های لازم بعد از جراحی لثه</p>
@@ -27,7 +28,7 @@ export default function Download() {
                 </Card>
                 <Card className={theme.palette.mode === "light" ? LightStyles.download : DarkStyles.download}>
                     <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
-                        <img src="/image/implant.png" alt="" />
+                        <LazyLoadImage effect="blur" src="/image/implant.png" alt="" />
                     </div>
                     <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
                         <p className={theme.palette.mode === "light" ? LightStyles.name : DarkStyles.name}>مراقبت های بعد از تحویل پروتز متحرک(کامل یا پارسیل)</p>
@@ -36,7 +37,7 @@ export default function Download() {
                 </Card>
                 <Card className={theme.palette.mode === "light" ? LightStyles.download : DarkStyles.download}>
                     <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
-                        <img src="/image/implant.png" alt="" />
+                        <LazyLoadImage effect="blur" src="/image/implant.png" alt="" />
                     </div>
                     <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
                         <p className={theme.palette.mode === "light" ? LightStyles.name : DarkStyles.name}>مراقبت های پس از اعمال دندانپزشکی کودکان</p>

@@ -3,6 +3,7 @@ import { Box , Card , IconButton } from '@mui/material'
 import { useTheme } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
 import { FadeTransform } from "react-animation-components";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import ColorModeContext from '../../../../../context/color-mode-context';
 import LightStyles from "../../../../../assets/sass/light/market/pay.module.scss";
 import DarkStyles from "../../../../../assets/sass/dark/market/pay.module.scss";
@@ -137,7 +138,7 @@ export default function Pay() {
           <p>{fa["Choose a payment method"]}</p>
           <Card sx={{ boxShadow:0 , borderRadius:'15px' , p:2 }}>
             <div className={theme.palette.mode === "light" ? LightStyles.content_address : DarkStyles.content_address}>
-              <img src="/image/pay.png" alt="" />
+              <LazyLoadImage effect="blur" src="/image/pay.png" alt="" />
               {/* <PaysIcon/> */}
               <label htmlFor="sendProduct" className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
                 <h1 style={{ marginLeft:'5rem' }}>پرداخت اینترنتی</h1>

@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide";
 import { Box, Skeleton, Stack } from "@mui/material";
 import { toast } from 'react-toastify';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import axios from "axios";
 import LightStyles from "../../../../../assets/sass/light/market/landing.module.scss";
 import DarkStyles from "../../../../../assets/sass/dark/market/landing.module.scss";
@@ -123,7 +124,7 @@ export default function NewProduct({ productData, sendProduct }) {
                     <div className={theme.palette.mode === "light" ? LightStyles.card_product : DarkStyles.card_product}>
                       <div className={theme.palette.mode === "light" ? LightStyles.card_img : DarkStyles.card_img}>
                         <NavLink onClick={() => sendProduct(i)} to={`/shop/single-product/${i.id}`} state={i.fa_name} className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
-                          <img src={`https://rasadent.com/storage/product/${i.image}`} />
+                          <LazyLoadImage effect="blur" src={`https://rasadent.com/storage/product/${i.image}`} />
                         </NavLink>
                         <div onClick={() => handelBookmark (i.id)} className={theme.palette.mode === "light" ? LightStyles.icon_wishlist : DarkStyles.icon_wishlist}>
                           <MarkProductIcon />

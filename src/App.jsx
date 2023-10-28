@@ -51,8 +51,7 @@ import Alert from "./components/platform/form/alert/alert";
 import Download from "./components/platform/form/download/download";
 import 'react-toastify/dist/ReactToastify.css';
 import Protected from "./protected";
-import AddToHomeScreen from './add-to-home-screen/AddToHomeScreen';
-import './modifiedStyling.scss';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 
 

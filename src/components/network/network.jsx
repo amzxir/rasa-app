@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useTheme } from "@mui/material/styles";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import LightStyles from "../../assets/sass/light/network.module.scss";
 import DarkStyles from "../../assets/sass/dark/network.module.scss";
 import fa from "../../lang/fa.json";
@@ -32,7 +33,7 @@ export default function Network(props) {
     return (
       <div className={theme.palette.mode === "light" ? LightStyles.internet : DarkStyles.internet}>
         <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
-          <img src="/image/wifi.png" alt="" />
+          <LazyLoadImage effect="blur" src="/image/wifi.png" alt="" />
         </div>
         <h1>اوووپس !</h1>
         <p>اینترنت در دسترس نیست</p>

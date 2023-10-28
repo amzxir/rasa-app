@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FadeTransform } from "react-animation-components";
 import { toast } from 'react-toastify'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import * as yup from "yup";
 import axios from "axios";
 import LightStyles from "../../../assets/sass/light/auth.module.scss";
@@ -57,7 +58,7 @@ export default function Login(props) {
     <FadeTransform in transformProps={{ exitTransform: 'translateX(-100px)' }}>
       <Box>
         <div className={theme.palette.mode === "light" ? LightStyles.content_form_login : DarkStyles.content_form_login}>
-          <img src="/image/identification.svg" alt="" />
+          <LazyLoadImage effect="blur" src="/image/identification.svg" alt="" />
           <h1>{fa["Login and Register"]}</h1>
           <p className={theme.palette.mode === "light" ? LightStyles.title_login_form : DarkStyles.title_login_form}>
             {fa["Enter your mobile"]}

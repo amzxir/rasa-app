@@ -4,6 +4,7 @@ import { useTheme } from "@mui/material/styles";
 import { NavLink, useLocation } from "react-router-dom";
 import { FadeTransform } from "react-animation-components";
 import { toast } from 'react-toastify';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import axios from "axios";
 import LightStyles from "../../../../assets/sass/light/market/product-category.module.scss";
 import DarkStyles from "../../../../assets/sass/dark/market/product-category.module.scss";
@@ -96,7 +97,7 @@ export default function ProductCategory({ sendProduct }) {
                                     <div className={theme.palette.mode === "light" ? LightStyles.card_product : DarkStyles.card_product}>
                                         <div className={theme.palette.mode === "light" ? LightStyles.card_img : DarkStyles.card_img}>
                                             <NavLink onClick={() => sendProduct(i)} to={`/shop/single-product/${i.id}`} state={i.fa_name} className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
-                                                    <img src={`https://rasadent.com/storage/product/${i.image[0]?.image}`} alt="" />
+                                                    <LazyLoadImage effect="blur" src={`https://rasadent.com/storage/product/${i.image[0]?.image}`} alt="" />
                                             </NavLink>
                                             <div onClick={() => handelBookmark(i)} className={theme.palette.mode === "light" ? LightStyles.icon_wishlist : DarkStyles.icon_wishlist}>
                                                 <BookmarkIcon />

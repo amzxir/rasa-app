@@ -3,6 +3,7 @@ import { Box, Grid , Skeleton , Stack} from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
 import { FadeTransform } from "react-animation-components";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import axios from "axios";
 import LightStyles from "../../../../assets/sass/light/market/wishlist.module.scss";
 import DarkStyles from "../../../../assets/sass/dark/market/wishlist.module.scss";
@@ -104,7 +105,7 @@ export default function Wishlist({ sendProduct }) {
                               : DarkStyles.img_center
                           }
                         >
-                          <img src={`https://rasadent.com/storage/product/${i.image}`} alt={i.fa_name} />
+                          <LazyLoadImage effect="blur" src={`https://rasadent.com/storage/product/${i.image}`} alt={i.fa_name} />
                         </NavLink>
                         <div
                           className={

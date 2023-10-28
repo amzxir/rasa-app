@@ -3,6 +3,7 @@ import { Box, Grid , Skeleton , Stack } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
 import { FadeTransform } from "react-animation-components";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import axios from "axios";
 import LightStyles from "../../../../assets/sass/light/market/category-list.module.scss";
 import DarkStyles from "../../../../assets/sass/dark/market/category-list.module.scss";
@@ -53,7 +54,7 @@ export default function CategoryList() {
                 <Grid item key={i.id} xs={3}>
                   <NavLink to={`/shop/product-category/${i.name}`} state={i.name} className={theme.palette.mode === "light" ? LightStyles.category_list : DarkStyles.category_list}>
                     <div className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
-                      <img src={`https://rasadent.com/storage/category/${i.img}`} alt="" />
+                      <LazyLoadImage effect="blur" src={`https://rasadent.com/storage/category/${i.img}`} alt="" />
                     </div>
                     <h1>{i.name}</h1>
                   </NavLink>
