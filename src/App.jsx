@@ -132,6 +132,12 @@ export default function App() {
     }
   }
 
+  console.log(cardProduct.map((i) => {
+    return Object.values(i).map((val) => {
+      return val
+    })
+  }))
+
   // end fetch and function product card
 
   // start fetch and function address 
@@ -140,6 +146,7 @@ export default function App() {
 
   const handelAddress = (i) => {
     const arr = [...cardProduct];
+    localStorage.setItem("address_id" , i.id);
     arr.push(i);
     setAddress(arr);
     navigate("/shop/shopping" , {state:"زمان و نحوه ارسال"})

@@ -25,6 +25,7 @@ export default function Pay() {
   // start state checked input
   const [checked, setChecked] = useState(true);
   // end state checked input
+  
 
   // start function and fetch data card product for invoice
   const mobile = localStorage.getItem("mobile");
@@ -34,6 +35,7 @@ export default function Pay() {
   const packing = 46000
 
   // end function and fetch data card product for invoice
+
 
 
   return (
