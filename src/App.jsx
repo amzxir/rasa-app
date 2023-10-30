@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useEffect } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { ToastContainer, toast } from 'react-toastify';
 import Layouts from "./layouts/layouts";
@@ -88,6 +88,10 @@ export default function App() {
   }, [theme, storageTheme, mode]);
   // end function darkmode
 
+  // start use navigation
+  const navigate = useNavigate();
+  // end use navigation
+
   // start fetch product data 
   const [fetchProduct, setFetchProduct] = useState();
 
@@ -97,12 +101,12 @@ export default function App() {
   // end fetch product data 
 
   // start fetch compare product
-  const [compare , setCompare] = useState([]);
+  const [compare, setCompare] = useState([]);
 
-  const handelCompare = (i , id) => {
+  const handelCompare = (i, id) => {
     const arr = [...compare];
     const newId = compare.some(item => item.id === id);
-    if(newId !== true){
+    if (newId !== true) {
       arr.push(i)
       setCompare(arr)
       toast.success('به مقایسه اضافه شد')
@@ -114,12 +118,12 @@ export default function App() {
   // end fetch compare product
 
   // start fetch and function product card
-  const [cardProduct , setCardProduct] = useState([]);
+  const [cardProduct, setCardProduct] = useState([]);
 
-  const handlerCard = (i , id) => {
+  const handlerCard = (i, id) => {
     const arr = [...cardProduct];
     const newColors = cardProduct.some(item => item.id === id);
-    if(newColors !== true){
+    if (newColors !== true) {
       arr.push(i)
       setCardProduct(arr)
       toast.success('به سبد خرید اضافه شد')
@@ -129,6 +133,21 @@ export default function App() {
   }
 
   // end fetch and function product card
+
+  // start fetch and function address 
+
+  const [address, setAddress] = useState([]);
+
+  const handelAddress = (i) => {
+    const arr = [...cardProduct];
+    arr.push(i);
+    setAddress(arr);
+    navigate("/shop/shopping" , {state:"زمان و نحوه ارسال"})
+
+  }
+
+  // end fetch and function address 
+
 
   // start fetch data token in authentication
   const token = localStorage.getItem("token");
@@ -144,7 +163,7 @@ export default function App() {
   // end state loading 
 
   return (
-    <ColorModeContext.Provider value={{ colorMode, token, spinner, setSpinner , mobile , handlerCard , cardProduct , setCardProduct , compare , handelCompare , setCompare }}>
+    <ColorModeContext.Provider value={{ colorMode, token, spinner, setSpinner, mobile, handlerCard, cardProduct, setCardProduct, compare, handelCompare, setCompare, address, setAddress, handelAddress }}>
       <ThemeProvider theme={theme}>
         <Layouts>
           <NetworkStatus>

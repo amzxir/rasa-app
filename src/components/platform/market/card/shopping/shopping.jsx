@@ -14,7 +14,7 @@ import SendProIcon from "../../../../../assets/svg/sendpro";
 export default function Shopping() {
   // start function darkmode
   const theme = useTheme();
-  const { colorMode, cardProduct } = useContext(ColorModeContext);
+  const { colorMode, cardProduct , address } = useContext(ColorModeContext);
   // end function darkmode
 
   // start state checked input
@@ -33,20 +33,41 @@ export default function Shopping() {
       <Box sx={{ mt: 5, mb: 5 }}>
         <div className={theme.palette.mode === "light" ? LightStyles.title_address : DarkStyles.title_address}>
           <p>{fa["Order delivery address"]}</p>
-          <Card sx={{ boxShadow: 0, borderRadius: '15px', p: 2 }}>
-            <div className={theme.palette.mode === "light" ? LightStyles.content_address : DarkStyles.content_address}>
-              <PinIcon />
-              <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
-                <h1>منزل</h1>
-                <p>حصارک بالا، خیابان آقا رضایی، خیابان هداوند ...</p>
+          {address.length !== 0 ? 
+          
+            address.map((i , index) => {
+              return(
+                <Card key={index} sx={{ boxShadow: 0, borderRadius: '15px', p: 2 }}>
+                  <div className={theme.palette.mode === "light" ? LightStyles.content_address : DarkStyles.content_address}>
+                    <PinIcon />
+                    <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
+                      <h1>{i.receiver_name}</h1>
+                      <p>{i.adress.slice(1,45)} ...</p>
+                    </div>
+                    <NavLink to={"/shop/add-address"} state={fa["Select address"]}>
+                      <IconButton>
+                        <UnionIcon />
+                      </IconButton>
+                    </NavLink>
+                  </div>
+                </Card>
+              )
+            })
+            :
+            <Card sx={{ boxShadow: 0, borderRadius: '15px', p: 2 }}>
+              <div className={theme.palette.mode === "light" ? LightStyles.content_address : DarkStyles.content_address}>
+                <PinIcon />
+                <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
+                  <h1>اضافه کردن آدرس</h1>
+                </div>
+                <NavLink to={"/shop/add-address"} state={fa["Select address"]}>
+                  <IconButton>
+                    <UnionIcon />
+                  </IconButton>
+                </NavLink>
               </div>
-              <NavLink to={"/shop/add-address"} state={fa["Select address"]}>
-                <IconButton>
-                  <UnionIcon />
-                </IconButton>
-              </NavLink>
-            </div>
-          </Card>
+            </Card>
+          }
         </div>
         <div className={theme.palette.mode === "light" ? LightStyles.title_address : DarkStyles.title_address}>
           <p>{fa["Shipping method"]}</p>

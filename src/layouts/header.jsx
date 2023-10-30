@@ -43,7 +43,7 @@ export default function Header() {
     handelDetailsUser();
   }, [])
 
-  localStorage.setItem("user_id" , user.id)
+  localStorage.setItem("user_id" , user?.id)
 
   // end fetch details user 
 
@@ -87,7 +87,7 @@ export default function Header() {
               </div>
               <div className={theme.palette.mode === "light" ? LightStyles.header_right : DarkStyles.header_right}>
                 <p className={theme.palette.mode === "light" ? LightStyles.text_welcome : DarkStyles.text_welcome}>
-                  👋 {user.name !== null ? user.name : 'خوش آمدید'}
+                  👋 {user?.name !== null ? user?.name : 'خوش آمدید'}
                 </p>
                 <p className={theme.palette.mode === "light" ? LightStyles.text_name : DarkStyles.text_name}>
                   {mobile}

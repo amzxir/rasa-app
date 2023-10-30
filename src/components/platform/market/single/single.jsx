@@ -41,7 +41,6 @@ export default function Single() {
   const [detailsProduct, setDetailsProduct] = useState();
   const [category , setCategory] = useState();
 
-
   useEffect(() => {
     const handelDetails = async () => {
 
@@ -184,7 +183,7 @@ export default function Single() {
                       arrows: false,
                     }}>
                     <SplideTrack>
-                      {it.image.map((i) => {
+                      {it.images.map((i) => {
                         return (
                           <SplideSlide key={i.id}>
                             <img className={theme.palette.mode === "light" ? LightStyles.img_product : DarkStyles.img_product} src={`https://rasadent.com/storage/product/${i.image}`} alt="" />
