@@ -31,23 +31,23 @@ export default function ProductCategory({ sendProduct }) {
     const [product, setProduct] = useState();
     const [subCategory , setSubCategory] = useState([]);
 
-    useEffect(() => {
-        const handelProductCategory = async () => {
-            const config = {
-                headers: { Authorization: `Bearer ${token}` }
-            }
-            const bodyParameters = {
-                key: "value",
-                category_name: location.state,
-            }
-            try {
-                const response = await axios.post("https://rasadent.reshe.ir/api/ProductCategory", bodyParameters, config);
-                setProduct(response.data.products)
-                // console.log(response);
-            } catch (error) {
-                console.error(error);
-            }
+    const handelProductCategory = async () => {
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
         }
+        const bodyParameters = {
+            key: "value",
+            category_name: location.state,
+        }
+        try {
+            const response = await axios.post("https://rasadent.reshe.ir/api/ProductCategory", bodyParameters, config);
+            setProduct(response.data.products)
+            // console.log(response);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    useEffect(() => {
 
         handelProductCategory();
     }, [])
@@ -98,6 +98,25 @@ export default function ProductCategory({ sendProduct }) {
     }
     // end function add bookmark
 
+    // start function filter product by sub category 
+    const [bookmark , setbookmark] = useState("");
+
+    const handelSubCategory = (id , value) => {
+        const filter_product = product.filter((i) => i.category === id);
+        setProduct(filter_product);
+        setbookmark(value)
+
+    }
+
+    const handlerDeleteFilter = () => {
+        handelProductCategory();
+        setIsOpen(false);
+        setbookmark("")
+    }
+
+    
+    // end function filter product by sub category 
+
     return (
         <Box className={theme.palette.mode === "light" ? 'wrapper-light' : 'wrapper-dark'} sx={{ mt: 5, mb: 5 }}>
 
@@ -106,6 +125,7 @@ export default function ProductCategory({ sendProduct }) {
             <Breadcrumbs className={theme.palette.mode === "light" ? LightStyles.breadcrumb : DarkStyles.breadcrumb}>
                 <NavLink to={"/shop/category-list"} state={fa["category product"]}>{fa["category product"]}</NavLink>
                 <p>{location.state}</p>
+                {bookmark.length > 0 ? <p>{bookmark}</p> : ''}
             </Breadcrumbs>
 
             <Grid container spacing={2}>
@@ -199,12 +219,12 @@ export default function ProductCategory({ sendProduct }) {
                 <hr />
                 <div className={theme.palette.mode === "light" ? LightStyles.category_filter : DarkStyles.category_filter}>
                     <h1>{fa["category all"]}</h1>
-                    {Object.values(subCategory).map((i , index) => {
+                    {Object.entries(subCategory).map(([key , value]) => {
                         return(
-                            <div key={index} className={theme.palette.mode === "light" ? LightStyles.input_relative : DarkStyles.input_relative}>
-                                <input type="radio" value="High" name="flexRadioDefault0" id={i} />
-                                <label htmlFor={i} className={theme.palette.mode === "light" ? LightStyles.label_absolute : DarkStyles.label_absolute}>
-                                    <p>{i}</p>
+                            <div onClick={() => handelSubCategory(key , value)} key={key} className={theme.palette.mode === "light" ? LightStyles.input_relative : DarkStyles.input_relative}>
+                                <input type="radio" name="flexRadioDefault0" id={key} />
+                                <label htmlFor={key} className={theme.palette.mode === "light" ? LightStyles.label_absolute : DarkStyles.label_absolute}>
+                                    <p>{value}</p>
                                 </label>
                             </div>
                         )
@@ -216,7 +236,7 @@ export default function ProductCategory({ sendProduct }) {
                 <hr />
                 <div className={theme.palette.mode === "light" ? LightStyles.d_flex_btn : DarkStyles.d_flex_btn}>
                     <button className={theme.palette.mode === "light" ? LightStyles.confirm : DarkStyles.confirm}>{fa["Run the filter"]}</button>
-                    <button onClick={() => setIsOpen(false)} className={theme.palette.mode === "light" ? LightStyles.cancell : DarkStyles.cancell}>{fa["Remove the filter"]}</button>
+                    <button onClick={handlerDeleteFilter} className={theme.palette.mode === "light" ? LightStyles.cancell : DarkStyles.cancell}>{fa["Remove the filter"]}</button>
                 </div>
             </div>
         </Box>

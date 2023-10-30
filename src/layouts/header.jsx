@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Container, Grid, Avatar, Stack, IconButton, Badge } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 import SunIcon from "../assets/svg/sun";
 import LightStyles from "../assets/sass/light/header.module.scss";
 import DarkStyles from "../assets/sass/dark/header.module.scss";
@@ -14,8 +15,37 @@ import fa from "../lang/fa.json"
 export default function Header() {
   // start function darkmode
   const theme = useTheme();
-  const { colorMode } = useContext(ColorModeContext);
+  const { colorMode , token } = useContext(ColorModeContext);
   // end function darkmode
+
+  // start fetch details user
+  const [user , setUser] = useState();
+
+  useEffect(() => {
+    const handelDetailsUser = async () => {
+      const mobile = localStorage.getItem("mobile");
+      const config = {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+      const bodyParameters = {
+        key: "value",
+        mobile: mobile,
+      }
+      try {
+        const response = await axios.post("https://rasadent.reshe.ir/api/UserDetail", bodyParameters, config);
+        // console.log(response.data.user)
+        setUser(response.data.user)
+        // console.log(response);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    handelDetailsUser();
+  }, [])
+
+  localStorage.setItem("user_id" , user.id)
+
+  // end fetch details user 
 
   // start variable react router dom
   const location = useLocation();
@@ -57,7 +87,7 @@ export default function Header() {
               </div>
               <div className={theme.palette.mode === "light" ? LightStyles.header_right : DarkStyles.header_right}>
                 <p className={theme.palette.mode === "light" ? LightStyles.text_welcome : DarkStyles.text_welcome}>
-                  👋 خوش آمدید
+                  👋 {user.name !== null ? user.name : 'خوش آمدید'}
                 </p>
                 <p className={theme.palette.mode === "light" ? LightStyles.text_name : DarkStyles.text_name}>
                   {mobile}
