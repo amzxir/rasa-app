@@ -36,7 +36,24 @@ export default function Pay() {
 
   // end function and fetch data card product for invoice
 
+  const test = cardProduct.map((i) => {
+    return Object.values(i).map((val , index) => {
+      return val
+    })
+  })
 
+  const newArrayOfObj = test.map(({
+    0: id,
+    6:count,
+    ...rest
+  }) => ({
+    id,
+    count,
+    ...rest
+  }));  
+  console.log(newArrayOfObj , 'sd');
+
+  console.log(cardProduct)
 
   return (
     <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} >

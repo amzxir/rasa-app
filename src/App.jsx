@@ -132,12 +132,6 @@ export default function App() {
     }
   }
 
-  console.log(cardProduct.map((i) => {
-    return Object.values(i).map((val) => {
-      return val
-    })
-  }))
-
   // end fetch and function product card
 
   // start fetch and function address 
