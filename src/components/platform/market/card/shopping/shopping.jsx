@@ -42,7 +42,7 @@ export default function Shopping() {
                     <PinIcon />
                     <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
                       <h1>{i.receiver_name}</h1>
-                      <p>{i.adress.slice(1,45)} ...</p>
+                      <p>{i?.adress?.slice(1,30)} ...</p>
                     </div>
                     <NavLink to={"/shop/add-address"} state={fa["Select address"]}>
                       <IconButton>
