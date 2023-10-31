@@ -97,7 +97,7 @@ export default function Wishlist({ sendProduct }) {
                       >
                         <NavLink
                           onClick={() => sendProduct(i)}
-                          to={`/shop/single-product/${i.fa_name}`}
+                          to={`/shop/single-product/${i.id}`}
                           state={i.fa_name}
                           className={
                             theme.palette.mode === "light"
@@ -135,7 +135,7 @@ export default function Wishlist({ sendProduct }) {
                       >
                         <NavLink
                           onClick={() => sendProduct(i)}
-                          to={`/shop/single-product/${i.fa_name}`}
+                          to={`/shop/single-product/${i.id}`}
                           state={i.fa_name}
                           className={
                             theme.palette.mode === "light"
