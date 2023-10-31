@@ -1,5 +1,5 @@
-import React , { useContext , useState } from 'react'
-import { Box , Card , IconButton } from '@mui/material'
+import React, { useContext, useState } from 'react'
+import { Box, Card, IconButton } from '@mui/material'
 import { useTheme } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
 import { FadeTransform } from "react-animation-components";
@@ -19,52 +19,78 @@ import FingerIcon from '../../../../../assets/svg/finger';
 export default function Pay() {
   // start function darkmode
   const theme = useTheme();
-  const { colorMode , cardProduct } = useContext(ColorModeContext);
+  const { colorMode, cardProduct } = useContext(ColorModeContext);
   // end function darkmode
 
   // start state checked input
   const [checked, setChecked] = useState(true);
   // end state checked input
-  
+
 
   // start function and fetch data card product for invoice
   const mobile = localStorage.getItem("mobile");
   const price_product = cardProduct?.map(item => item.price * item.quantity).reduce((a, b) => { return a + b }, 0)
-  const tax = ( 9 / 100 ) * price_product ;
+  const tax = (9 / 100) * price_product;
   const total_price = tax + price_product;
   const packing = 46000
 
   // end function and fetch data card product for invoice
 
-  const test = cardProduct.map((i) => {
-    return Object.values(i).map((val , index) => {
+  const remove_item_arr = cardProduct.map((i) => {
+    return delete i.updated_at && delete i.inventory && delete i.product_brand && delete i.selectable && delete i.stock && delete i.created_at
+  })
+
+
+  const card_pay = cardProduct.map((item, i) => ({ ...item, mobile: mobile, discount: 0, discount_price: 0, product_price: 0 }));
+
+
+  const arr = card_pay.map((i) => {
+    return Object.values(i).map((val, index) => {
       return val
     })
   })
 
-  const newArrayOfObj = test.map(({
+  const newArrayOfObj = arr.map(({
     0: id,
-    6:count,
+    1: peroperty_price,
+    2: shop_id,
+    3: count,
+    4: peroperty,
+    5: value,
+    6: product_id,
+    7: mobile,
+    8: discount,
+    9: discount_price,
+    10: product_price,
     ...rest
   }) => ({
     id,
+    peroperty_price,
+    shop_id,
     count,
+    peroperty,
+    value,
+    product_id,
+    mobile,
+    discount,
+    discount_price,
+    product_price,
     ...rest
-  }));  
-  console.log(newArrayOfObj , 'sd');
+  }));
 
-  console.log(cardProduct)
+  console.log(newArrayOfObj)
+
 
   return (
-    <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} >
-      <Box sx={{ mt:5 , mb:5 }}>
+    <FadeTransform in transformProps={{ exitTransform: 'translateX(-100px)' }} >
+      <Box sx={{ mt: 5, mb: 5 }}>
 
         <div className={theme.palette.mode === "light" ? LightStyles.invoives : DarkStyles.invoives}>
           <div className={theme.palette.mode === "light" ? LightStyles.invoice_header : DarkStyles.invoice_header}>
             <div className={theme.palette.mode === "light" ? LightStyles.item_invoice : DarkStyles.item_invoice}>
-              <p><CalendarIcon/></p>
+              <p><CalendarIcon /></p>
               <p>
-                <div style={{ marginBottom:'.3rem' }}>تاریخ :</div>
+                <div style={{ marginBottom: '.3rem' }}>تاریخ :</div>
                 <div>۱۴۰۲-۰۷-۰۷</div>
               </p>
             </div>
@@ -76,16 +102,16 @@ export default function Pay() {
               </p>
             </div> */}
             <div className={theme.palette.mode === "light" ? LightStyles.item_invoice : DarkStyles.item_invoice}>
-              <p><CallIcon/></p>
+              <p><CallIcon /></p>
               <p>
-                <div style={{ marginBottom:'.3rem' }}>شماره تلفن :</div>
+                <div style={{ marginBottom: '.3rem' }}>شماره تلفن :</div>
                 <div>{mobile}</div>
               </p>
             </div>
             <div className={theme.palette.mode === "light" ? LightStyles.item_invoice : DarkStyles.item_invoice}>
-              <p><FingerIcon/></p>
+              <p><FingerIcon /></p>
               <p>
-                <div style={{ marginBottom:'.3rem' }}>شماره / شناسه ملی :</div>
+                <div style={{ marginBottom: '.3rem' }}>شماره / شناسه ملی :</div>
                 <div>0024006464</div>
               </p>
             </div>
@@ -93,14 +119,14 @@ export default function Pay() {
           <hr />
           <div className={theme.palette.mode === "light" ? LightStyles.invoice_content : DarkStyles.invoice_content}>
             <h1>{fa["product"]}</h1>
-            {cardProduct.map((i , index) => {
+            {cardProduct.map((i, index) => {
 
-                // start fetch data total price
-                const total_price = i.quantity * i.price;
-                // start fetch data total price
+              // start fetch data total price
+              const total_price = i.quantity * i.price;
+              // start fetch data total price
 
-              return(
-                <Card key={i.id} sx={{ boxShadow:'0' , borderRadius:'16px' , p:2 , mb:3  }}>
+              return (
+                <Card key={i.id} sx={{ boxShadow: '0', borderRadius: '16px', p: 2, mb: 3 }}>
                   <div className={theme.palette.mode === "light" ? LightStyles.item : DarkStyles.item}>
                     <p>{fa["Name Product"]}</p>
                     <p>{i.value}</p>
@@ -124,43 +150,43 @@ export default function Pay() {
         </div>
 
 
-        <Card sx={{ boxShadow:0 , borderRadius:'15px' , p:2 }}>
+        <Card sx={{ boxShadow: 0, borderRadius: '15px', p: 2 }}>
           <div className={theme.palette.mode === "light" ? LightStyles.invoice : DarkStyles.invoice}>
-              {/* <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
+            {/* <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
                 <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["price products"]}</p>
                 <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>150/000 {fa["Toman"]}</p>
               </div> */}
-              <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
-                <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["tax"]}</p>
-                <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>{tax.toLocaleString()} {fa["Toman"]}</p>
-              </div>
-              <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
-                <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["shipping cost"]}</p>
-                <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>رایگان</p>
-              </div>
-              <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
-                <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["discount"]}</p>
-                <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>0 {fa["Toman"]}</p>
-              </div>
-              <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
-                <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["Total amount"]}</p>
-                <p className={theme.palette.mode === "light" ? LightStyles.price_success : DarkStyles.price_success}>{price_product.toLocaleString()} {fa["Toman"]}</p>
-              </div>
-              <hr style={{ borderWidth:'.1px' , borderColor:'#ffffff4d' }} />
-              <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
-                <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["pay"]}</p>
-                <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>{total_price.toLocaleString()} {fa["Toman"]}</p>
-              </div>
+            <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
+              <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["tax"]}</p>
+              <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>{tax.toLocaleString()} {fa["Toman"]}</p>
+            </div>
+            <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
+              <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["shipping cost"]}</p>
+              <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>رایگان</p>
+            </div>
+            <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
+              <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["discount"]}</p>
+              <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>0 {fa["Toman"]}</p>
+            </div>
+            <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
+              <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["Total amount"]}</p>
+              <p className={theme.palette.mode === "light" ? LightStyles.price_success : DarkStyles.price_success}>{price_product.toLocaleString()} {fa["Toman"]}</p>
+            </div>
+            <hr style={{ borderWidth: '.1px', borderColor: '#ffffff4d' }} />
+            <div className={theme.palette.mode === "light" ? LightStyles.total : DarkStyles.total}>
+              <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>{fa["pay"]}</p>
+              <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}>{total_price.toLocaleString()} {fa["Toman"]}</p>
+            </div>
           </div>
         </Card>
         <div className={theme.palette.mode === "light" ? LightStyles.title_address : DarkStyles.title_address}>
           <p>{fa["Choose a payment method"]}</p>
-          <Card sx={{ boxShadow:0 , borderRadius:'15px' , p:2 }}>
+          <Card sx={{ boxShadow: 0, borderRadius: '15px', p: 2 }}>
             <div className={theme.palette.mode === "light" ? LightStyles.content_address : DarkStyles.content_address}>
               <LazyLoadImage effect="blur" src="/image/pay.png" alt="" />
               {/* <PaysIcon/> */}
               <label htmlFor="sendProduct" className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
-                <h1 style={{ marginLeft:'5rem' }}>پرداخت اینترنتی</h1>
+                <h1 style={{ marginLeft: '5rem' }}>پرداخت اینترنتی</h1>
                 <p>پرداخت آنلاین با تمامی کارت‌های بانکی</p>
               </label>
               <input id="sendProduct" type="radio" defaultChecked={checked} />
