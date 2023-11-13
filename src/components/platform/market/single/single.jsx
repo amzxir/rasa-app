@@ -145,7 +145,7 @@ export default function Single() {
     const arr = [...value]
     const newQuantity = arr.map(obj => {
       if (obj.id == id && obj.quantity < stoke) {
-        return { ...obj, quantity: obj.quantity + 1 };
+        return { ...obj, quantity: Number(obj.quantity) + 1 };
       }
       return obj;
     });
@@ -156,7 +156,7 @@ export default function Single() {
     const arr = [...value]
     const newQuantity = arr.map(obj => {
       if (obj.id == id && obj.quantity > 1) {
-        return { ...obj, quantity: obj.quantity - 1 };
+        return { ...obj, quantity: Number(obj.quantity) - 1 };
       }
       return obj;
     });
@@ -165,8 +165,6 @@ export default function Single() {
   }
 
   // end function filter value data in details product
-  console.log(detailsProduct);
-
 
   return (
     <Box data-test="component-single" sx={{ mt: 5, mb: 5 }}>
@@ -234,14 +232,26 @@ export default function Single() {
               {it.shops.map((shop, index) => {
 
                 // start max and min price product
-                const array = it.value.filter((i) => {
-                  return i.selectable == 1 && i.stock > 0 && i.stock !== null
+
+                const prices = it.value.filter((i) => {
+                  if (i.shop_id == shop.id) {
+                    return i.selectable == 1 && i.stock > 0 && i.stock !== null
+                  }
                 })
-                const price = Math.min(...array.map(o => o.price));
+                const price = Math.min(...prices.map(o => o.price));
+
+                const stocks = it.value.filter((i) => {
+                  if (i.shop_id == shop.id) {
+                    return i.stock
+                  }
+                })
+
+                const stock_product = Math.min(...stocks.map(o => o.stock));
                 // end max and min price product
 
+
                 return (
-                  <div key={index} style={{ background: shop.pivot.product_stock === 0 ? '#FF000012' : '' }} className={theme.palette.mode === "light" ? LightStyles.card_shop : DarkStyles.card_shop}>
+                  <div key={index} style={{ background: stock_product === 0 ? '#FF000012' : '' }} className={theme.palette.mode === "light" ? LightStyles.card_shop : DarkStyles.card_shop}>
                     <Grid container spacing={2} className={theme.palette.mode === "light" ? LightStyles.content_product_shop : DarkStyles.content_product_shop}>
                       <Grid item xs={3}>
                         <LazyLoadImage effect="blur" className={theme.palette.mode === "light" ? LightStyles.img_product : DarkStyles.img_product} src="/image/profile-shop.png" alt="" />
@@ -258,7 +268,7 @@ export default function Single() {
                             </span>
                             <span>
                               <p>{fa["Available in stock"]}</p>
-                              <p style={{ color: shop.pivot.product_stock === 0 ? '#FF0000' : '' }}>{shop.pivot.product_stock} عدد</p>
+                              <p style={{ color: stock_product === 0 ? '#FF0000' : '' }}>{stock_product} عدد</p>
                             </span>
                           </div>
                           <div className={theme.palette.mode === "light" ? LightStyles.stock : DarkStyles.stock}>
@@ -267,14 +277,14 @@ export default function Single() {
                             </span>
                             <span>
                               <p>{fa["From the price"]}</p>
-                              <p style={{ color: shop.pivot.product_stock === 0 ? '#FF0000' : '' }}>{shop.pivot.product_stock === 0 ? 'ناموجود' : `${price.toLocaleString()} ${fa["Toman"]}`}</p>
+                              <p style={{ color: stock_product === 0 ? '#FF0000' : '' }}>{stock_product === 0 ? 'ناموجود' : `${price.toLocaleString()} ${fa["Toman"]}`}</p>
                             </span>
                           </div>
                         </div>
                       </Grid>
                     </Grid>
                     <div onClick={() => handelValue()} className={theme.palette.mode === "light" ? LightStyles.add_card : DarkStyles.add_card}>
-                      {shop.pivot.product_stock === 0 ?
+                      {stock_product === 0 ?
                         <button style={{ background: '#B81515', borderColor: '#B81515' }} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Out of stock"]}</span></button>
                         :
                         <button onClick={() => setIsOpen(index)} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Select a feature and add to cart"]}</span></button>
