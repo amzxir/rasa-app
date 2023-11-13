@@ -73,11 +73,14 @@ export default function AuthenticationCode(props) {
     // console.log(verOtp)
     try {
       const response = await axios.post("https://rasadent.reshe.ir/api/VerifyOtp", verify);
-      console.log(response);
+      // console.log(response);
 
       if (response.data.msg === "data invalid") {
         setSpinner(false)
         toast.success(response.data.msg)
+      } else if (response.data.status_code == 403) {
+        setSpinner(false)
+        toast.error('خطای دسترسی به اپلیکیشن')
       } else if (response.data.token) {
         setSpinner(false)
         const getToken = response.data.token;
@@ -103,9 +106,9 @@ export default function AuthenticationCode(props) {
     const mobile = props.data;
     try {
       const response = await axios.post("https://rasadent.com/api/SendOtp", mobile);
-      if (response.data.status_code === 422) {
+      if (response.data.status_code == 422) {
         toast.error(response.data.msg)
-      } else if (response.data.status_code === 200) {
+      } else if (response.data.status_code == 200) {
         toast.success(response.data.msg)
       }
       setSpinner(false)
