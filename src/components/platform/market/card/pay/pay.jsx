@@ -4,6 +4,7 @@ import { useTheme } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
 import { FadeTransform } from "react-animation-components";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import axios from 'axios';
 import ColorModeContext from '../../../../../context/color-mode-context';
 import LightStyles from "../../../../../assets/sass/light/market/pay.module.scss";
 import DarkStyles from "../../../../../assets/sass/dark/market/pay.module.scss";
@@ -13,13 +14,14 @@ import CalendarIcon from '../../../../../assets/svg/calendar';
 import DocumentIcon from '../../../../../assets/svg/document';
 import CallIcon from '../../../../../assets/svg/call';
 import FingerIcon from '../../../../../assets/svg/finger';
+import { toast } from 'react-toastify';
 
 
 
 export default function Pay() {
   // start function darkmode
   const theme = useTheme();
-  const { colorMode, cardProduct } = useContext(ColorModeContext);
+  const { colorMode, cardProduct, token } = useContext(ColorModeContext);
   // end function darkmode
 
   // start state checked input
@@ -36,10 +38,11 @@ export default function Pay() {
 
   // end function and fetch data card product for invoice
 
+  // start fetch product card for add to card
+
   const remove_item_arr = cardProduct.map((i) => {
     return delete i.updated_at && delete i.inventory && delete i.product_brand && delete i.selectable && delete i.stock && delete i.created_at
   })
-
 
   const card_pay = cardProduct.map((item, i) => ({ ...item, mobile: mobile, discount: 0, discount_price: 0, product_price: 0 }));
 
@@ -50,7 +53,7 @@ export default function Pay() {
     })
   })
 
-  const newArrayOfObj = arr.map(({
+  const carts = arr.map(({
     0: id,
     1: peroperty_price,
     2: shop_id,
@@ -78,7 +81,81 @@ export default function Pay() {
     ...rest
   }));
 
-  console.log(newArrayOfObj)
+  // end fetch product card for add to card
+
+  // start function create product card
+  const [card, setCrad] = useState();
+  const [createInvoice, setCreateInvoice] = useState();
+
+
+  const handlerCreateCard = async () => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    }
+    const bodyParameters = {
+      key: "value",
+      mobile: mobile,
+      carts: carts
+    }
+
+    try {
+      const response = await axios.post("https://rasadent.reshe.ir/api/CreateCart", bodyParameters, config);
+      // console.log(response);
+      if (response.data.status_code === 500) {
+        setCrad(response.data.status_code)
+      } else if (response.data.status_code === 422) {
+        setCrad(response.data.status_code)
+      } else if (response.data.status_code === 200) {
+        setCrad(response.data.status_code)
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const handlerCreateInvoice = async () => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    }
+    const bodyParameters = {
+      key: "value",
+    }
+
+    try {
+      const response = await axios.post("https://rasadent.reshe.ir/api/CreateInvoice", bodyParameters, config);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+
+  const handlerPay = () => {
+    handlerCreateCard();
+
+    if (card === 500) {
+      toast.error('خطای سرور در ایجاد سبد خرید');
+    } else if (card === 422) {
+      toast.error('خطای سرور');
+    } else if (card === 200) {
+      handlerCreateInvoice();
+    }
+
+    if (createInvoice === 500) {
+      toast.error('خطای سرور در ایجاد فاکتور');
+    } else if (createInvoice === 422) {
+      toast.error('خطای سرور');
+    } else if (createInvoice === 200) {
+      console.log('pay');
+    }
+
+  }
+  
+  const blob = new Blob([JSON.stringify(response[index])], {type: "text/json;charset=utf-8"});
+
+FileSaver.saveAs(blob, "hello world.txt");
+
+  // end function create product card
 
 
   return (
@@ -193,7 +270,7 @@ export default function Pay() {
             </div>
           </Card>
         </div>
-        <NavLink to={"/shop/pay/sucess"} state={fa["pay"]} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Payment and order finalization"]}</span></NavLink>
+        <button onClick={handlerPay} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Payment and order finalization"]}</span></button>
       </Box>
     </FadeTransform>
   )
