@@ -128,7 +128,7 @@ export default function Single() {
 
   if(detailsProduct && detailsProduct.length > 0){
     const value_filter = detailsProduct[0]?.value?.filter((v) => {
-      return v.selectable === 1 && v.stock > 0 && v.stock !== null
+      return v.selectable == 1 && v.stock > 0 && v.stock !== null
     });
     var values = [...value_filter];
   }
@@ -144,7 +144,7 @@ export default function Single() {
   const increment = (value, id , stoke) => {
     const arr = [...value]
     const newQuantity = arr.map(obj => {
-      if (obj.id === id && obj.quantity < stoke) {
+      if (obj.id == id && obj.quantity < stoke) {
         return { ...obj, quantity: obj.quantity + 1 };
       }
       return obj;
@@ -161,7 +161,6 @@ export default function Single() {
       return obj;
     });
 
-    console.log(newQuantity)
     setValue(newQuantity);
   }
 
@@ -235,7 +234,7 @@ export default function Single() {
     
                   // start max and min price product
                   const array = it.value.filter((i) => {
-                    return i.selectable === 1 && i.stock > 0 && i.stock !== null 
+                    return i.selectable == 1 && i.stock > 0 && i.stock !== null 
                   })
                   const price = Math.min(...array.map(o => o.price));
                   // end max and min price product

@@ -122,7 +122,7 @@ export default function MostProduct({ productData, sendProduct }) {
               getProduct?.map((i) => {
                   // start max and min price product
                     const array = i.value.filter((i) => {
-                          return i.selectable === 1 && i.stock > 0 && i.stock !== null 
+                          return i.selectable == 1 && i.stock > 0 && i.stock !== null 
                       })
                     const price = Math.min(...array.map(o => o.price));
                   // end max and min price product
