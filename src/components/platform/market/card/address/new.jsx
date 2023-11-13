@@ -119,7 +119,7 @@ export default function New() {
               </div>
             </Grid>
           </Grid>
-          <button onClick={handelCreateAddress} className={theme.palette.mode === "light" ? LightStyles.btn_address : DarkStyles.btn_address}><span>{fa["add new address"]}</span></button>
+          <button className={theme.palette.mode === "light" ? LightStyles.btn_address : DarkStyles.btn_address}><span>{fa["add new address"]}</span></button>
         </form>
       </Box>
     </FadeTransform>

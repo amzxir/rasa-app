@@ -100,7 +100,7 @@ export default function Pay() {
 
     try {
       const response = await axios.post("https://rasadent.reshe.ir/api/CreateCart", bodyParameters, config);
-      // console.log(response);
+      console.log(response);
       if (response.data.status_code === 500) {
         setCrad(response.data.status_code)
       } else if (response.data.status_code === 422) {
@@ -150,10 +150,6 @@ export default function Pay() {
     }
 
   }
-  
-  const blob = new Blob([JSON.stringify(response[index])], {type: "text/json;charset=utf-8"});
-
-FileSaver.saveAs(blob, "hello world.txt");
 
   // end function create product card
 
