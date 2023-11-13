@@ -55,6 +55,10 @@ export default function Add() {
   },[])
 
   // end fetch state address
+  const formObject = {
+    "name":"arif updated",
+    "surname":"shariati updated"
+}
 
   return (
     <FadeTransform in transformProps={{exitTransform: 'translateX(-100px)'}} >
