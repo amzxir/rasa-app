@@ -42,12 +42,18 @@ export default function New() {
   // end react hook form
 
   // start function create address 
-  const [address , setAddress] = useState([]);
 
-  localStorage.setItem('address', JSON.stringify(address))
+  // const [address, setAddress] = useState([], () => {
+  //   const localData = localStorage.getItem('address');
+  //   return localData ? JSON.parse(localData) : [];
+  // });
+
+
+
 
   const handelCreateAddress = async (data) => {
-    const getAddress = [...address];
+
+    // const getAddress = [...address];
 
     const user_id = localStorage.getItem("user_id");
 
@@ -68,13 +74,17 @@ export default function New() {
 
     try {
       const response = await axios.post("https://rasadent.reshe.ir/api/CreateAdress", bodyParameters, config);
-      console.log(response);
+      // console.log(response);
 
       if (response.data.status_code === 200) {
+        var a = [];
+        // Parse the serialized data back into an aray of objects
+        a = JSON.parse(localStorage.getItem('address')) || [];
+        // Push the new data (whether it be an object or anything else) onto the array
+        a.push(response.data.adress);
+        // Re-serialize the array back into a string and store it in localStorage
+        localStorage.setItem('address', JSON.stringify(a));
         toast.success("آدرس با موفقیت ثبت شد");
-        getAddress.push(response.data.adress);
-        setAddress(getAddress)
-        localStorage.setItem("address", JSON.stringify(address))
         reset();
       }
 
@@ -83,9 +93,8 @@ export default function New() {
     }
   }
 
-  console.log(address);
 
-  
+
 
   // end function create address 
 
