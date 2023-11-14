@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Box, TextField, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
@@ -24,7 +24,7 @@ const schema = yup.object().shape({
   post_code: yup.string().required('فیلد کد پستی اجباری است'),
   state: yup.string().required('فیلد استان اجباری است'),
   city: yup.string().required('فیلد شهر اجباری است'),
-  
+
 
 });
 
@@ -42,8 +42,13 @@ export default function New() {
   // end react hook form
 
   // start function create address 
+  const [address , setAddress] = useState([]);
+
+  localStorage.setItem('address', JSON.stringify(address))
 
   const handelCreateAddress = async (data) => {
+    const getAddress = [...address];
+
     const user_id = localStorage.getItem("user_id");
 
     const config = {
@@ -53,20 +58,23 @@ export default function New() {
     const bodyParameters = {
       key: "value",
       user_id: user_id,
-      receiver_name:data.user,
-      city:data.city,
-      province:data.state,
-      receiver_mobile:data.mobile,
-      adress:data.address,
-      postalcode:data.post_code, 
+      receiver_name: data.user,
+      city: data.city,
+      province: data.state,
+      receiver_mobile: data.mobile,
+      adress: data.address,
+      postalcode: data.post_code,
     }
 
     try {
       const response = await axios.post("https://rasadent.reshe.ir/api/CreateAdress", bodyParameters, config);
       console.log(response);
 
-      if(response.data.status_code === 200){
+      if (response.data.status_code === 200) {
         toast.success("آدرس با موفقیت ثبت شد");
+        getAddress.push(response.data.adress);
+        setAddress(getAddress)
+        localStorage.setItem("address", JSON.stringify(address))
         reset();
       }
 
@@ -74,6 +82,10 @@ export default function New() {
       console.error(error);
     }
   }
+
+  console.log(address);
+
+  
 
   // end function create address 
 
