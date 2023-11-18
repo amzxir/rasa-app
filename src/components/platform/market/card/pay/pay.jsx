@@ -46,7 +46,6 @@ export default function Pay() {
 
   const card_pay = cardProduct.map((item, i) => ({ ...item, mobile: mobile, discount: 0, discount_price: 0, product_price: 0 }));
 
-
   const arr = card_pay.map((i) => {
     return Object.values(i).map((val, index) => {
       return val
@@ -81,6 +80,8 @@ export default function Pay() {
     ...rest
   }));
 
+  console.log(carts);
+
 
 
   // end fetch product card for add to card
@@ -90,7 +91,7 @@ export default function Pay() {
   const [createInvoice, setCreateInvoice] = useState();
 
   const handlerCreateCard = async () => {
-
+    
     const config = {
       headers: { Authorization: `Bearer ${token}` }
     }
