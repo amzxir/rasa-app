@@ -79,7 +79,7 @@ export default function Login(props) {
               </div>
               <span className="error">{errors.mobile?.message}</span>
             </div>
-            <button disabled={spinner}>{fa["Get code"]}{spinner ? <div class="lds-dual-ring"></div> : ''}</button>
+            <button disabled={spinner}>{fa["Get code"]}{spinner ? <div className="lds-dual-ring"></div> : ''}</button>
           </form>
         </div>
       </Box>

@@ -52,36 +52,43 @@ export default function Pay() {
     })
   })
 
-  const carts = arr.map(({
-    0: id,
-    1: peroperty_price,
-    2: shop_id,
-    3: count,
-    4: peroperty,
-    5: value,
-    6: product_id,
-    7: mobile,
-    8: discount,
-    9: discount_price,
-    10: product_price,
-    ...rest
-  }) => ({
-    id,
-    peroperty_price,
-    shop_id,
-    count,
-    peroperty,
-    value,
-    product_id,
-    mobile,
-    discount,
-    discount_price,
-    product_price,
-    ...rest
-  }));
+  // const carts = arr.map(({
+  //   0: id,
+  //   1: peroperty_price,
+  //   2: shop_id,
+  //   3: count,
+  //   4: peroperty,
+  //   5: value,
+  //   6: product_id,
+  //   7: mobile,
+  //   8: discount,
+  //   9: discount_price,
+  //   10: product_price,
+  //   ...rest
+  // }) => ({
+  //   id,
+  //   peroperty_price,
+  //   shop_id,
+  //   count,
+  //   peroperty,
+  //   value,
+  //   product_id,
+  //   mobile,
+  //   discount,
+  //   discount_price,
+  //   product_price,
+  //   ...rest
+  // }));
+
+  const arr1 = Object.values(arr).map((i) => {
+    return Object.values(i).map((i) => `${i}`).join('-');
+  })
+
+  const carts = arr1.map((i) => {
+    return i.replace('11-', '');
+  })
 
   console.log(carts);
-
 
 
   // end fetch product card for add to card
