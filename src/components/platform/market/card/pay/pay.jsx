@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react'
 import { Box, Card, IconButton } from '@mui/material'
 import { useTheme } from "@mui/material/styles";
-import { NavLink } from "react-router-dom";
 import { FadeTransform } from "react-animation-components";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 import ColorModeContext from '../../../../../context/color-mode-context';
 import LightStyles from "../../../../../assets/sass/light/market/pay.module.scss";
@@ -14,7 +14,9 @@ import CalendarIcon from '../../../../../assets/svg/calendar';
 import DocumentIcon from '../../../../../assets/svg/document';
 import CallIcon from '../../../../../assets/svg/call';
 import FingerIcon from '../../../../../assets/svg/finger';
-import { toast } from 'react-toastify';
+
+
+
 
 
 
@@ -28,9 +30,9 @@ export default function Pay() {
   const [checked, setChecked] = useState(true);
   // end state checked input
 
-
   // start function and fetch data card product for invoice
   const mobile = localStorage.getItem("mobile");
+  const user_id = localStorage.getItem("user_id");
   const price_product = cardProduct?.map(item => item.price * item.quantity).reduce((a, b) => { return a + b }, 0)
   const tax = (9 / 100) * price_product;
   const total_price = tax + price_product;
@@ -44,7 +46,7 @@ export default function Pay() {
     return delete i.updated_at && delete i.inventory && delete i.product_brand && delete i.selectable && delete i.stock && delete i.created_at
   })
 
-  const card_pay = cardProduct.map((item, i) => ({ ...item, mobile: mobile, discount: 0, discount_price: 0, product_price: 0 }));
+  const card_pay = cardProduct.map((item, i) => ({ ...item, discount: 0, discount_price: 0, product_price: 0, user_id: user_id }));
 
   const arr = card_pay.map((i) => {
     return Object.values(i).map((val, index) => {
@@ -52,53 +54,77 @@ export default function Pay() {
     })
   })
 
-  // const carts = arr.map(({
-  //   0: id,
-  //   1: peroperty_price,
-  //   2: shop_id,
-  //   3: count,
-  //   4: peroperty,
-  //   5: value,
-  //   6: product_id,
-  //   7: mobile,
-  //   8: discount,
-  //   9: discount_price,
-  //   10: product_price,
-  //   ...rest
-  // }) => ({
-  //   id,
-  //   peroperty_price,
-  //   shop_id,
-  //   count,
-  //   peroperty,
-  //   value,
-  //   product_id,
-  //   mobile,
-  //   discount,
-  //   discount_price,
-  //   product_price,
-  //   ...rest
-  // }));
+  const cards = arr.map(({
+    0: id,
+    1: peroperty_price,
+    2: shop_id,
+    3: count,
+    4: peroperty,
+    5: value,
+    6: product_id,
+    7: discount,
+    8: discount_price,
+    9: product_price,
+    10: user_id,
+    ...rest
+  }) => ({
+    user_id,
+    product_id,
+    product_price,
+    peroperty_price,
+    peroperty,
+    value,
+    count,
+    discount_price,
+    discount,
+    shop_id,
+    id,
+    ...rest
+  }));
 
-  const arr1 = Object.values(arr).map((i) => {
-    return Object.values(i).map((i) => `${i}`).join('-');
-  })
+  // console.log(cards);
 
-  const carts = arr1.map((i) => {
-    return i.replace('11-', '');
-  })
 
-  console.log(carts);
+  // const array = cards.map((i) => {
+  //   return Object.values(i).map((val, index) => {
+  //     return val
+  //   })
+  // })
+
+  // console.log(array);
+
+  const carts = cards.map(({ user_id, product_id, product_price,
+    peroperty_price,
+    peroperty,
+    value,
+    count,
+    discount_price,
+    discount,
+    shop_id }) => `${user_id}_${product_id}_${product_price}_${peroperty_price}_${peroperty}_${value}_${count}_${discount_price}_${discount}_${shop_id} `);
+
+  // const arr1 = Object.values(array).map((i) => {
+  //   return Object.values(i).map((i) => `${i}`).join('-');
+  // })
+
+  // // console.log(arr1);
+
+  // const carts = arr1.map((i) => {
+  //   return i.replace('11-', '');
+  // })
+
+  // console.log(carts);
 
 
   // end fetch product card for add to card
 
   // start function create product card
+
+
   const [card, setCrad] = useState();
   const [createInvoice, setCreateInvoice] = useState();
 
   const handlerCreateCard = async () => {
-    
+
     const config = {
       headers: { Authorization: `Bearer ${token}` }
     }
@@ -110,7 +136,7 @@ export default function Pay() {
 
     try {
       const response = await axios.post("https://rasadent.reshe.ir/api/CreateCart", bodyParameters, config);
-      console.log(response);
+      console.log(response, 'create carts');
       if (response.data.status_code === 500) {
         setCrad(response.data.status_code)
       } else if (response.data.status_code === 422) {
@@ -124,40 +150,51 @@ export default function Pay() {
   }
 
   const handlerCreateInvoice = async () => {
+
+    const address = localStorage.getItem("address_id")
+
     const config = {
       headers: { Authorization: `Bearer ${token}` }
     }
     const bodyParameters = {
       key: "value",
+      mobile: mobile,
+      address_id: address,
+      price: total_price
     }
 
     try {
       const response = await axios.post("https://rasadent.reshe.ir/api/CreateInvoice", bodyParameters, config);
-      console.log(response);
+      console.log(response, 'create invoice');
+      localStorage.setItem("invoice_number" , response.data.invoice_number)
     } catch (error) {
       console.error(error);
     }
   }
+  
+
+  const handlerPay = async () => {
+    await handlerCreateCard();
+    await handlerCreateInvoice();
+    const invoice_number = localStorage.getItem("invoice_number")
+    await window.open(`https://rasadent.reshe.ir/pay_invoice_application/${invoice_number}`, '_blank');
 
 
-  const handlerPay = () => {
-    handlerCreateCard();
+    // if (card === 500) {
+    //   toast.error('خطای سرور در ایجاد سبد خرید');
+    // } else if (card === 422) {
+    //   toast.error('خطای سرور');
+    // } else if (card === 200) {
+    //   await handlerCreateInvoice();
+    // }
 
-    if (card === 500) {
-      toast.error('خطای سرور در ایجاد سبد خرید');
-    } else if (card === 422) {
-      toast.error('خطای سرور');
-    } else if (card === 200) {
-      handlerCreateInvoice();
-    }
-
-    if (createInvoice === 500) {
-      toast.error('خطای سرور در ایجاد فاکتور');
-    } else if (createInvoice === 422) {
-      toast.error('خطای سرور');
-    } else if (createInvoice === 200) {
-      console.log('pay');
-    }
+    // if (createInvoice === 500) {
+    //   toast.error('خطای سرور در ایجاد فاکتور');
+    // } else if (createInvoice === 422) {
+    //   toast.error('خطای سرور');
+    // } else if (createInvoice === 200) {
+    //   console.log('pay');
+    // }
 
   }
 
