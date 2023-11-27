@@ -120,81 +120,100 @@ export default function Pay() {
   // start function create product card
 
 
-  const [card, setCrad] = useState();
-  const [createInvoice, setCreateInvoice] = useState();
+  // const [card, setCrad] = useState();
+  // const [createInvoice, setCreateInvoice] = useState();
 
-  const handlerCreateCard = async () => {
+  // const handlerCreateCard = async () => {
 
-    const config = {
-      headers: { Authorization: `Bearer ${token}` }
-    }
-    const bodyParameters = {
-      key: "value",
-      mobile: mobile,
-      carts: carts
-    }
+  //   const config = {
+  //     headers: { Authorization: `Bearer ${token}` }
+  //   }
+  //   const bodyParameters = {
+  //     key: "value",
+  //     mobile: mobile,
+  //     carts: carts
+  //   }
 
-    try {
-      const response = await axios.post("https://rasadent.reshe.ir/api/CreateCart", bodyParameters, config);
-      console.log(response, 'create carts');
-      if (response.data.status_code === 500) {
-        setCrad(response.data.status_code)
-      } else if (response.data.status_code === 422) {
-        setCrad(response.data.status_code)
-      } else if (response.data.status_code === 200) {
-        setCrad(response.data.status_code)
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  //   try {
+  //     const response = await axios.post("https://rasadent.reshe.ir/api/CreateCart", bodyParameters, config);
+  //     console.log(response, 'create carts');
+  //     if (response.data.status_code === 500) {
+  //       setCrad(response.data.status_code)
+  //     } else if (response.data.status_code === 422) {
+  //       setCrad(response.data.status_code)
+  //     } else if (response.data.status_code === 200) {
+  //       setCrad(response.data.status_code)
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
 
-  const handlerCreateInvoice = async () => {
+  // const handlerCreateInvoice = async () => {
+
+  //   const address = localStorage.getItem("address_id")
+
+  //   const config = {
+  //     headers: { Authorization: `Bearer ${token}` }
+  //   }
+  //   const bodyParameters = {
+  //     key: "value",
+  //     mobile: mobile,
+  //     address_id: address,
+  //     price: total_price
+  //   }
+
+  //   try {
+  //     const response = await axios.post("https://rasadent.reshe.ir/api/CreateInvoice", bodyParameters, config);
+  //     console.log(response, 'create invoice');
+  //     localStorage.setItem("invoice_number", response.data.invoice_number)
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
+
+
+  const handlerPay = async () => {
 
     const address = localStorage.getItem("address_id")
 
     const config = {
       headers: { Authorization: `Bearer ${token}` }
     }
+
     const bodyParameters = {
+      key: "value",
+      mobile: mobile,
+      carts: carts
+    }
+
+    const invoice = {
       key: "value",
       mobile: mobile,
       address_id: address,
       price: total_price
     }
 
-    try {
-      const response = await axios.post("https://rasadent.reshe.ir/api/CreateInvoice", bodyParameters, config);
-      console.log(response, 'create invoice');
-      localStorage.setItem("invoice_number" , response.data.invoice_number)
-    } catch (error) {
-      console.error(error);
-    }
-  }
-  
-
-  const handlerPay = async () => {
-    await handlerCreateCard();
-    await handlerCreateInvoice();
-    const invoice_number = localStorage.getItem("invoice_number")
-    await window.open(`https://rasadent.reshe.ir/pay_invoice_application/${invoice_number}`, '_blank');
-
-
-    // if (card === 500) {
-    //   toast.error('خطای سرور در ایجاد سبد خرید');
-    // } else if (card === 422) {
-    //   toast.error('خطای سرور');
-    // } else if (card === 200) {
-    //   await handlerCreateInvoice();
-    // }
-
-    // if (createInvoice === 500) {
-    //   toast.error('خطای سرور در ایجاد فاکتور');
-    // } else if (createInvoice === 422) {
-    //   toast.error('خطای سرور');
-    // } else if (createInvoice === 200) {
-    //   console.log('pay');
-    // }
+    await axios.post("https://rasadent.reshe.ir/api/CreateCart", bodyParameters, config)
+      .then(
+        responseA =>
+          Promise.all([
+            responseA,
+            axios.post("https://rasadent.reshe.ir/api/CreateInvoice", invoice, config)
+          ])
+      )
+      .then(
+        ([responseA, responseB]) => {
+          localStorage.setItem("invoice_number", responseB.data.invoice_number)
+          if (responseA.data.status_code === 200 && responseB.data.status_code === 200) {
+            const invoice_number = localStorage.getItem("invoice_number")
+            console.log(responseA, responseB);
+            window.open(`https://rasadent.reshe.ir/pay_invoice_application/${invoice_number}`, '_blank' , 'noopener,noreferrer');
+          }
+        })
+      .catch((err) => {
+        console.log(err.message);
+      });
 
   }
 

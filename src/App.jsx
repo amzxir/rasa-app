@@ -52,6 +52,7 @@ import Download from "./components/platform/form/download/download";
 import 'react-toastify/dist/ReactToastify.css';
 import Protected from "./protected";
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import CheckPay from "./components/platform/market/card/pay/check";
 
 
 
@@ -191,6 +192,7 @@ export default function App() {
                 <Route path="/shop/add-address" element={<AddAddressShop />}></Route>
                 <Route path="/shop/new-address" element={<NewAddressShop />}></Route>
                 <Route path="/shop/invoice" element={<PayShop />}></Route>
+                <Route path="/shop/pay_status_check" element={<CheckPay />}></Route>
                 <Route path="/shop/pay/sucess" element={<SuccessPayShop />}></Route>
                 <Route path="/shop/pay/error" element={<ErrorPayShop />}></Route>
                 {/* routeing component jet */}

@@ -15,11 +15,11 @@ import fa from "../lang/fa.json"
 export default function Header() {
   // start function darkmode
   const theme = useTheme();
-  const { colorMode , token } = useContext(ColorModeContext);
+  const { colorMode, token } = useContext(ColorModeContext);
   // end function darkmode
 
   // start fetch details user
-  const [user , setUser] = useState();
+  const [user, setUser] = useState();
 
   useEffect(() => {
     const handelDetailsUser = async () => {
@@ -43,7 +43,7 @@ export default function Header() {
     handelDetailsUser();
   }, [])
 
-  localStorage.setItem("user_id" , user?.id)
+  localStorage.setItem("user_id", user?.id)
 
   // end fetch details user 
 
@@ -63,7 +63,7 @@ export default function Header() {
   let query = paths[3];
   // end find query link 
 
-  return path !== "/shop/pay/sucess" && path !== "/profile" ? (
+  return path !== "/shop/pay/sucess" && path !== "/profile" && path !== "/shop/pay_status_check" && path !== "/shop/pay/error" ? (
     <Container className={theme.palette.mode === "light" ? LightStyles.navbar_fixed : DarkStyles.navbar_fixed} maxWidth="sm">
       {path !== "/" && path !== "/shop" &&
         path !== "/jet" && path !== "/club" &&
