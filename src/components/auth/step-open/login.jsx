@@ -25,7 +25,7 @@ const schema = yup.object().shape({
 export default function Login(props) {
   // start function darkmode
   const theme = useTheme();
-  const { colorMode, spinner, setSpinner , mobile } = useContext(ColorModeContext);
+  const { colorMode, spinner, setSpinner, mobile } = useContext(ColorModeContext);
   // end function darkmode
 
   // start react hook form
@@ -33,7 +33,7 @@ export default function Login(props) {
     resolver: yupResolver(schema),
   });
   // end react hook form
-  
+
   // start function send mobile
   const handleSubmits = async (data) => {
     setSpinner(true)
@@ -43,7 +43,7 @@ export default function Login(props) {
       if (response.data.status_code === 422) {
         toast.error(response.data.msg)
       } else if (response.data.status_code === 200) {
-        toast.success(response.data.msg)
+        toast.success("کد با موفقیت ارسال شد")
       }
       setSpinner(false)
       localStorage.setItem("mobile", data.mobile);

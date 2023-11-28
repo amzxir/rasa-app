@@ -75,19 +75,23 @@ export default function AuthenticationCode(props) {
       const response = await axios.post("https://rasadent.reshe.ir/api/VerifyOtp", verify);
       // console.log(response);
 
-      if (response.data.msg === "data invalid") {
+      if (response.data.status_code === 500) {
         setSpinner(false)
-        toast.success(response.data.msg)
-      } else if (response.data.status_code == 403) {
+        toast.error("خطای سرور لطفا مجددا تلاش کنید");
+      } else if (response.data.status_code === 422) {
         setSpinner(false)
-        toast.error('خطای دسترسی به اپلیکیشن')
-      } else if (response.data.token) {
+        toast.error(response.data.msg);
+      } else if (response.data.status_code === 403) {
+        setSpinner(false)
+        toast.error("رمز اشتباه است")
+      } else if (response.data.status_code === 200) {
         setSpinner(false)
         const getToken = response.data.token;
+        const getUserId = response.data.user_id
         localStorage.setItem("token", getToken);
-        toast.success("به رسادنت خوش آمدید");
+        localStorage.setItem("user_id", getUserId);
+        toast.success("به پل خوش آمدید");
         navigate("/");
-
       }
       // console.log(response);
 
@@ -109,7 +113,7 @@ export default function AuthenticationCode(props) {
       if (response.data.status_code == 422) {
         toast.error(response.data.msg)
       } else if (response.data.status_code == 200) {
-        toast.success(response.data.msg)
+        toast.success("کد دوباره ارسال شد")
       }
       setSpinner(false)
       setLimit(false);
@@ -128,7 +132,7 @@ export default function AuthenticationCode(props) {
   // end function loading
 
   return (
-    // timer === 0 ? props.previousStep() && toast.error("زمان به ارسال رسید لطفا مجددا تلاش کنید") :
+    timer === 0 ? props.previousStep() && toast.error("زمان به ارسال رسید لطفا مجددا تلاش کنید") :
     <FadeTransform in transformProps={{ exitTransform: 'translateX(-100px)' }} fadeProps={{ enterOpacity: 0.85, }}>
       <Box className={theme.palette.mode === "light" ? LightStyles.form_code : DarkStyles.form_code}>
         <h1>{fa["Verification of identity code"]}</h1>
