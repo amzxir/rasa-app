@@ -114,7 +114,6 @@ export default function ProductCategory({ sendProduct }) {
         setbookmark("")
     }
 
-    
     // end function filter product by sub category 
 
     return (
