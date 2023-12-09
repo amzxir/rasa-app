@@ -23,7 +23,7 @@ import FingerIcon from '../../../../../assets/svg/finger';
 export default function Pay() {
   // start function darkmode
   const theme = useTheme();
-  const { colorMode, cardProduct, token } = useContext(ColorModeContext);
+  const { colorMode, cardProduct, token, spinner, setSpinner } = useContext(ColorModeContext);
   // end function darkmode
 
   // start state checked input
@@ -43,7 +43,7 @@ export default function Pay() {
   // start fetch product card for add to card
 
   const remove_item_arr = cardProduct.map((i) => {
-    return delete i.updated_at && delete i.inventory && delete i.product_brand && delete i.selectable && delete i.stock && delete i.created_at
+    return delete i.updated_at && delete i.inventory && delete i.product_brand && delete i.selectable && delete i.stock && delete i.created_at && delete i.type_order && delete i.image
   })
 
   const card_pay = cardProduct.map((item, i) => ({ ...item, discount: 0, discount_price: 0, product_price: 0, user_id: user_id }));
@@ -102,83 +102,14 @@ export default function Pay() {
     discount,
     shop_id }) => `${user_id}_${product_id}_${product_price}_${peroperty_price}_${peroperty}_${value}_${count}_${discount_price}_${discount}_${shop_id} `);
 
-  // const arr1 = Object.values(array).map((i) => {
-  //   return Object.values(i).map((i) => `${i}`).join('-');
-  // })
-
-  // // console.log(arr1);
-
-  // const carts = arr1.map((i) => {
-  //   return i.replace('11-', '');
-  // })
-
-  // console.log(carts);
-
-
-  // end fetch product card for add to card
-
-  // start function create product card
-
-
-  // const [card, setCrad] = useState();
-  // const [createInvoice, setCreateInvoice] = useState();
-
-  // const handlerCreateCard = async () => {
-
-  //   const config = {
-  //     headers: { Authorization: `Bearer ${token}` }
-  //   }
-  //   const bodyParameters = {
-  //     key: "value",
-  //     mobile: mobile,
-  //     carts: carts
-  //   }
-
-  //   try {
-  //     const response = await axios.post("https://rasadent.reshe.ir/api/CreateCart", bodyParameters, config);
-  //     console.log(response, 'create carts');
-  //     if (response.data.status_code === 500) {
-  //       setCrad(response.data.status_code)
-  //     } else if (response.data.status_code === 422) {
-  //       setCrad(response.data.status_code)
-  //     } else if (response.data.status_code === 200) {
-  //       setCrad(response.data.status_code)
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
-
-  // const handlerCreateInvoice = async () => {
-
-  //   const address = localStorage.getItem("address_id")
-
-  //   const config = {
-  //     headers: { Authorization: `Bearer ${token}` }
-  //   }
-  //   const bodyParameters = {
-  //     key: "value",
-  //     mobile: mobile,
-  //     address_id: address,
-  //     price: total_price
-  //   }
-
-  //   try {
-  //     const response = await axios.post("https://rasadent.reshe.ir/api/CreateInvoice", bodyParameters, config);
-  //     console.log(response, 'create invoice');
-  //     localStorage.setItem("invoice_number", response.data.invoice_number)
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
-
 
   const handlerPay = async () => {
+    setSpinner(true)
 
     const address = localStorage.getItem("address_id")
 
     const config = {
-      headers: { Authorization: `Bearer ${token}` }
+      headers: { Authorization: `Bearer ${token}`, "Access-Control-Allow-Origin": "*" }
     }
 
     const bodyParameters = {
@@ -206,18 +137,24 @@ export default function Pay() {
         ([responseA, responseB]) => {
           localStorage.setItem("invoice_number", responseB.data.invoice_number)
           if (responseA.data.status_code === 200 && responseB.data.status_code === 200) {
-            const invoice_number = localStorage.getItem("invoice_number")
+            const invoice_number = localStorage.getItem("invoice_number");
             console.log(responseA, responseB);
-            window.open(`https://rasadent.reshe.ir/pay_invoice_application/${invoice_number}`, '_blank' , 'noopener,noreferrer');
+
+            window.location.assign(`https://rasadent.reshe.ir/pay_invoice_application/${invoice_number}`, '_blank', 'noopener,noreferrer');
+            setSpinner(false)
           }
+          // console.log(responseA, responseB);
         })
       .catch((err) => {
+        setSpinner(false)
         console.log(err.message);
       });
 
   }
 
   // end function create product card
+
+
 
 
   return (
@@ -332,7 +269,7 @@ export default function Pay() {
             </div>
           </Card>
         </div>
-        <button onClick={handlerPay} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Payment and order finalization"]}</span></button>
+        <button onClick={handlerPay} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Payment and order finalization"]} {spinner ? <div className="lds-dual-ring"></div> : ''}</span></button>
       </Box>
     </FadeTransform>
   )

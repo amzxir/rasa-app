@@ -67,8 +67,9 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   /* 82vh */
-  height: 82vh;
+  max-height: 90vh;
   scrollbar-width: none;
+  padding-top: 30px;
 }
 
 
@@ -80,8 +81,9 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   /* 82vh */
-  height: 82vh;
+  max-height: 90vh;
   scrollbar-width: none;
+  padding-top: 30px;
   
 }
 

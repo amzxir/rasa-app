@@ -90,7 +90,7 @@ export default function AuthenticationCode(props) {
         const getUserId = response.data.user_id
         localStorage.setItem("token", getToken);
         localStorage.setItem("user_id", getUserId);
-        toast.success("به پل خوش آمدید");
+        toast.success("به رسادنت خوش آمدید");
         navigate("/");
       }
       // console.log(response);
