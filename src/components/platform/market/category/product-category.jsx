@@ -1,5 +1,5 @@
-import React, { useContext, useState, useEffect } from "react";
-import { Box, Grid, Breadcrumbs , Skeleton , Stack } from "@mui/material";
+import React, { useContext, useState, useEffect, useRef } from "react";
+import { Box, Grid, Breadcrumbs, Skeleton, Stack } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { NavLink, useLocation } from "react-router-dom";
 import { FadeTransform } from "react-animation-components";
@@ -28,10 +28,18 @@ export default function ProductCategory({ sendProduct }) {
     // end state location navlink 
 
     // start fetch product category 
-    const [product, setProduct] = useState();
-    const [subCategory , setSubCategory] = useState([]);
+
+    const [product, setProduct] = useState([]);
+    const [subCategory, setSubCategory] = useState([]);
+
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [page, setPage] = useState(1);
 
     const handelProductCategory = async () => {
+        setIsLoading(true);
+        setError(null);
+
         const config = {
             headers: { Authorization: `Bearer ${token}` }
         }
@@ -41,16 +49,30 @@ export default function ProductCategory({ sendProduct }) {
         }
         try {
             const response = await axios.post("https://rasadent.reshe.ir/api/ProductCategory", bodyParameters, config);
-            setProduct(response.data.products)
+            setProduct(prevItems => [...prevItems, ...response.data.products])
+
+            setPage(prevPage => prevPage + 1);
+            setIsLoading(false);
             // console.log(response);
         } catch (error) {
             console.error(error);
         }
     }
     useEffect(() => {
-
         handelProductCategory();
     }, [])
+
+    const handleScroll = () => {
+        if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight || isLoading) {
+            return;
+        }
+        handelProductCategory();
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [isLoading]);
 
     useEffect(() => {
         const handelSubCategory = async () => {
@@ -70,7 +92,7 @@ export default function ProductCategory({ sendProduct }) {
             }
         }
         handelSubCategory();
-    },[])
+    }, [])
 
     // end fetch product category 
 
@@ -80,28 +102,28 @@ export default function ProductCategory({ sendProduct }) {
         const mobile = localStorage.getItem("mobile");
 
         const config = {
-        headers: { Authorization: `Bearer ${token}` }
+            headers: { Authorization: `Bearer ${token}` }
         }
         const bodyParameters = {
-        key: "value",
-        mobile:mobile,
-        product_id:id,
+            key: "value",
+            mobile: mobile,
+            product_id: id,
         }
 
         try {
-        const response = await axios.post("https://rasadent.reshe.ir/api/CreateBookmark" , bodyParameters , config);
-        // console.log(response.data);
-        toast.success('به علاقه مندی ها اضافه شد')
+            const response = await axios.post("https://rasadent.reshe.ir/api/CreateBookmark", bodyParameters, config);
+            // console.log(response.data);
+            toast.success('به علاقه مندی ها اضافه شد')
         } catch (error) {
-        console.error(error);
+            console.error(error);
         }
     }
     // end function add bookmark
 
     // start function filter product by sub category 
-    const [bookmark , setbookmark] = useState("");
+    const [bookmark, setbookmark] = useState("");
 
-    const handelSubCategory = (id , value) => {
+    const handelSubCategory = (id, value) => {
         const filter_product = product.filter((i) => i.category === id);
         setProduct(filter_product);
         setbookmark(value)
@@ -128,87 +150,82 @@ export default function ProductCategory({ sendProduct }) {
             </Breadcrumbs>
 
             <Grid container spacing={2}>
-                {product ? 
-                    (
-                        product.map((i) => {
-                            // start max and min price product
-                                const array = i.values.filter((i) => {
-                                    return i.selectable == 1 && i.stock > 0 && i.stock !== null 
-                                })
-                                const price = Math.min(...array.map(o => o.price));
-                            // end max and min price product
+                {product?.map((i) => {
+                    // start max and min price product
+                    const array = i.values.filter((i) => {
+                        return i.selectable == 1 && i.stock > 0 && i.stock !== null
+                    })
+                    const price = Math.min(...array.map(o => o.price));
+                    // end max and min price product
 
-                            return (
-                                <Grid key={i.id} item xs={6}>
-                                    <div className={theme.palette.mode === "light" ? LightStyles.card_product : DarkStyles.card_product}>
-                                        <div className={theme.palette.mode === "light" ? LightStyles.card_img : DarkStyles.card_img}>
-                                            <NavLink onClick={() => sendProduct(i)} to={`/shop/single-product/${i.id}`} state={i.fa_name} className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
-                                                    <LazyLoadImage effect="blur" src={`https://rasadent.com/storage/product/${i.images[0]?.image}`} alt="" />
-                                            </NavLink>
-                                            <div onClick={() => handelBookmark(i)} className={theme.palette.mode === "light" ? LightStyles.icon_wishlist : DarkStyles.icon_wishlist}>
-                                                <BookmarkIcon />
-                                            </div>
-                                        </div>
-                                        <div className={theme.palette.mode === "light" ? LightStyles.shop : DarkStyles.shop}>
-                                            <span>{i.en_name}</span>
-                                        </div>
-                                        <div className={theme.palette.mode === "light" ? LightStyles.product_details : DarkStyles.product_details}>
-                                            <NavLink to={`/shop/single-product/${i.id}`} state={i.fa_name} className={theme.palette.mode === "light" ? LightStyles.name_product : DarkStyles.name_product}>
-                                                {i.fa_name}
-                                            </NavLink>
-                                            <p className={theme.palette.mode === "light" ? LightStyles.price_product : DarkStyles.price_product} >
-                                                {price === Infinity ? 0 : price.toLocaleString()} {fa["Toman"]}
-                                            </p>
-                                        </div>
+                    return (
+                        <Grid key={i.id} item xs={6}>
+                            <div className={theme.palette.mode === "light" ? LightStyles.card_product : DarkStyles.card_product}>
+                                <div className={theme.palette.mode === "light" ? LightStyles.card_img : DarkStyles.card_img}>
+                                    <NavLink onClick={() => sendProduct(i)} to={`/shop/single-product/${i.id}`} state={i.fa_name} className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
+                                        <LazyLoadImage effect="blur" src={`https://rasadent.com/storage/product/${i.images[0]?.image}`} alt="" />
+                                    </NavLink>
+                                    <div onClick={() => handelBookmark(i)} className={theme.palette.mode === "light" ? LightStyles.icon_wishlist : DarkStyles.icon_wishlist}>
+                                        <BookmarkIcon />
                                     </div>
-                                </Grid>
-                            )
-                        })
+                                </div>
+                                <div className={theme.palette.mode === "light" ? LightStyles.shop : DarkStyles.shop}>
+                                    <span>{i.en_name}</span>
+                                </div>
+                                <div className={theme.palette.mode === "light" ? LightStyles.product_details : DarkStyles.product_details}>
+                                    <NavLink to={`/shop/single-product/${i.id}`} state={i.fa_name} className={theme.palette.mode === "light" ? LightStyles.name_product : DarkStyles.name_product}>
+                                        {i.fa_name}
+                                    </NavLink>
+                                    <p className={theme.palette.mode === "light" ? LightStyles.price_product : DarkStyles.price_product} >
+                                        {price === Infinity ? 0 : price.toLocaleString()} {fa["Toman"]}
+                                    </p>
+                                </div>
+                            </div>
+                        </Grid>
                     )
-                    :
-                    (
-                        <>
-                            <Grid container sx={{ mt:2 }} spacing={2}>
-                                <Grid item sx={{ mb:1 }} xs={6} >
-                                    <Stack spacing={1}>
-                                        <Skeleton variant="text" width={180} sx={{ fontSize: '1rem' }} />
+                })}
 
-                                        <Skeleton variant="circular" width={40} height={40} />
-                                        <Skeleton variant="rectangular" width={180} height={60} />
-                                        <Skeleton variant="rounded" width={180} height={60} />
-                                    </Stack>
-                                </Grid>
-                                <Grid item sx={{ mb:1 }} xs={6} >
-                                    <Stack spacing={1}>
-                                        <Skeleton variant="text" width={180} sx={{ fontSize: '1rem' }} />
+                {isLoading &&
+                    <Grid container sx={{ mt: 2 }} spacing={2}>
+                        <Grid item sx={{ mb: 1 }} xs={6} >
+                            <Stack spacing={1}>
+                                <Skeleton variant="text" width={180} sx={{ fontSize: '1rem' }} />
 
-                                        <Skeleton variant="circular" width={40} height={40} />
-                                        <Skeleton variant="rectangular" width={180} height={60} />
-                                        <Skeleton variant="rounded" width={180} height={60} />
-                                    </Stack>
-                                </Grid>
-                                <Grid item sx={{ mb:1 }} xs={6} >
-                                    <Stack spacing={1}>
-                                        <Skeleton variant="text" width={180} sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="circular" width={40} height={40} />
+                                <Skeleton variant="rectangular" width={180} height={60} />
+                                <Skeleton variant="rounded" width={180} height={60} />
+                            </Stack>
+                        </Grid>
+                        <Grid item sx={{ mb: 1 }} xs={6} >
+                            <Stack spacing={1}>
+                                <Skeleton variant="text" width={180} sx={{ fontSize: '1rem' }} />
 
-                                        <Skeleton variant="circular" width={40} height={40} />
-                                        <Skeleton variant="rectangular" width={180} height={60} />
-                                        <Skeleton variant="rounded" width={180} height={60} />
-                                    </Stack>
-                                </Grid>
-                                <Grid item sx={{ mb:1 }} xs={6} >
-                                    <Stack spacing={1}>
-                                        <Skeleton variant="text" width={180} sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="circular" width={40} height={40} />
+                                <Skeleton variant="rectangular" width={180} height={60} />
+                                <Skeleton variant="rounded" width={180} height={60} />
+                            </Stack>
+                        </Grid>
+                        <Grid item sx={{ mb: 1 }} xs={6} >
+                            <Stack spacing={1}>
+                                <Skeleton variant="text" width={180} sx={{ fontSize: '1rem' }} />
 
-                                        <Skeleton variant="circular" width={40} height={40} />
-                                        <Skeleton variant="rectangular" width={180} height={60} />
-                                        <Skeleton variant="rounded" width={180} height={60} />
-                                    </Stack>
-                                </Grid>
-                            </Grid>
-                        </>
-                    )}
+                                <Skeleton variant="circular" width={40} height={40} />
+                                <Skeleton variant="rectangular" width={180} height={60} />
+                                <Skeleton variant="rounded" width={180} height={60} />
+                            </Stack>
+                        </Grid>
+                        <Grid item sx={{ mb: 1 }} xs={6} >
+                            <Stack spacing={1}>
+                                <Skeleton variant="text" width={180} sx={{ fontSize: '1rem' }} />
 
+                                <Skeleton variant="circular" width={40} height={40} />
+                                <Skeleton variant="rectangular" width={180} height={60} />
+                                <Skeleton variant="rounded" width={180} height={60} />
+                            </Stack>
+                        </Grid>
+                    </Grid>
+                }
+                {error && <p>Error: {error.message}</p>}
             </Grid>
 
             <div onClick={() => setIsOpen(false)} className={isOpen === true ? theme.palette.mode === "light" ? LightStyles.fade_open : DarkStyles.fade_open : theme.palette.mode === "light" ? LightStyles.fade_close : DarkStyles.fade_close}>
@@ -218,9 +235,9 @@ export default function ProductCategory({ sendProduct }) {
                 <hr />
                 <div className={theme.palette.mode === "light" ? LightStyles.category_filter : DarkStyles.category_filter}>
                     <h1>{fa["category all"]}</h1>
-                    {Object.entries(subCategory).map(([key , value]) => {
-                        return(
-                            <div onClick={() => handelSubCategory(key , value)} key={key} className={theme.palette.mode === "light" ? LightStyles.input_relative : DarkStyles.input_relative}>
+                    {Object.entries(subCategory).map(([key, value]) => {
+                        return (
+                            <div onClick={() => handelSubCategory(key, value)} key={key} className={theme.palette.mode === "light" ? LightStyles.input_relative : DarkStyles.input_relative}>
                                 <input type="radio" name="flexRadioDefault0" id={key} />
                                 <label htmlFor={key} className={theme.palette.mode === "light" ? LightStyles.label_absolute : DarkStyles.label_absolute}>
                                     <p>{value}</p>
@@ -228,8 +245,8 @@ export default function ProductCategory({ sendProduct }) {
                             </div>
                         )
                     })}
-     
-               
+
+
                 </div>
 
                 <hr />
