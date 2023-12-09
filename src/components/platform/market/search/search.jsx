@@ -1,7 +1,8 @@
 import React, { useContext, useState, startTransition, useEffect } from "react";
-import { Modal, IconButton, Grid , Skeleton, Stack } from "@mui/material";
+import { Modal, IconButton, Grid, Skeleton, Stack } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import axios from "axios";
 import ColorModeContext from "../../../../context/color-mode-context";
 import LightStyles from "../../../../assets/sass/light/market/landing.module.scss";
@@ -16,8 +17,12 @@ import FilterIcon from "../../../../assets/svg/filter";
 export default function Search({ setIsOpen }) {
   // start function darkmode
   const theme = useTheme();
-  const { colorMode, token , spinner, setSpinner } = useContext(ColorModeContext);
+  const { colorMode, token, spinner, setSpinner } = useContext(ColorModeContext);
   // end function darkmode
+
+    // start react hook form
+    const { register, handleSubmit, reset, formState: { errors } } = useForm({});
+    // end react hook form
 
   // start state modal
   const [open, setOpen] = useState(false);
@@ -38,7 +43,7 @@ export default function Search({ setIsOpen }) {
 
     const bodyParameters = {
       key: "value",
-      product_name:filter,
+      product_name: filter,
     }
 
     try {
@@ -90,7 +95,7 @@ export default function Search({ setIsOpen }) {
           <SearchIcon />
         </Grid>
         {url === `/shop/product-category/${query}` ?
-          <Grid sx={{ pr:1 }} xs={2}>
+          <Grid sx={{ pr: 1 }} xs={2}>
             <button onClick={() => setIsOpen(true)} className={theme.palette.mode === "light" ? LightStyles.btn_fillter : DarkStyles.btn_fillter}>
               <FilterIcon />
             </button>
@@ -105,68 +110,70 @@ export default function Search({ setIsOpen }) {
             <IconButton onClick={handleClose} className={theme.palette.mode === "light" ? LightStyles.search_fillter : DarkStyles.search_fillter}>
               <ExitIcon />
             </IconButton>
-            <input type="text" placeholder={fa["Search for your product..."]} value={filter} onChange={onChange} />
-            <IconButton onClick={handelResponsSearch} className={theme.palette.mode === "light" ? LightStyles.search_icon : DarkStyles.search_icon}>
-              <SearchsIcon />
-            </IconButton>
+            <form onSubmit={handleSubmit(handelResponsSearch)}>
+              <input type="text" placeholder={fa["Search for your product..."]} value={filter} onChange={onChange} />
+              <IconButton onClick={handelResponsSearch} className={theme.palette.mode === "light" ? LightStyles.search_icon : DarkStyles.search_icon}>
+                <SearchsIcon />
+              </IconButton>
+            </form>
           </div>
           {spinner ? (
-              <>
-                <Stack sx={{ mt:2 , mb:1 }} spacing={1}>
-                    <Skeleton variant="text" width={400} sx={{ fontSize: '1rem'}} />
-                </Stack>
-                <Stack sx={{ mt:1 , mb:1 }} spacing={1}>
-                    <Skeleton variant="text" width={400} sx={{ fontSize: '1rem'}} />
-                </Stack>
-                <Stack sx={{ mt:1 , mb:1 }} spacing={1}>
-                    <Skeleton variant="text" width={400} sx={{ fontSize: '1rem'}} />
-                </Stack>
-                <Stack sx={{ mt:1 , mb:1 }} spacing={1}>
-                    <Skeleton variant="text" width={400} sx={{ fontSize: '1rem'}} />
-                </Stack>
-                <Stack sx={{ mt:1 , mb:1 }} spacing={1}>
-                    <Skeleton variant="text" width={400} sx={{ fontSize: '1rem'}} />
-                </Stack>
-                <Stack sx={{ mt:1 , mb:1 }} spacing={1}>
-                    <Skeleton variant="text" width={400} sx={{ fontSize: '1rem'}} />
-                </Stack>
-                <Stack sx={{ mt:1 , mb:1 }} spacing={1}>
-                    <Skeleton variant="text" width={400} sx={{ fontSize: '1rem'}} />
-                </Stack>
-                <Stack sx={{ mt:1 , mb:1 }} spacing={1}>
-                    <Skeleton variant="text" width={400} sx={{ fontSize: '1rem'}} />
-                </Stack>
-              </>
+            <>
+              <Stack sx={{ mt: 2, mb: 1 }} spacing={1}>
+                <Skeleton variant="text" width={400} sx={{ fontSize: '1rem' }} />
+              </Stack>
+              <Stack sx={{ mt: 1, mb: 1 }} spacing={1}>
+                <Skeleton variant="text" width={400} sx={{ fontSize: '1rem' }} />
+              </Stack>
+              <Stack sx={{ mt: 1, mb: 1 }} spacing={1}>
+                <Skeleton variant="text" width={400} sx={{ fontSize: '1rem' }} />
+              </Stack>
+              <Stack sx={{ mt: 1, mb: 1 }} spacing={1}>
+                <Skeleton variant="text" width={400} sx={{ fontSize: '1rem' }} />
+              </Stack>
+              <Stack sx={{ mt: 1, mb: 1 }} spacing={1}>
+                <Skeleton variant="text" width={400} sx={{ fontSize: '1rem' }} />
+              </Stack>
+              <Stack sx={{ mt: 1, mb: 1 }} spacing={1}>
+                <Skeleton variant="text" width={400} sx={{ fontSize: '1rem' }} />
+              </Stack>
+              <Stack sx={{ mt: 1, mb: 1 }} spacing={1}>
+                <Skeleton variant="text" width={400} sx={{ fontSize: '1rem' }} />
+              </Stack>
+              <Stack sx={{ mt: 1, mb: 1 }} spacing={1}>
+                <Skeleton variant="text" width={400} sx={{ fontSize: '1rem' }} />
+              </Stack>
+            </>
           ) : (
-          <ul className={theme.palette.mode === "light" ? LightStyles.list_search : DarkStyles.list_search}>
-            {items?.length === 0 || filter.length === 0 ? (
-              <div className={theme.palette.mode === "light" ? LightStyles.page_404 : DarkStyles.page_404}>
-                <div className={theme.palette.mode === "light" ? LightStyles.img_centers : DarkStyles.img_centers}>
-                  <img src="/image/404.png" alt="" />
+            <ul className={theme.palette.mode === "light" ? LightStyles.list_search : DarkStyles.list_search}>
+              {items?.length === 0 || filter.length === 0 ? (
+                <div className={theme.palette.mode === "light" ? LightStyles.page_404 : DarkStyles.page_404}>
+                  <div className={theme.palette.mode === "light" ? LightStyles.img_centers : DarkStyles.img_centers}>
+                    <img src="/image/404.png" alt="" />
+                  </div>
+                  <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
+                    <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>
+                      {fa["Not found"]}
+                    </p>
+                    <p className={theme.palette.mode === "light" ? LightStyles.text : DarkStyles.text}>
+                      {fa["Sorry, the keyword you entered was not found, please try again Check or search with another keyword."]}
+                    </p>
+                  </div>
                 </div>
-                <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
-                  <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>
-                    {fa["Not found"]}
-                  </p>
-                  <p className={theme.palette.mode === "light" ? LightStyles.text : DarkStyles.text}>
-                    {fa["Sorry, the keyword you entered was not found, please try again Check or search with another keyword."]}
-                  </p>
-                </div>
-              </div>
-            ) : (
-              items?.map((i) => {
-                return (
-                  <>
-                    <li key={i.id}>
-                      <NavLink to={`/shop/single-product/${i.id}`} state={i.fa_name}>
-                        <BexitIcon /> <span>{i.fa_name}</span>
-                      </NavLink>
-                    </li>
-                  </>
-                );
-              })
-            )}
-          </ul>
+              ) : (
+                items?.map((i) => {
+                  return (
+                    <>
+                      <li key={i.id}>
+                        <NavLink to={`/shop/single-product/${i.id}`} state={i.fa_name}>
+                          <BexitIcon /> <span>{i.fa_name}</span>
+                        </NavLink>
+                      </li>
+                    </>
+                  );
+                })
+              )}
+            </ul>
           )}
 
         </div>

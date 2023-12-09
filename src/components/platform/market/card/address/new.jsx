@@ -5,13 +5,13 @@ import { NavLink } from "react-router-dom";
 import { FadeTransform } from "react-animation-components";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { toast } from "react-toastify";
 import axios from "axios";
 import * as yup from "yup";
 import ColorModeContext from "../../../../../context/color-mode-context";
 import LightStyles from "../../../../../assets/sass/light/market/new-address.module.scss";
 import DarkStyles from "../../../../../assets/sass/dark/market/new-address.module.scss";
 import fa from "../../../../../lang/fa.json";
-import { toast } from "react-toastify";
 
 // regex error validation
 const phoneRegExp = /^(\+\d{1,3}[- ]?)?\d{11}$/;
