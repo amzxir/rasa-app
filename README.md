@@ -3,10 +3,8 @@
 ## Product Introduction </br>
 The Rasadent web application is a comprehensive application for the users of this Rasadent </br>
 The features of this software application include: </br>
-> $${\color{red}Welcome \space \color{lightblue}To \space \color{orange}Stackoverflow}$$
 
-
-> In **Rasamarket**, users can :
+> In **$${\color{blue}Rasamarket}$$**, users can :
 
 - Looking for your products
 
