@@ -11,10 +11,11 @@ And .... </br>
 
 ## Dependency 
 
-1-react-router-dom
-2-react-hook-form
-3-chartjs
-4-i18next
+1-react-router-dom </br>
+2-react-hook-form </br>
+3-chartjs </br>
+4-i18next </br>
+5-axios </br>
 
 
 
