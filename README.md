@@ -3,7 +3,7 @@
 ## Product Introduction </br>
 The Rasadent web application is a comprehensive application for the users of this Rasadent </br>
 The features of this software application include: </br>
-> In Rasamarket, users can:
+> In Rasamarket, users can
 1- Looking for your products </br>
 2- Filter your products by category </br>
 3- The filter is based on category and subcategory and price </br>
