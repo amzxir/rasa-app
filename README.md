@@ -3,7 +3,6 @@
 ## Product Introduction </br>
 The Rasadent web application is a comprehensive application for the users of this Rasadent </br>
 The features of this software application include: </br>
-<font color='red'>test blue color font</font>
 
 > In **Rasamarket**, users can :
 
@@ -25,7 +24,17 @@ The features of this software application include: </br>
 
 - **Comparing 2 or more products together**
 
-Buying and selling products and instant payment through RasaMarket system </br>
+> In **Rasajet**, users can :
+
+
+- **Send your products in a voice and register your order**
+  
+- **Send a photo of the product you want and place your order**
+  
+- **They can write the desired product and place an order in the shortest possible time**
+
+- In general, the **Rasajet** system is a system that makes the user register an order in the shortest possible time
+
 Educational videos through the RasaClub system </br>
 Data posts through RasaBlog system </br>
 And .... </br>
