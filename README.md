@@ -39,8 +39,9 @@ The features of this software application include: </br>
 
 - **watch and learn educational videos and introductions of products and interviews with specialists in the field of dentistry.**
 
-Data posts through RasaBlog system </br>
-And .... </br>
+> In **Rasablog**, users can :
+
+- **view and learn educational blogs and product introductions and specialized materials in the field of dentistry.**
 
 
 ## Technologies Applied 
