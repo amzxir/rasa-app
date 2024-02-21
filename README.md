@@ -3,10 +3,19 @@
 ## Product Introduction </br>
 The Rasadent web application is a comprehensive application for the users of this Rasadent </br>
 The features of this software application include: </br>
-1- Ordering products through text, voice and photos from RasaJet system </br>
-2- Buying and selling products and instant payment through RasaMarket system </br>
-3- Educational videos through the RasaClub system </br>
-4- Data posts through RasaBlog system </br>
+> In Rasamarket, users can: </br>
+1- Looking for your products </br>
+2- Filter your products by category </br>
+3- The filter is based on category and subcategory and price </br>
+4- View product details on the products page </br>
+5- Add the product to the shopping cart </br>
+6- Registering orders and sending products to users </br>
+7- Payment of registered order </br>
+8- Adding a product to favorites </br>
+9- Comparing 2 or more products together </br>
+Buying and selling products and instant payment through RasaMarket system </br>
+Educational videos through the RasaClub system </br>
+Data posts through RasaBlog system </br>
 And .... </br>
 
 
