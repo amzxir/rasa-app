@@ -35,7 +35,10 @@ The features of this software application include: </br>
 
 - In general, the **Rasajet** system is a system that makes the user register an order in the shortest possible time
 
-Educational videos through the RasaClub system </br>
+> In **Rasaclub**, users can :
+
+- **watch and learn educational videos and introductions of products and interviews with specialists in the field of dentistry.**
+
 Data posts through RasaBlog system </br>
 And .... </br>
 
