@@ -8,3 +8,7 @@ The features of this software application include: </br>
 3- Educational videos through the RasaClub system </br>
 4- Data posts through RasaBlog system </br>
 And .... </br>
+
+
+### The Technologies
+PHP version 7 or 8
