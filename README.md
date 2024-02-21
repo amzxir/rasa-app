@@ -5,8 +5,10 @@ The Rasadent web application is a comprehensive application for the users of thi
 The features of this software application include: </br>
 In Rasamarket, users can : </br>
 
-> Looking for your products </br>
-2- Filter your products by category </br>
+> Looking for your products
+
+> Filter your products by category
+
 3- The filter is based on category and subcategory and price </br>
 4- View product details on the products page </br>
 5- Add the product to the shopping cart </br>
