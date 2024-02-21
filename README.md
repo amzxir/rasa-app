@@ -9,6 +9,14 @@ The features of this software application include: </br>
 4- Data posts through RasaBlog system </br>
 And .... </br>
 
+## Dependency 
+
+1-react-router-dom
+2-react-hook-form
+3-chartjs
+4-i18next
+
+
 
 ## Technologies Applied 
 
