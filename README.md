@@ -4,13 +4,13 @@
 The Rasadent web application is a comprehensive application for the users of this Rasadent </br>
 The features of this software application include: </br>
 
-```diff
+diff
 - text in red
 + text in green
 ! text in orange
 # text in gray
 @@ text in purple (and bold)@@
-```
+
 
 > In **Rasamarket**, users can :
 
