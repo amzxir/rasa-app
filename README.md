@@ -3,7 +3,7 @@
 ## Product Introduction </br>
 The Rasadent web application is a comprehensive application for the users of this Rasadent </br>
 The features of this software application include: </br>
-In Rasamarket, users can : </br>
+In **Rasamarket**, users can : </br>
 
 > Looking for your products
 
