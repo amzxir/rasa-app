@@ -9,13 +9,20 @@ In Rasamarket, users can : </br>
 
 > Filter your products by category
 
-3- The filter is based on category and subcategory and price </br>
-4- View product details on the products page </br>
-5- Add the product to the shopping cart </br>
-6- Registering orders and sending products to users </br>
-7- Payment of registered order </br>
-8- Adding a product to favorites </br>
-9- Comparing 2 or more products together </br>
+> The filter is based on category and subcategory and price
+
+> View product details on the products page
+
+> Add the product to the shopping cart
+
+> Registering orders and sending products to users
+
+> Payment of registered order
+
+> Adding a product to favorites
+
+> Comparing 2 or more products together
+
 Buying and selling products and instant payment through RasaMarket system </br>
 Educational videos through the RasaClub system </br>
 Data posts through RasaBlog system </br>
