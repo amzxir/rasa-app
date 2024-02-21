@@ -3,6 +3,7 @@
 ## Product Introduction </br>
 The Rasadent web application is a comprehensive application for the users of this Rasadent </br>
 The features of this software application include: </br>
+<font color='red'>test blue color font</font>
 
 > In **Rasamarket**, users can :
 
