@@ -4,6 +4,9 @@
 The Rasadent web application is a comprehensive application for the users of this Rasadent </br>
 The features of this software application include: </br>
 
+<span style="color:blue">some *blue* text</span>.
+
+
 > In **Rasamarket**, users can :
 
 - Looking for your products
