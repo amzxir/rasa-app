@@ -47,7 +47,7 @@ export default function Search({ setIsOpen }) {
     }
 
     try {
-      const response = await axios.post('https://rasadent.reshe.ir/api/product_search_application', bodyParameters, config);
+      const response = await axios.post('https://test.rasadent.com/api/product_search_application', bodyParameters, config);
       // console.log(response.data.products);
       setSpinner(false)
       setItems(response.data.products)

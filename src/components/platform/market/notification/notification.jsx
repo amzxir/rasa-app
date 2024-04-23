@@ -28,7 +28,7 @@ export default function Notification({ sendNotif }) {
     }
 
     try {
-      const response = await axios.post('https://rasadent.reshe.ir/api/ShowList', bodyParameters, config);
+      const response = await axios.post('https://test.rasadent.com/api/ShowList', bodyParameters, config);
       // console.log(response.data.messages);
       setNotifData(response.data.messages)
     } catch (error) {

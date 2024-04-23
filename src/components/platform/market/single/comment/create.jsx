@@ -46,7 +46,7 @@ export default function Create({ id }) {
     }
 
     try {
-      const response = await axios.post("https://rasadent.reshe.ir/api/CreateComment" , bodyParameters , config);
+      const response = await axios.post("https://test.rasadent.com/api/CreateComment" , bodyParameters , config);
       if(response.data.msg){
         toast.error(response.data.msg)
       } else if (response.data.status_code === 200) (

@@ -31,7 +31,7 @@ export default function CheckPay() {
                 invoice_number: invoice,
             }
             try {
-                const response = await axios.post("https://rasadent.reshe.ir/api/CheckPayInvoice", bodyParameters, config);
+                const response = await axios.post("https://test.rasadent.com/api/CheckPayInvoice", bodyParameters, config);
                 // console.log(response);
                 if (response.data.status_code === 200) {
                     setTimeout(() => {

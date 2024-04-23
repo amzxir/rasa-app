@@ -48,7 +48,7 @@ export default function ProductCategory({ sendProduct }) {
             category_name: location.state,
         }
         try {
-            const response = await axios.post("https://rasadent.reshe.ir/api/ProductCategory", bodyParameters, config);
+            const response = await axios.post("https://test.rasadent.com/api/ProductCategory", bodyParameters, config);
             setProduct(prevItems => [...prevItems, ...response.data.products])
 
             setPage(prevPage => prevPage + 1);
@@ -84,7 +84,7 @@ export default function ProductCategory({ sendProduct }) {
                 name: location.state,
             }
             try {
-                const response = await axios.post("https://rasadent.reshe.ir/api/ListSubCategory", bodyParameters, config);
+                const response = await axios.post("https://test.rasadent.com/api/ListSubCategory", bodyParameters, config);
                 setSubCategory(response.data.categories)
                 // console.log(response);
             } catch (error) {
@@ -111,7 +111,7 @@ export default function ProductCategory({ sendProduct }) {
         }
 
         try {
-            const response = await axios.post("https://rasadent.reshe.ir/api/CreateBookmark", bodyParameters, config);
+            const response = await axios.post("https://test.rasadent.com/api/CreateBookmark", bodyParameters, config);
             // console.log(response.data);
             toast.success('به علاقه مندی ها اضافه شد')
         } catch (error) {

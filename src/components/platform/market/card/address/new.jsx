@@ -73,7 +73,7 @@ export default function New() {
     }
 
     try {
-      const response = await axios.post("https://rasadent.reshe.ir/api/CreateAdress", bodyParameters, config);
+      const response = await axios.post("https://test.rasadent.com/api/CreateAdress", bodyParameters, config);
       // console.log(response);
 
       if (response.data.status_code === 200) {
