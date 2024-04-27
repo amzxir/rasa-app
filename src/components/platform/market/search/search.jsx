@@ -20,9 +20,9 @@ export default function Search({ setIsOpen }) {
   const { colorMode, token, spinner, setSpinner } = useContext(ColorModeContext);
   // end function darkmode
 
-    // start react hook form
-    const { register, handleSubmit, reset, formState: { errors } } = useForm({});
-    // end react hook form
+  // start react hook form
+  const { register, handleSubmit, reset, formState: { errors } } = useForm({});
+  // end react hook form
 
   // start state modal
   const [open, setOpen] = useState(false);
@@ -42,15 +42,18 @@ export default function Search({ setIsOpen }) {
     }
 
     const bodyParameters = {
-      key: "value",
-      product_name: filter,
+      "product_name": filter,
     }
 
     try {
-      const response = await axios.post('https://test.rasadent.com/api/product_search_application', bodyParameters, config);
-      // console.log(response.data.products);
+      const response = await axios.post(`https://test.rasadent.com/api/product_search_application`, bodyParameters, config);
       setSpinner(false)
-      setItems(response.data.products)
+      // console.log(response.data.products)
+      if (response.data.products && response.data.products.length === 0) {
+        await setItems(null)
+      } else {
+        await setItems(response.data.products)
+      }
     } catch (error) {
       setSpinner(false)
       console.error(error);
@@ -59,24 +62,12 @@ export default function Search({ setIsOpen }) {
 
   const onChange = (e) => {
     setFilter(e.target.value);
-    // startTransition(() => {
-    //   setItems(
-    //     e.target.value === ""
-    //       ? []
-    //       : items.filter((item) => item.fa_name.includes(e.target.value))
-    //   );
-    // });
     setProductSearch("");
   };
   // end function for search
 
   // start fetch data card search
-  const [productSearch, setProductSearch] = useState([]);
-  const cardSearch = (i) => {
-    console.log(i);
-    setProductSearch(i);
-    setItems([]);
-  };
+  const [productSearch, setProductSearch] = useState();
   // end fetch data card search
 
   // start find url and equal path
@@ -146,8 +137,21 @@ export default function Search({ setIsOpen }) {
             </>
           ) : (
             <ul className={theme.palette.mode === "light" ? LightStyles.list_search : DarkStyles.list_search}>
-              {items?.length === 0 || filter.length === 0 ? (
-                <div className={theme.palette.mode === "light" ? LightStyles.page_404 : DarkStyles.page_404}>
+              {
+                items?.map((i, index) => {
+                  return (
+                    <>
+                      <li key={index}>
+                        <NavLink to={`/shop/single-product/${i.id}`} state={i.fa_name}>
+                          <BexitIcon /> <span>{i.fa_name}</span>
+                        </NavLink>
+                      </li>
+                    </>
+                  );
+                })
+              }
+              {
+                items === undefined && <div className={theme.palette.mode === "light" ? LightStyles.page_404 : DarkStyles.page_404}>
                   <div className={theme.palette.mode === "light" ? LightStyles.img_centers : DarkStyles.img_centers}>
                     <img src="/image/404.png" alt="" />
                   </div>
@@ -160,19 +164,22 @@ export default function Search({ setIsOpen }) {
                     </p>
                   </div>
                 </div>
-              ) : (
-                items?.map((i) => {
-                  return (
-                    <>
-                      <li key={i.id}>
-                        <NavLink to={`/shop/single-product/${i.id}`} state={i.fa_name}>
-                          <BexitIcon /> <span>{i.fa_name}</span>
-                        </NavLink>
-                      </li>
-                    </>
-                  );
-                })
-              )}
+              }
+              {
+                items === null && <div className={theme.palette.mode === "light" ? LightStyles.page_404 : DarkStyles.page_404}>
+                  <div className={theme.palette.mode === "light" ? LightStyles.img_centers : DarkStyles.img_centers}>
+                    <img src="/image/404.png" alt="" />
+                  </div>
+                  <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
+                    <p className={theme.palette.mode === "light" ? LightStyles.title : DarkStyles.title}>
+                      {fa["Not found"]}
+                    </p>
+                    <p className={theme.palette.mode === "light" ? LightStyles.text : DarkStyles.text}>
+                      {fa["Sorry, the keyword you entered was not found, please try again Check or search with another keyword."]}
+                    </p>
+                  </div>
+                </div>
+              }
             </ul>
           )}
 
