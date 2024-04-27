@@ -30,8 +30,7 @@ export default function Wishlist({ sendProduct }) {
         headers: { Authorization: `Bearer ${token}` }
       }
       const bodyParameters = {
-        key: "value",
-        mobile:mobile,
+        "mobile":mobile,
       }
 
       try {
@@ -55,8 +54,7 @@ export default function Wishlist({ sendProduct }) {
         headers: { Authorization: `Bearer ${token}` }
       }
       const bodyParameters = {
-        key: "value",
-        product_ids:bookmark,
+        "product_ids":bookmark,
       }
 
       try {

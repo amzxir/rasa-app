@@ -20,9 +20,10 @@ export default function LandingShop({sendProduct}) {
 
   // start fetch data bennr slide
   const bannerSlide = [
-    { id: 1, name: "رسادنت", path_img: "/image/slider1.png" , path:"https://rasadent.com/" },
-    { id: 2, name: "رسادنت", path_img: "/image/slider2.jpg" , path:"https://rasadent.com/rasajet-panel" },
-    { id: 3, name: "رسادنت", path_img: "/image/slider3.jpg" , path:"https://rasadent.com/" },
+    { id: 1, name: "رسادنت", path_img: "/image/jet.png" , path:"http://rasadent.com/rasajet-panel" },
+    { id: 2, name: "رسادنت", path_img: "/image/form.png" , path:"https://forms.rasadent.com/" },
+    { id: 3, name: "رسادنت", path_img: "/image/chortke.png" , path:"https://chortkeh.rasadent.com/" },
+    { id: 4, name: "رسادنت", path_img: "/image/Untitled-6.gif" , path:"https://pol.rasadent.com/" },
   ];
   const [bannerData, setBannerData] = useState(bannerSlide);
   // end fetch data bennr slide
@@ -52,9 +53,9 @@ export default function LandingShop({sendProduct}) {
           <NewProduct sendProduct={sendProduct} />
         </Suspense>
 
-        <Suspense fallback={<div>Loading...</div>}>
+        {/* <Suspense fallback={<div>Loading...</div>}>
           <Banner />
-        </Suspense>
+        </Suspense> */}
       </Box>
     </FadeTransform>
   );

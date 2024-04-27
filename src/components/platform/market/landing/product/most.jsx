@@ -12,6 +12,30 @@ import ColorModeContext from "../../../../../context/color-mode-context";
 import MarkProductIcon from "../../../../../assets/svg/mark-product";
 import fa from "../../../../../lang/fa.json";
 
+const data = [
+  {
+    id:1,
+    image:'https://rasadent.com/storage/product/131695461639.webp',
+    fa_name:'اسید اچ _کبالت ',
+    en_name:'Phosphoric acid  Gel 37%_Cobalt',
+    price:185000
+  } ,
+  {
+    id:2,
+    image:'https://rasadent.com/storage/product/111701609231.webp',
+    fa_name:'اسید اچ جامبو _مروابن',
+    en_name:'Phosphoric acid 37% Etching Gel _Morvabon',
+    price:353000
+  } ,
+  {
+    id:3,
+    image:'https://rasadent.com/storage/product/101691919767.jpg',
+    fa_name:'کاغذ آرتیکولاسیون _Dentacomp',
+    en_name:'Articulating paper_Dentacomp',
+    price:110000
+  } ,
+]
+
 export default function MostProduct({ productData, sendProduct }) {
   // start function darkmode
   const theme = useTheme();
@@ -20,58 +44,58 @@ export default function MostProduct({ productData, sendProduct }) {
 
   // start fetch data product
   const [promotion, setPromotion] = useState([]);
-  const [getProduct, setGetProduct] = useState([]);
+  const [getProduct, setGetProduct] = useState(data);
   
-  const handelGetPromotion = async () => {
+  // const handelGetPromotion = async () => {
 
-    const config = {
-      headers: { Authorization: `Bearer ${token}` }
-    }
-    const bodyParameters = {
-      key: "value",
-    }
+  //   const config = {
+  //     headers: { Authorization: `Bearer ${token}` }
+  //   }
+  //   const bodyParameters = {
+  //     key: "value",
+  //   }
 
-    try {
-      const response = await axios.post('https://test.rasadent.com/api/promotions', bodyParameters, config);
-      // console.log(response.data.promotions_product_ids);
-      setPromotion(response.data.promotions_product_ids)
-    } catch (error) {
-      console.error(error);
-    }
-  }
-  useEffect(() => {
-    handelGetPromotion();
-  }, [promotion])
-
-
-  const most_sells = promotion.filter(obj => {
-    return obj.lable === "most_sells";
-  });
-
-  const product_id = most_sells.map(obj => {
-    return obj.product_id
-  })
+  //   try {
+  //     const response = await axios.post('https://test.rasadent.com/api/promotions', bodyParameters, config);
+  //     // console.log(response.data.promotions_product_ids);
+  //     setPromotion(response.data.promotions_product_ids)
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
+  // useEffect(() => {
+  //   handelGetPromotion();
+  // }, [promotion])
 
 
-  const handelGetProducts = async () => {
-    const config = {
-      headers: { Authorization: `Bearer ${token}` }
-    }
-    const bodyParameters = {
-      "product_ids": product_id,
-    }
+  // const most_sells = promotion.filter(obj => {
+  //   return obj.lable === "most_sells";
+  // });
 
-    try {
-      const response = await axios.post('https://test.rasadent.com/api/get_products', bodyParameters, config);
-      // console.log(response.data.Products);
-      setGetProduct(response.data.Products)
-    } catch (error) {
-      console.error(error);
-    }
-  }
-  useEffect(() => {
-    handelGetProducts();
-  }, [getProduct])
+  // const product_id = most_sells.map(obj => {
+  //   return obj.product_id
+  // })
+
+
+  // const handelGetProducts = async () => {
+  //   const config = {
+  //     headers: { Authorization: `Bearer ${token}` }
+  //   }
+  //   const bodyParameters = {
+  //     "product_ids": product_id,
+  //   }
+
+  //   try {
+  //     const response = await axios.post('https://test.rasadent.com/api/get_products', bodyParameters, config);
+  //     // console.log(response.data.Products);
+  //     setGetProduct(response.data.Products)
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
+  // useEffect(() => {
+  //   handelGetProducts();
+  // }, [getProduct])
 
   // end fetch data product
 
@@ -104,7 +128,7 @@ export default function MostProduct({ productData, sendProduct }) {
       <div data-test="data-product" className={theme.palette.mode === "light" ? LightStyles.m_b_1 : DarkStyles.m_b_1}>
         <div className={theme.palette.mode === "light" ? LightStyles.title_content_product : DarkStyles.title_content_product}>
           {getProduct ? (<h1>📍 {"پرفروش ترین محصولات"}</h1>) : (<Skeleton variant="text" width={180} sx={{ fontSize: '1rem' }} />)}
-          {getProduct ? (<NavLink onClick={() => sendProduct(getProduct)} to={`/shop/products/پرفروش ترین محصولات`} state={"پرفروش ترین محصولات"}>{fa["view all"]}</NavLink>) : (<Skeleton variant="text" width={50} sx={{ fontSize: '.5rem' }} />)}
+          {/* {getProduct ? (<NavLink onClick={() => sendProduct(getProduct)} to={`/shop/products/پرفروش ترین محصولات`} state={"پرفروش ترین محصولات"}>{fa["view all"]}</NavLink>) : (<Skeleton variant="text" width={50} sx={{ fontSize: '.5rem' }} />)} */}
         </div>
 
         <Splide className={theme.palette.mode === "light" ? LightStyles.slider_product : DarkStyles.slider_product}
@@ -119,18 +143,18 @@ export default function MostProduct({ productData, sendProduct }) {
           <SplideTrack>
             {getProduct ? (
               getProduct?.map((i) => {
-                  // start max and min price product
-                    const array = i.value.filter((i) => {
-                          return i.selectable == 1 && i.stock > 0 && i.stock !== null 
-                      })
-                    const price = Math.min(...array.map(o => o.price));
-                  // end max and min price product
+                  // // start max and min price product
+                  //   const array = i.value.filter((i) => {
+                  //         return i.selectable == 1 && i.stock > 0 && i.stock !== null 
+                  //     })
+                  //   const price = Math.min(...array.map(o => o.price));
+                  // // end max and min price product
                 return (
                   <SplideSlide key={i.id}>
                     <div className={theme.palette.mode === "light" ? LightStyles.card_product : DarkStyles.card_product}>
                       <div className={theme.palette.mode === "light" ? LightStyles.card_img : DarkStyles.card_img}>
                         <NavLink onClick={() => sendProduct(i)} to={`/shop/single-product/${i.id}`} state={i.fa_name} className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
-                          <LazyLoadImage effect="blur" src={`https://rasadent.com/storage/product/${i.image}`} />
+                          <LazyLoadImage effect="blur" src={i.image} />
                         </NavLink>
                         <div onClick={() => handelBookmark (i.id)} className={theme.palette.mode === "light" ? LightStyles.icon_wishlist : DarkStyles.icon_wishlist}>
                           <MarkProductIcon />
@@ -144,7 +168,7 @@ export default function MostProduct({ productData, sendProduct }) {
                           {i.fa_name}
                         </NavLink>
                         <p className={theme.palette.mode === "light" ? LightStyles.price_product : DarkStyles.price_product}>
-                          {price === Infinity ? 0 : price.toLocaleString()} {fa["Toman"]}
+                          {i.price === Infinity ? 0 : i.price.toLocaleString()} {fa["Toman"]}
                         </p>
                       </div>
                     </div>
