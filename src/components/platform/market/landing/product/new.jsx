@@ -57,8 +57,7 @@ export default function NewProduct({ productData, sendProduct }) {
       headers: { Authorization: `Bearer ${token}` }
     }
     const bodyParameters = {
-      key: "value",
-      product_ids: product_id,
+      "product_ids": product_id,
     }
 
     try {

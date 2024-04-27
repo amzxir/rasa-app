@@ -138,15 +138,15 @@ export default function Search({ setIsOpen }) {
           ) : (
             <ul className={theme.palette.mode === "light" ? LightStyles.list_search : DarkStyles.list_search}>
               {
-                items?.map((i, index) => {
+
+
+                items?.map((i) => {
                   return (
-                    <>
-                      <li key={index}>
-                        <NavLink to={`/shop/single-product/${i.id}`} state={i.fa_name}>
-                          <BexitIcon /> <span>{i.fa_name}</span>
-                        </NavLink>
-                      </li>
-                    </>
+                    <li key={i.id}>
+                      <NavLink to={`/shop/single-product/${i.id}`} state={i.fa_name}>
+                        <BexitIcon /> <span>{i.fa_name}</span>
+                      </NavLink>
+                    </li>
                   );
                 })
               }
