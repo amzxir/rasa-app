@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Box, IconButton, Switch } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FadeTransform } from "react-animation-components";
 import ColorModeContext from "../../context/color-mode-context";
 import LightStyles from "../../assets/sass/light/profile.module.scss";
@@ -24,6 +24,13 @@ export default function Profile() {
   const theme = useTheme();
   const { colorMode } = useContext(ColorModeContext);
   // end function
+
+  const navigate = useNavigate()
+
+  const handlerExit = () => {
+    localStorage.removeItem("token")
+    navigate("/login")
+  }
 
   // start fetch details user
   const mobile = localStorage.getItem("mobile");
@@ -90,9 +97,9 @@ export default function Profile() {
             <div><InfoIcon /><span>{fa["invite friends"]}</span></div>
             <ArrowRight />
           </NavLink> */}
-          <NavLink className={theme.palette.mode === "light" ? LightStyles.routing : DarkStyles.routing}>
+          <div onClick={handlerExit} style={{ cursor:'pointer' }} className={theme.palette.mode === "light" ? LightStyles.routing : DarkStyles.routing}>
             <div><ExitProfileIcon /><span className={theme.palette.mode === "light" ? LightStyles.exit : DarkStyles.exit}>{fa["exit"]}</span></div>
-          </NavLink>
+          </div>
         </div>
       </Box>
     </FadeTransform>
