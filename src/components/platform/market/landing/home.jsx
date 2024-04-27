@@ -20,9 +20,9 @@ export default function LandingShop({sendProduct}) {
 
   // start fetch data bennr slide
   const bannerSlide = [
-    { id: 1, name: "رسادنت", path_img: "/image/jet.png" , path:"http://rasadent.com/rasajet-panel" },
+    { id: 1, name: "رسادنت", path_img: "/image/chortke.png" , path:"https://chortkeh.rasadent.com/" },
     { id: 2, name: "رسادنت", path_img: "/image/form.png" , path:"https://forms.rasadent.com/" },
-    { id: 3, name: "رسادنت", path_img: "/image/chortke.png" , path:"https://chortkeh.rasadent.com/" },
+    { id: 3, name: "رسادنت", path_img: "/image/jet.png" , path:"http://rasadent.com/rasajet-panel" },
     { id: 4, name: "رسادنت", path_img: "/image/Untitled-6.gif" , path:"https://pol.rasadent.com/" },
   ];
   const [bannerData, setBannerData] = useState(bannerSlide);
