@@ -12,29 +12,7 @@ import ColorModeContext from "../../../../../context/color-mode-context";
 import MarkProductIcon from "../../../../../assets/svg/mark-product";
 import fa from "../../../../../lang/fa.json";
 
-const data = [
-  {
-    id:1,
-    image:'https://rasadent.com/storage/product/101691919767.jpg',
-    fa_name:'کاغذ آرتیکولاسیون _Dentacomp',
-    en_name:'Articulating paper_Dentacomp',
-    price:110000
-  } ,
-  {
-    id:2,
-    image:'https://rasadent.com/storage/product/111701609231.webp',
-    fa_name:'اسید اچ جامبو _مروابن',
-    en_name:'Phosphoric acid 37% Etching Gel _Morvabon',
-    price:353000
-  } ,
-  {
-    id:3,
-    image:'https://rasadent.com/storage/product/131695461639.webp',
-    fa_name:'اسید اچ _کبالت ',
-    en_name:'Phosphoric acid  Gel 37%_Cobalt',
-    price:185000
-  } ,
-]
+
 
 export default function AmazingProduct({ sendProduct }) {
   // start function darkmode
@@ -42,10 +20,57 @@ export default function AmazingProduct({ sendProduct }) {
   const { colorMode, token, spinner, setSpinner } = useContext(ColorModeContext);
   // end function darkmode
 
-  // start fetch data product
-  const [promotion, setPromotion] = useState([]);
+  // start fetch api fake 
 
-  const [getProduct, setGetProduct] = useState(data);
+  const inistialState = [
+    {
+      id: 1,
+      image: 'https://rasadent.com/storage/product/101691919767.jpg',
+      fa_name: 'کاغذ آرتیکولاسیون _Dentacomp',
+      en_name: 'Articulating paper_Dentacomp',
+      price: 110000
+    },
+    {
+      id: 2,
+      image: 'https://rasadent.com/storage/product/111701609231.webp',
+      fa_name: 'اسید اچ جامبو _مروابن',
+      en_name: 'Phosphoric acid 37% Etching Gel _Morvabon',
+      price: 353000
+    },
+    {
+      id: 3,
+      image: 'https://rasadent.com/storage/product/131695461639.webp',
+      fa_name: 'اسید اچ _کبالت ',
+      en_name: 'Phosphoric acid  Gel 37%_Cobalt',
+      price: 185000
+    },
+  ]
+
+  const [arr, setArr] = useState([])
+  const [isLoding, setIsLoading] = useState(true);
+
+  const handlerFeach = () => new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ data: { data: inistialState } })
+    }, 2000);
+  })
+
+  useEffect(() => {
+    setIsLoading(false);
+    handlerFeach().then(resulte => {
+      setArr(resulte.data.data)
+      setIsLoading(true)
+    }, error => {
+      console.log('error 500')
+    })
+  }, [])
+
+  // end fetch api fake 
+
+  // start fetch data product
+  // const [promotion, setPromotion] = useState([]);
+
+  // const [getProduct, setGetProduct] = useState(data);
 
   // const handelGetPromotion = async () => {
   //   const config = {
@@ -96,7 +121,7 @@ export default function AmazingProduct({ sendProduct }) {
   //   handelGetProducts();
   // }, [getProduct])
 
-  // // end fetch data product
+  // end fetch data product
 
   // start function add bookmark
 
@@ -109,12 +134,12 @@ export default function AmazingProduct({ sendProduct }) {
     }
     const bodyParameters = {
       key: "value",
-      mobile:mobile,
-      product_id:id,
+      mobile: mobile,
+      product_id: id,
     }
 
     try {
-      const response = await axios.post("https://test.rasadent.com/api/CreateBookmark" , bodyParameters , config);
+      const response = await axios.post("https://test.rasadent.com/api/CreateBookmark", bodyParameters, config);
       // console.log(response.data);
       toast.success('به علاقه مندی ها اضافه شد')
     } catch (error) {
@@ -128,7 +153,7 @@ export default function AmazingProduct({ sendProduct }) {
     <Box>
       <div data-test="data-product" className={theme.palette.mode === "light" ? LightStyles.m_b_1 : DarkStyles.m_b_1}>
         <div className={theme.palette.mode === "light" ? LightStyles.title_content_product : DarkStyles.title_content_product}>
-          {getProduct ? (<h1>📍 {"پیشنهاد شگقت انگیز"}</h1>) : (<Skeleton variant="text" width={180} sx={{ fontSize: '1rem' }} />)}
+          {arr ? (<h1>📍 {"پیشنهاد شگقت انگیز"}</h1>) : (<Skeleton variant="text" width={180} sx={{ fontSize: '1rem' }} />)}
           {/* {getProduct ? (<NavLink onClick={() => sendProduct(getProduct)} to={`/shop/products/پیشنهاد شگقت انگیز`} state={"پیشنهاد شگقت انگیز"} >{fa["view all"]}</NavLink>) : (<Skeleton variant="text" width={50} sx={{ fontSize: '.5rem' }} />)} */}
         </div>
         <Splide className={theme.palette.mode === "light" ? LightStyles.slider_product : DarkStyles.slider_product}
@@ -141,14 +166,14 @@ export default function AmazingProduct({ sendProduct }) {
             perPage: 2,
           }}>
           <SplideTrack>
-            {getProduct ? (
-              getProduct?.map((i) => {
-                  // // start max and min price product
-                  //   const array = i.value.filter((i) => {
-                  //         return i.selectable == 1 && i.stock > 0 && i.stock !== null 
-                  //     })
-                  //     const price = Math.min(...array.map(o => o.price));
-                  // // end max and min price product
+            {isLoding ? (
+              arr?.map((i) => {
+                // // start max and min price product
+                //   const array = i.value.filter((i) => {
+                //         return i.selectable == 1 && i.stock > 0 && i.stock !== null 
+                //     })
+                //     const price = Math.min(...array.map(o => o.price));
+                // // end max and min price product
                 return (
                   <SplideSlide key={i.id}>
                     <div className={theme.palette.mode === "light" ? LightStyles.card_product : DarkStyles.card_product}>
@@ -156,7 +181,7 @@ export default function AmazingProduct({ sendProduct }) {
                         <NavLink onClick={() => sendProduct(i)} to={`/shop/single-product/${i.id}`} state={i.fa_name} className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
                           <LazyLoadImage effect="blur" src={i.image} />
                         </NavLink>
-                        <div onClick={() => handelBookmark (i.id)} className={theme.palette.mode === "light" ? LightStyles.icon_wishlist : DarkStyles.icon_wishlist}>
+                        <div onClick={() => handelBookmark(i.id)} className={theme.palette.mode === "light" ? LightStyles.icon_wishlist : DarkStyles.icon_wishlist}>
                           <MarkProductIcon />
                         </div>
                       </div>
@@ -177,7 +202,7 @@ export default function AmazingProduct({ sendProduct }) {
               })
             ) : (
               <>
-                <Stack sx={{ ml:2 }} spacing={1}>
+                <Stack sx={{ ml: 2 }} spacing={1}>
                   {/* For variant="text", adjust the height via font-size */}
                   <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
 
@@ -186,7 +211,7 @@ export default function AmazingProduct({ sendProduct }) {
                   <Skeleton variant="rectangular" width={210} height={60} />
                   <Skeleton variant="rounded" width={210} height={60} />
                 </Stack>
-                <Stack sx={{ ml:2 }} spacing={1}>
+                <Stack sx={{ ml: 2 }} spacing={1}>
                   {/* For variant="text", adjust the height via font-size */}
                   <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
 

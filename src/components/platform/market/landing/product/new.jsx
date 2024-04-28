@@ -12,29 +12,6 @@ import ColorModeContext from "../../../../../context/color-mode-context";
 import MarkProductIcon from "../../../../../assets/svg/mark-product";
 import fa from "../../../../../lang/fa.json";
 
-const data = [
-  {
-    id:1,
-    image:'https://rasadent.com/storage/product/151701609258.webp',
-    fa_name:'باندینگ آمبر _FGM ',
-    en_name:'Ambar bonding APS_FGM ',
-    price:580000
-  } ,
-  {
-    id:2,
-    image:'https://rasadent.com/storage/product/171701609281.webp',
-    fa_name:'باندینگ پریمیو باند_GC',
-    en_name:'G-Premio Bond_GC',
-    price:352000
-  } ,
-  {
-    id:3,
-    image:'https://rasadent.com/storage/product/311701609336.webp',
-    fa_name:'آشکار ساز پوسیدگی _کبالت',
-    en_name:'Caries Detector Dye_Cobalt',
-    price:420000
-  } ,
-]
 
 export default function NewProduct({ productData, sendProduct }) {
   // start function darkmode
@@ -42,11 +19,59 @@ export default function NewProduct({ productData, sendProduct }) {
   const { colorMode, token } = useContext(ColorModeContext);
   // end function darkmode
 
-  // start fetch data product
-  const [promotion, setPromotion] = useState([]);
+  // start fetch api fake 
 
-  const [getProduct, setGetProduct] = useState(data);
-  
+  const inistialState = [
+    {
+      id: 1,
+      image: 'https://rasadent.com/storage/product/151701609258.webp',
+      fa_name: 'باندینگ آمبر _FGM ',
+      en_name: 'Ambar bonding APS_FGM ',
+      price: 580000
+    },
+    {
+      id: 2,
+      image: 'https://rasadent.com/storage/product/171701609281.webp',
+      fa_name: 'باندینگ پریمیو باند_GC',
+      en_name: 'G-Premio Bond_GC',
+      price: 352000
+    },
+    {
+      id: 3,
+      image: 'https://rasadent.com/storage/product/311701609336.webp',
+      fa_name: 'آشکار ساز پوسیدگی _کبالت',
+      en_name: 'Caries Detector Dye_Cobalt',
+      price: 420000
+    },
+  ]
+
+
+  const [arr, setArr] = useState([])
+  const [isLoding, setIsLoading] = useState(true);
+
+  const handlerFeach = () => new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ data: { data: inistialState } })
+    }, 2000);
+  })
+
+  useEffect(() => {
+    setIsLoading(false);
+    handlerFeach().then(resulte => {
+      setArr(resulte.data.data)
+      setIsLoading(true)
+    }, error => {
+      console.log('error 500')
+    })
+  }, [])
+
+  // end fetch api fake 
+
+  // start fetch data product
+  // const [promotion, setPromotion] = useState([]);
+
+  // const [getProduct, setGetProduct] = useState(data);
+
   // const handelGetPromotion = async () => {
 
   //   const config = {
@@ -108,12 +133,12 @@ export default function NewProduct({ productData, sendProduct }) {
     }
     const bodyParameters = {
       key: "value",
-      mobile:mobile,
-      product_id:id,
+      mobile: mobile,
+      product_id: id,
     }
 
     try {
-      const response = await axios.post("https://test.rasadent.com/api/CreateBookmark" , bodyParameters , config);
+      const response = await axios.post("https://test.rasadent.com/api/CreateBookmark", bodyParameters, config);
       // console.log(response.data);
       toast.success('به علاقه مندی ها اضافه شد')
     } catch (error) {
@@ -127,7 +152,7 @@ export default function NewProduct({ productData, sendProduct }) {
     <Box>
       <div data-test="data-product" className={theme.palette.mode === "light" ? LightStyles.m_b_1 : DarkStyles.m_b_1}>
         <div className={theme.palette.mode === "light" ? LightStyles.title_content_product : DarkStyles.title_content_product}>
-          {getProduct ? (<h1>📍 {"جدیدترین محصولات"}</h1>) : (<Skeleton variant="text" width={180} sx={{ fontSize: '1rem' }} />)}
+          {arr ? (<h1>📍 {"جدیدترین محصولات"}</h1>) : (<Skeleton variant="text" width={180} sx={{ fontSize: '1rem' }} />)}
           {/* {getProduct ? (<NavLink onClick={() => sendProduct(getProduct)} to={`/shop/products/جدیدترین محصولات`} state={"جدیدترین محصولات"}>{fa["view all"]}</NavLink>) : (<Skeleton variant="text" width={50} sx={{ fontSize: '.5rem' }} />)}    */}
         </div>
         <Splide className={theme.palette.mode === "light" ? LightStyles.slider_product : DarkStyles.slider_product}
@@ -140,8 +165,8 @@ export default function NewProduct({ productData, sendProduct }) {
             perPage: 2,
           }}>
           <SplideTrack>
-            {getProduct ? (
-              getProduct?.map((i) => {
+            {isLoding ? (
+              arr?.map((i) => {
                 // // start max and min price product
                 //   const array = i.value.filter((i) => {
                 //       return i.selectable == 1 && i.stock > 0 && i.stock !== null 
@@ -155,7 +180,7 @@ export default function NewProduct({ productData, sendProduct }) {
                         <NavLink onClick={() => sendProduct(i)} to={`/shop/single-product/${i.id}`} state={i.fa_name} className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
                           <LazyLoadImage effect="blur" src={i.image} />
                         </NavLink>
-                        <div onClick={() => handelBookmark (i.id)} className={theme.palette.mode === "light" ? LightStyles.icon_wishlist : DarkStyles.icon_wishlist}>
+                        <div onClick={() => handelBookmark(i.id)} className={theme.palette.mode === "light" ? LightStyles.icon_wishlist : DarkStyles.icon_wishlist}>
                           <MarkProductIcon />
                         </div>
                       </div>
