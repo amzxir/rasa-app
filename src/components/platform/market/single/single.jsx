@@ -65,6 +65,7 @@ export default function Single() {
     handelDetails();
   }, [])
 
+
   // end fetch details product 
 
 
@@ -127,19 +128,19 @@ export default function Single() {
   const [value, setValue] = useState([]);
 
   if (detailsProduct && detailsProduct.length > 0) {
-    const value_filter = detailsProduct[0]?.value?.filter((v) => {
+    const value_filter = detailsProduct[0]?.values?.filter((v) => {
       return v.selectable == 1 && v.stock > 0 && v.stock !== null
     });
     var values = [...value_filter];
   }
 
-  useEffect(() => {
-    handelValue();
-  }, [])
-
   const handelValue = () => {
     setValue(values)
   }
+
+  useEffect(() => {
+    handelValue();
+  }, [])
 
   const increment = (value, id, stoke) => {
     const arr = [...value]
@@ -169,9 +170,9 @@ export default function Single() {
   return (
     <Box data-test="component-single" sx={{ mt: 5, mb: 5 }}>
       {detailsProduct ? (
-        detailsProduct.map((it, index) => {
+        detailsProduct.map((i) => {
           return (
-            <div key={it.id}>
+            <div key={i.id}>
               <div className={theme.palette.mode === "light" ? LightStyles.slider_product : DarkStyles.slider_product}>
                 <Splide
                   hasTrack={false}
@@ -181,10 +182,10 @@ export default function Single() {
                     arrows: false,
                   }}>
                   <SplideTrack>
-                    {it.images.map((i) => {
+                    {i?.images.map((images) => {
                       return (
-                        <SplideSlide key={i.id}>
-                          <img className={theme.palette.mode === "light" ? LightStyles.img_product : DarkStyles.img_product} src={`https://rasadent.com/storage/product/${i.image}`} alt="" />
+                        <SplideSlide key={images.id}>
+                          <img className={theme.palette.mode === "light" ? LightStyles.img_product : DarkStyles.img_product} src={`https://rasadent.com/storage/product/${images.image}`} alt="" />
                         </SplideSlide>
                       )
                     })}
@@ -193,10 +194,10 @@ export default function Single() {
               </div>
               <div className={theme.palette.mode === "light" ? LightStyles.content_name_product : DarkStyles.content_name_product}>
                 <div className={theme.palette.mode === "light" ? LightStyles.name_content : DarkStyles.name_content}>
-                  <h1>{it.fa_name}</h1>
+                  <h1>{i.fa_name}</h1>
                   <div>
                     {/* <NavLink  to={"/shop/compare"} state={fa["product compare"]}> */}
-                    <IconButton onClick={() => handelCompare(it, it.id)}>
+                    <IconButton onClick={() => handelCompare(i, i.id)}>
                       <CompareIcon />
                     </IconButton>
                     {/* </NavLink> */}
@@ -206,7 +207,7 @@ export default function Single() {
                   </div>
 
                 </div>
-                <p>{it.en_name}</p>
+                <p>{i.en_name}</p>
                 <div className={theme.palette.mode === "light" ? LightStyles.shop_content : DarkStyles.shop_content}>
                   <div className={theme.palette.mode === "light" ? LightStyles.alert_primary : DarkStyles.alert_primary}>
                     <span>3,284 رضایت مشتری</span>
@@ -218,7 +219,7 @@ export default function Single() {
                     <p>
                       دسته بندی: {category}
                       <br />
-                      شماره سریال: {it.code}
+                      شماره سریال: {i.code}
                     </p>
                   </div>
                 </div>
@@ -228,114 +229,113 @@ export default function Single() {
                 <p>{fa["You can choose from the sellers of this product, then order the product"]}</p>
               </div>
 
-
-              {it.shops.map((shop, index) => {
+              {i.shops?.map((shop, index) => {
 
                 // start max and min price product
-
-                const prices = it.value.filter((i) => {
+                const prices = i.values.filter((i) => {
                   if (i.shop_id == shop.id) {
                     return i.selectable == 1 && i.stock > 0 && i.stock !== null
                   }
                 })
 
-                const price = Math.min(...prices.map(o => o.price));
+                const price = Math.min(...prices?.map(o => o.price));
 
-                const stocks = it.value.filter((i) => {
+                const stocks = i.values.filter((i) => {
                   if (i.shop_id == shop.id) {
                     return i.stock
                   }
                 })
 
-                const stock_product = Math.min(...stocks.map(o => o.stock));
+                const stock_product = Math.min(...stocks?.map(o => o.stock));
+
                 // end max and min price product
 
-
                 return (
-                  stock_product !== Infinity ?
-                    <div key={index} style={{ background: stock_product === 0 ? '#FF000012' : '' }} className={theme.palette.mode === "light" ? LightStyles.card_shop : DarkStyles.card_shop}>
-                      <Grid container spacing={2} className={theme.palette.mode === "light" ? LightStyles.content_product_shop : DarkStyles.content_product_shop}>
-                        <Grid item xs={3}>
-                          <LazyLoadImage effect="blur" className={theme.palette.mode === "light" ? LightStyles.img_product : DarkStyles.img_product} src="/image/profile-shop.png" alt="" />
-                        </Grid>
 
-                        <Grid item xs={9}>
-                          <p className={theme.palette.mode === "light" ? LightStyles.name_product : DarkStyles.name_product}>
-                            <span>{shop.name}</span>
-                          </p>
-                          <div className={theme.palette.mode === "light" ? LightStyles.content_shops : DarkStyles.content_shops}>
-                            <div className={theme.palette.mode === "light" ? LightStyles.stock : DarkStyles.stock}>
-                              <span>
-                                <TicketIcon />
-                              </span>
-                              <span>
-                                <p>{fa["Available in stock"]}</p>
-                                <p style={{ color: stock_product === 0 ? '#FF0000' : '' }}>{stock_product} عدد</p>
-                              </span>
-                            </div>
-                            <div className={theme.palette.mode === "light" ? LightStyles.stock : DarkStyles.stock}>
-                              <span>
-                                <HistogramIcon />
-                              </span>
-                              <span>
-                                <p>{fa["From the price"]}</p>
-                                <p style={{ color: stock_product === 0 ? '#FF0000' : '' }}>{stock_product === 0 ? 'ناموجود' : `${price.toLocaleString()} ${fa["Toman"]}`}</p>
-                              </span>
-                            </div>
-                          </div>
-                        </Grid>
+                  price !== Infinity && stocks !== Infinity &&
+                  <div key={index} style={{ background: stock_product === 0 ? '#FF000012' : '' }} className={theme.palette.mode === "light" ? LightStyles.card_shop : DarkStyles.card_shop}>
+                    <Grid container spacing={2} className={theme.palette.mode === "light" ? LightStyles.content_product_shop : DarkStyles.content_product_shop}>
+                      <Grid item xs={3}>
+                        <LazyLoadImage effect="blur" className={theme.palette.mode === "light" ? LightStyles.img_product : DarkStyles.img_product} src="/image/profile-shop.png" alt="" />
                       </Grid>
-                      <div onClick={() => handelValue()} className={theme.palette.mode === "light" ? LightStyles.add_card : DarkStyles.add_card}>
-                        {stock_product === 0 ?
-                          <button style={{ background: '#B81515', borderColor: '#B81515' }} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Out of stock"]}</span></button>
-                          :
-                          <button onClick={() => setIsOpen(index)} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Select a feature and add to cart"]}</span></button>
-                        }
-                      </div>
 
-
-                      <div onClick={() => setIsOpen(false)} className={isOpen === index ? theme.palette.mode === "light" ? LightStyles.fade_open : DarkStyles.fade_open : theme.palette.mode === "light" ? LightStyles.fade_close : DarkStyles.fade_close}>
-                      </div>
-                      <div className={isOpen === index ? theme.palette.mode === "light" ? LightStyles.card_product_open : DarkStyles.card_product_open : theme.palette.mode === "light" ? LightStyles.card_product_close : DarkStyles.card_product_close}>
-                        <h1>تنوع محصول خود را از فروشگاه <span>{shop.name}</span> انتخاب کنید</h1>
-                        <hr />
-                        <div className={theme.palette.mode === "light" ? LightStyles.card_pro : DarkStyles.card_pro}>
-                          {value?.map((i, index) => {
-
-                            // start fetch data total price
-                            const total_price = i.quantity * i.price;
-                            // start fetch data total price
-
-                            return (
-                              i.shop_id == shop.id ? <div key={index} className={theme.palette.mode === "light" ? LightStyles.card : DarkStyles.card}>
-                                <div className={theme.palette.mode === "light" ? LightStyles.option_prodeuct : DarkStyles.option_prodeuct}>
-                                  <p className={theme.palette.mode === "light" ? LightStyles.name : DarkStyles.name}><CircleLeftIcon />{i.value}</p>
-                                  <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}><BagIcon /><span>{fa["price"]} :</span> <span>{total_price.toLocaleString()} {fa["Toman"]}</span></p>
-                                </div>
-                                <div className={theme.palette.mode === "light" ? LightStyles.item_product : DarkStyles.item_product}>
-                                  <div className={theme.palette.mode === "light" ? LightStyles.input_number : DarkStyles.input_number}>
-                                    <IconButton data-test="button-increment" onClick={() => increment(value, i.id, i.stock)}>
-                                      <PlussIcon />
-                                    </IconButton>
-                                    <span data-test="count-product">
-                                      {i.quantity}
-                                    </span>
-                                    <IconButton onClick={() => decrement(value, i.id)}>
-                                      <NegativeIcon />
-                                    </IconButton>
-                                  </div>
-                                  <button onClick={() => handlerCard(i, i.id)} className={theme.palette.mode === "light" ? LightStyles.confirm : DarkStyles.confirm}><span>{fa["Add to card"]}</span></button>
-                                </div>
-                              </div> : ''
-                            )
-                          })}
+                      <Grid item xs={9}>
+                        <p className={theme.palette.mode === "light" ? LightStyles.name_product : DarkStyles.name_product}>
+                          <span>{shop.name}</span>
+                        </p>
+                        <div className={theme.palette.mode === "light" ? LightStyles.content_shops : DarkStyles.content_shops}>
+                          <div className={theme.palette.mode === "light" ? LightStyles.stock : DarkStyles.stock}>
+                            <span>
+                              <TicketIcon />
+                            </span>
+                            <span>
+                              <p>{fa["Available in stock"]}</p>
+                              <p style={{ color: stock_product === 0 ? '#FF0000' : '' }}>{stock_product} عدد</p>
+                            </span>
+                          </div>
+                          <div className={theme.palette.mode === "light" ? LightStyles.stock : DarkStyles.stock}>
+                            <span>
+                              <HistogramIcon />
+                            </span>
+                            <span>
+                              <p>{fa["From the price"]}</p>
+                              <p style={{ color: stock_product === 0 ? '#FF0000' : '' }}>{stock_product === 0 ? 'ناموجود' : `${price.toLocaleString()} ${fa["Toman"]}`}</p>
+                            </span>
+                          </div>
                         </div>
+                      </Grid>
+                    </Grid>
+                    <div onClick={() => handelValue()} className={theme.palette.mode === "light" ? LightStyles.add_card : DarkStyles.add_card}>
+                      {stock_product === 0 ?
+                        <button style={{ background: '#B81515', borderColor: '#B81515' }} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Out of stock"]}</span></button>
+                        :
+                        <button onClick={() => setIsOpen(index)} className={theme.palette.mode === "light" ? LightStyles.btn_card : DarkStyles.btn_card}><span>{fa["Select a feature and add to cart"]}</span></button>
+                      }
+                    </div>
+
+                    <div onClick={() => setIsOpen(false)} className={isOpen === index ? theme.palette.mode === "light" ? LightStyles.fade_open : DarkStyles.fade_open : theme.palette.mode === "light" ? LightStyles.fade_close : DarkStyles.fade_close}>
+                    </div>
+                    <div className={isOpen === index ? theme.palette.mode === "light" ? LightStyles.card_product_open : DarkStyles.card_product_open : theme.palette.mode === "light" ? LightStyles.card_product_close : DarkStyles.card_product_close}>
+                      <h1>تنوع محصول خود را از فروشگاه <span>{shop.name}</span> انتخاب کنید</h1>
+                      <hr />
+                      <div className={theme.palette.mode === "light" ? LightStyles.card_pro : DarkStyles.card_pro}>
+                        {value?.map((i, index) => {
+
+                          // start fetch data total price
+                          const total_price = i.quantity * i.price;
+                          // start fetch data total price
+                          return (
+                            i.shop_id == shop.id && <div key={index} className={theme.palette.mode === "light" ? LightStyles.card : DarkStyles.card}>
+                              <div className={theme.palette.mode === "light" ? LightStyles.option_prodeuct : DarkStyles.option_prodeuct}>
+                                <p className={theme.palette.mode === "light" ? LightStyles.name : DarkStyles.name}><CircleLeftIcon />{i.value}</p>
+                                <p className={theme.palette.mode === "light" ? LightStyles.price : DarkStyles.price}><BagIcon /><span>{fa["price"]} :</span> <span>{total_price.toLocaleString()} {fa["Toman"]}</span></p>
+                              </div>
+                              <div className={theme.palette.mode === "light" ? LightStyles.item_product : DarkStyles.item_product}>
+                                <div className={theme.palette.mode === "light" ? LightStyles.input_number : DarkStyles.input_number}>
+                                  <IconButton data-test="button-increment" onClick={() => increment(value, i.id, i.stock)}>
+                                    <PlussIcon />
+                                  </IconButton>
+                                  <span data-test="count-product">
+                                    {i.quantity}
+                                  </span>
+                                  <IconButton onClick={() => decrement(value, i.id)}>
+                                    <NegativeIcon />
+                                  </IconButton>
+                                </div>
+                                <button onClick={() => handlerCard(i, i.id)} className={theme.palette.mode === "light" ? LightStyles.confirm : DarkStyles.confirm}><span>{fa["Add to card"]}</span></button>
+                              </div>
+                            </div>
+                          )
+                        })}
                       </div>
                     </div>
-                    :
-                    ""
+
+                  </div>
+
                 )
               })}
+
+
             </div>
           )
         })
@@ -379,6 +379,7 @@ export default function Single() {
 
 
       {tab}
+
 
     </Box>
   );
