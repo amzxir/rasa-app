@@ -437,3 +437,22 @@ body {
   font-family: "font-number" !important;
 }
 
+.react-tabs__tab{
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #949494;
+  position: inherit !important;
+
+}
+
+.react-tabs__tab--selected{
+  box-shadow: 0px 4px 8px 0px #71809614;
+  box-shadow: 0px 0px 1px 0px #7180960A;
+  background: #FFFFFF;
+  padding: 5px;
+  border-radius: 8px;
+  color: #6C5FBC !important;
+  border: 0 !important;
+}

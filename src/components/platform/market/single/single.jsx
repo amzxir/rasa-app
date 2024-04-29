@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState, Suspense, lazy, useLayoutEffect
 import { Box, IconButton, Card, Grid, Skeleton, Stack } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import 'react-tabs/style/react-tabs.css'
 import { NavLink, useParams } from "react-router-dom";
 import { FadeTransform } from "react-animation-components";
 import { toast } from 'react-toastify'
@@ -20,6 +22,9 @@ import TicketIcon from "../../../../assets/svg/ticket";
 import HistogramIcon from "../../../../assets/svg/histogram";
 import CircleLeftIcon from "../../../../assets/svg/circle-left";
 import BagIcon from "../../../../assets/svg/bag";
+
+
+
 
 const Description = lazy(() => import("./product/description"));
 const Specifications = lazy(() => import("./product/specifications"));
@@ -97,32 +102,6 @@ export default function Single() {
   const [isOpen, setIsOpen] = useState(false)
 
   // end fetch data and function option product 
-
-  // start function and state tabs 
-  const [tab, setTab] = useState(<Suspense fallback={<div>Loading...</div>}><Description /></Suspense>);
-  const [active, setActive] = useState(1);
-
-  const handelTabOne = () => {
-    setTab(<Suspense fallback={<div>Loading...</div>}><Description des={detailsProduct[0].product_description} /></Suspense>);
-    setActive(1);
-  }
-
-  const handelTabTwo = () => {
-    setTab(<Suspense fallback={<div>Loading...</div>}><Specifications /></Suspense>);
-    setActive(2);
-  }
-
-  const handelTabThree = () => {
-    setTab(<Suspense fallback={<div>Loading...</div>}><Comment id={id} /></Suspense>);
-    setActive(3);
-  }
-
-  const handelTabFour = () => {
-    setTab(<Suspense fallback={<div>Loading...</div>}><Create id={id} /></Suspense>)
-    setActive(4);
-  }
-
-  // end function and state tabs 
 
   // start function filter value data in details product
   const [value, setValue] = useState([]);
@@ -335,6 +314,28 @@ export default function Single() {
                 )
               })}
 
+              <Tabs>
+                <TabList className={theme.palette.mode === "light" ? LightStyles.tabs : DarkStyles.tabs}>
+                  <Tab>{fa["Description"]}</Tab>
+                  <Tab>{fa["Specifications"]}</Tab>
+                  <Tab>{fa["User comments"]}</Tab>
+                  <Tab>{fa["Register a comment"]}</Tab>
+                </TabList>
+
+                <TabPanel>
+                  <Suspense fallback={<div>Loading...</div>}><Description des={i.product_description} /></Suspense>
+                </TabPanel>
+                <TabPanel>
+                  <Suspense fallback={<div>Loading...</div>}><Specifications /></Suspense>
+                </TabPanel>
+                <TabPanel>
+                  <Suspense fallback={<div>Loading...</div>}><Comment id={id} /></Suspense>
+                </TabPanel>
+                <TabPanel>
+                  <Suspense fallback={<div>Loading...</div>}><Create id={id} /></Suspense>
+                </TabPanel>
+              </Tabs>
+
 
             </div>
           )
@@ -366,21 +367,6 @@ export default function Single() {
         </Stack>
       )
       }
-
-      <div className={theme.palette.mode === "light" ? LightStyles.tabs : DarkStyles.tabs}>
-        <a className={active === 1 ? "active-tab-single" : ""} onClick={handelTabOne}>{fa["Description"]}</a>
-        <span className={theme.palette.mode === "light" ? LightStyles.border_tab : DarkStyles.border_tab}></span>
-        <a className={active === 2 ? "active-tab-single" : ""} onClick={handelTabTwo}>{fa["Specifications"]}</a>
-        <span className={theme.palette.mode === "light" ? LightStyles.border_tab : DarkStyles.border_tab}></span>
-        <a className={active === 3 ? "active-tab-single" : ""} onClick={handelTabThree}>{fa["User comments"]}</a>
-        <span className={theme.palette.mode === "light" ? LightStyles.border_tab : DarkStyles.border_tab}></span>
-        <a className={active === 4 ? "active-tab-single" : ""} onClick={handelTabFour}>{fa["Register a comment"]}</a>
-      </div>
-
-
-      {tab}
-
-
     </Box>
   );
 }
