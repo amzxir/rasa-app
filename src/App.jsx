@@ -140,7 +140,7 @@ export default function App() {
   const [address, setAddress] = useState([]);
 
   const handelAddress = (i) => {
-    const arr = [...cardProduct];
+    const arr = [];
     localStorage.setItem("address_id" , i.id);
     arr.push(i);
     setAddress(arr);
