@@ -321,6 +321,7 @@ export default function Single() {
                   <div className={theme.palette.mode === "light" ? LightStyles.content : DarkStyles.content}>
                     <h1 style={{ justifyContent:'center' , margin:'1rem 0rem' }}>{"این محصول در فروشگاهی موجود نیست ."}</h1>
                   </div>
+                  
               }
 
 
