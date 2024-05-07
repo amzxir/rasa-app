@@ -53,6 +53,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import Protected from "./protected";
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import CheckPay from "./components/platform/market/card/pay/check";
+import ComponentShops from "./components/platform/online-store/home/home";
+import ComponentProducts from "./components/platform/online-store/products/products";
 
 
 
@@ -209,6 +211,9 @@ export default function App() {
                 <Route path="/form/create" element={<Form />}></Route>
                 <Route path="/form/create/alert" element={<Alert />}></Route>
                 <Route path="/form/create/download" element={<Download />}></Route>
+                {/* routeing component onine shop */}
+                <Route path="/online-shops" element={<ComponentShops />}></Route>
+                <Route path="/online-shops/products" element={<ComponentProducts fetchProduct={fetchProduct} sendProduct={handelSendProduct} />}></Route>
                 {/* routing compoent profile */}
                 <Route exact path="/profile" element={<Profile />}></Route>
                 <Route path="/profile/edit" element={<ProfileEdit />}></Route>
