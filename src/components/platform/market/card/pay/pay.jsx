@@ -48,20 +48,31 @@ export default function Pay() {
 
   const card_pay = cardProduct.map((item, i) => ({ ...item, discount: 0, discount_price: 0, product_price: 0, user_id: user_id }));
 
+  console.log(card_pay);
+
+  // const askjaskdj = card_pay.map((i) => {
+  //   return `${i.user_id}_${i.product_id}_${i.price}_${i.product_price}_${i.peroperty}_${i.value}_${i.discount}_${i.discount_price}_${i.shop_id}`
+  // })
+
+  // console.log(askjaskdj ??222);
+
+
   const arr = card_pay.map((i) => {
     return Object.values(i).map((val, index) => {
       return val
     })
   })
 
+
+
   const cards = arr.map(({
     0: id,
-    1: peroperty_price,
+    1: product_id,
     2: shop_id,
     3: count,
     4: peroperty,
     5: value,
-    6: product_id,
+    6: peroperty_price,
     7: discount,
     8: discount_price,
     9: product_price,
@@ -69,20 +80,26 @@ export default function Pay() {
     ...rest
   }) => ({
     user_id,
+    discount,
     product_id,
     product_price,
     peroperty_price,
-    peroperty,
     value,
+    peroperty,
     count,
     discount_price,
-    discount,
     shop_id,
-    id,
+    // id,
     ...rest
   }));
+  let resultArray = cards.map(obj => {
+    let values = Object.values(obj);
+    return values.join('_');
+  });
 
-  // console.log(cards);
+  let jsonArray = JSON.stringify(resultArray);
+
+  let carts = JSON.parse(jsonArray);
 
 
   // const array = cards.map((i) => {
@@ -93,14 +110,18 @@ export default function Pay() {
 
   // console.log(array);
 
-  const carts = cards.map(({ user_id, product_id, product_price,
-    peroperty_price,
-    peroperty,
-    value,
-    count,
-    discount_price,
-    discount,
-    shop_id }) => `${user_id}_${product_id}_${product_price}_${peroperty_price}_${peroperty}_${value}_${count}_${discount_price}_${discount}_${shop_id} `);
+
+  // const carts = cards.map(({ user_id, product_id, product_price,
+  //   peroperty_price,
+  //   peroperty,
+  //   value,
+  //   count,
+  //   discount_price,
+  //   discount,
+  //   shop_id }) => `${user_id}_${discount}_${product_price}_${peroperty_price}_${value}_${product_id}_${discount_price}_${shop_id}_${peroperty} `);
+
+  // console.log(carts);
+
 
 
   const handlerPay = async () => {
@@ -117,6 +138,8 @@ export default function Pay() {
       mobile: mobile,
       carts: carts
     }
+
+    console.log(bodyParameters);
 
     const invoice = {
       key: "value",
