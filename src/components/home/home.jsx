@@ -38,13 +38,13 @@ export default function Home() {
       path_img: "/image/rocket.svg",
       slogan: "این یک متن تست است",
     },
-    {
-      id: 3,
-      name: "فروشگاه های مجازی",
-      path: "/online-shops",
-      path_img: "/image/club.svg",
-      slogan: "این یک متن تست است",
-    },
+    // {
+    //   id: 3,
+    //   name: "فروشگاه های مجازی",
+    //   path: "/online-shops",
+    //   path_img: "/image/club.svg",
+    //   slogan: "این یک متن تست است",
+    // },
     // {
     //   id: 3,
     //   path: "/club",
