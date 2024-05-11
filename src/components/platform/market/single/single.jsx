@@ -278,6 +278,8 @@ export default function Single() {
                           <div onClick={() => setIsOpen(false)} className={isOpen === index ? theme.palette.mode === "light" ? LightStyles.fade_open : DarkStyles.fade_open : theme.palette.mode === "light" ? LightStyles.fade_close : DarkStyles.fade_close}>
                           </div>
                           <div className={isOpen === index ? theme.palette.mode === "light" ? LightStyles.card_product_open : DarkStyles.card_product_open : theme.palette.mode === "light" ? LightStyles.card_product_close : DarkStyles.card_product_close}>
+                            <div>
+
                             <h1>تنوع محصول خود را از فروشگاه <span>{shop.name}</span> انتخاب کنید</h1>
                             <hr />
                             <div className={theme.palette.mode === "light" ? LightStyles.card_pro : DarkStyles.card_pro}>
@@ -309,6 +311,22 @@ export default function Single() {
                                   </div>
                                 )
                               })}
+                            </div>
+                            </div>
+                            <div style={{ width:'100%' , position:'sticky' , bottom:'-25px' , boxSizing:'border-box' , borderRadius:'10px' , display:'flex' , alignItems:'end' }}>
+                              <button style={{ 
+                                background:'#f44336',
+                                border:'1px solid #f44336',
+                                display:'block',
+                                boxSizing:'border-box',
+                                padding:'0.5rem',
+                                color:'#fff',
+                                textAlign:'center',
+                                borderRadius:'100px',
+                                width:'100%',
+                                cursor:'pointer'
+                               }}
+                               onClick={() => setIsOpen(false)}>بستن</button>
                             </div>
                           </div>
 
