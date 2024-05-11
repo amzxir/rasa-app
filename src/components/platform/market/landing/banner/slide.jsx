@@ -21,6 +21,8 @@ export default function Slide({ bannerData }) {
         pagination: true,
         arrows: false,
         padding: { left: 70, right: 0 },
+        autoplay:true,
+        type: 'loop',
       }}
     >
       <SplideTrack
