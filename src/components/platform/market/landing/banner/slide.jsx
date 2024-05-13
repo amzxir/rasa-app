@@ -34,7 +34,7 @@ export default function Slide({ bannerData }) {
       >
         {bannerData && bannerData.map((i, index) => {
           return (
-            <SplideSlide key={index}>
+            <SplideSlide key={index} style={{ paddingRight:'1rem' }}>
               <NavLink to={i.path} target="_black">
                 <LazyLoadImage
                 effect="blur"

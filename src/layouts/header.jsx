@@ -102,9 +102,9 @@ export default function Header() {
               </IconButton>
               <NavLink className="ml-0" to={"/shop/notification"} state={"اعلانات"}>
                 <IconButton>
-                  <Badge color="error" overlap="circular" badgeContent=" " variant="dot">
+                  {/* <Badge color="error" overlap="circular" badgeContent=" " variant="dot"> */}
                     <NotifIcon />
-                  </Badge>
+                  {/* </Badge> */}
                 </IconButton>
               </NavLink>
             </Stack>
