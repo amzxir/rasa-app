@@ -55,6 +55,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import CheckPay from "./components/platform/market/card/pay/check";
 import ComponentShops from "./components/platform/online-store/home/home";
 import ComponentProducts from "./components/platform/online-store/products/products";
+import ComponentAddress from "./components/profile/address";
 
 
 
@@ -150,6 +151,13 @@ export default function App() {
 
   }
 
+  const SetAddress = (i) => {
+    const arr = [];
+    localStorage.setItem("address_id" , i.id);
+    arr.push(i);
+    setAddress(arr);
+  }
+
   // end fetch and function address 
 
 
@@ -217,6 +225,7 @@ export default function App() {
                 {/* routing compoent profile */}
                 <Route exact path="/profile" element={<Profile />}></Route>
                 <Route path="/profile/edit" element={<ProfileEdit />}></Route>
+                <Route path="/profile/address" element={<ComponentAddress />}></Route>
                 <Route path="/profile/support" element={<Support />}></Route>
                 <Route path="/profile/order" element={<Order sendInvoice={handelSendProduct} />}></Route>
                 <Route path="/profile/order/details/:invoice" element={<OrderDetails sendInvoice={handelSendProduct} fetchProduct={fetchProduct} />}></Route>

@@ -57,8 +57,8 @@ export default function Profile() {
             <div><ProfileIcon /><span>{fa["profile edit"]}</span></div>
             <ArrowRight />
           </NavLink>
-          <NavLink to={"/shop/add-address"} state={fa["Select address"]} className={theme.palette.mode === "light" ? LightStyles.routing : DarkStyles.routing}>
-            <div><PinsIcon /><span>{fa["address"]}</span></div>
+          <NavLink to={"/profile/address"} state="آدرس ها" className={theme.palette.mode === "light" ? LightStyles.routing : DarkStyles.routing}>
+            <div><PinsIcon /><span>آدرس ها</span></div>
             <ArrowRight />
           </NavLink>
           <NavLink to={"/profile/order"} state={fa["Your orders"]} className={theme.palette.mode === "light" ? LightStyles.routing : DarkStyles.routing}>

@@ -48,6 +48,7 @@ export default function ProfileEdit() {
                 ref={datePickerRef} 
                 calendar={persian}
                 locale={persian_fa}
+                placeholder="تاریخ تولد"
                 calendarPosition="bottom-center"
               />
 
@@ -58,7 +59,7 @@ export default function ProfileEdit() {
           </Grid>
           <Grid item xs={12}>
             <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
-              <input placeholder={fa["your emial"]} type="text" />
+              <input placeholder="پست الکترونیکی" type="text" />
               <IconButton className={theme.palette.mode === "light" ? LightStyles.position_svg : DarkStyles.position_svg}>
                   <GmailIcon/>
               </IconButton>
