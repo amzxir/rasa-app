@@ -144,6 +144,7 @@ export default function AuthenticationCode(props) {
                 }
                 onChange={setOtp}
                 numInputs={4}
+                inputType="number"
                 renderInput={(props) => <input {...props} />}
               />
             </div>
