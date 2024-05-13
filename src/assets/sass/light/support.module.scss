@@ -1,8 +1,8 @@
-.form_group{
+.form_group {
     position: relative;
     margin-bottom: 1.5rem;
 
-    input{
+    input {
         font-family: "font-light" !important;
         outline: none;
         box-sizing: border-box;
@@ -15,7 +15,7 @@
         border: 1px solid #ffffff;
     }
 
-    textarea{
+    textarea {
         font-family: "font-light" !important;
         outline: none;
         box-sizing: border-box;
@@ -30,7 +30,7 @@
 
 
 
-    select{
+    select {
         font-family: "font-light" !important;
         outline: none;
         box-sizing: border-box;
@@ -43,27 +43,27 @@
     }
 
 
-    ::placeholder{
+    ::placeholder {
         font-family: "font-light" !important;
         font-size: 12px;
         font-weight: 600;
         line-height: 17px;
-        
+
         color: #ACACAC;
 
     }
 
-    .date::placeholder{
+    .date::placeholder {
         font-family: "font-light" !important;
         font-size: 12px;
         font-weight: 600;
         line-height: 17px;
-        
+
         color: #ACACAC;
 
     }
 
-    .position_svg{
+    .position_svg {
         position: absolute;
         z-index: 100;
         left: 10px;
@@ -73,7 +73,7 @@
 
 }
 
-.btn_profile{
+.btn_profile {
     display: block;
     text-align: center;
     text-decoration: none;
@@ -86,14 +86,38 @@
     background: #113D8D;
     border: 1px solid #113D8D;
 
-    span{
+    span {
         font-size: 12px;
         font-weight: 700;
         line-height: 17px;
-        
+
         text-align: center;
         color: #FFFFFF;
 
+    }
+
+}
+
+.text_about {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 24px;
+    text-align: center;
+    // text-align: justify;
+    font-family: "font-light" !important;
+}
+
+.title_h1_terms {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 900;
+    line-height: 24px;
+
+    color: #374957;
+
+    span {
+        margin-right: .5rem;
     }
 
 }

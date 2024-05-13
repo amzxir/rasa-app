@@ -46,7 +46,7 @@ export default function Menu() {
             </span>
           </span> */}
         </NavLink>
-        <NavLink to={"/profile/support"} className={theme.palette.mode === "light" ? LightStyles.pr_3 : DarkStyles.pr_3}>
+        <NavLink to={"/profile/support"} state="پشتیبانی" className={theme.palette.mode === "light" ? LightStyles.pr_3 : DarkStyles.pr_3}>
         <IconButton>
           <CommentsIcon />
         </IconButton>

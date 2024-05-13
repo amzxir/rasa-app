@@ -6,6 +6,7 @@ import LightStyles from "../../../assets/sass/light/support.module.scss";
 import DarkStyles from "../../../assets/sass/dark/support.module.scss"
 import ColorModeContext from "../../../context/color-mode-context";
 import fa from "../../../lang/fa.json";
+import TouchIcon from "../../../assets/svg/touch";
 
 export default function Support() {
     // start function darkmode
@@ -15,7 +16,17 @@ export default function Support() {
     return (
         <FadeTransform in transformProps={{ exitTransform: 'translateX(-100px)' }}>
             <Box sx={{ mt: 5, mb: 5 }}>
-                <Grid container>
+                <p className={theme.palette.mode === "light" ? LightStyles.text_about : DarkStyles.text_about}>
+                    برای ارتباط با ما می توانید به یکی از روش های زیر اقدام کنید                     
+                </p>
+                <p className={theme.palette.mode === "light" ? LightStyles.text_about : DarkStyles.text_about}>شماره تماس : <span>91691577 - 021 </span></p>
+                <p className={theme.palette.mode === "light" ? LightStyles.text_about : DarkStyles.text_about}>ایمیل ما : <span>rasadentmart@gmail.com</span></p>
+                <p className={theme.palette.mode === "light" ? LightStyles.text_about : DarkStyles.text_about}>اینستاگرام : <span>rasadent</span></p>
+                
+
+
+
+                {/* <Grid container>
                     <Grid xs={12}>
                         <div className={theme.palette.mode === "light" ? LightStyles.form_group : DarkStyles.form_group}>
                             <input placeholder={fa["Firstname and Lastname"]} type="text" />
@@ -49,7 +60,7 @@ export default function Support() {
                 </Grid>
                 <button className={theme.palette.mode === "light" ? LightStyles.btn_profile : DarkStyles.btn_profile}>
                     <span>{fa["send message"]}</span>
-                </button>
+                </button> */}
             </Box>
         </FadeTransform>
     )
