@@ -32,7 +32,7 @@ export default function Header() {
         mobile: mobile,
       }
       try {
-        const response = await axios.post("https://test.rasadent.com/api/UserDetail", bodyParameters, config);
+        const response = await axios.post("https://rasadent.com/api/UserDetail", bodyParameters, config);
         // console.log(response.data.user)
         setUser(response.data.user)
         // console.log(response);

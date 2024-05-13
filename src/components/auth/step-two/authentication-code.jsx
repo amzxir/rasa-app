@@ -62,7 +62,7 @@ export default function AuthenticationCode(props) {
     }
     // console.log(verOtp)
     try {
-      const response = await axios.post("https://test.rasadent.com/api/VerifyOtp", verify);
+      const response = await axios.post("https://rasadent.com/api/VerifyOtp", verify);
       // console.log(response);
 
       if (response.data.status_code === 500) {

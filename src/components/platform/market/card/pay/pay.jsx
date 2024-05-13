@@ -148,12 +148,12 @@ export default function Pay() {
       price: total_price
     }
 
-    await axios.post("https://test.rasadent.com/api/CreateCart", bodyParameters, config)
+    await axios.post("https://rasadent.com/api/CreateCart", bodyParameters, config)
       .then(
         responseA =>
           Promise.all([
             responseA,
-            axios.post("https://test.rasadent.com/api/CreateInvoice", invoice, config)
+            axios.post("https://rasadent.com/api/CreateInvoice", invoice, config)
           ])
       )
       .then(
@@ -163,7 +163,7 @@ export default function Pay() {
             const invoice_number = localStorage.getItem("invoice_number");
             console.log(responseA, responseB);
 
-            window.location.assign(`https://test.rasadent.com/pay_invoice_application/${invoice_number}`, '_blank', 'noopener,noreferrer');
+            window.location.assign(`https://rasadent.com/pay_invoice_application/${invoice_number}`, '_blank', 'noopener,noreferrer');
             setSpinner(false)
           }
           // console.log(responseA, responseB);

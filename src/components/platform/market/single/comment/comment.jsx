@@ -31,7 +31,7 @@ export default function Comment({ id }) {
       }
 
       try {
-        const response = await axios.post("https://test.rasadent.com/api/ProductComments" , bodyParameters , config);
+        const response = await axios.post("https://rasadent.com/api/ProductComments" , bodyParameters , config);
         // console.log(response.data.comments);
         setComment(response.dara.comments);
       } catch (error) {

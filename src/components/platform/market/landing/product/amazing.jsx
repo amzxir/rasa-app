@@ -81,7 +81,7 @@ export default function AmazingProduct({ sendProduct }) {
   //   }
 
   //   try {
-  //     const response = await axios.post('https://test.rasadent.com/api/promotions', bodyParameters, config);
+  //     const response = await axios.post('https://rasadent.com/api/promotions', bodyParameters, config);
   //     // console.log(response.data.promotions_product_ids);
   //     setPromotion(response.data.promotions_product_ids)
   //   } catch (error) {
@@ -110,7 +110,7 @@ export default function AmazingProduct({ sendProduct }) {
   //   }
 
   //   try {
-  //     const response = await axios.post('https://test.rasadent.com/api/get_products', bodyParameters, config);
+  //     const response = await axios.post('https://rasadent.com/api/get_products', bodyParameters, config);
   //     // console.log(response.data.Products);
   //     setGetProduct(response.data.Products)
   //   } catch (error) {
@@ -139,7 +139,7 @@ export default function AmazingProduct({ sendProduct }) {
     }
 
     try {
-      const response = await axios.post("https://test.rasadent.com/api/CreateBookmark", bodyParameters, config);
+      const response = await axios.post("https://rasadent.com/api/CreateBookmark", bodyParameters, config);
       // console.log(response.data);
       toast.success('به علاقه مندی ها اضافه شد')
     } catch (error) {

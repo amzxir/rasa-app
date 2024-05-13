@@ -34,7 +34,7 @@ export default function Wishlist({ sendProduct }) {
       }
 
       try {
-        const response = await axios.post("https://test.rasadent.com/api/Bookmarks" , bodyParameters , config);
+        const response = await axios.post("https://rasadent.com/api/Bookmarks" , bodyParameters , config);
         // console.log(response.data.products_id);
         setBookmark(response.data.products_id)
       } catch (error) {
@@ -58,7 +58,7 @@ export default function Wishlist({ sendProduct }) {
       }
 
       try {
-        const response = await axios.post("https://test.rasadent.com/api/get_products" , bodyParameters , config);
+        const response = await axios.post("https://rasadent.com/api/get_products" , bodyParameters , config);
         // console.log(response.data.Products);
         setWishlistData(response.data.Products)
       } catch (error) {

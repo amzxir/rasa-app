@@ -58,7 +58,7 @@ export default function Single() {
       }
 
       try {
-        const response = await axios.post("https://test.rasadent.com/api/get_product", bodyParameters, config);
+        const response = await axios.post("https://rasadent.com/api/get_product", bodyParameters, config);
         // console.log(response.data.products);
         // localStorage.setItem("product" , JSON.stringify(response.data.products))
         setDetailsProduct(response.data.products);
@@ -89,7 +89,7 @@ export default function Single() {
     }
 
     try {
-      const response = await axios.post("https://test.rasadent.com/api/CreateBookmark", bodyParameters, config);
+      const response = await axios.post("https://rasadent.com/api/CreateBookmark", bodyParameters, config);
       // console.log(response.data);
       toast.success('به علاقه مندی ها اضافه شد')
     } catch (error) {

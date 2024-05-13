@@ -29,7 +29,7 @@ export default function CategoryList() {
       }
   
       try {
-        const response = await axios.post('https://test.rasadent.com/api/AllCategory', bodyParameters, config);
+        const response = await axios.post('https://rasadent.com/api/AllCategory', bodyParameters, config);
         setCategory(response.data.categories)
         // console.log(response.data.categories);
       } catch (error) {

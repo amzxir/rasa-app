@@ -39,7 +39,7 @@ export default function Login(props) {
     setSpinner(true)
     const mobile = data;
     try {
-      const response = await axios.post("https://test.rasadent.com/api/SendOtp", mobile);
+      const response = await axios.post("https://rasadent.com/api/SendOtp", mobile);
       if (response.data.status_code === 422) {
         toast.error(response.data.msg)
       } else if (response.data.status_code === 200) {

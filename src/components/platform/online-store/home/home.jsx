@@ -106,10 +106,10 @@ const ComponentShops = () => {
                                     <div className={theme.palette.mode === "light" ? LightStyles.card_product : DarkStyles.card_product}>
                                         <div className={theme.palette.mode === "light" ? LightStyles.card_img : DarkStyles.card_img}>
                                             <NavLink to={`/online-shops/products`} state={`محصولات فروشگاه ${i.name}`} className={theme.palette.mode === "light" ? LightStyles.img_center : DarkStyles.img_center}>
-                                                <LazyLoadImage effect="blur" src={`https://test.rasadent.com/storage/shop/banner/${i.banner}`} alt={i.name} />
+                                                <LazyLoadImage effect="blur" src={`https://rasadent.com/storage/shop/banner/${i.banner}`} alt={i.name} />
                                             </NavLink>
                                             <div className={theme.palette.mode === "light" ? LightStyles.icon_wishlist : DarkStyles.icon_wishlist}>
-                                                <LazyLoadImage width={45} height={45} style={{ borderRadius: '50%' }} effect="blur" src={`https://test.rasadent.com/storage/shop/logo/${i.image}`} alt={i.name} />
+                                                <LazyLoadImage width={45} height={45} style={{ borderRadius: '50%' }} effect="blur" src={`https://rasadent.com/storage/shop/logo/${i.image}`} alt={i.name} />
                                             </div>
                                         </div>
                                         {/* <div className={theme.palette.mode === "light" ? LightStyles.shop : DarkStyles.shop}>
@@ -117,7 +117,7 @@ const ComponentShops = () => {
                                   ّ      </div> */}
                                         <div className={theme.palette.mode === "light" ? LightStyles.product_details : DarkStyles.product_details}>
                                             <NavLink to={`/online-shops/products`} state={i.fa_name} className={theme.palette.mode === "light" ? LightStyles.name_product : DarkStyles.name_product}>
-                                                <LazyLoadImage width={15} height={15} effect="blur" src={`https://test.rasadent.com/images/${i.icon}`} alt={i.name} />ّ
+                                                <LazyLoadImage width={15} height={15} effect="blur" src={`https://rasadent.com/images/${i.icon}`} alt={i.name} />ّ
                                                 <span style={{marginRight:'5px' }}>{i.name}</span>
                                             </NavLink>
                                             <p className={theme.palette.mode === "light" ? LightStyles.store_product : DarkStyles.store_product} >
