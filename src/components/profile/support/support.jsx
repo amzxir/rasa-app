@@ -19,8 +19,8 @@ export default function Support() {
                 <p className={theme.palette.mode === "light" ? LightStyles.text_about : DarkStyles.text_about}>
                     برای ارتباط با ما می توانید به یکی از روش های زیر اقدام کنید                     
                 </p>
-                <p className={theme.palette.mode === "light" ? LightStyles.text_about : DarkStyles.text_about}>شماره تماس : <span>91691577 - 021 </span></p>
-                <p className={theme.palette.mode === "light" ? LightStyles.text_about : DarkStyles.text_about}>ایمیل ما : <span>rasadentmart@gmail.com</span></p>
+                <p className={theme.palette.mode === "light" ? LightStyles.text_about : DarkStyles.text_about}>شماره تماس : <a href="tel:+2191691577">91691577 - 021 </a></p>
+                <p className={theme.palette.mode === "light" ? LightStyles.text_about : DarkStyles.text_about}>ایمیل ما : <span>info@rasadent.com</span></p>
                 <p className={theme.palette.mode === "light" ? LightStyles.text_about : DarkStyles.text_about}>اینستاگرام : <span>rasadent</span></p>
                 
 
